@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,33 +42,8 @@ Route::prefix('auth')->name('auth.')->group(function ()
     Route::view('/dashboard', 'auth.dashboard')->name('dashboard');
 });
 
-
-
-
-
-/* 
-Route::get('/about', function ()
+Route::prefix('post')->name('post.')->group(function ()
 {
-    return 'About page';
-})->name('about');
-
-Route::get('/faq/{question}', function ($question)
-{
-    return "O número da questão foi: $question";
-})->name('faq');
-
-Route::get('/user/{name}', function ($name)
-{
-    return "Your name is $name";
-})->name('user.name');
-
-Route::prefix('user')->group(function ()
-{
-    Route::view('/', 'welcome');
-    Route::get('/{name}', function ($name)
-    {
-        return "The name of user is $name";
-    });
+    Route::get('/', [PostController::class, 'index'])->name('view');
 });
 
- */
