@@ -20,14 +20,14 @@
 
     <header>
         <div>
-            <a href="/" class="logo"><img src="https://cdn-icons-png.flaticon.com/512/3629/3629072.png" alt="Touchfic">Touchfic</a>
+            <a href="{{route('root.home')}}" class="logo"><img src="https://cdn-icons-png.flaticon.com/512/3629/3629072.png" alt="Touchfic">Touchfic</a>
         </div>
         <nav>
             <ul>
-                <li><a href="/about" class="nav-link">Sobre</a></li>
-                <li><a href="/faq" class="nav-link">FAQ</a></li>
-                <li><a href="/login" class="nav-link">Login</a></li>
-                <li><a href="/register" class="nav-link">Cadastre-se</a></li>
+                <li><a href="{{route('root.about')}}" class="nav-link">Sobre</a></li>
+                <li><a href="{{route('root.faq')}}" class="nav-link">FAQ</a></li>
+                <li><a href="{{route('auth.login.view')}}" class="nav-link">Login</a></li>
+                <li><a href="{{route('auth.register.view')}}" class="nav-link">Cadastre-se</a></li>
             </ul>
         </nav>
     </header>

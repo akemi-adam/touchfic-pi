@@ -37,7 +37,13 @@ Route::prefix('auth')->name('auth.')->group(function ()
     {
         return "Página de register post";
     })->name('register.post');
+
+    Route::view('/dashboard', 'auth.dashboard')->name('dashboard');
 });
+
+
+
+
 
 /* 
 Route::get('/about', function ()
