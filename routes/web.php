@@ -5,14 +5,45 @@ use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
+|
+| - Root routes
+| - Auth routes
+| - Posts routes
+| - Admin routes
+| - Stories routes
+|
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::name('root.')->group(function ()
+{
+    Route::view('/', 'welcome')->name('home');
+    Route::view('/about', 'about')->name('about');
+    Route::view('/faq', 'faq')->name('faq');
 });
+/* 
+Route::get('/about', function ()
+{
+    return 'About page';
+})->name('about');
+
+Route::get('/faq/{question}', function ($question)
+{
+    return "O número da questão foi: $question";
+})->name('faq');
+
+Route::get('/user/{name}', function ($name)
+{
+    return "Your name is $name";
+})->name('user.name');
+
+Route::prefix('user')->group(function ()
+{
+    Route::view('/', 'welcome');
+    Route::get('/{name}', function ($name)
+    {
+        return "The name of user is $name";
+    });
+});
+
+ */
