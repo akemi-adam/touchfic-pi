@@ -38,18 +38,18 @@
         <div>
             <p>Touchfic: crie e leia histórias com um só toque</p>
             <ul>
-                <li><a href="/"><i class="fa-brands fa-instagram"></i></a></li>
-                <li><a href="/"><i class="fa-brands fa-twitter"></i></a></li>
-                <li><a href="/"><i class="fa-brands fa-facebook"></i></a></li>
-                <li><a href="/"><i class="fa-brands fa-tiktok"></i></a></li>
-                <li><a href="/"><i class="fa-brands fa-pinterest"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-tiktok"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-pinterest"></i></a></li>
             </ul>
         </div>
 
         <div>
             <ul>
-                <li><a href="/">Termos de Uso</a></li>
-                <li><a href="/">Política de Privacidade</a></li>
+                <li><a href="{{route('root.home')}}">Termos de Uso</a></li>
+                <li><a href="{{route('root.home')}}">Política de Privacidade</a></li>
             </ul>
         </div>
 

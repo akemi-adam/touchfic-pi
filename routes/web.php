@@ -21,6 +21,24 @@ Route::name('root.')->group(function ()
     Route::view('/about', 'about')->name('about');
     Route::view('/faq', 'faq')->name('faq');
 });
+
+Route::prefix('auth')->name('auth.')->group(function ()
+{
+    Route::view('/login', 'auth.login')->name('login.view');
+
+    Route::post('/login', function ()
+    {
+        return "Página de login post";
+    })->name('login.post');
+
+    Route::view('/register', 'auth.register')->name('register.view');
+
+    Route::post('/register', function ()
+    {
+        return "Página de register post";
+    })->name('register.post');
+});
+
 /* 
 Route::get('/about', function ()
 {
