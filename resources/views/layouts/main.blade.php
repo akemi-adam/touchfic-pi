@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {{-- Ícones --}}
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/3629/3629072.png">
     <script src="https://kit.fontawesome.com/f17bb9c677.js" crossorigin="anonymous"></script>
+    
+    {{-- CSS da Aplicação --}}
     <link rel="stylesheet" href="/css/style.css">
+
+    {{-- Fonte do Google --}}
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300&family=Poppins:ital,wght@0,300;0,400;1,300&display=swap');
     </style>
 
+    {{-- Seção de Título --}}
     <title>
         @yield('title')
     </title>
@@ -18,6 +25,7 @@
 </head>
 <body>
 
+    {{-- Header --}}
     <header>
         <div>
             <a href="{{route('root.home')}}" class="logo"><img src="https://cdn-icons-png.flaticon.com/512/3629/3629072.png" alt="Touchfic">Touchfic</a>
@@ -32,8 +40,10 @@
         </nav>
     </header>
 
+    {{-- Seção do Conteúdo --}}
     @yield('content')
 
+    {{-- Footer --}}
     <footer>
         <div>
             <p>Touchfic: crie e leia histórias com um só toque</p>
@@ -45,14 +55,12 @@
                 <li><a href="#"><i class="fa-brands fa-pinterest"></i></a></li>
             </ul>
         </div>
-
         <div>
             <ul>
                 <li><a href="{{route('root.home')}}">Termos de Uso</a></li>
                 <li><a href="{{route('root.home')}}">Política de Privacidade</a></li>
             </ul>
         </div>
-
         <div class="div-credits">
             <a href="https://www.flaticon.com/br/icones-gratis/tocha" title="tocha ícones">Tocha ícones criados por Freepik - Flaticon</a>
         </div>
