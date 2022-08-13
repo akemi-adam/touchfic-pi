@@ -12,7 +12,7 @@
                 @foreach ($genders as $gender)
                     @if ($gender->gen_visible ==  1)
                         <li>
-                            {{$gender->gen_gender}}
+                            <a href="{{route('admin.gender.show' , $gender->gen_id)}}" style="color: #3f1651">{{$gender->gen_gender}}</a>
                         </li>
                         <form action="{{route('admin.gender.destroy', $gender->gen_id)}}" method="post">
                             @csrf

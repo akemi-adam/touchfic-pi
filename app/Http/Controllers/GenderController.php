@@ -44,9 +44,16 @@ class GenderController extends Controller
         return redirect('/admin/gender')->with('success_msg', 'O gênero foi cadastrado com sucesso!');
     }
 
+    /**
+     * Procura o gênero pelo seu id específico e retorna um objeto dele para a página show
+     */
+
     public function show($id)
     {
-        return "Teste função show $id";
+        $gender = Gender::findOrFail($id);
+        return view('admin.gender.show', [
+            'gender' => $gender
+        ]);
     }
 
     public function edit($id)
