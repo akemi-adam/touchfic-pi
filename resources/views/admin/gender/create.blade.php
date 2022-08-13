@@ -10,10 +10,8 @@
         <div class="div-faq">
             <form action="{{route('admin.gender.store')}}" method="post">
                 @csrf
-                <label for="gender">
-                    Novo gênero
-                </label>
-                <input type="text" name="gender">
+                <label for="gender">Novo gênero</label>
+                <input type="text" name="gender" placeholder="Exemplo: Sci-fi, Românce, Aventura...">
                 <div class="container-submit">
                     <div class="submit-story-button">
                         <button>
@@ -21,6 +19,7 @@
                         </button>
                     </div>
                 </div>
+
             </form>
         </div>
     </div>

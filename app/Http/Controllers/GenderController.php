@@ -8,6 +8,11 @@ use App\Models\Gender;
 class GenderController extends Controller
 {
 
+    /**
+     * 
+     * Resgata os dados do banco e devolve pra página /admin/gender/index
+     */
+
     public function index()
     {
         $genders = Gender::all();
@@ -16,14 +21,27 @@ class GenderController extends Controller
         ]);
     }
 
+    /**
+     * Retorna um formulário para criação de gêneros
+     */
+
     public function create()
     {
         return view('admin.gender.create');
     }
 
+    /**
+     * Action que vai operar no banco salvando as informações
+     */
+
     public function store(Request $request)
     {
-        //
+        $gender = new Gender;
+        $gender->gen_gender = $request->gender;
+
+        $gender->save();
+
+        return redirect('/admin/gender');
     }
 
     public function show($id)
