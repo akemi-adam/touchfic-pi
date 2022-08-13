@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\GenderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,9 @@ Route::name('root.')->group(function ()
 
 Route::prefix('auth')->name('auth.')->group(function ()
 {
+
+    Route::resource('/gender', GenderController::class);
+
     Route::view('/login', 'auth.login')->name('login.view');
 
     Route::post('/login', function ()
