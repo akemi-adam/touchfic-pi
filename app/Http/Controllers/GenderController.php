@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+namespace App\Models\Gender;
 
 class GenderController extends Controller
 {
 
     public function index()
     {
-        return view('admin.gender.index');
+        $genders = Gender::all();
+        return view('admin.gender.index',[
+            'genders' => $genders
+        ]);
     }
 
     public function create()
