@@ -10,9 +10,11 @@
         <div class="div-options">
             <ul>
                 @foreach ($genders as $gender)
-                    <li>
-                        {{$gender->gen_gender}}
-                    </li>
+                    @if ($gender->gen_visible ==  1)
+                        <li>
+                            {{$gender->gen_gender}}
+                        </li>
+                    @endif
                 @endforeach
             </ul>
             <button class="genre-button">
