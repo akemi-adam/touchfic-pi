@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('tb_genders', function (Blueprint $table) {
             $table->id('gen_id');
             $table->string('gen_gender', 50);
-            $table->integer('gen_visible');
+            $table->boolean('gen_visible');
             $table->timestamps();
         });
     }

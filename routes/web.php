@@ -27,8 +27,6 @@ Route::name('root.')->group(function ()
 Route::prefix('auth')->name('auth.')->group(function ()
 {
 
-    Route::resource('/gender', GenderController::class);
-
     Route::view('/login', 'auth.login')->name('login.view');
 
     Route::post('/login', function ()
@@ -44,6 +42,12 @@ Route::prefix('auth')->name('auth.')->group(function ()
     })->name('register.post');
 
     Route::view('/dashboard', 'auth.dashboard')->name('dashboard');
+});
+
+Route::prefix('admin')->name('admin.')->group(function ()
+{
+    Route::view('/', 'admin.dashboard')->name('dashboard');
+    Route::resource('/gender', GenderController::class);
 });
 
 Route::prefix('post')->name('post.')->group(function ()
