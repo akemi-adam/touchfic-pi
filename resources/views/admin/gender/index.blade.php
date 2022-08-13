@@ -9,7 +9,11 @@
     <div class="container-options">
         <div class="div-options">
             <ul>
-        
+                @foreach ($genders as $gender)
+                    <li>
+                        {{$gender->gen_gender}}
+                    </li>
+                @endforeach
             </ul>
             <button class="genre-button">
                 <a href="{{route('admin.gender.create')}}" style="color: white">

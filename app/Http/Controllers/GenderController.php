@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-namespace App\Models\Gender;
+use App\Models\Gender;
 
 class GenderController extends Controller
 {
