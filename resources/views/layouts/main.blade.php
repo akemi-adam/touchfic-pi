@@ -40,6 +40,11 @@
         </nav>
     </header>
 
+    {{-- Flash Message --}}
+    @if (session('success_msg'))
+        <p class="msg-success">{{session('success_msg')}}</p>
+    @endif
+    
     {{-- Seção do Conteúdo --}}
     @yield('content')
 

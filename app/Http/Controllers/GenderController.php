@@ -31,7 +31,7 @@ class GenderController extends Controller
     }
 
     /**
-     * Action que vai operar no banco salvando as informações
+     * Action que vai operar no banco salvando as informações e redirecionar a página para mostrar os dados salvos
      */
 
     public function store(Request $request)
@@ -41,7 +41,7 @@ class GenderController extends Controller
 
         $gender->save();
 
-        return redirect('/admin/gender');
+        return redirect('/admin/gender')->with('success_msg', 'O gênero foi cadastrado com sucesso!');
     }
 
     public function show($id)

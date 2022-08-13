@@ -656,3 +656,15 @@ textarea {
     font-weight: bold; 
     margin-top: 2%
 }
+
+/* Flash Messages */
+
+.msg-success {
+    background-color: #D4EDDA;
+    color: #155724;
+    border: 1px solid #C3E6CB;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 10px;
+}
