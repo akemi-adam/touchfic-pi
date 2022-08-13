@@ -14,6 +14,13 @@
                         <li>
                             {{$gender->gen_gender}}
                         </li>
+                        <form action="{{route('admin.gender.destroy', $gender->gen_id)}}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button style="background-color: rgb(192, 49, 49); color: white; font-size: 12pt; font-family: Franklin Gothic Medium; border-radius: 7px; border: none; padding: 5px; font-weight: bold;">
+                                Remover
+                            </button>
+                        </form>
                     @endif
                 @endforeach
             </ul>
