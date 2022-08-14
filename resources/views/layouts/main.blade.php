@@ -34,8 +34,8 @@
             <ul>
                 <li><a href="{{route('root.about')}}" class="nav-link">Sobre</a></li>
                 <li><a href="{{route('root.faq')}}" class="nav-link">FAQ</a></li>
-                <li><a href="{{route('auth.login.view')}}" class="nav-link">Login</a></li>
-                <li><a href="{{route('auth.register.view')}}" class="nav-link">Cadastre-se</a></li>
+                <li><a href="{{route('login')}}" class="nav-link">Login</a></li>
+                <li><a href="{{route('register')}}" class="nav-link">Cadastre-se</a></li>
             </ul>
         </nav>
     </header>

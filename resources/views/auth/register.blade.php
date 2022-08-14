@@ -9,27 +9,34 @@
     </div>
     <div class="container-register-form">
         <div class="register-camp">
-            <form action="/register" method="post" class="form">
-                <label for="username">
-                    Nome de usuário
+            <form action="{{route('register')}}" method="post" class="form">
+                @csrf
+                <label for="name">
+                    Nome
                 </label>
-                <input type="text" name="username" placeholder="Nome de usuário">
+                <input type="text" name="name" placeholder="nome...">
             
                 <label for="email">
                     E-mail
                 </label>
-                <input type="email" name="email" placeholder="E-mail">
+                <input type="email" name="email" placeholder="email...">
             
                 <label for="password">
                     Senha
                 </label>
-                <input type="password" name="password" placeholder="Senha">
-            
+                <input type="password" name="password" placeholder="senha...">
+
+                <!-- Confirm Password -->
+                <label for="password_confirmation">
+                    Confirme a senha
+                </label>
+                <input type="password" id="password_confirmation" name="password_confirmation">
+                
                 <button class="register-button">
                     Enviar
                 </button>
 
-                <a href="{{route('auth.login.view')}}" class="register-link">
+                <a href="{{route('login')}}" class="register-link">
                     Tem conta? Entre agora!
                 </a>
             </form>

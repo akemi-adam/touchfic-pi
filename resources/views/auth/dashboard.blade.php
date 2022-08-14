@@ -38,9 +38,10 @@
         </div>
     </div>
     <div class="container-logout">
-        <form action="#" method="post">
-            <button class="logout-button" type="button">
-                <i class="fa-solid fa-right-from-bracket"></i> Sair
+        <form action="{{route('logout')}}" method="post">
+            @csrf
+            <button>
+                Sair
             </button>
         </form>
     </div> 
