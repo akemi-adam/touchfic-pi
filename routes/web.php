@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GenderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,13 +21,16 @@ Route::name('root.')->group(function ()
     Route::view('/faq', 'faq')->name('faq');
 });
 
-Route::prefix('admin')->name('admin.')->group(function ()
+Route::middleware(['auth'])->group(function ()
 {
-    Route::view('/', 'admin.dashboard')->name('dashboard');
-    Route::resource('/gender', GenderController::class);
+    Route::view('/dashboard', 'auth.dashboard')->name('dashboard');
+    Route::prefix('admin')->name('admin.')->group(function ()
+    {
+        Route::view('/', 'admin.dashboard')->name('dashboard');
+        Route::resource('/gender', GenderController::class);
+    });
 });
 
-Route::view('/dashboard', 'auth.dashboard')->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
