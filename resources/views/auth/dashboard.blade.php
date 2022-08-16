@@ -34,7 +34,7 @@
         </div>
         <div class="div-faq">
             <p><i class="fa-solid fa-gear"></i><strong> Opções de administrador (Restrito)</strong></p>
-            <a href="#">Acesso do administrador <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="{{ route('admin.dashboard') }}">Acesso do administrador <i class="fa-solid fa-arrow-right"></i></a>
         </div>
     </div>
     <div class="container-logout">
@@ -44,5 +44,5 @@
                 Sair
             </button>
         </form>
-    </div> 
+    </div>
 @endsection

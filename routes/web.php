@@ -30,6 +30,10 @@ Route::name('root.')->group(function ()
 Route::middleware(['auth'])->group(function ()
 {
     Route::view('/dashboard', 'auth.dashboard')->name('dashboard');
+});
+
+Route::middleware(['auth', 'admin'])->group(function ()
+{
     Route::prefix('admin')->name('admin.')->group(function ()
     {
         Route::view('/', 'admin.dashboard')->name('dashboard');
