@@ -1,20 +1,16 @@
 @extends('layouts.main')
 
-@section('title', 'Postagem')
+@section('title', 'Postagens')
     
 @section('content')
-    <h1>
-        Em construção
-    </h1>
-    {{-- <div class="container-posts">
+    <div class="container-posts">
         <div class="div-posts">
             <h3>
-                Postagem
+                Postagens
             </h3>
-            <a href="/posts/register" class="post-button">
+            <a href="{{ route('post.create') }}" class="post-button">
                 <i class="fa-solid fa-circle-plus"></i> Crie uma postagem
             </a>
-
         </div>
-    </div> --}}
+    </div>
 @endsection

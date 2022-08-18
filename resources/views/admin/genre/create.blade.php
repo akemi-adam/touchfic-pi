@@ -8,10 +8,10 @@
     </h1>
     <div class="container-faq">
         <div class="div-faq">
-            <form action="{{route('admin.gender.store')}}" method="post">
+            <form action="{{route('admin.genre.store')}}" method="post">
                 @csrf
                 <label for="gender">Novo gênero</label>
-                <input type="text" name="gender" placeholder="Exemplo: Sci-fi, Românce, Aventura...">
+                <input type="text" name="genre" placeholder="Exemplo: Sci-fi, Românce, Aventura...">
                 <div class="container-submit">
                     <div class="submit-story-button">
                         <button>

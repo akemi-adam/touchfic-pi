@@ -3,21 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Gender;
+use App\Models\Genre;
 
-class GenderController extends Controller
+class GenreController extends Controller
 {
-
     /**
      * 
-     * Resgata os dados do banco e devolve pra página /admin/gender/index
+     * Resgata os dados do banco e devolve pra página /admin/genre/index
      */
 
     public function index()
     {
-        $genders = Gender::all();
-        return view('admin.gender.index',[
-            'genders' => $genders
+        $genres = Genre::all();
+        return view('admin.genre.index',[
+            'genres' => $genres
         ]);
     }
 
@@ -27,7 +26,7 @@ class GenderController extends Controller
 
     public function create()
     {
-        return view('admin.gender.create');
+        return view('admin.genre.create');
     }
 
     /**
@@ -36,12 +35,12 @@ class GenderController extends Controller
 
     public function store(Request $request)
     {
-        $gender = new Gender;
-        $gender->gen_gender = $request->gender;
+        $genre = new Genre;
+        $genre->genre = $request->genre;
 
-        $gender->save();
+        $genre->save();
 
-        return redirect('/admin/gender')->with('success_msg', 'O gênero foi cadastrado com sucesso!');
+        return redirect('/admin/genre')->with('success_msg', 'O gênero foi cadastrado com sucesso!');
     }
 
     /**
@@ -50,9 +49,9 @@ class GenderController extends Controller
 
     public function show($id)
     {
-        $gender = Gender::findOrFail($id);
-        return view('admin.gender.show', [
-            'gender' => $gender
+        $genre = Genre::findOrFail($id);
+        return view('admin.genre.show', [
+            'genre' => $genre
         ]);
     }
 

@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tb_permissions', function (Blueprint $table) {
-            $table->id('per_id');
-            $table->string('per_permission', 45);
+        Schema::create('posts', function (Blueprint $table) {
+            $table->id();
+            $table->text('content');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_permissions');
+        Schema::dropIfExists('posts');
     }
 };

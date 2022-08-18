@@ -9,12 +9,16 @@
     <div class="container-options">
         <div class="div-options">
             <ul>
-                @foreach ($genders as $gender)
-                    @if ($gender->gen_visible ==  1)
+                @foreach ($genres as $genre)
+                    @if ($genre->visible ===  1)
+                        <h1>
+                            Configurar posteriormente
+                        </h1>
+                    @else
                         <li>
-                            <a href="{{route('admin.gender.show' , $gender->gen_id)}}" style="color: #3f1651">{{$gender->gen_gender}}</a>
+                            <a href="{{route('admin.genre.show' , $genre->id)}}" style="color: #3f1651">{{$genre->genre}}</a>
                         </li>
-                        <form action="{{route('admin.gender.destroy', $gender->gen_id)}}" method="post">
+                        <form action="{{route('admin.genre.destroy', $genre->id)}}" method="post">
                             @csrf
                             @method('delete')
                             <button style="background-color: rgb(192, 49, 49); color: white; font-size: 12pt; font-family: Franklin Gothic Medium; border-radius: 7px; border: none; padding: 5px; font-weight: bold;">
@@ -25,7 +29,7 @@
                 @endforeach
             </ul>
             <button class="genre-button">
-                <a href="{{route('admin.gender.create')}}" style="color: white">
+                <a href="{{route('admin.genre.create')}}" style="color: white">
                     Adicionar novo gênero
                 </a>
             </button>

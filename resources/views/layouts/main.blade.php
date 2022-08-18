@@ -28,14 +28,20 @@
     {{-- Header --}}
     <header>
         <div>
-            <a href="{{route('root.home')}}" class="logo"><img src="https://cdn-icons-png.flaticon.com/512/3629/3629072.png" alt="Touchfic">Touchfic</a>
+            @if (!Auth::check())
+                <a href="{{route('root.home')}}" class="logo"><img src="https://cdn-icons-png.flaticon.com/512/3629/3629072.png" alt="Touchfic">Touchfic</a>
+            @else
+                <a href="{{route('dashboard')}}" class="logo"><img src="https://cdn-icons-png.flaticon.com/512/3629/3629072.png" alt="Touchfic">Touchfic</a>
+            @endif
         </div>
         <nav>
             <ul>
                 <li><a href="{{route('root.about')}}" class="nav-link">Sobre</a></li>
                 <li><a href="{{route('root.faq')}}" class="nav-link">FAQ</a></li>
-                <li><a href="{{route('login')}}" class="nav-link">Login</a></li>
-                <li><a href="{{route('register')}}" class="nav-link">Cadastre-se</a></li>
+                @if (!Auth::check())
+                    <li><a href="{{route('login')}}" class="nav-link">Login</a></li>
+                    <li><a href="{{route('register')}}" class="nav-link">Cadastre-se</a></li>
+                @endif
             </ul>
         </nav>
     </header>

@@ -17,7 +17,7 @@ class AdminPermissionMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->use_per_id === 3) {
+        if (Auth::user()->permission_id === 3) {
             return $next($request);
         }
         abort(403);

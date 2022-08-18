@@ -26,11 +26,11 @@
         </div>
         <div class="div-faq">
             <p><i class="fa-solid fa-message"></i><strong> Fique por dentro das postagens mais recentes da plataforma!</strong></p>
-            <a href="#">Ver todas as postagens <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="{{ route('post.index') }}">Ver todas as postagens <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="div-faq">
             <p><i class="fa-solid fa-share-from-square"></i><strong> Compartilhe uma postagem sobre você ou sobre uma história que te empolga!</strong></p>
-            <a href="#">Publicar uma postagem <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="{{ route('post.create') }}">Publicar uma postagem <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="div-faq">
             <p><i class="fa-solid fa-gear"></i><strong> Opções de administrador (Restrito)</strong></p>

@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('use_per_id')->default(1);
-            $table->foreign('use_per_id')->references('per_id')->on('tb_permissions');
+        Schema::create('genres', function (Blueprint $table) {
+            $table->id();
+            $table->string('genre', 50);
+            $table->timestamps();
         });
     }
 
@@ -26,8 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['use_per_id']);
-        });
+        Schema::dropIfExists('genres');
     }
 };

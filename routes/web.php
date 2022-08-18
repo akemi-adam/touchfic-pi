@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GenderController;
+use App\Http\Controllers\GenreController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use App\Http\Controllers\GenderController;
 |   - /dashboard
 |   - Admin routes
 |     - /admin
-|     - gender resource
+|     - genre resource
 |
 */
 
@@ -30,14 +31,15 @@ Route::name('root.')->group(function ()
 Route::middleware(['auth'])->group(function ()
 {
     Route::view('/dashboard', 'auth.dashboard')->name('dashboard');
+    Route::resource('/post', PostController::class);
 });
 
-Route::middleware(['auth', 'admin'])->group(function ()
+Route::middleware(['auth'])->group(function ()
 {
     Route::prefix('admin')->name('admin.')->group(function ()
     {
         Route::view('/', 'admin.dashboard')->name('dashboard');
-        Route::resource('/gender', GenderController::class);
+        Route::resource('/genre', GenreController::class);
     });
 });
 
