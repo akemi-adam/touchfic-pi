@@ -9,7 +9,8 @@
 
     <div class="container-textarea">
         <div class="div-textarea">
-            <form action="/posts/register" method="post">
+            <form action="{{ route('post.store') }}" method="post">
+                @csrf
                 <textarea name="content" id="content" cols="60" rows="10" placeholder="No que você está pensando?" autofocus></textarea>
                 <div class="container-submit">
                     <button class="submit-button">

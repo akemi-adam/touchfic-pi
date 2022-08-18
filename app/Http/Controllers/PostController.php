@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\User;
+use Auth;
 
 class PostController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +17,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('post.index');
+        $posts = Post::all();
+        $users = User::all();
+        return view('post.index', [
+            'posts' => $posts,
+            'users' => $users,
+        ]);
     }
 
     /**
@@ -34,7 +43,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Post::create([
+            'content' => $request->content,
+            'user_id' => Auth::user()->id,
+        ]);
+
+        return redirect('/post')->with('success_msg', 'A postagem foi cadastrada com sucesso!');
     }
 
     /**
