@@ -34,7 +34,7 @@ Route::middleware(['auth'])->group(function ()
     Route::resource('/post', PostController::class);
 });
 
-Route::middleware(['auth'])->group(function ()
+Route::middleware(['auth', 'admin'])->group(function ()
 {
     Route::prefix('admin')->name('admin.')->group(function ()
     {
@@ -45,9 +45,3 @@ Route::middleware(['auth'])->group(function ()
 
 
 require __DIR__.'/auth.php';
-
-/* 
-Route::prefix('post')->name('post.')->group(function ()
-{
-    Route::get('/', [PostController::class, 'index'])->name('view');
-}); */
