@@ -72,7 +72,7 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Mostra o formulário para editar uma postagem específica
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -87,7 +87,7 @@ class PostController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Atualiza uma postagem específica e retorna uma mensagem de sucesso
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -103,7 +103,7 @@ class PostController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Deleta uma postagem específica e retorna uma mensagem de sucesso
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
