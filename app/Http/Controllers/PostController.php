@@ -11,14 +11,17 @@ class PostController extends Controller
 {
 
     /**
-     * Display a listing of the resource.
+     * Mostra todas as postagens cadastradas com o seu usuário respectivo.
      *
+     * @var Post $posts
+     * @var User $users
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $posts = Post::all();
         $users = User::all();
+
         return view('post.index', [
             'posts' => $posts,
             'users' => $users,
@@ -36,7 +39,7 @@ class PostController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Cria a postagem no banco e redireiciona para a rota e action index com uma flash message.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -59,7 +62,13 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $user = User::findOrFail($post->user_id);
+
+        return view('post.show', [
+            'post' => $post,
+            'user' => $user,
+        ]);
     }
 
     /**
@@ -70,7 +79,11 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        return view('post.edit', [
+            'post' => $post,
+        ]);
     }
 
     /**
@@ -82,7 +95,11 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->content = $request->content;
+        $post->save();
+
+        return redirect("/post/$id")->with('success_msg', 'Postagem editada com sucesso!');
     }
 
     /**
@@ -93,6 +110,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::findOrFail($id)->delete();
+
+        return redirect('/post')->with('success_msg', 'Postagem deletada com sucesso!');
     }
 }

@@ -50,6 +50,7 @@ class GenreController extends Controller
     public function show($id)
     {
         $genre = Genre::findOrFail($id);
+        
         return view('admin.genre.show', [
             'genre' => $genre
         ]);
