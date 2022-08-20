@@ -57,4 +57,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Commentpost::class);
     }
+
+    public function stories()
+    {
+        return $this->belongsToMany(Storie::class);
+    }
+
 }

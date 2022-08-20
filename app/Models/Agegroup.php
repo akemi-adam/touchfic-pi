@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Genre extends Model
+class Agegroup extends Model
 {
     use HasFactory;
 
     public function stories()
     {
-        return $this->belongsToMany(Storie::class);
+        return $this->hasMany(Storie::class);
     }
 }

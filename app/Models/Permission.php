@@ -9,6 +9,10 @@ class Permission extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'permission',
+    ];
+
     public function users()
     {
         return $this->hasMany(User::class);

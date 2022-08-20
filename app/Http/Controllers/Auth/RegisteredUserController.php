@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Permission;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -33,6 +34,23 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+
+        /**
+         * Define os níveis de permissões (cargos) básicos no sistema
+         */
+
+        if (count(Permission::all()) < 0 || count(Permission::all()) === 0) {
+            Permission::create([
+                'permission' => 'commun user',
+            ]);
+            Permission::create([
+                'permission' => 'moderator',
+            ]);
+            Permission::create([
+                'permission' => 'admin',
+            ]);
+        }
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
