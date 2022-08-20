@@ -36,6 +36,10 @@
             <p><i class="fa-solid fa-gear"></i><strong> Opções de administrador (Restrito)</strong></p>
             <a href="{{ route('admin.dashboard') }}">Acesso do administrador <i class="fa-solid fa-arrow-right"></i></a>
         </div>
+        <div class="div-faq">
+            <p><i class="fa-solid fa-gear"></i><strong> Perfil</strong></p>
+            <a href="{{route('user.show', Auth::user()->id)}}">Visualizar perfil<i class="fa-solid fa-arrow-right"></i></a>
+        </div>
     </div>
     <div class="container-logout">
         <form action="{{route('logout')}}" method="post">

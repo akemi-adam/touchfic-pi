@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\PermissionController;
@@ -42,6 +43,12 @@ Route::middleware(['auth'])->group(function ()
         Route::get('/{comment}/edit', [CommentpostController::class, 'edit'])->name('edit');
         Route::put('/{comment}', [CommentpostController::class, 'update'])->name('update');
         Route::delete('/post/{comment}', [CommentpostController::class, 'destroy'])->name('destroy');
+    });
+    Route::prefix('user')->name('user.')->group(function ()
+    {
+        Route::get('/{id}', [UserController::class, 'show'])->name('show');
+        Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [UserController::class, 'update'])->name('update');
     });
 });
 
