@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GenreController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\GenreController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\CommentpostController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +51,13 @@ Route::middleware(['auth', 'admin'])->group(function ()
     {
         Route::view('/', 'admin.dashboard')->name('dashboard');
         Route::resource('/genre', GenreController::class);
+        
+        Route::prefix('permission')->name('permission.')->group(function ()
+        {
+            Route::get('/index', [PermissionController::class, 'index'])->name('index');
+            Route::get('/edit', [PermissionController::class, 'edit'])->name('edit');
+            Route::put('/update', [PermissionController::class, 'update'])->name('update');
+        });
     });
 });
 
