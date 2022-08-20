@@ -13,6 +13,9 @@
     <ul>
         @foreach ($admins as $admin)
             <li>{{$admin->name}}</li>
+            <form action="{{ route('admin.permission.change', ['user' => $admin]) }}" method="get">
+                <button style="display: inline">Mudar cargo</button>
+            </form>
         @endforeach
     </ul>
     <hr>
@@ -22,6 +25,9 @@
     <ul>
         @foreach ($moderators as $moderator)
             <li>{{$moderator->name}}</li>
+            <form action="{{ route('admin.permission.change', ['user' => $moderator]) }}" method="get">
+                <button style="display: inline">Mudar cargo</button>
+            </form>
         @endforeach
     </ul>
     <form action="{{ route('admin.permission.edit') }}" method="get">

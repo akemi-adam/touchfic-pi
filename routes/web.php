@@ -57,6 +57,8 @@ Route::middleware(['auth', 'admin'])->group(function ()
             Route::get('/index', [PermissionController::class, 'index'])->name('index');
             Route::get('/edit', [PermissionController::class, 'edit'])->name('edit');
             Route::put('/update', [PermissionController::class, 'update'])->name('update');
+            Route::get('/change/{user}', [PermissionController::class, 'change'])->name('change');
+            Route::put('/transference/{user}', [PermissionController::class, 'transference'])->name('transference');
         });
     });
 });

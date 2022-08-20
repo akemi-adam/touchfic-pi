@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Permission;
 use App\Models\User;
 
 class PermissionController extends Controller
@@ -32,6 +33,25 @@ class PermissionController extends Controller
         $user->permission_id = $permission;
         $user->save();
 
-        return redirect('/admin/permission/index')->with('success_msg', "$user->name foi promovido a um novo cargo com sucesso");
+        return redirect('/admin/permission/index')->with('success_msg', "$user->name foi promovido a um novo cargo!");
+    }
+
+    public function change(User $user)
+    {
+        $permissions = Permission::where('permissions.id', '!=', $user->permission_id)->get();
+
+        return view('admin.permission.change', [
+            'user' => $user,
+            'permissions' => $permissions,
+        ]);
+    }
+
+    public function transference(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->permission_id = $request->new_position;
+        $user->save();
+
+        return redirect('/admin/permission/index')->with('success_msg', "$user->name mudou de posição!");
     }
 }
