@@ -10,12 +10,9 @@
             </h3>
             @foreach ($posts as $post)
                 <p>
-                    @foreach ($users as $user)
-                        @if ($post->user_id === $user->id)
-                            <br>
-                            <strong>{{ $user->name }}</strong>
-                        @endif
-                    @endforeach
+                    <strong>
+                        {{ $post->user->name }}
+                    </strong>
                     <br>
                     {{ $post->content }}
                     <br>

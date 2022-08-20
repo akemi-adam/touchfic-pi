@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('permissions', function (Blueprint $table) {
-            //
+        Schema::table('commentposts', function (Blueprint $table) {
+            $table->foreignId('post_id')->constrained();
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('permissions', function (Blueprint $table) {
-            //
+        Schema::table('commentposts', function (Blueprint $table) {
+            $table->foreignId('post_id')->constrained()->onDelete('cascade');
         });
     }
 };
