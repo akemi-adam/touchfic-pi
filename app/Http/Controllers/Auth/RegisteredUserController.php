@@ -37,36 +37,12 @@ class RegisteredUserController extends Controller
     {
 
         /**
-         * Define os níveis de permissões (cargos) básicos no sistema
+         * Insere dados padrões na aplicação
          */
 
-        if (count(Permission::all()) < 0 || count(Permission::all()) === 0) {
+        $this->startDatas(Permission::class, ['commun user', 'moderator', 'admin'], 'permission');
 
-            $permissions = ['commun user', 'moderator', 'admin'];
-
-            foreach ($permissions as $permission) {
-                Permission::create([
-                    'permission' => $permission,
-                ]);
-            }
-
-        }
-
-        /**
-         * Define as faixas etárias básicas do sistema
-         */
-
-        if (count(Agegroup::all()) < 0 || count(Agegroup::all()) === 0) {
-
-            $agegroups = ['Livre', '10', '12', '14', '16', '+18'];
-
-            foreach ($agegroups as $agegroup) {
-                Agegroup::create([
-                    'agegroup' => $agegroup,
-                ]);
-            }
-
-        }
+        $this->startDatas(Agegroup::class, ['Livre', '10', '12', '14', '16', '+18'], 'agegroup');
 
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -87,4 +63,26 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
+    /**
+     * Função para inserir dados básicos necessários caso não exista nada nas tabelas necessárias
+     * 
+     * @param App\Models\<Model> $model
+     * @param array $datas
+     * @param string $column
+     * 
+     * @return void
+     */
+
+    private function startDatas($model, $datas, $collumn)
+    {
+        if (count($model::all()) < 0 || count($model::all()) === 0) {
+            foreach ($datas as $data) {
+                $model::create([
+                    $collumn => $data,
+                ]);
+            }
+        }
+    }
+
 }

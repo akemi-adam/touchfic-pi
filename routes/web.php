@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\CommentpostController;
+use App\Http\Controllers\StorieController;
 
 
 /*
@@ -35,7 +36,10 @@ Route::name('root.')->group(function ()
 Route::middleware(['auth'])->group(function ()
 {
     Route::view('/dashboard', 'auth.dashboard')->name('dashboard');
+
     Route::resource('/post', PostController::class);
+
+    Route::resource('/storie', StorieController::class);
 
     Route::prefix('comment')->name('comment.')->group(function ()
     {
@@ -44,6 +48,7 @@ Route::middleware(['auth'])->group(function ()
         Route::put('/{comment}', [CommentpostController::class, 'update'])->name('update');
         Route::delete('/post/{comment}', [CommentpostController::class, 'destroy'])->name('destroy');
     });
+
     Route::prefix('user')->name('user.')->group(function ()
     {
         Route::get('/{id}', [UserController::class, 'show'])->name('show');

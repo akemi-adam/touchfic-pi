@@ -14,7 +14,7 @@
     <div class="container-faq">
         <div class="div-faq">
             <p><i class="fa-solid fa-book"></i><strong> Não tem ideia do que ler? Consulte a lista das histórias mais recentes!</strong></p>
-            <a href="#">Visualizar histórias <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="{{ route('storie.index') }}">Visualizar histórias <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="div-faq">
             <p><i class="fa-solid fa-circle-plus"></i><strong> Crie sua história e mostre sua criatividade ao mundo!</strong></p>
