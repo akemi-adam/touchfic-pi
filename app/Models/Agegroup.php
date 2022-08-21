@@ -9,6 +9,10 @@ class Agegroup extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'agegroup',
+    ];
+
     public function stories()
     {
         return $this->hasMany(Storie::class);

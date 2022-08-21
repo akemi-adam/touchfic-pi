@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Agegroup;
 use App\Models\Permission;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -40,15 +41,31 @@ class RegisteredUserController extends Controller
          */
 
         if (count(Permission::all()) < 0 || count(Permission::all()) === 0) {
-            Permission::create([
-                'permission' => 'commun user',
-            ]);
-            Permission::create([
-                'permission' => 'moderator',
-            ]);
-            Permission::create([
-                'permission' => 'admin',
-            ]);
+
+            $permissions = ['commun user', 'moderator', 'admin'];
+
+            foreach ($permissions as $permission) {
+                Permission::create([
+                    'permission' => $permission,
+                ]);
+            }
+
+        }
+
+        /**
+         * Define as faixas etárias básicas do sistema
+         */
+
+        if (count(Agegroup::all()) < 0 || count(Agegroup::all()) === 0) {
+
+            $agegroups = ['Livre', '10', '12', '14', '16', '+18'];
+
+            foreach ($agegroups as $agegroup) {
+                Agegroup::create([
+                    'agegroup' => $agegroup,
+                ]);
+            }
+
         }
 
         $request->validate([
