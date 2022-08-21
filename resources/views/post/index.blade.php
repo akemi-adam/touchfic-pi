@@ -9,9 +9,10 @@
                 Postagens
             </h3>
             @foreach ($posts as $post)
+                <img src="/img/user/avatar/{{$post->user->avatar}}" alt="" class="avatar">
                 <p>
                     <strong>
-                        {{ $post->user->name }}
+                        {{ $post->user->name }} disse:
                     </strong>
                     <br>
                     {{ $post->content }}

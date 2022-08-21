@@ -6,7 +6,7 @@
     <h2>
         Editar perfil
     </h2>
-    <form action="{{ route('user.update', $user->id) }}" method="post">
+    <form action="{{ route('user.update', $user->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('put')
         <label for="name">Nome: </label>
@@ -14,6 +14,12 @@
         <br>
         <label for="email">Email: </label>
         <input type="email" name="email">
+        <br>
+        <label for="avatar">
+            Avatar:
+        </label>
+        <input type="file" name="avatar">
+        <br>
         <button>
             Enviar
         </button>

@@ -3,7 +3,9 @@
 @section('title', 'Postagem')
     
 @section('content')
-    <h2>
+<br>
+    <img src="/img/user/avatar/{{ $post->user->avatar }}" class="avatar">
+    <h2 style="display: inline">
         {{ $post->user->name }} disse:
     </h2>
     <p>
@@ -43,7 +45,8 @@
     <hr>
     @foreach ($post->comments as $comment)
         <div style="border: solid black 1px">
-            <small><strong>{{ $comment->user->name }}</strong></small>
+            <img src="/img/user/avatar/{{ $comment->user->avatar }}" class="avatar">
+            <small><strong>{{ $comment->user->name }} respondeu: </strong></small>
             <p>
                 {{ $comment->content }}
             </p>

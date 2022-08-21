@@ -3,6 +3,7 @@
 @section('title', 'Perfil')
 
 @section('content')
+    <img src="/img/user/avatar/{{ $user->avatar }}" class="avatar">
     <h2>
         {{$user->name}}
     </h2>

@@ -668,3 +668,9 @@ textarea {
     text-align: center;
     padding: 10px;
 }
+
+/* Images */
+
+.avatar {
+    width: 100px;
+}
