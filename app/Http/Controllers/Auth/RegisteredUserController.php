@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\Agegroup;
-use App\Models\Permission;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -35,15 +33,6 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-
-        /**
-         * Insere dados padrões na aplicação
-         */
-
-        $this->startDatas(Permission::class, ['commun user', 'moderator', 'admin'], 'permission');
-
-        $this->startDatas(Agegroup::class, ['Livre', '10', '12', '14', '16', '+18'], 'agegroup');
-
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -63,26 +52,4 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
-
-    /**
-     * Função para inserir dados básicos necessários caso não exista nada nas tabelas necessárias
-     * 
-     * @param App\Models\<Model> $model
-     * @param array $datas
-     * @param string $column
-     * 
-     * @return void
-     */
-
-    private function startDatas($model, $datas, $collumn)
-    {
-        if (count($model::all()) < 0 || count($model::all()) === 0) {
-            foreach ($datas as $data) {
-                $model::create([
-                    $collumn => $data,
-                ]);
-            }
-        }
-    }
-
 }
