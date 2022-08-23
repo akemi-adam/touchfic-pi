@@ -12,7 +12,7 @@ class StartWithDatas extends Command
      *
      * @var string
      */
-    protected $signature = 'serve:datas';
+    protected $signature = 'serve:seed';
 
     /**
      * The console command description.
