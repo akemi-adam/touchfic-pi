@@ -205,7 +205,7 @@ abstract class Seeder
     
     protected function startDatas($model, $datas, $collumn)
     {
-        if (count($model::all()) < 0 || count($model::all()) === 0) {
+        if (count($model::all()) === 0) {
             foreach ($datas as $data) {
                 $model::create([
                     $collumn => $data,
@@ -213,4 +213,5 @@ abstract class Seeder
             }
         }
     }
+    
 }
