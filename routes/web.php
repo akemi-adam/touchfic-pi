@@ -28,7 +28,7 @@ use App\Http\Controllers\StorieController;
 
 Route::name('root.')->group(function ()
 {
-    Route::view('/', 'welcome')->name('home');
+    Route::view('/', 'welcome')->middleware('guest')->name('home');
     Route::view('/about', 'about')->name('about');
     Route::view('/faq', 'faq')->name('faq');
 });
