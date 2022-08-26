@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('storie_user', function (Blueprint $table) {
             $table->foreignId('storie_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->timestamps();
         });
     }
 

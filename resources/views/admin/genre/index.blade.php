@@ -25,6 +25,9 @@
                                 Remover
                             </button>
                         </form>
+                        <form action="{{ route('admin.genre.edit', $genre->id) }}" method="get">
+                            <button style="background-color: rgb(77, 129, 235); color: white; font-size: 12pt; font-family: Franklin Gothic Medium; border-radius: 7px; border: none; padding: 5px; font-weight: bold;">Editar</button>
+                        </form>
                     @endif
                 @endforeach
             </ul>

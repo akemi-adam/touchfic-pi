@@ -58,16 +58,26 @@ class GenreController extends Controller
 
     public function edit($id)
     {
-        //
+        $genre = Genre::findOrFail($id);
+
+        return view('admin.genre.edit', [
+            'genre' => $genre,
+        ]);
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $genre = Genre::findOrFail($id);
+        $genre->genre = $request->genre;
+        $genre->save();
+
+        return redirect('/admin/genre')->with('success_msg', "Gênero $genre->genre editado");
     }
 
     public function destroy($id)
     {
-        //
+        Genre::findOrFail($id)->delete();
+
+        return redirect('/admin/genre')->with('success_msg', "Gênero removido com sucesso");
     }
 }

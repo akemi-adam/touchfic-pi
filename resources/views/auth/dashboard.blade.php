@@ -18,7 +18,7 @@
         </div>
         <div class="div-faq">
             <p><i class="fa-solid fa-circle-plus"></i><strong> Crie sua história e mostre sua criatividade ao mundo!</strong></p>
-            <a href="#">Criar uma história <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="{{ route('storie.create') }}">Criar uma história <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="div-faq">
             <p><i class="fa-solid fa-book-open-reader"></i><strong> Vizualize e gerencie as histórias que você criou!</strong></p>

@@ -1,0 +1,142 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+USE `mydb` ;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`classes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`classes` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `class` VARCHAR(90) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`users` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(250) NOT NULL,
+  `email` VARCHAR(250) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `permission` INT(2) NOT NULL DEFAULT 1,
+  `totalscore` INT NULL DEFAULT 0,
+  `uniquevictories` INT NULL DEFAULT 0,
+  `class_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
+  INDEX `fk_users_class_idx` (`class_id` ASC) VISIBLE,
+  CONSTRAINT `fk_users_class`
+    FOREIGN KEY (`class_id`)
+    REFERENCES `mydb`.`classes` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`matches`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`matches` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `finished` INT(2) NOT NULL DEFAULT 0,
+  `date` DATE NOT NULL,
+  `result` INT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`guesses`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`guesses` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `matche_id` INT NOT NULL,
+  `goals_first` INT NOT NULL,
+  `golas_second` INT NOT NULL,
+  `score` INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  INDEX `fk_guesses_users1_idx` (`user_id` ASC) VISIBLE,
+  INDEX `fk_guesses_matches1_idx` (`matche_id` ASC) VISIBLE,
+  CONSTRAINT `fk_guesses_users1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `mydb`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_guesses_matches1`
+    FOREIGN KEY (`matche_id`)
+    REFERENCES `mydb`.`matches` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`groups`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`groups` (
+  `group` INT NOT NULL AUTO_INCREMENT,
+  `group` VARCHAR(1) NOT NULL,
+  PRIMARY KEY (`group`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`teams`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`teams` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `team` VARCHAR(90) NOT NULL,
+  `eliminated` INT(2) NOT NULL DEFAULT 0,
+  `score` INT NOT NULL DEFAULT 0,
+  `group_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_teams_groups1_idx` (`group_id` ASC) VISIBLE,
+  CONSTRAINT `fk_teams_groups1`
+    FOREIGN KEY (`group_id`)
+    REFERENCES `mydb`.`groups` (`group`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`matche_team`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`matche_team` (
+  `matche_id` INT NOT NULL,
+  `team_id` INT NOT NULL,
+  `goals` INT NULL,
+  PRIMARY KEY (`matche_id`, `team_id`),
+  INDEX `fk_matches_has_teams_teams1_idx` (`team_id` ASC) VISIBLE,
+  INDEX `fk_matches_has_teams_matches1_idx` (`matche_id` ASC) VISIBLE,
+  CONSTRAINT `fk_matches_has_teams_matches1`
+    FOREIGN KEY (`matche_id`)
+    REFERENCES `mydb`.`matches` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_matches_has_teams_teams1`
+    FOREIGN KEY (`team_id`)
+    REFERENCES `mydb`.`teams` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

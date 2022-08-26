@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('genre_storie', function (Blueprint $table) {
             $table->foreignId('genre_id')->constrained();
             $table->foreignId('storie_id')->constrained();
-            $table->timestamps();
         });
     }
 
