@@ -7,7 +7,7 @@ use App\Models\Agegroup;
 use App\Models\Storie;
 use App\Models\Genre;
 use App\Models\User;
-use Auth;
+use Auth, File;
 
 class StorieController extends Controller
 {
@@ -40,6 +40,22 @@ class StorieController extends Controller
         $storie->title = $request->title;
         $storie->synopsis = $request->synopsis;
         $storie->agegroup_id = $request->agegroup;
+
+        if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
+
+            if (!($storie->cover === "default-storie-cover.png")) {
+                File::delete('img/storie/cover/' . $storie->cover);
+            }
+
+            $requestCover = $request->cover;
+            $extension = $requestCover->extension();
+            $coverName = md5($requestCover->getClientOriginalName() . strtotime('now') . '.' . $extension);
+
+            $request->cover->move(public_path('img/storie/cover'), $coverName);
+            $storie->cover = $coverName;
+
+        }
+
         $storie->save();
 
         $storie->users()->attach(Auth::user()->id);
@@ -53,7 +69,11 @@ class StorieController extends Controller
 
     public function show($id)
     {
-        return view('storie.show');
+        $storie = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('stories.id', $id)->first();
+
+        return view('storie.show', [
+            'storie' => $storie,
+        ]);
     }
 
 

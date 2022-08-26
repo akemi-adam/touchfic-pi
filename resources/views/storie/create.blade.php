@@ -6,10 +6,12 @@
     <h2>
         Criar uma história
     </h2>
-    <form action="{{ route('storie.store') }}" method="post">
+    <form action="{{ route('storie.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <label for="title" class="label-tag">Título</label>
-        <input type="text" class="input-title" placeholder="Título" name="title" autofocus>
+        <input type="text" class="input-title" placeholder="Título" name="title" autofocus><br>
+        <label for="cover">Capa</label><br>
+        <input type="file" name="cover">
         <label for="agegroup" class="label-tag">Faixa etária</label>
         <select name="agegroup">
             @foreach ($agegroups as $agegroup)
