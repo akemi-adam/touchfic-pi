@@ -17,4 +17,16 @@ class AgegroupSeeder extends Seeder
     {
         $this->startDatas(Agegroup::class, ['Livre', '10', '12', '14', '16', '+18'], 'agegroup');
     }
+    
+    private function startDatas($model, $datas, $collumn)
+    {
+        if (count($model::all()) === 0) {
+            foreach ($datas as $data) {
+                $model::create([
+                    $collumn => $data,
+                ]);
+            }
+        }
+    }
+    
 }

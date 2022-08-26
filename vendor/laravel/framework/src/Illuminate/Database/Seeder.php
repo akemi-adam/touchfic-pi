@@ -192,26 +192,5 @@ abstract class Seeder
 
         return $callback();
     }
-
-    /**
-     * Função para inserir dados básicos necessários caso não exista nada nas tabelas necessárias
-     * 
-     * @param App\Models\<Model> $model
-     * @param array $datas
-     * @param string $column
-     * 
-     * @return void
-     */
-    
-    protected function startDatas($model, $datas, $collumn)
-    {
-        if (count($model::all()) === 0) {
-            foreach ($datas as $data) {
-                $model::create([
-                    $collumn => $data,
-                ]);
-            }
-        }
-    }
     
 }

@@ -17,5 +17,16 @@ class PermissionSeeder extends Seeder
     {
         $this->startDatas(Permission::class, ['commun user', 'moderator', 'admin'], 'permission');
     }
+    
+    private function startDatas($model, $datas, $collumn)
+    {
+        if (count($model::all()) === 0) {
+            foreach ($datas as $data) {
+                $model::create([
+                    $collumn => $data,
+                ]);
+            }
+        }
+    }
 
 }
