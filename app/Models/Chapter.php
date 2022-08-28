@@ -11,6 +11,10 @@ class Chapter extends Model
 
     protected $fillable = [
         'title',
+        'content',
+        'numberofwords',
+        'authornotes',
+        'storie_id',
     ];
     
     public function storie()

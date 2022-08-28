@@ -10,6 +10,14 @@
     <a href="{{ route('user.show', $storie->user_id) }}">{{ $storie->name }}</a><br>
     <span>Faixa etária: {{ $storie->agegroup->agegroup }}</span><br>
     <span>Número de palavras: {{ $storie->numberofwords }}</span><br>
+    <span>Data: </span>
+    <small>
+        @if ($storie->created_at === $storie->updated_at)
+            {{ $storie->created_at }}
+        @else
+            {{ $storie->updated_at }}
+        @endif
+    </small><br>
     <span>Gêneros:</span>
     <ul>
         @foreach ($genres as $genre)
@@ -31,9 +39,21 @@
                 Deletar
             </button>
         </form>
+        <form action="{{ route('chapter.create', $storie->storie_id) }}" method="get">
+            <button>Adicionar um capítulo</button>
+        </form>
     @endif
     <hr>
     <h3>
         Capítulos
     </h3>
+    @php
+        $index = 0;
+    @endphp
+    @foreach ($chapters as $chapter)
+        <div>
+            <h3>{{$index += 1}} | <a style="text-decoration: none" href="{{route('chapter.show', $chapter->id)}}">{{$chapter->title}}</a> </h3>
+        </div>
+    @endforeach
+    
 @endsection

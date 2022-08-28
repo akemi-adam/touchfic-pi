@@ -6,6 +6,7 @@ use App\Http\Requests\Storie\StorieRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Agegroup;
+use App\Models\Chapter;
 use App\Models\Storie;
 use App\Models\Genre;
 use App\Models\User;
@@ -84,9 +85,12 @@ class StorieController extends Controller
 
         $genres = DB::table('genre_storie')->join('genres', 'genre_storie.genre_id', '=', 'genres.id')->where('genre_storie.storie_id', $storie->storie_id)->select('genres.genre')->orderBy('genres.genre', 'ASC')->get();
 
+        $chapters = Chapter::where('storie_id', $storie->storie_id)->get();
+
         return view('storie.show', [
             'storie' => $storie,
             'genres' => $genres,
+            'chapters' => $chapters,
         ]);
     }
 
@@ -147,7 +151,7 @@ class StorieController extends Controller
 
         $storie->users()->detach();
         $storie->genres()->detach();
-        
+
         $storie->delete();
 
         return redirect()->to(route('storie.mystories', Auth::user()->id))->with('success_msg', 'História deletada com sucesso!');
