@@ -22,7 +22,7 @@
         </div>
         <div class="div-faq">
             <p><i class="fa-solid fa-book-open-reader"></i><strong> Vizualize e gerencie as histórias que você criou!</strong></p>
-            <a href="#">Minhas histórias <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="{{ route('storie.mystories', Auth::user()->id) }}">Minhas histórias <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="div-faq">
             <p><i class="fa-solid fa-message"></i><strong> Fique por dentro das postagens mais recentes da plataforma!</strong></p>

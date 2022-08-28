@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Histórias')
+@section('title', 'Minhas histórias')
 
 @section('content')
     @foreach ($stories as $storie)
@@ -13,6 +13,18 @@
         <p>
             {{ $storie->synopsis }}
         </p>
+        <form action="{{ route('storie.edit', $storie->storie_id) }}" method="get">
+            <button>
+                Editar
+            </button>
+        </form>
+        <form action="{{ route('storie.destroy', $storie->storie_id) }}" method="post">
+            @csrf
+            @method('delete')
+            <button>
+                Deletar
+            </button>
+        </form>
         <hr>
     @endforeach
     <form action="{{ route('storie.create') }}" method="get">

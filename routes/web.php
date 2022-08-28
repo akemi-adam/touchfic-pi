@@ -40,6 +40,7 @@ Route::middleware(['auth'])->group(function ()
     Route::resource('/post', PostController::class);
 
     Route::resource('/storie', StorieController::class);
+    Route::get('/storie/{user}/mystories', [StorieController::class, 'myStories'])->name('storie.mystories');
 
     Route::prefix('comment')->name('comment.')->group(function ()
     {
