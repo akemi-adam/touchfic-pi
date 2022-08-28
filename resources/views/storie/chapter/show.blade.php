@@ -27,4 +27,39 @@
             </p>
         </div>
     </div>
+    <hr>
+    <form action="{{ route('chapter.comment.store', ['chapter'=>$chapter]) }}" method="post">
+        @csrf
+        <textarea name="content" id="comment" cols="30" rows="10" placeholder="O que você pensa sobre isso?"></textarea>
+        <button>
+            Enviar
+        </button>
+        <br>
+    </form>
+    <hr>
+    @forelse ($chapter->comments as $comment)
+        <div style="border: solid black 1px">
+            <img src="/img/user/avatar/{{ $comment->user->avatar }}" class="avatar">
+            <small><strong>{{ $comment->user->name }} respondeu: </strong></small>
+            <p>
+                {{ $comment->content }}
+            </p>
+            @if ($comment->user_id === Auth::user()->id)
+                <form action="{{ route('chapter.comment.edit', $comment->id) }}" method="get">
+                    <button>
+                        Editar
+                    </button>
+                </form>
+                <form action="{{ route('chapter.comment.destroy', $comment->id) }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button>
+                        Deletar
+                    </button>
+                </form>
+            @endif
+        </div>
+    @empty
+        <h2>Ninguém comentou nessa postagem ainda. Seja o pioneiro!</h2>
+    @endforelse
 @endsection

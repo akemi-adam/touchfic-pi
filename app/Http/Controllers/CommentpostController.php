@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Commentpost;
 use App\Models\Post;
-use App\Models\User;
 use Auth;
 
 class CommentpostController extends Controller
 {
-    public function store(Request $request, Post $post, User $user)
+    public function store(Request $request, Post $post)
     {
-        $comment = Commentpost::create([
+        Commentpost::create([
             'content' => $request->content,
             'post_id' => $post->id,
             'user_id' => Auth::user()->id,
@@ -37,7 +35,7 @@ class CommentpostController extends Controller
         $comment->content = $request->content;
         $comment->save();
 
-        return redirect("/post/$comment->post_id")->with('success_msg', 'Postagem editada com sucesso!');
+        return redirect("/post/$comment->post_id")->with('success_msg', 'Comentário editado com sucesso!');
     }
 
     public function destroy($id)
@@ -46,6 +44,6 @@ class CommentpostController extends Controller
         $post_id = $comment->post_id;
         $comment->delete();
 
-        return redirect("/post/$post_id")->with('success_msg', 'Postagem editada com sucesso!');
+        return redirect("/post/$post_id")->with('success_msg', 'Comentário excluído com sucesso!');
     }
 }

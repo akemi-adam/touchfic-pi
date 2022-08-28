@@ -63,4 +63,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Storie::class);
     }
 
+    public function commentschapters()
+    {
+        return $this->hasMany(Commentchapter::class);
+    }
+
 }

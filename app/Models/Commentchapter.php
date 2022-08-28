@@ -11,7 +11,7 @@ class Commentchapter extends Model
 
     protected $fillable = [
         'content',
-        'storie_id',
+        'chapter_id',
         'user_id',
     ];
 
