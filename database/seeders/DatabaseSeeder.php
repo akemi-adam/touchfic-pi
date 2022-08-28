@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             UserSeeder::class,
             AgegroupSeeder::class,
+            GenreSeeder::class,
         ]);
     }
 }

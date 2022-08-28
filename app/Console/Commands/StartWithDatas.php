@@ -28,7 +28,9 @@ class StartWithDatas extends Command
      */
     public function handle()
     {
-        $this->call('db:seed');
+        if ($this->confirm('Deseja rodar as seeders básicas?')) {
+            $this->call('db:seed');
+        }
         $this->call('serve');
         return 0;
     }
