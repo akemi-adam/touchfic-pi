@@ -43,7 +43,7 @@
         <br>
     </form>
     <hr>
-    @foreach ($post->comments as $comment)
+    @forelse ($post->comments as $comment)
         <div style="border: solid black 1px">
             <img src="/img/user/avatar/{{ $comment->user->avatar }}" class="avatar">
             <small><strong>{{ $comment->user->name }} respondeu: </strong></small>
@@ -65,5 +65,7 @@
                 </form>
             @endif
         </div>
-    @endforeach
+    @empty
+        <h2>Ninguém comentou nessa postagem ainda. Seja o pioneiro!</h2>
+    @endforelse
 @endsection

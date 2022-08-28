@@ -24,7 +24,7 @@ class ChapterController extends Controller
 
         $chapter->title = $request->title;
         $chapter->content = $request->content;
-        $chapter->numberofwords = count(preg_split('~[^\p{L}\p{N}\']+~u', $request->content));
+        $chapter->numberofwords = count(preg_split('~[^\p{L}\p{N}\']+~u', $request->content)) - 1;
         $chapter->authornotes = $request->authornotes;
         $chapter->storie_id = $id;
 
@@ -45,5 +45,56 @@ class ChapterController extends Controller
         return view('storie.chapter.show', [
             'chapter' => $chapter,
         ]);
+    }
+
+    public function edit($id)
+    {
+        $chapter = Chapter::findOrFail($id);
+
+        return view('storie.chapter.edit', [
+            'chapter' => $chapter,
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $chapter = Chapter::findOrFail($id);
+
+        if ($chapter->title !== $request->title) {
+            $chapter->title = $request->title;
+        }
+
+        if ($chapter->authornotes !== $request->authornotes) {
+            $chapter->authornotes = $request->authonotes;
+        }
+
+        if ($chapter->content !== $request->content) {
+            $chapter->content = $request->content;
+
+            $storie = Storie::findOrFail($chapter->storie_id);
+            
+            $oldWordsNumber = $chapter->numberofwords;
+            $chapter->numberofwords = count(preg_split('~[^\p{L}\p{N}\']+~u', $request->content));
+
+            $storie->numberofwords = (($storie->numberofwords - $oldWordsNumber) + $chapter->numberofwords) - 1;
+            $storie->save();
+        }
+
+        $chapter->save();
+
+        return redirect()->to(route('chapter.show', $id))->with('success_msg', 'Capítulo editado com sucesso!');
+    }
+
+    public function destroy($id)
+    {
+        $chapter = Chapter::findOrFail($id);
+
+        $storie = Storie::findOrFail($chapter->storie->id);
+        $storie->numberofwords -= $chapter->numberofwords;
+        $storie->save();
+
+        $chapter->delete();
+
+        return redirect()->to(route('storie.show', $storie->id))->with('success_msg', 'Capítulo deletado com sucesso!');
     }
 }

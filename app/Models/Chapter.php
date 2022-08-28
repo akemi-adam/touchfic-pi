@@ -8,14 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Chapter extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'title',
-        'content',
-        'numberofwords',
-        'authornotes',
-        'storie_id',
-    ];
     
     public function storie()
     {

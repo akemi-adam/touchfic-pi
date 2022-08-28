@@ -50,10 +50,26 @@
     @php
         $index = 0;
     @endphp
-    @foreach ($chapters as $chapter)
+    @forelse ($chapters as $chapter)
         <div>
             <h3>{{$index += 1}} | <a style="text-decoration: none" href="{{route('chapter.show', $chapter->id)}}">{{$chapter->title}}</a> </h3>
+            @if (Auth::user()->id === $storie->user_id)
+                <form action="{{ route('chapter.edit', $chapter->id) }}" method="get">
+                    <button style="background-color: rgb(112, 144, 250); border:1px solid black">
+                        Editar
+                    </button>
+                </form>
+                <form action="{{ route('chapter.destroy', $chapter->id) }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button style="background-color:rgb(255, 98, 98); border:1px solid black">
+                        Deletar
+                    </button>
+                </form>
+            @endif
+            
         </div>
-    @endforeach
-    
+    @empty
+        <h2>A história não possui nenhum capítulo</h2>
+    @endforelse
 @endsection

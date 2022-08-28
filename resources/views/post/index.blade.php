@@ -8,7 +8,7 @@
             <h3>
                 Postagens
             </h3>
-            @foreach ($posts as $post)
+            @forelse ($posts as $post)
                 <img src="/img/user/avatar/{{$post->user->avatar}}" alt="" class="avatar">
                 <p>
                     <strong>
@@ -27,7 +27,9 @@
                     <a href="{{ route('post.show', $post->id) }}">Ver mais</a>
                     <br>
                 </p>
-            @endforeach
+            @empty
+                <h2>Ninguém publicou nada ainda. Seja o primeiro!</h2>
+            @endforelse
             <a href="{{ route('post.create') }}" class="post-button">
                 <i class="fa-solid fa-circle-plus"></i> Crie uma postagem
             </a>

@@ -3,7 +3,7 @@
 @section('title', 'Minhas histórias')
 
 @section('content')
-    @foreach ($stories as $storie)
+    @forelse ($stories as $storie)
         <h3><a href="{{  route('storie.show', $storie->storie_id) }}">{{ $storie->title }}</a></h3>
         <img src="/img/storie/cover/{{ $storie->cover }}" class="cover-index">
         <strong>Faixa etária: {{ $storie->agegroup->agegroup }}</strong><br>
@@ -26,7 +26,9 @@
             </button>
         </form>
         <hr>
-    @endforeach
+    @empty
+        <h2>Você não possui nenhuma história</h2>
+    @endforelse
     <form action="{{ route('storie.create') }}" method="get">
         <button>
             Criar uma história

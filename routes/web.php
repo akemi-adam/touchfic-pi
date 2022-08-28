@@ -36,7 +36,7 @@ Route::middleware(['auth'])->group(function ()
     Route::name('chapter.')->group(function ()
     {
         Route::get('/storie/{storie}/create', [ChapterController::class, 'create'])->name('create');
-        Route::post('/{storie}}/chapter', [ChapterController::class, 'store'])->name('store');
+        Route::post('/{storie}/chapter', [ChapterController::class, 'store'])->name('store');
         Route::get('/storie/chapter/{chapter}', [ChapterController::class, 'show'])->name('show');
         Route::get('/storie/edit/{chapter}', [ChapterController::class, 'edit'])->name('edit');
         Route::put('/storie/chapter/{chapter}', [ChapterController::class, 'update'])->name('update');

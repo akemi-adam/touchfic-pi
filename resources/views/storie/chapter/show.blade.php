@@ -6,11 +6,11 @@
     <div class="container-chapter">
         <div class="div-chapter">
             <h1>{{$chapter->title}}</h1>
+            <h4><a href="{{ route('storie.show', $chapter->storie->id) }}" style="text-decoration: none">{{$chapter->storie->title}}</a></h4>
             @if ($chapter->created_at === $chapter->updated_at)
-                <small class="chapter-info">{{$chapter->created_at}}</small>
-                
+                <small class="chapter-info">Data: {{$chapter->created_at}}</small>
             @else
-                <small class="chapter-info">{{$chapter->updated_at}}</small>            
+                <small class="chapter-info">Data: {{$chapter->updated_at}}</small>            
             @endif
             <span class="chapter-info">Número de palavras: {{$chapter->numberofwords}}</span>
             @if (isset($chapter->authornotes))
