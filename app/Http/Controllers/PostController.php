@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Commentpost;
 use App\Models\Post;
 use App\Models\User;
 use Auth;
@@ -108,7 +109,14 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        Post::findOrFail($id)->delete();
+
+        $post = Post::findOrFail($id);
+
+        if (isset($post->comments)) {
+            Commentpost::where('post_id', $post->id)->delete();
+        }
+
+        $post->delete();
 
         return redirect('/post')->with('success_msg', 'Postagem deletada com sucesso!');
     }
