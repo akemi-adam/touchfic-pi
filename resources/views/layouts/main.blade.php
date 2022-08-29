@@ -22,6 +22,9 @@
         @yield('title')
     </title>
 
+    {{-- Seção para JavaScript --}}
+    @yield('javascript')
+
 </head>
 <body>
 

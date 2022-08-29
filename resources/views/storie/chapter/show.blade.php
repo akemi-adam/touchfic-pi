@@ -22,7 +22,7 @@
             @endif
             <hr>
             <h2>Capítulo</h2>
-            <p class="chapter-text" style="text-align: justify">
+            <p class="chapter-text indent" style="text-align: justify">
                 {!!nl2br(e($chapter->content))!!}
             </p>
         </div>
