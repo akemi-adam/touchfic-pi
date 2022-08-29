@@ -17,13 +17,13 @@
                 <hr>
                 <h2>Notas do autor</h2>
                 <p class="author-notes">
-                    {{$chapter->authornotes}}
+                    {!!nl2br(e($chapter->authornotes))!!}
                 </p>
             @endif
             <hr>
             <h2>Capítulo</h2>
             <p class="chapter-text" style="text-align: justify">
-                {{$chapter->content}}
+                {!!nl2br(e($chapter->content))!!}
             </p>
         </div>
     </div>
@@ -42,7 +42,7 @@
             <img src="/img/user/avatar/{{ $comment->user->avatar }}" class="avatar">
             <small><strong>{{ $comment->user->name }} respondeu: </strong></small>
             <p>
-                {{ $comment->content }}
+                {{ nl2br($comment->content) }}
             </p>
             @if ($comment->user_id === Auth::user()->id)
                 <form action="{{ route('chapter.comment.edit', $comment->id) }}" method="get">

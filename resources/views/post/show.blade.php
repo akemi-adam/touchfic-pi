@@ -9,7 +9,7 @@
         {{ $post->user->name }} disse:
     </h2>
     <p>
-        {{ $post->content }}
+        {!!nl2br(e($post->content))!!}
     </p>
     <small>
         @if ($post->created_at === $post->updated_at)
@@ -48,7 +48,7 @@
             <img src="/img/user/avatar/{{ $comment->user->avatar }}" class="avatar">
             <small><strong>{{ $comment->user->name }} respondeu: </strong></small>
             <p>
-                {{ $comment->content }}
+                {!!nl2br(e($comment->content))!!}
             </p>
             @if ($comment->user_id === Auth::user()->id)
                 <form action="{{ route('comment.edit', $comment->id) }}" method="get">

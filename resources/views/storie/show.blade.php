@@ -24,8 +24,8 @@
             <li style="color:rgb(87, 87, 87)">{{$genre->genre}}</li> 
         @endforeach
     </ul>
-    <h4>Sinopse:</h4>
-    <p>{{ $storie->synopsis }}</p>
+<h4>Sinopse:</h4>
+    <p>{!!nl2br(e($storie->synopsis))!!}</p>
     @if (Auth::user()->id === $storie->user_id)
         <form action="{{ route('storie.edit', $storie->storie_id) }}" method="get">
             <button>
