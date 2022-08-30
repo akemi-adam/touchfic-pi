@@ -25,7 +25,7 @@ Após ter feito a configuração necessária, rode as migrações com `php artis
 
 ## Comandos
 
-Em seguida, para popular o banco com algumas informações básicas e essências, rode o comando `php artisan serve:seed --admin`. O comando serve:seed irá popular o banco com essas informações necessárias, enquanto que a option `--admin` irá chamar o comando `make:admin` que cria um usuário administrador.
+Em seguida, para popular o banco com algumas informações básicas e essências, rode o comando `php artisan serve:seed --admin`. O comando serve:seed irá popular o banco com essas informações necessárias e criar um usuário administrador caso necessário.
 
 
 Ou os seguintes comandos:

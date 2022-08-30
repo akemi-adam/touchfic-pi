@@ -7,7 +7,7 @@ use Illuminate\Console\Command;
 
 class StartWithDatas extends Command
 {
-    protected $signature = 'serve:seed {--admin}';
+    protected $signature = 'serve:seed';
 
     protected $description = 'Start the server on port 8000 and run the essential seeders for the application';
 
@@ -17,7 +17,7 @@ class StartWithDatas extends Command
             $this->call('db:seed');
         }
 
-        if ($this->hasOption('admin')) {
+        if ($this->confirm('Deseja criar uma usuário admin?')) {
             $this->call('make:admin');
         }
 

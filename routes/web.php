@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentchapterController;
 use App\Http\Controllers\CommentpostController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\StorieController;
 use App\Http\Controllers\GenreController;
@@ -28,6 +29,8 @@ Route::name('root.')->group(function ()
 Route::middleware(['auth'])->group(function ()
 {
     Route::view('/dashboard', 'auth.dashboard')->name('dashboard');
+
+    Route::get('/search', [SearchController::class, 'search'])->name('search');
 
     Route::resource('/post', PostController::class);
 

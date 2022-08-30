@@ -37,6 +37,14 @@
                 <a href="{{route('dashboard')}}" class="logo"><img src="https://cdn-icons-png.flaticon.com/512/3629/3629072.png" alt="Touchfic">Touchfic</a>
             @endif
         </div>
+        @if (Auth::check())
+            <div>
+                <form action="{{ route('search') }}" method="get">
+                    <input type="text" name="argument" placeholder="Barra de pesquisa...">
+                    <button style="display: inline">Pesquisar</button>
+                </form>
+            </div>
+        @endif
         <nav>
             <ul>
                 <li><a href="{{route('root.about')}}" class="nav-link">Sobre</a></li>
