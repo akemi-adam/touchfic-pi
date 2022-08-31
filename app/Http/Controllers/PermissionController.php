@@ -28,7 +28,7 @@ class PermissionController extends Controller
 
     public function update(Request $request)
     {
-        $permission = $request->promotion == 3 ? 3 : 2;
+        $permission = $request->promotion == 3 ?: 2;
         $user = User::findOrFail($request->promoted_user);
         $user->permission_id = $permission;
         $user->save();
