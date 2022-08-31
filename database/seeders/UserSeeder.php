@@ -15,12 +15,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-/*         if (count(User::all()) === 0) {
-            User::factory()->create([
-                'name' => 'Admin',
-                'email' => 'admin@gmail.com',
-                'permission_id' => 3,
-            ]);
-        } */
+        
     }
 }
