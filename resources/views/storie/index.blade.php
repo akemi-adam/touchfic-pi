@@ -9,7 +9,7 @@
         <strong>Faixa etária: {{ $storie->agegroup->agegroup }}</strong><br>
         <strong>Número de palavras: {{ $storie->numberofwords }}</strong><br>
         <a href="{{ route('user.show', $storie->user_id) }}">{{$storie->name}}</a>
-        {{-- <strong>Número de likes: </strong> --}}
+        {{-- <strong>Número de likes: {{ $amount }}</strong> --}}
         <p>
             {{ $storie->synopsis }}
         </p>

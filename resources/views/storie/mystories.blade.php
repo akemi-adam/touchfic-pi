@@ -27,7 +27,7 @@
         </form>
         <hr>
     @empty
-        <h2>Você não possui nenhuma história</h2>
+        <h2>Não há nenhuma história por aqui</h2>
     @endforelse
     <form action="{{ route('storie.create') }}" method="get">
         <button>

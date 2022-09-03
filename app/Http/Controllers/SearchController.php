@@ -19,10 +19,10 @@ class SearchController extends Controller
         ]);
     }
 
-    private function analyzeArgument($argument, $model, $collumn, $join = null)
+    private function analyzeArgument($argument, $model, $collumn, $join = false)
     {
-        if (isset($join)) {
-            return $model::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where($collumn, 'like', "%$argument%")->get() ?: null;
+        if ($join) {
+            return $model::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('storie_user.liked', 0)->where($collumn, 'like', "%$argument%")->get() ?: null;
         }
         return $model::where($collumn, 'like', "%$argument%")->get() ?: null;
     }

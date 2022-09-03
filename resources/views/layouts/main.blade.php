@@ -23,8 +23,10 @@
     </title>
 
     {{-- Seção para JavaScript --}}
-    @yield('javascript')
+    @yield('scripts')
 
+    {{-- Livewire --}}
+    @livewireStyles
 </head>
 <body>
 
@@ -87,5 +89,8 @@
             <a href="https://www.flaticon.com/br/icones-gratis/tocha" title="tocha ícones">Tocha ícones criados por Freepik - Flaticon</a>
         </div>
     </footer>
+
+    {{-- Livewire --}}
+    @livewireScripts
 </body>
 </html>

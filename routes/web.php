@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\CommentchapterController;
 use App\Http\Controllers\CommentpostController;
 use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ChapterController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StorieController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\UserController;
@@ -36,6 +37,7 @@ Route::middleware(['auth'])->group(function ()
 
     Route::resource('/storie', StorieController::class);
     Route::get('/storie/{user}/mystories', [StorieController::class, 'myStories'])->name('storie.mystories');
+    Route::get('/likes-stories/{user}', [StorieController::class, 'likes'])->name('storie.likes');
 
     Route::name('chapter.')->group(function ()
     {

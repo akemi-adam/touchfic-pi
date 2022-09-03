@@ -17,6 +17,10 @@
             <a href="{{ route('storie.index') }}">Visualizar histórias <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="div-faq">
+            <p><i class="fa-solid fa-heart"></i><strong> Perfil</strong></p>
+            <a href="{{route('storie.likes', Auth::user()->id)}}">Histórias favoritas<i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="div-faq">
             <p><i class="fa-solid fa-circle-plus"></i><strong> Crie sua história e mostre sua criatividade ao mundo!</strong></p>
             <a href="{{ route('storie.create') }}">Criar uma história <i class="fa-solid fa-arrow-right"></i></a>
         </div>

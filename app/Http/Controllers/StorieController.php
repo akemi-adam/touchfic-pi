@@ -18,7 +18,7 @@ class StorieController extends Controller
     public function index()
     {
         
-        $stories = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->whereNotNull('storie_user.user_id')->orderBy('stories.id', 'DESC')->get();
+        $stories = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('storie_user.liked', 0)->whereNotNull('storie_user.user_id')->orderBy('stories.id', 'DESC')->get();
 
         return view('storie.index', [
             'stories' => $stories,
@@ -28,6 +28,15 @@ class StorieController extends Controller
     public function myStories($id)
     {
         $stories = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('storie_user.user_id', $id)->orderBy('stories.id', 'DESC')->get();
+
+        return view('storie.mystories', [
+            'stories' => $stories,
+        ]);
+    }
+
+    public function likes($id)
+    {
+        $stories = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('storie_user.user_id', $id)->where('storie_user.liked', 1)->orderBy('stories.title', 'ASC')->get();
 
         return view('storie.mystories', [
             'stories' => $stories,
@@ -87,10 +96,13 @@ class StorieController extends Controller
 
         $chapters = Chapter::where('storie_id', $storie->storie_id)->get();
 
+        $amount = DB::table('storie_user')->where('liked', 1)->where('storie_id', $id)->count() ?: 0;
+
         return view('storie.show', [
             'storie' => $storie,
             'genres' => $genres,
             'chapters' => $chapters,
+            'amount' => $amount,
         ]);
     }
 

@@ -2,6 +2,10 @@
 
 @section('title', 'História show')
 
+@section('scripts')
+    <script src="/js/amountlikes.js" defer></script>
+@endsection
+
 @section('content')
     <h2>
         {{ $storie->title }}
@@ -18,6 +22,8 @@
             {{ $storie->updated_at }}
         @endif
     </small><br>
+    <strong id="likes" value="{{ $amount }}">Curtidas: {{ $amount }}</strong><br>
+    @livewire('like', ['storieId' => $storie->storie_id])
     <span>Gêneros:</span>
     <ul>
         @foreach ($genres as $genre)
