@@ -113,12 +113,15 @@ class StorieController extends Controller
 
         $genres = Genre::all();
 
+        $selectsGenres = Genre::join('genre_storie', 'genres.id', '=', 'genre_storie.genre_id')->where('genre_storie.storie_id', $id)->get();
+
         $agegroups = Agegroup::all();
 
         return view('storie.edit', [
             'storie' => $storie,
             'genres' => $genres,
             'agegroups' => $agegroups,
+            'selectsGenres' => $selectsGenres,
         ]);
     }
 

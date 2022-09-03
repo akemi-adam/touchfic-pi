@@ -21,10 +21,28 @@
         <input type="file" name="cover"><br>
         <h4>Sinopse:</h4>
         <textarea name="synopsis" cols="90" rows="15" class="desc-textarea" placeholder="Sinopse...">{{ $storie->synopsis }}</textarea>
-        @foreach ($genres as $genre)
+        @for ($i = 0; $i < count($genres); $i++)
+            @php
+                $listed = false;
+            @endphp
+            @for ($j = 0; $j < count($selectsGenres); $j++)
+                @if ($genres[$i]->id === $selectsGenres[$j]->genre_id)
+                    <label for="{{$genres[$i]->genre}}">{{$genres[$i]->genre}}</label>
+                    <input type="checkbox" name="genres[]" value="{{$genres[$i]->id}}" id="{{$genres[$i]->genre}}" checked>
+                    @php
+                        $listed = true;
+                    @endphp
+                @endif
+            @endfor
+            @if (!$listed)
+                <label for="{{$genres[$i]->genre}}">{{$genres[$i]->genre}}</label>
+                <input type="checkbox" name="genres[]" value="{{$genres[$i]->id}}" id="{{$genres[$i]->genre}}">
+            @endif
+        @endfor
+        {{-- @foreach ($genres as $genre)
             <label for="{{$genre->genre}}">{{$genre->genre}}</label>
-            <input type="checkbox" name="genres[]" value="{{$genre->id}}" id="{{$genre->genre}}"> 
-            {{-- {{$i = 0}}
+            <input type="checkbox" name="genres[]" value="{{$genre->id}}" id="{{$genre->genre}}">
+            {{$i = 0}}
             @if ($noSelectedGenres[$i]->id === $genre->id)
                 <label for="{{$genre->genre}}">{{$genre->genre}}</label>
                 <input type="checkbox" name="genres[]" value="{{$genre->id}}" id="{{$genre->genre}}"> 
@@ -32,8 +50,8 @@
                 <label for="{{$genre->genre}}">{{$genre->genre}}</label>
                 <input type="checkbox" name="genres[]" value="{{$genre->id}}" id="{{$genre->genre}}" checked> 
             @endif
-            {{$i++}} --}}
-        @endforeach
+            {{$i++}}
+        @endforeach --}}
         <div class="container-submit">
             <div class="submit-story-button">
                 <button>
