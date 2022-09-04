@@ -18,7 +18,6 @@ class StorieController extends Controller
 
     public function index()
     {
-        
         $stories = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('storie_user.liked', 0)->whereNotNull('storie_user.user_id')->orderBy('stories.id', 'DESC')->get();
 
         return view('storie.index', [
@@ -47,6 +46,8 @@ class StorieController extends Controller
 
     public function create()
     {
+        $this->authorize('create', Storie::class);
+
         $agegroups = Agegroup::all();
         $genres = Genre::all();
         return view('storie.create', [
@@ -57,8 +58,9 @@ class StorieController extends Controller
 
     public function store(StorieRequest $request)
     {
-        $storie = new Storie;
+        $this->authorize('create', Storie::class);
 
+        $storie = new Storie;
         $storie->title = $request->title;
         $storie->synopsis = $request->synopsis;
         $storie->agegroup_id = $request->agegroup;
@@ -110,6 +112,7 @@ class StorieController extends Controller
 
     public function edit($id)
     {
+
         $storie = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('stories.id', $id)->first();
 
         $genres = Genre::all();
@@ -128,7 +131,10 @@ class StorieController extends Controller
 
     public function update(StorieRequest $request, $id)
     {
+
         $storie = Storie::findOrFail($id);
+
+        $this->authorize('update', $storie);
 
         $storie->title = $request->title;
         $storie->synopsis = $request->synopsis;
@@ -164,6 +170,8 @@ class StorieController extends Controller
     public function destroy($id)
     {
         $storie = Storie::findOrFail($id);
+
+        $this->authorize('delete', $storie);
 
         $storie->users()->detach();
         $storie->genres()->detach();
