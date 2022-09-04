@@ -21,11 +21,23 @@ DB_DATABASE=<nome do banco>
 DB_USERNAME=<usuário>
 DB_PASSWORD=<senha>
 ```
+Além de configurar a conexão com o banco de dados, é preciso configurar o serviço de email:
+```
+MAIL_HOST=<host>
+MAIL_PORT=<porta>
+MAIL_USERNAME=<username>
+MAIL_PASSWORD=<senha>
+MAIL_ENCRYPTION=<encryption>
+MAIL_FROM_ADDRESS=<remetente>
+```
+Para fins de desenvolvimento, a aplicação está utilizando o <a href="https://mailtrap.io/">mailtrap</a>.
+
+
 Após ter feito a configuração necessária, rode as migrações com `php artisan migrate`
 
 ## Comandos
 
-Em seguida, para popular o banco com algumas informações básicas e essências, rode o comando `php artisan serve:seed --admin`. O comando serve:seed irá popular o banco com essas informações necessárias e criar um usuário administrador caso necessário.
+Em seguida, para popular o banco com algumas informações básicas e essências, rode o comando `php artisan serve:seed`. O comando serve:seed irá popular o banco com essas informações necessárias e criar um usuário administrador caso necessário.
 
 
 Ou os seguintes comandos:

@@ -659,14 +659,24 @@ textarea {
 
 /* Flash Messages */
 
-.msg-success {
-    background-color: #D4EDDA;
-    color: #155724;
-    border: 1px solid #C3E6CB;
+.msg {
     width: 100%;
     margin-bottom: 0;
     text-align: center;
     padding: 10px;
+}
+
+.msg-success {
+    background-color: #D4EDDA;
+    color: #155724;
+    border: 1px solid #C3E6CB;
+    
+}
+
+.msg-danger {
+    background-color: #f5a031;
+    color: #a87204;
+    border: 1px solid #efd68e;
 }
 
 /* Images */

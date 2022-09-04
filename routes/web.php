@@ -31,7 +31,7 @@ Route::name('root.')->group(function ()
 
 Route::middleware(['auth'])->group(function ()
 {
-    Route::view('/dashboard', 'auth.dashboard')->name('dashboard');
+    Route::view('/dashboard', 'auth.dashboard')->name('dashboard')->middleware(['verified']);
 
     Route::get('/search', [SearchController::class, 'search'])->name('search');
 
