@@ -2,15 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\CommentchapterController;
-use App\Http\Controllers\CommentpostController;
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\ChapterController;
-use App\Http\Controllers\SearchController;
-use App\Http\Controllers\StorieController;
-use App\Http\Controllers\GenreController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\GenreController;
+use App\Http\Controllers\Admin\UserController;
+
+use App\Http\Controllers\Storie\CommentchapterController;
+use App\Http\Controllers\Storie\ChapterController;
+use App\Http\Controllers\Storie\SearchController;
+use App\Http\Controllers\Storie\StorieController;
+
+use App\Http\Controllers\Post\CommentpostController;
+use App\Http\Controllers\Post\PostController;
 
 
 /*

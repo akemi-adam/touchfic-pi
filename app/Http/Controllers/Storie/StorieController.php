@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Storie;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Storie\StorieRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;

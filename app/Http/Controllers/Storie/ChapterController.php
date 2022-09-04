@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Storie;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Chapter;
 use App\Models\Storie;
