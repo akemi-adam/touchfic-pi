@@ -22,6 +22,9 @@
                     Enviar
                 </button>
             </form>
+            <div>
+                <a href="{{ route('google.login') }}" class="register-link">Fazer login com o Google</a>
+            </div>
             <a href="{{route('register')}}" class="register-link">
                 Ou cadastre-se grátis!
             </a>

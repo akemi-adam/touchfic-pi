@@ -35,6 +35,10 @@
                 <button class="register-button">
                     Enviar
                 </button>
+                
+                <div>
+                    <a href="{{ route('google.login') }}" class="register-link">Fazer registro com o Google</a>
+                </div>
 
                 <a href="{{route('login')}}" class="register-link">
                     Tem conta? Entre agora!

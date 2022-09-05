@@ -32,6 +32,14 @@ MAIL_FROM_ADDRESS=<remetente>
 ```
 Para fins de desenvolvimento, a aplicação está utilizando o <a href="https://mailtrap.io/">mailtrap</a>.
 
+## Google
+
+A aplicação contempla o recurso de autenticação pelo google utilizando o Socialite. Para isso, é preciso preencher os seguintes campos no arquivo .env:
+
+```
+GOOGLE_CLIENT_ID=<client id do google de sua aplicação>
+GOOGLE_CLIENT_SECRET=<chave secreta do cliente de sua aplicação>
+```
 
 Após ter feito a configuração necessária, rode as migrações com `php artisan migrate`
 
