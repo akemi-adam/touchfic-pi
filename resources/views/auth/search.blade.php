@@ -5,7 +5,7 @@
 @section('content')
     @forelse ($stories as $storie)
         <h3><a href="{{  route('storie.show', $storie->storie_id) }}">{{ $storie->title }}</a></h3>
-        <img src="/img/storie/cover/{{ $storie->cover }}" class="cover-index">
+        <img src="{{ asset('storage/images/storie/cover/' . $storie->cover) }}" class="cover-index"><br>
         <strong>Faixa etária: {{ $storie->agegroup->agegroup }}</strong><br>
         <strong>Número de palavras: {{ $storie->numberofwords }}</strong><br>
         <a href="{{ route('user.show', $storie->user_id) }}">{{$storie->name}}</a>

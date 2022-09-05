@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\User\UserProfileRequest;
 use App\Models\User;
-use Auth, File;
+use Auth;
 
 class UserController extends Controller
 {
@@ -39,18 +40,15 @@ class UserController extends Controller
         }
 
         if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
-
-            if (!($user->avatar === "default-user-avatar.png")) {
-                File::delete('img/user/avatar/' . $user->avatar);
+            
+            if ($user->avatar !== "default-user-avatar.png") {
+                Storage::disk('public')->delete("images/user/avatar/$user->avatar");
             }
 
-            $requestAvatar = $request->avatar;
-            $extension = $requestAvatar->extension();
-            $avatarName = md5($requestAvatar->getClientOriginalName() . strtotime('now') . '.' . $extension);
-
-            $request->avatar->move(public_path('img/user/avatar'), $avatarName);
-            $user->avatar = $avatarName;
-
+            $newName = $request->file('avatar')->hashName();
+            $request->file('avatar')->storeAs('public/images/user/avatar', $newName);
+            $user->avatar = $newName;
+        
         }
 
         $user->save();

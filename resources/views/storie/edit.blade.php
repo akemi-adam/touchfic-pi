@@ -17,7 +17,7 @@
             @endforeach
         </select><br>
         <label for="cover">Capa</label>
-        <img src="/img/storie/cover/{{ $storie->cover }}" class="cover-show"><br>
+        <img src="{{ asset('storage/images/storie/cover/' . $storie->cover) }}" class="cover-show"><br>
         <input type="file" name="cover"><br>
         <h4>Sinopse:</h4>
         <textarea name="synopsis" cols="90" rows="15" class="desc-textarea" placeholder="Sinopse...">{{ $storie->synopsis }}</textarea>

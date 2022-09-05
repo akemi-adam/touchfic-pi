@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Storie;
 
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Storie\StorieRequest;
 use Illuminate\Support\Facades\DB;
@@ -11,7 +12,7 @@ use App\Models\Chapter;
 use App\Models\Storie;
 use App\Models\Genre;
 use App\Models\User;
-use Auth, File;
+use Auth;
 
 class StorieController extends Controller
 {
@@ -65,20 +66,7 @@ class StorieController extends Controller
         $storie->synopsis = $request->synopsis;
         $storie->agegroup_id = $request->agegroup;
 
-        if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
-
-            if (!($storie->cover === "default-storie-cover.png")) {
-                File::delete('img/storie/cover/' . $storie->cover);
-            }
-
-            $requestCover = $request->cover;
-            $extension = $requestCover->extension();
-            $coverName = md5($requestCover->getClientOriginalName() . strtotime('now') . '.' . $extension);
-
-            $request->cover->move(public_path('img/storie/cover'), $coverName);
-            $storie->cover = $coverName;
-
-        }
+        $this->coverVerify($request, 'cover', $storie);
 
         $storie->save();
 
@@ -112,7 +100,6 @@ class StorieController extends Controller
 
     public function edit($id)
     {
-
         $storie = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('stories.id', $id)->first();
 
         $genres = Genre::all();
@@ -131,7 +118,6 @@ class StorieController extends Controller
 
     public function update(StorieRequest $request, $id)
     {
-
         $storie = Storie::findOrFail($id);
 
         $this->authorize('update', $storie);
@@ -140,20 +126,7 @@ class StorieController extends Controller
         $storie->synopsis = $request->synopsis;
         $storie->agegroup_id = $request->agegroup;
 
-        if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
-
-            if (!($storie->cover === "default-storie-cover.png")) {
-                File::delete('img/storie/cover/' . $storie->cover);
-            }
-
-            $requestCover = $request->cover;
-            $extension = $requestCover->extension();
-            $coverName = md5($requestCover->getClientOriginalName() . strtotime('now') . '.' . $extension);
-
-            $request->cover->move(public_path('img/storie/cover'), $coverName);
-            $storie->cover = $coverName;
-
-        }
+        $this->coverVerify($request, 'cover', $storie);
 
         $storie->save();
 
@@ -180,4 +153,20 @@ class StorieController extends Controller
 
         return redirect()->to(route('storie.mystories', Auth::user()->id))->with('success_msg', 'História deletada com sucesso!');
     }
+
+    private function coverVerify($request, $name, $model)
+    {
+        if ($request->hasFile($name) && $request->file($name)->isValid()) {
+            
+            if ($model->cover !== "default-storie-cover.png") {
+                Storage::disk('public')->delete("images/storie/cover/$model->cover");
+            }
+
+            $newName = $request->file($name)->hashName();
+            $request->file($name)->storeAs('public/images/storie/cover', $newName);
+            $model->cover = $newName;
+
+        }
+    }
+
 }
