@@ -30,20 +30,13 @@ class SocialAuthController extends Controller
         if ($existingUser) {
             Auth::login($existingUser, true);
         } else {
-/*             $newUser = User::create([
-                'name' => $user->name,
-                'email' => $user->email,
-                'google_id' => $user->id,
-            ]); */
 
             $newUser = new User;
 
             $newUser->name = $user->name;
-
             $newUser->email = $user->email;
 
             $newUser->google_id = $user->id;
-
             $newUser->permission_id = 1;
 
             $newUser->password = Hash::make(Str::random(10));
