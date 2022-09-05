@@ -15,6 +15,7 @@
     {{-- Fonte do Google --}}
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300&family=Poppins:ital,wght@0,300;0,400;1,300&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
     </style>
 
     {{-- Seção de Título --}}
@@ -34,16 +35,16 @@
     <header>
         <div>
             @if (!Auth::check())
-                <a href="{{route('root.home')}}" class="logo"><img src="https://cdn-icons-png.flaticon.com/512/3629/3629072.png" alt="Touchfic">Touchfic</a>
+                <a href="{{route('root.home')}}" class="logo"><img src="https://cdn-icons-png.flaticon.com/512/3629/3629072.png" alt="touchfic">touchfic</a>
             @else
-                <a href="{{route('dashboard')}}" class="logo"><img src="https://cdn-icons-png.flaticon.com/512/3629/3629072.png" alt="Touchfic">Touchfic</a>
+                <a href="{{route('dashboard')}}" class="logo"><img src="https://cdn-icons-png.flaticon.com/512/3629/3629072.png" alt="touchfic">touchfic</a>
             @endif
         </div>
         @if (Auth::check())
             <div>
                 <form action="{{ route('search') }}" method="get">
-                    <input type="text" name="argument" placeholder="Barra de pesquisa...">
-                    <button style="display: inline">Pesquisar</button>
+                    <input type="text" name="argument" placeholder="Pesquisar...">
+                    <button style="display: inline-block"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
         @endif
