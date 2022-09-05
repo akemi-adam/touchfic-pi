@@ -23,7 +23,11 @@
         @endif
     </small><br>
     <strong id="likes" value="{{ $amount }}">Curtidas: {{ $amount }}</strong><br>
-    @livewire('like', ['storieId' => $storie->storie_id])
+
+    @can('authenticated')
+        @livewire('like', ['storieId' => $storie->storie_id])
+    @endcan
+    
     <span>Gêneros:</span>
     <ul>
         @foreach ($genres as $genre)
@@ -32,23 +36,25 @@
     </ul>
 <h4>Sinopse:</h4>
     <p>{!!nl2br(e($storie->synopsis))!!}</p>
-    @if (Auth::user()->id === $storie->user_id)
-        <form action="{{ route('storie.edit', $storie->storie_id) }}" method="get">
-            <button>
-                Editar
-            </button>
-        </form>
-        <form action="{{ route('storie.destroy', $storie->storie_id) }}" method="post">
-            @csrf
-            @method('delete')
-            <button>
-                Deletar
-            </button>
-        </form>
-        <form action="{{ route('chapter.create', $storie->storie_id) }}" method="get">
-            <button>Adicionar um capítulo</button>
-        </form>
-    @endif
+    @can('authenticated')
+        @if (Auth::user()->id === $storie->user_id)
+            <form action="{{ route('storie.edit', $storie->storie_id) }}" method="get">
+                <button>
+                    Editar
+                </button>
+            </form>
+            <form action="{{ route('storie.destroy', $storie->storie_id) }}" method="post">
+                @csrf
+                @method('delete')
+                <button>
+                    Deletar
+                </button>
+            </form>
+            <form action="{{ route('chapter.create', $storie->storie_id) }}" method="get">
+                <button>Adicionar um capítulo</button>
+            </form>
+        @endif
+    @endcan
     <hr>
     <h3>
         Capítulos
@@ -59,20 +65,22 @@
     @forelse ($chapters as $chapter)
         <div>
             <h3>{{$index += 1}} | <a style="text-decoration: none" href="{{route('chapter.show', $chapter->id)}}">{{$chapter->title}}</a> </h3>
-            @if (Auth::user()->id === $storie->user_id)
-                <form action="{{ route('chapter.edit', $chapter->id) }}" method="get">
-                    <button style="background-color: rgb(112, 144, 250); border:1px solid black">
-                        Editar
-                    </button>
-                </form>
-                <form action="{{ route('chapter.destroy', $chapter->id) }}" method="post">
-                    @csrf
-                    @method('delete')
-                    <button style="background-color:rgb(255, 98, 98); border:1px solid black">
-                        Deletar
-                    </button>
-                </form>
-            @endif
+            @can('authenticated')
+                @if (Auth::user()->id === $storie->user_id)
+                    <form action="{{ route('chapter.edit', $chapter->id) }}" method="get">
+                        <button style="background-color: rgb(112, 144, 250); border:1px solid black">
+                            Editar
+                        </button>
+                    </form>
+                    <form action="{{ route('chapter.destroy', $chapter->id) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button style="background-color:rgb(255, 98, 98); border:1px solid black">
+                            Deletar
+                        </button>
+                    </form>
+                @endif
+            @endcan
             
         </div>
     @empty

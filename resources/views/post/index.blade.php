@@ -9,7 +9,7 @@
                 Postagens
             </h3>
             @forelse ($posts as $post)
-                <img src="/img/user/avatar/{{$post->user->avatar}}" alt="" class="avatar">
+                <img src="{{asset('storage/images/user/avatar/' . $post->user->avatar)}}" alt="" class="avatar">
                 <p>
                     <strong>
                         {{ $post->user->name }} disse:
@@ -17,13 +17,15 @@
                     <br>
                     {{ $post->content }}
                     <br>
-                    @if (Auth::user()->id === $post->user_id)
-                        <form action="{{ route('post.destroy', $post->id) }}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button>Deletar</button>
-                        </form>
-                    @endif
+                    @can('authenticated')
+                        @if (Auth::user()->id === $post->user_id)
+                            <form action="{{ route('post.destroy', $post->id) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button>Deletar</button>
+                            </form>
+                        @endif
+                    @endcan
                     <a href="{{ route('post.show', $post->id) }}">Ver mais</a>
                     <br>
                 </p>

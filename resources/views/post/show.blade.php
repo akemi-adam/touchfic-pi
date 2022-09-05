@@ -4,7 +4,7 @@
     
 @section('content')
 <br>
-    <img src="/img/user/avatar/{{ $post->user->avatar }}" class="avatar">
+    <img src="{{asset('storage/images/user/avatar/' . $post->user->avatar)}}" class="avatar">
     <h2 style="display: inline">
         {{ $post->user->name }} disse:
     </h2>
@@ -18,21 +18,23 @@
             {{ $post->updated_at }}
         @endif
     </small>
-    @if (Auth::user()->id === $post->user->id)
-        <br>
-        <br>
-        <form action="{{ route('post.edit', $post->id) }}" method="get">
-            <button>Editar</button>
-        </form>
-        <form action="{{ route('post.destroy', $post->id) }}" method="post">
-            @csrf
-            @method('delete')
-            <button>
-                Deletar
-            </button>
-        </form>
-        <br>
-    @endif
+    @can('authenticated')
+        @if (Auth::user()->id === $post->user->id)
+            <br>
+            <br>
+            <form action="{{ route('post.edit', $post->id) }}" method="get">
+                <button>Editar</button>
+            </form>
+            <form action="{{ route('post.destroy', $post->id) }}" method="post">
+                @csrf
+                @method('delete')
+                <button>
+                    Deletar
+                </button>
+            </form>
+            <br>
+        @endif
+    @endcan
     <hr>
     <form action="{{ route('comment.store', ['post'=>$post]) }}" method="post">
         @csrf
@@ -45,25 +47,27 @@
     <hr>
     @forelse ($post->comments as $comment)
         <div style="border: solid black 1px">
-            <img src="/img/user/avatar/{{ $comment->user->avatar }}" class="avatar">
+            <img src="{{asset('storage/images/user/avatar/' . $comment->user->avatar)}}" class="avatar">
             <small><strong>{{ $comment->user->name }} respondeu: </strong></small>
             <p>
                 {!!nl2br(e($comment->content))!!}
             </p>
-            @if ($comment->user_id === Auth::user()->id)
-                <form action="{{ route('comment.edit', $comment->id) }}" method="get">
-                    <button>
-                        Editar
-                    </button>
-                </form>
-                <form action="{{ route('comment.destroy', $comment->id) }}" method="post">
-                    @csrf
-                    @method('delete')
-                    <button>
-                        Deletar
-                    </button>
-                </form>
-            @endif
+            @can('authenticated')
+                @if ($comment->user_id === Auth::user()->id)
+                    <form action="{{ route('comment.edit', $comment->id) }}" method="get">
+                        <button>
+                            Editar
+                        </button>
+                    </form>
+                    <form action="{{ route('comment.destroy', $comment->id) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button>
+                            Deletar
+                        </button>
+                    </form>
+                @endif
+            @endcan
         </div>
     @empty
         <h2>Ninguém comentou nessa postagem ainda. Seja o pioneiro!</h2>
