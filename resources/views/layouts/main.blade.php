@@ -50,6 +50,8 @@
         @endif
         <nav>
             <ul>
+                <li><a href="{{route('storie.index')}}" class="nav-link">Histórias</a></li>
+                <li><a href="{{route('post.index')}}" class="nav-link">Linha do tempo</a></li>
                 <li><a href="{{route('root.about')}}" class="nav-link">Sobre</a></li>
                 <li><a href="{{route('root.faq')}}" class="nav-link">FAQ</a></li>
                 @if (!Auth::check())

@@ -10,8 +10,11 @@ use Auth;
 
 class CommentpostController extends Controller
 {
+
     public function store(Request $request, Post $post)
     {
+        $this->authorize('authenticated');
+
         Commentpost::create([
             'content' => $request->content,
             'post_id' => $post->id,
@@ -25,6 +28,8 @@ class CommentpostController extends Controller
 
     public function edit($id)
     {
+        $this->authorize('authenticated');
+
         return view('post.comment.edit', [
             'comment' => Commentpost::findOrFail($id),
         ]);
@@ -32,6 +37,8 @@ class CommentpostController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->authorize('authenticated');
+
         $comment = Commentpost::findOrFail($id);
         $comment->content = $request->content;
         $comment->save();
@@ -41,6 +48,8 @@ class CommentpostController extends Controller
 
     public function destroy($id)
     {
+        $this->authorize('authenticated');
+        
         $comment = Commentpost::findOrFail($id);
         $post_id = $comment->post_id;
         $comment->delete();

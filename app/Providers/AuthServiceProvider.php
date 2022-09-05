@@ -7,6 +7,7 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 use App\Policies\StoriePolicy;
 use App\Models\Storie;
 use App\Models\User;
+use Auth;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -31,6 +32,11 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('admin_operations', function (User $user)
         {
             return $user->permission_id === 3;
+        });
+
+        Gate::define('authenticated', function ()
+        {
+            return Auth::check();
         });
     }
 }

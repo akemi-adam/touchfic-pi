@@ -1,18 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\GenreController;
 use App\Http\Controllers\Admin\UserController;
-
-use App\Http\Controllers\Storie\CommentchapterController;
-use App\Http\Controllers\Storie\ChapterController;
-use App\Http\Controllers\Storie\SearchController;
-use App\Http\Controllers\Storie\StorieController;
-
-use App\Http\Controllers\Post\CommentpostController;
-use App\Http\Controllers\Post\PostController;
 
 
 /*
@@ -33,47 +24,13 @@ Route::middleware(['auth'])->group(function ()
 {
     Route::view('/dashboard', 'auth.dashboard')->name('dashboard');
 
-    Route::get('/search', [SearchController::class, 'search'])->name('search');
-
-    Route::resource('/post', PostController::class);
-
-    Route::resource('/storie', StorieController::class);
-    Route::get('/storie/{user}/mystories', [StorieController::class, 'myStories'])->name('storie.mystories');
-    Route::get('/likes-stories/{user}', [StorieController::class, 'likes'])->name('storie.likes');
-
-    Route::name('chapter.')->group(function ()
-    {
-        Route::get('/storie/{storie}/create', [ChapterController::class, 'create'])->name('create');
-        Route::post('/storie/{storie}/chapter', [ChapterController::class, 'store'])->name('store');
-        Route::get('/storie/chapter/{chapter}', [ChapterController::class, 'show'])->name('show');
-        Route::get('/storie/edit/{chapter}', [ChapterController::class, 'edit'])->name('edit');
-        Route::put('/storie/chapter/{chapter}', [ChapterController::class, 'update'])->name('update');
-        Route::delete('/storie/chapter/{chapter}', [ChapterController::class, 'destroy'])->name('destroy');
-
-        Route::prefix('storie/chapter/comment')->name('comment.')->group(function ()
-        {
-            Route::post('/store/{chapter}/', [CommentchapterController::class, 'store'])->name('store');
-            Route::get('/{comment}/edit', [CommentchapterController::class, 'edit'])->name('edit');
-            Route::put('/{comment}', [CommentchapterController::class, 'update'])->name('update');
-            Route::delete('/post/{comment}', [CommentchapterController::class, 'destroy'])->name('destroy');
-        });
-
-    });
-
-    Route::prefix('comment')->name('comment.')->group(function ()
-    {
-        Route::post('/store/{post}/', [CommentpostController::class, 'store'])->name('store');
-        Route::get('/{comment}/edit', [CommentpostController::class, 'edit'])->name('edit');
-        Route::put('/{comment}', [CommentpostController::class, 'update'])->name('update');
-        Route::delete('/post/{comment}', [CommentpostController::class, 'destroy'])->name('destroy');
-    });
-
     Route::prefix('user')->name('user.')->group(function ()
     {
         Route::get('/{id}', [UserController::class, 'show'])->name('show');
         Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
         Route::put('/{id}', [UserController::class, 'update'])->name('update');
     });
+
 });
 
 Route::middleware(['auth', 'admin'])->group(function ()
@@ -94,4 +51,8 @@ Route::middleware(['auth', 'admin'])->group(function ()
     });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
+
+require __DIR__ . '/storie.php';
+
+require __DIR__ . '/post.php';

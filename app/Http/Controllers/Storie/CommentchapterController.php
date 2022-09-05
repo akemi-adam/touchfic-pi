@@ -10,8 +10,11 @@ use Auth;
 
 class CommentchapterController extends Controller
 {
+
     public function store(Request $request, Chapter $chapter)
     {
+        $this->authorize('authenticated');
+
         Commentchapter::create([
             'content' => $request->content,
             'chapter_id' => $chapter->id,
@@ -25,6 +28,8 @@ class CommentchapterController extends Controller
 
     public function edit($id)
     {
+        $this->authorize('authenticated');
+
         return view('storie.chapter.comment.edit', [
             'comment' => Commentchapter::findOrFail($id),
         ]);
@@ -32,6 +37,8 @@ class CommentchapterController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->authorize('authenticated');
+
         $comment = Commentchapter::findOrFail($id);
         $comment->content = $request->content;
         $comment->save();
@@ -41,6 +48,8 @@ class CommentchapterController extends Controller
 
     public function destroy($id)
     {
+        $this->authorize('authenticated');
+        
         $comment = Commentchapter::findOrFail($id);
         $chapter_id = $comment->chapter_id;
         $comment->delete();

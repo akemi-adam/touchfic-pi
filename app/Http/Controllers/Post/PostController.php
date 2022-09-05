@@ -12,13 +12,6 @@ use Auth;
 class PostController extends Controller
 {
 
-    /**
-     * Mostra todas as postagens cadastradas com o seu usuário respectivo.
-     *
-     * @var Post $posts
-     * @var User $users
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $posts = Post::all();
@@ -30,24 +23,17 @@ class PostController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
+        $this->authorize('create', Post::class);
+
         return view('post.create');
     }
 
-    /**
-     * Cria a postagem no banco e redireiciona para a rota e action index com uma flash message.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
+        $this->authorize('create', Post::class);
+
         Post::create([
             'content' => $request->content,
             'user_id' => Auth::user()->id,
@@ -71,47 +57,34 @@ class PostController extends Controller
         ]);
     }
 
-    /**
-     * Mostra o formulário para editar uma postagem específica
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $post = Post::findOrFail($id);
+
+        $this->authorize('update', $post);
 
         return view('post.edit', [
             'post' => $post,
         ]);
     }
 
-    /**
-     * Atualiza uma postagem específica e retorna uma mensagem de sucesso
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $post = Post::findOrFail($id);
+
+        $this->authorize('update', $post);
+
         $post->content = $request->content;
         $post->save();
 
         return redirect("/post/$id")->with('success_msg', 'Postagem editada com sucesso!');
     }
 
-    /**
-     * Deleta uma postagem específica e retorna uma mensagem de sucesso
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-
         $post = Post::findOrFail($id);
+
+        $this->authorize('delete', $post);
 
         if (isset($post->comments)) {
             Commentpost::where('post_id', $post->id)->delete();
