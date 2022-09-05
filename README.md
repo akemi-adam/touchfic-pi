@@ -35,6 +35,18 @@ Para fins de desenvolvimento, a aplicação está utilizando o <a href="https://
 
 Após ter feito a configuração necessária, rode as migrações com `php artisan migrate`
 
+## File Storage
+
+Depois disso, é preciso usar o comando `php artisan storage:link` para linkar a pasta storage que armazena os arquivos de imagem do projeto com a pasta public. Além disso, é necessário que dentro de `storage/app/public` exista a seguinte hierarquia de diretórios:
+
+- images
+  - storie
+     - cover
+  - user
+     - avatar
+
+Será necessário também que dentro de cover e de avatar existam arquivos default com os seguintes nomes, respectivamente: `default-storie_cover.png` e `default-user-avatar.png`
+
 ## Comandos
 
 Em seguida, para popular o banco com algumas informações básicas e essências, rode o comando `php artisan serve:seed`. O comando serve:seed irá popular o banco com essas informações necessárias e criar um usuário administrador caso necessário.
@@ -46,14 +58,5 @@ php artisan make:admin
 php artisan db:seed
 php artisan serve
 ```
-Depois disso, é preciso usar o comando `php artisan storage:link` para linkar a pasta storage que armazena os arquivos de imagem do projeto com a pasta public. Além disso, é necessário que dentro de `storage/app/public` exista a seguinte hierarquia de diretórios:
-
-- images
-  - storie
-     - cover
-  - user
-     - avatar
-
-Será necessário também que dentro de cover e de avatar existam arquivos default com os seguintes nomes, respectivamente: `default-storie_cover.png` e `default-user-avatar.png`
 
 Com isso, o projeto já estará efetivo para uso.
