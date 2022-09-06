@@ -1,34 +1,40 @@
 @extends('layouts.main')
 
-@section('title', 'Faça login!')
+@section('title', 'Login')
 
 @section('content')
-    <div class=container-title>
-        <h1 class="title">
-            <mark>Entre com sua conta Touchfic</mark>
-        </h1>
-    </div>
-
+<body style="background-color: #EFEFEF">
     <div class="container-register-form">
         <div class="register-camp">
             <form action="{{route('login')}}" method="post">
                 @csrf
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="email...">
+                <h2>Iniciar sessão</h2>
+                <div>
+                    <input type="email" name="email" id="email" placeholder="e-mail">
+                </div>
 
-                <label for="password">Senha</label>
-                <input type="password" name="password" placeholder="senha...">
-                <button class="register-button">
-                    Enviar
-                </button>
+                <div>
+                    <input type="password" name="password" placeholder="senha">
+                </div>
+
+                <button class="register-button">Entrar</button>
             </form>
-            <div>
-                <a href="{{ route('google.login') }}" class="register-link">Fazer login com o Google</a>
+
+            <div class="social-media-container">
+
+                <hr>
+                    <div class="social-media-google">
+                        <a href="{{ route('google.login') }}"><i class="fa-brands fa-google"></i> Entrar com Google</a>
+                    </div>
+
             </div>
-            <a href="{{route('register')}}" class="register-link">
-                Ou cadastre-se grátis!
-            </a>
+
+            <div>
+                <a href="{{route('register')}}">
+                    Não tem conta? Cadastre-se grátis!
+                </a>
+            </div>
         </div>
     </div>
-
+</body>
 @endsection
