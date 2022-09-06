@@ -28,7 +28,7 @@ class StorieController extends Controller
 
     public function myStories($id)
     {
-        $stories = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('storie_user.user_id', $id)->orderBy('stories.id', 'DESC')->get();
+        $stories = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('storie_user.user_id', $id)->where('storie_user.liked', 0)->orderBy('stories.id', 'DESC')->get();
 
         return view('storie.mystories', [
             'stories' => $stories,
