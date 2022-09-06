@@ -54,7 +54,9 @@
                 <a href="{{route('storie.index')}}" class="nav-link">Histórias <i class="fa-solid fa-caret-down"></i></a>
                     <ul class="submenu">
                         <li class="nav-link"><a href="{{ route('storie.create') }}"><i class="fa-solid fa-plus"></i> Criar história</a></li>
-                        <li class="nav-link"><a href="{{ route('storie.mystories', Auth::user()->id) }}">Minhas histórias</a></li>
+                        @can('authenticated')
+                            <li class="nav-link"><a href="{{ route('storie.mystories', Auth::user()->id) }}">Minhas histórias</a></li>
+                        @endcan
                     </ul>
                 </li>
                 <li><a href="{{route('post.index')}}" class="nav-link">Linha do tempo</a></li>

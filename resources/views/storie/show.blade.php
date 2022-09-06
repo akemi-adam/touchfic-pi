@@ -81,7 +81,6 @@
                     </form>
                 @endif
             @endcan
-            
         </div>
     @empty
         <h2>A história não possui nenhum capítulo</h2>

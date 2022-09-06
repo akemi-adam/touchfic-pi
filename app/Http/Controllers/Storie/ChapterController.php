@@ -13,6 +13,8 @@ class ChapterController extends Controller
     {
         $storie = Storie::findOrFail($id);
 
+        $this->authorize('create', $storie);
+
         return view('storie.chapter.create', [
             'storie' => $storie,
         ]);
@@ -20,20 +22,24 @@ class ChapterController extends Controller
 
     public function store(Request $request, $id)
     {
-
+        $storie = Storie::findOrFail($id);
+        $this->authorize('create', $storie);
+        
         $chapter = new Chapter;
 
         $chapter->title = $request->title;
+
         $chapter->content = $request->content;
+
         $chapter->numberofwords = count(preg_split('~[^\p{L}\p{N}\']+~u', $request->content)) - 1;
+
         $chapter->authornotes = $request->authornotes;
+
         $chapter->storie_id = $id;
 
         $chapter->save();
 
-        $storie = Storie::findOrFail($id);
         $storie->numberofwords += $chapter->numberofwords;
-
         $storie->save();
 
         return redirect()->to(route('chapter.show', $chapter->id))->with('success_msg', 'História registrada com sucesso');
@@ -52,6 +58,8 @@ class ChapterController extends Controller
     {
         $chapter = Chapter::findOrFail($id);
 
+        $this->authorize('update', $chapter);
+
         return view('storie.chapter.edit', [
             'chapter' => $chapter,
         ]);
@@ -60,6 +68,8 @@ class ChapterController extends Controller
     public function update(Request $request, $id)
     {
         $chapter = Chapter::findOrFail($id);
+
+        $this->authorize('update', $chapter);
 
         if ($chapter->title !== $request->title) {
             $chapter->title = $request->title;
@@ -89,6 +99,8 @@ class ChapterController extends Controller
     public function destroy($id)
     {
         $chapter = Chapter::findOrFail($id);
+
+        $this->authorize('delete', $chapter);
 
         $storie = Storie::findOrFail($chapter->storie->id);
         $storie->numberofwords -= $chapter->numberofwords;
