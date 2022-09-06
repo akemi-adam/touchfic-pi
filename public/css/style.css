@@ -32,14 +32,70 @@ header li {
     text-decoration: none;
     display: block;
     color: #262626;
-    font-family: 'Yu Gothic UI';
+    font-family: 'Yu Gothic';
     font-weight: bold;
     font-size: 13pt;
+    padding: 2px;
 }
 
-header a:hover {
+.nav-link:hover {
     color: #d72326;
+}
+
+.submenu {
+    display: none;
+    font-family: 'Yu Gothic';
+    position: fixed;
+    padding: 5px;
+    background-color: #ffffff;
+}
+
+.submenu a {
+    text-decoration: none;
+    color: #262626;
+    display: block;
+    padding: 4px;
+}
+
+nav ul li:hover .submenu {
+    display: block;
+    color: #262626;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px #909090;
+}
+
+nav ul li:hover .submenu ul {
+    display: block;
+    color: #262626;
     transition: 0.2s;
+}
+
+nav ul li:hover .submenu li:hover {
+    background-color: #e5e0e0;
+    transition: background 0.2s;
+    border-radius: 5px;
+}
+
+.search-bar input {
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    border: 0;
+    padding: 8px;
+    font-family: 'Yu Gothic';
+    font-size: 12pt;
+}
+
+.search-bar input:focus {
+    outline-color: rgb(120, 191, 243);
+}
+
+.search-bar button {
+    background-color: #ff4044;
+    color: #ffffff;
+    border: 0;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .logo {

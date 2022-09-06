@@ -41,16 +41,22 @@
             @endif
         </div>
         @if (Auth::check())
-            <div>
+            <div class="search-bar">
                 <form action="{{ route('search') }}" method="get">
                     <input type="text" name="argument" placeholder="Pesquisar...">
-                    <button style="display: inline-block"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
         @endif
         <nav>
             <ul>
-                <li><a href="{{route('storie.index')}}" class="nav-link">Histórias</a></li>
+                <li>
+                <a href="{{route('storie.index')}}" class="nav-link">Histórias <i class="fa-solid fa-caret-down"></i></a>
+                    <ul class="submenu">
+                        <li class="nav-link"><a href="{{ route('storie.create') }}"><i class="fa-solid fa-plus"></i> Criar história</a></li>
+                        <li class="nav-link"><a href="{{ route('storie.mystories', Auth::user()->id) }}">Minhas histórias</a></li>
+                    </ul>
+                </li>
                 <li><a href="{{route('post.index')}}" class="nav-link">Linha do tempo</a></li>
                 <li><a href="{{route('root.about')}}" class="nav-link">Sobre</a></li>
                 <li><a href="{{route('root.faq')}}" class="nav-link">FAQ</a></li>
