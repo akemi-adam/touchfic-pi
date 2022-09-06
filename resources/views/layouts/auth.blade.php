@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {{-- Ícones --}}
-    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/3629/3629072.png">
+    <link rel="shortcut icon" href="{{ asset('storage/images/icon/touchfic-logo.png') }}">
     <script src="https://kit.fontawesome.com/f17bb9c677.js" crossorigin="anonymous"></script>
     
     {{-- CSS da Aplicação --}}
