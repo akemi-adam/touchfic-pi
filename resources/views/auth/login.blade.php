@@ -1,23 +1,20 @@
-@extends('layouts.main')
+@extends('layouts.auth')
 
 @section('title', 'Login')
 
 @section('content')
-<body style="background-color: #EFEFEF">
+<body>
     <div class="container-register-form">
         <div class="register-camp">
             <form action="{{route('login')}}" method="post">
                 @csrf
                 <h2 class="title-auth">Iniciar sessão</h2>
                 
-                    <input type="email" name="email" id="email" placeholder="E-mail" autofocus>
+                <input type="email" name="email" id="email" placeholder="E-mail" autofocus>
+            
+                <input type="password" name="password" placeholder="Senha">
                 
-
-                
-                    <input type="password" name="password" placeholder="Senha">
-                
-
-                <button class="register-button">Entrar</button>
+                <button class="auth-button">Entrar</button>
             </form>
 
             <div class="social-media-container">

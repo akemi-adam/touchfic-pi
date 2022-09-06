@@ -1,49 +1,39 @@
-@extends('layouts.main')
+@extends('layouts.auth')
 
 @section('title', 'Cadastre-se já!')
     
 @section('content')
-    <div class="container-title">
-        <h1 class="title"><mark>Cadastro</mark></h1>
-        <h4 class="subtitle">Desfrute de uma biblioteca diversa e publique a sua própria história com uma conta Touchfic!</h4>
-    </div>
+<body>
     <div class="container-register-form">
         <div class="register-camp">
             <form action="{{route('register')}}" method="post" class="form">
                 @csrf
-                <label for="name">
-                    Nome
-                </label>
-                <input type="text" name="name" placeholder="nome...">
+                <h2 class="title-auth">Criar uma conta</h2>
+                <input type="text" name="name" placeholder="Nome" autofocus>
             
-                <label for="email">
-                    E-mail
-                </label>
-                <input type="email" name="email" placeholder="email...">
+                <input type="email" name="email" placeholder="E-mail">
             
-                <label for="password">
-                    Senha
-                </label>
-                <input type="password" name="password" placeholder="senha...">
+                <input type="password" name="password" placeholder="Senha">
 
                 <!-- Confirm Password -->
-                <label for="password_confirmation">
-                    Confirme a senha
-                </label>
-                <input type="password" id="password_confirmation" name="password_confirmation">
+                <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirmar senha">
                 
-                <button class="register-button">
-                    Enviar
+                <button class="auth-button">
+                    Criar conta
                 </button>
-                
-                <div>
-                    <a href="{{ route('google.login') }}" class="register-link">Fazer registro com o Google</a>
+
+                <hr>
+                <div class="social-media-google">
+                    <a href="{{ route('google.login') }}"><i class="fa-brands fa-google"></i> Cadastrar com Google</a>
                 </div>
 
-                <a href="{{route('login')}}" class="register-link">
-                    Tem conta? Entre agora!
-                </a>
+                <div class="redirect-login-register">
+                    <a href="{{route('login')}}">
+                        Já tem uma conta? <span>Entre agora!</span>
+                    </a>
+                </div>
             </form>
         </div>
     </div>
+</body>
 @endsection
