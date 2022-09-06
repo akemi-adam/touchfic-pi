@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {{-- Ícones --}}
-    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/3629/3629072.png">
+    <link rel="shortcut icon" href="{{ asset('storage/images/icon/touchfic-logo.png') }}">
     <script src="https://kit.fontawesome.com/f17bb9c677.js" crossorigin="anonymous"></script>
     
     {{-- CSS da Aplicação --}}
@@ -35,9 +35,9 @@
     <header>
         <div>
             @if (!Auth::check())
-                <a href="{{route('root.home')}}" class="logo"><img src="https://cdn-icons-png.flaticon.com/512/3629/3629072.png" alt="touchfic">touchfic</a>
+                <a href="{{route('root.home')}}" class="logo"><img src="{{ asset('storage/images/icon/touchfic-logo.png') }}" alt="touchfic">touchfic</a>
             @else
-                <a href="{{route('dashboard')}}" class="logo"><img src="https://cdn-icons-png.flaticon.com/512/3629/3629072.png" alt="touchfic">touchfic</a>
+                <a href="{{route('dashboard')}}" class="logo"><img src="{{ asset('storage/images/icon/touchfic-logo.png') }}" alt="touchfic">touchfic</a>
             @endif
         </div>
         @if (Auth::check())
@@ -101,9 +101,6 @@
                 <li><a href="{{route('root.home')}}">Termos de Uso</a></li>
                 <li><a href="{{route('root.home')}}">Política de Privacidade</a></li>
             </ul>
-        </div>
-        <div class="div-credits">
-            <a href="https://www.flaticon.com/br/icones-gratis/tocha" title="tocha ícones">Tocha ícones criados por Freepik - Flaticon</a>
         </div>
     </footer>
 
