@@ -44,6 +44,16 @@ class StorieController extends Controller
         ]);
     }
 
+    public function likesOfStorie($id)
+    {
+
+        $datas = DB::table('storie_user')->join('users', 'users.id', '=', 'storie_user.user_id')->where('storie_user.storie_id', $id)->where('storie_user.liked', 1)->get();
+
+        return view('storie.likesofstorie', [
+            'datas' => $datas,
+        ]);
+    }
+
 
     public function create()
     {

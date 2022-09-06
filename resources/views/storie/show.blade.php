@@ -22,7 +22,7 @@
             {{ $storie->updated_at }}
         @endif
     </small><br>
-    <strong id="likes" value="{{ $amount }}">Curtidas: {{ $amount }}</strong><br>
+    <strong><a href="{{route('likes.of.storie', $storie->storie_id)}}" id="likes" value="{{ $amount }}">Curtidas: {{ $amount }}</a></strong><br>
 
     @can('authenticated')
         @livewire('like', ['storieId' => $storie->storie_id])

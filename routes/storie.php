@@ -10,6 +10,8 @@ Route::resource('/storie', StorieController::class);
 
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
+Route::get('/likes-of-storie/{id}', [StorieController::class, 'likesOfStorie'])->name('likes.of.storie');
+
 Route::middleware(['auth'])->group(function ()
 {
     Route::get('/storie/{user}/mystories', [StorieController::class, 'myStories'])->name('storie.mystories');
