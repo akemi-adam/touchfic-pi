@@ -40,6 +40,7 @@ class SocialAuthController extends Controller
             $newUser->permission_id = 1;
 
             $newUser->password = Hash::make(Str::random(10));
+            $newUser->save();
 
             Auth::login($newUser, true);
         }

@@ -18,6 +18,8 @@ Route::name('root.')->group(function ()
     Route::view('/', 'welcome')->middleware('guest')->name('home');
     Route::view('/about', 'about')->name('about');
     Route::view('/faq', 'faq')->name('faq');
+    Route::view('/terms-of-services', 'terms')->name('terms');
+    Route::view('/privacy-policy', 'policy')->name('policy');
 });
 
 Route::middleware(['auth'])->group(function ()
