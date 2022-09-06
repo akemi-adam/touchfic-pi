@@ -20,7 +20,7 @@
         </h2>
     @endforelse
     @forelse ($users as $user)
-        <img src="/img/user/avatar/{{ $user->avatar }}" alt="Avatar do usuário" class="avatar">
+        <img src="{{ asset('storage/images/user/avatar/' . $user->avatar) }}" alt="Avatar do usuário" class="avatar">
         <h3><a href="{{ route('user.show', $user->id) }}">{{$user->name}}</a></h3>
     @empty
         <h2>

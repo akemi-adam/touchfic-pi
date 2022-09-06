@@ -53,7 +53,7 @@ Depois disso, é preciso usar o comando `php artisan storage:link` para linkar a
   - user
      - avatar
 
-Será necessário também que dentro de cover e de avatar existam arquivos default com os seguintes nomes, respectivamente: `default-storie_cover.png` e `default-user-avatar.png`
+Será necessário também que dentro de cover e de avatar existam arquivos default com os seguintes nomes, respectivamente: `default-storie-cover.png` e `default-user-avatar.png`
 
 ## Comandos
 

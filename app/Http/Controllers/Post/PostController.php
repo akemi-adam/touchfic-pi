@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Commentpost;
 use App\Models\Post;
-use App\Models\User;
 use Auth;
 
 class PostController extends Controller
@@ -14,12 +13,10 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::all();
-        $users = User::all();
+        $posts = Post::orderBy('updated_at', 'DESC')->get();
 
         return view('post.index', [
             'posts' => $posts,
-            'users' => $users,
         ]);
     }
 

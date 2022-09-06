@@ -25,6 +25,13 @@
                                 <button>Deletar</button>
                             </form>
                         @endif
+                        @if (Auth::user()->permission_id === 2 || Auth::user()->permission_id === 3)
+                            <form action="{{ route('moderator.post.destroy', $post->id) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button>Deletar como moderador</button>
+                            </form>
+                        @endif
                     @endcan
                     <a href="{{ route('post.show', $post->id) }}">Ver mais</a>
                     <br>
