@@ -235,11 +235,7 @@ footer p {
     justify-content: center;
     height: 100%;
     margin-bottom: 10%;
-}
-
-.register-camp input, button {
-    display: block;
-    width: 100%;
+    margin-top: 5%;
 }
 
 .register-camp {
@@ -249,23 +245,33 @@ footer p {
     max-width: 350px;
     min-height: 40vh;
     padding: 3rem;
-    height: 100%;
+    height: auto;
     border-radius: 6px;
     background-color: #ffffff;
-    box-shadow: 4px 4px 8px rgba(14, 14, 14, 0.485);
+    box-shadow: 4px 4px 10px rgba(14, 14, 14, 0.485);
 }
+
+/*.input-form input {
+    width: 100%;
+
+
+}*/
 
 .register-camp input {
     outline: 0;
     border-radius: 5px;
     border: 1px solid #dddfe2;
-    font-size: 13pt;
+    font-size: 12pt;
+    font-family: 'Work Sans';
+    padding: 5px;
+    background-color: #f3f3f3;
     margin-bottom: 10%;
+    width: 95%;
 }
 
 .register-camp input:focus {
-    box-shadow:0 0 0 2px #9c3587;
-	border-color: #f89f5b;
+    box-shadow:0 0 0 2px #e7f3ff;
+	border-color: #1877f2;
 }
 
 /*.register-camp label {
@@ -276,11 +282,14 @@ footer p {
 }*/
 
 .register-button {
-    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     border: none;
-    padding: 5px;
-    font-family: 'Yu Gothic';
-    font-weight: bold;
+    padding: 10px;
+    font-family: 'Work Sans';
+    font-weight: 500;
     font-size: 13pt;
     border-radius: 5px;
     margin-bottom: 5%;
@@ -288,27 +297,60 @@ footer p {
     color: #ffffff;
 }
 
-.register-button button {
-    display: flex;
-    justify-content: center;
+.register-button:hover {
+    background-color: #d72326;
+    transition: background 0.3s;
 }
 
 .social-media-google {
     display: flex;
     text-align: center;
     justify-content: center;
-    background-color: #ffffff;
-    border: 1px solid #e3e3e3;
-    padding: 8px;
-    border-radius: 4px;
 }
 
 .social-media-google a {
     text-decoration: none;
     font-size: 13pt;
-    font-family: 'Yu Gothic';
-    font-weight: 600;
+    font-family: 'Work Sans';
+    font-weight: 500;
     color: #d72326;
+    background-color: #ffffff;
+    border: 1px solid #e3e3e3;
+    padding: 8px;
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 5%;
+}
+
+.redirect-login-register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.redirect-login-register a {
+    text-decoration: none;
+    font-family: 'Work Sans';
+    font-weight: 500;
+    color: #262626;
+}
+
+.redirect-login-register span {
+    color: #ff4044;
+}
+
+.redirect-login-register span:hover {
+    color: #d72326;
+    transition: color 0.3s;
+}
+
+.title-auth {
+    color: black;
+    font-family: 'Work Sans';
+    font-weight: 600;
+    font-size: 20pt;
+    text-align: center;
 }
 
 .register-link {

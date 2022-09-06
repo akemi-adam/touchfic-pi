@@ -51,7 +51,7 @@
         <nav>
             <ul>
                 <li>
-                <a href="{{route('storie.index')}}" class="nav-link">Histórias <i class="fa-solid fa-caret-down"></i></a>
+                <a href="{{route('storie.index')}}" class="nav-link">Histórias</a>
                     <ul class="submenu">
                         <li class="nav-link"><a href="{{ route('storie.create') }}"><i class="fa-solid fa-plus"></i> Criar história</a></li>
                         @can('authenticated')

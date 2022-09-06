@@ -8,14 +8,14 @@
         <div class="register-camp">
             <form action="{{route('login')}}" method="post">
                 @csrf
-                <h2>Iniciar sessão</h2>
-                <div>
-                    <input type="email" name="email" id="email" placeholder="e-mail">
-                </div>
+                <h2 class="title-auth">Iniciar sessão</h2>
+                
+                    <input type="email" name="email" id="email" placeholder="E-mail" autofocus>
+                
 
-                <div>
-                    <input type="password" name="password" placeholder="senha">
-                </div>
+                
+                    <input type="password" name="password" placeholder="Senha">
+                
 
                 <button class="register-button">Entrar</button>
             </form>
@@ -29,9 +29,9 @@
 
             </div>
 
-            <div>
+            <div class="redirect-login-register">
                 <a href="{{route('register')}}">
-                    Não tem conta? Cadastre-se grátis!
+                    Não tem conta? <span>Cadastre-se grátis!</span>
                 </a>
             </div>
         </div>
