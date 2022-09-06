@@ -78,7 +78,7 @@
     @if (Auth::check())
         @if (!isset(Auth::user()->email_verified_at))
             <p class="msg msg-danger">
-                Seu email ainda não foi verificado! Caso não tenha recebido, clique aqui:
+                Seu e-mail ainda não foi verificado! Caso não tenha recebido, clique aqui:
             </p>
             <form action="{{ route('verification.send') }}" method="post" style="display: inline">
                 @csrf
@@ -94,13 +94,6 @@
     <footer>
         <div>
             <p>Touchfic: crie e leia histórias com um só toque</p>
-            <ul>
-                <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa-brands fa-tiktok"></i></a></li>
-                <li><a href="#"><i class="fa-brands fa-pinterest"></i></a></li>
-            </ul>
         </div>
         <div>
             <ul>
