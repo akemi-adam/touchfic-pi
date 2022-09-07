@@ -38,11 +38,11 @@
         @livewire('like', ['storieId' => $storie->storie_id])
     @endcan
     </div>
-    
-    <p>Gêneros:</p>
+
+    <span>Gêneros:</span>
     <ul>
         @foreach ($genres as $genre)
-            <li style="color:rgb(87, 87, 87)">{{$genre->genre}}</li> 
+            <li style="color: #262626">{{$genre->genre}}</li> 
         @endforeach
     </ul>
 <h4>Sinopse:</h4>

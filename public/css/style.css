@@ -451,6 +451,10 @@ footer p {
     width: 90%;
 }
 
+.likes-container {
+    margin-bottom: 18px;
+}
+
 .like-button {
     background-color: #262626;
     color: #ffffff;
@@ -467,9 +471,13 @@ footer p {
     transition: background 0.3s;
 }
 
+.like-button:active {
+    background-color: #262626;
+}
+
 .div-stories {
     text-align: justify;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'EB Garamond', sans-serif;
 }
 
 .div-stories h3 {
@@ -481,6 +489,7 @@ footer p {
 
 .div-stories p {
     font-size: 13pt;
+    font-family: 'EB Garamond', sans-serif;
 }
 
 .create-button {
@@ -728,6 +737,10 @@ textarea {
     font-size: 16pt;
 }
 
+.chapter-text-indent {
+    font-size: 18pt;
+}
+
 .container-chapter {
     display: flex;
     flex-direction: column;
@@ -738,15 +751,16 @@ textarea {
 }
 
 .chapter-info {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Yu Gothic';
+    font-weight: 600;
 }
 
 .div-chapter {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'EB Garamond';
 }
 
-.author-note {
-    font-size: 13pt;
+.author-notes {
+    font-size: 15pt;
 }
 
 .chapter-text {
