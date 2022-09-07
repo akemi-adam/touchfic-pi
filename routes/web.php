@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\PermissionController;
-use App\Http\Controllers\Admin\GenreController;
-use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\{
+    PermissionController, GenreController, UserController
+};
+use App\Http\Livewire\ShowNotifications;
 
 
 /*
@@ -12,6 +13,7 @@ use App\Http\Controllers\Admin\UserController;
 |--------------------------------------------------------------------------
 */
 
+Route::get('/user/notifications', ShowNotifications::class)->middleware(['auth'])->name('user.notifications');
 
 Route::name('root.')->group(function ()
 {

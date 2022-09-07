@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Storie\CommentchapterController;
-use App\Http\Controllers\Storie\ChapterController;
-use App\Http\Controllers\Storie\SearchController;
-use App\Http\Controllers\Storie\StorieController;
+use App\Http\Controllers\Storie\{
+    CommentchapterController, ChapterController, SearchController, StorieController
+};
+
 
 Route::resource('/storie', StorieController::class);
 

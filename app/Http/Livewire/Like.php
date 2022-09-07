@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Illuminate\Support\Facades\DB;
+use App\Events\StorieLike;
 use Livewire\Component;
 use App\Models\Storie;
 use App\Models\User;
@@ -12,6 +13,8 @@ class Like extends Component
 {
 
     public $storieId;
+
+    public $authorId;
 
     public function status()
     {
@@ -26,6 +29,8 @@ class Like extends Component
         DB::insert('insert into storie_user (storie_id, user_id, liked) values (?, ?, ?)', [
             $this->storieId, Auth::user()->id, 1
         ]);
+
+        StorieLike::dispatch(Auth::user(), Storie::find($this->storieId), User::find($this->authorId));
 
         $this->status = true;
     }

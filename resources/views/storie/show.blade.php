@@ -35,7 +35,7 @@
     
 
     @can('authenticated')
-        @livewire('like', ['storieId' => $storie->storie_id])
+        @livewire('like', ['storieId' => $storie->storie_id, 'authorId' => $storie->user_id])
     @endcan
     </div>
 

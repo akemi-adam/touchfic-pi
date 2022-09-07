@@ -51,18 +51,6 @@
         @endif
         <nav>
             <ul>
-                @can('authenticated')
-                <li>
-                <a href="{{route('user.show', Auth::user()->id)}}" class="nav-link">{{Auth::user()->name}}</a>
-                    <ul class="submenu">
-                        <li class="nav-link"><a href="{{route('user.notifications')}}">Notificaçãoes</a></li>
-                        <form action="{{route('logout')}}" method="post">
-                            @csrf
-                            <li class="nav-link"><a onclick="event.preventDefault(); this.closest('form').submit();">Sair</a></li>
-                        </form>
-                    </ul>
-                </li>
-                @endcan
                 <li>
                 <a href="{{route('storie.index')}}" class="nav-link">Histórias</a>
                         @can('authenticated')
@@ -72,6 +60,7 @@
                             <li class="nav-link"><a href="{{ route('storie.likes', Auth::user()->id) }}">Histórias favoritas</a></li>
                         </ul>
                         @endcan
+                    
                 </li>
                 <li><a href="{{route('post.index')}}" class="nav-link">Linha do tempo</a></li>
                 <li><a href="{{route('root.about')}}" class="nav-link">Sobre</a></li>
@@ -102,7 +91,7 @@
     @endif
     
     {{-- Seção do Conteúdo --}}
-    @yield('content')
+    {{ $slot }}
 
     {{-- Footer --}}
     <footer>
