@@ -17,7 +17,7 @@
             <a href="{{ route('storie.index') }}">Visualizar histórias <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="div-faq">
-            <p><i class="fa-solid fa-heart"></i><strong> Perfil</strong></p>
+            <p><i class="fa-solid fa-heart"></i><strong> Lista das suas histórias favoritas!</strong></p>
             <a href="{{route('storie.likes', Auth::user()->id)}}">Histórias favoritas<i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="div-faq">

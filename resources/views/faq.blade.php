@@ -17,7 +17,7 @@
         </div>
         <div class="div-faq">
             <h3><span>2. Como adiciono capítulos nas minhas histórias?</span></h3>
-            <p>Para adicionar um capítulo a qualquer uma de suas histórias, é preciso, após ter seguido os passos do <strong>Item 2</strong>, acessar a página <strong>Minhas histórias</strong> no menu de opções do usuário. Em seguida, selecione "Visualizar" na história que você desejar, e depois "Criar capítulo". Adicione o conteúdo necessário, envie e pronto! O capítulo já está disponível para leitura instantaneamente.</p>
+            <p>Para adicionar um capítulo a qualquer uma de suas histórias, é preciso, após ter seguido os passos do <strong>Item 1</strong>, acessar a página <strong>Minhas histórias</strong> no menu de opções do usuário. Em seguida, selecione "Visualizar" na história que você desejar, e depois "Criar capítulo". Adicione o conteúdo necessário, envie e pronto! O capítulo já está disponível para leitura instantaneamente.</p>
         </div>
         <div class="div-faq">
             <h3><span>3. Quero excluir minha história do Touchfic. Como faço isso?</span></h3>

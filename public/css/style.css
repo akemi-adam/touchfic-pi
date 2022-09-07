@@ -123,13 +123,15 @@ nav ul li:hover .submenu li:hover {
 }
 
 .banner h1 {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Work Sans';
+    font-weight: 500;
     text-align: center;
     color: white;
 }
 
 .banner h2 {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Work Sans';
+    font-weight: 500;
     text-align: center;
     margin-top: 5%;
 }
@@ -141,64 +143,32 @@ nav ul li:hover .submenu li:hover {
     padding: 20px;
     border: none;
     border-radius: 10px;
-    background: rgb(70,24,61);
-    background: linear-gradient(360deg, rgba(70,24,61,1) 0%, rgba(108,37,94,1) 35%, rgba(156,53,135,1) 100%);
+    background: #ff4044;
 }
 
 .banner a:hover {
-    background: rgb(99,34,87);
-    background: linear-gradient(360deg, rgba(99,34,87,1) 0%, rgba(142,49,123,1) 35%, rgba(199,68,172,1) 100%);
+    background-color: #d72326;
 }
 
 .banner a:active {
-    background: rgb(65,23,57);
-    background: linear-gradient(360deg, rgba(65,23,57,1) 0%, rgba(98,34,86,1) 35%, rgba(103,36,89,1) 100%);
+    background-color: #a21618;
 }
 
 /* FOOTER */
 footer {
     display: flex;
     flex-direction: column;
-    background-color: #312222;
-    padding: 30px 0;
+    background-color: #ffffff;
+    padding: 20px;
+    color: #4c4c4c;
 }
 
-footer ul {
+footer span {
     display: flex;
-    margin-bottom: 20px;
-}
-
-footer ul li {
-    margin-right: 10px;
-    list-style: none;
-}
-
-footer ul li:last-child {
-    margin-right: 0;
-}
-
-footer a {
-    color: white;
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-}
-
-footer a:hover {
-    text-decoration: underline;
-    transition: 0.2s;
-}
-
-footer p {
-    display: flex;
-    margin-left: 35px;
-    color: white;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 15pt;
-}
-
-.div-credits a {
-    margin-left: 35px;
-    font-size: 10pt;
+    justify-content: center;
+    font-family: 'Work Sans';
+    font-weight: 600;
+    font-size: 12pt;
 }
 
 /* TITLE */
@@ -219,7 +189,7 @@ footer p {
     margin-top: 0;
     margin-left: 5%;
     font-family: 'Yu Gothic';
-    color: #3f1651;
+    color: #262626;
     font-size: 15pt;
 }
 
@@ -342,20 +312,21 @@ footer p {
 
 .div-faq {
     text-align: justify;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Work Sans';
 }
 
 .div-faq span {
-    background-color: #f09adf;
-    color: #3f0e35;
+    color: #262626;
+    font-size: 16pt;
 }
 
 .div-faq p {
-    font-size: 13pt;
+    font-size: 15pt;
+    font-weight: 400;
 }
 
 .div-faq a {
-    color: #dd2059;
+    color: #ff4044;
     font-weight: bold;
 }
 

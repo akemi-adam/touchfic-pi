@@ -53,13 +53,14 @@
             <ul>
                 <li>
                 <a href="{{route('storie.index')}}" class="nav-link">Histórias</a>
-                    <ul class="submenu">
-                        <li class="nav-link"><a href="{{ route('storie.create') }}"><i class="fa-solid fa-plus"></i> Criar história</a></li>
                         @can('authenticated')
+                        <ul class="submenu">
+                            <li class="nav-link"><a href="{{ route('storie.create') }}"><i class="fa-solid fa-plus"></i> Criar história</a></li>
                             <li class="nav-link"><a href="{{ route('storie.mystories', Auth::user()->id) }}">Minhas histórias</a></li>
                             <li class="nav-link"><a href="{{ route('storie.likes', Auth::user()->id) }}">Histórias favoritas</a></li>
+                        </ul>
                         @endcan
-                    </ul>
+                    
                 </li>
                 <li><a href="{{route('post.index')}}" class="nav-link">Linha do tempo</a></li>
                 <li><a href="{{route('root.about')}}" class="nav-link">Sobre</a></li>
@@ -95,13 +96,7 @@
     {{-- Footer --}}
     <footer>
         <div>
-            <p>Touchfic: crie e leia histórias com um só toque</p>
-        </div>
-        <div>
-            <ul>
-                <li><a href="{{route('root.home')}}">Termos de Uso</a></li>
-                <li><a href="{{route('root.home')}}">Política de Privacidade</a></li>
-            </ul>
+            <span>&copy; Touchfic</span>
         </div>
     </footer>
 

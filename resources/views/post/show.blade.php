@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Postagem')
+@section('title', $post->content)
     
 @section('content')
 <br>
