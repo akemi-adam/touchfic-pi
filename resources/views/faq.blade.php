@@ -11,7 +11,7 @@
     <div class="container-faq">
         <div class="div-faq">
             <h3><span>1. Como publico as minhas histórias?</span></h3>
-            <p>Para publicar uma história no Touchfic, você deve ter uma conta no site e inciar sua sessão em <a href="/login" target="_blank">Login</a> (caso não possua uma conta, <a href="/register" target="_blank">clique aqui</a> para se registrar).</p>
+            <p>Para publicar uma história no Touchfic, você deve ter uma conta no site e inciar sua sessão em <a href="/login">Login</a> (caso não possua uma conta, <a href="/register">clique aqui</a> para se registrar).</p>
             <p>Ao iniciar sua sessão, você irá se deparar com um menu repleto de opções. Clique em <strong>Criar uma história</strong> para prosseguir. Agora, é só adicionar título, descrição, faixa etária <strong>(lembre-se de selecionar cuidadosamente esta opção)</strong> e gênero(s).</p>
             <p>Pronto! Sua história vai estar publicada na plataforma do Touchfic no mesmo instante!</p>
         </div>
