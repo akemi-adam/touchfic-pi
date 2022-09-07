@@ -80,7 +80,7 @@ class StorieController extends Controller
 
         $storie->save();
 
-        $storie->users()->attach(Auth::user()->id);
+        $storie->users()->attach(Auth::user()->id, ['author_id' => Auth::user()->id, 'author_name' => Auth::user()->name]);
 
         foreach ($request->genres as $genre) {
             $storie->genres()->attach($genre);

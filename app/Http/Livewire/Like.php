@@ -26,8 +26,9 @@ class Like extends Component
 
     public function enjoy()
     {
-        DB::insert('insert into storie_user (storie_id, user_id, liked) values (?, ?, ?)', [
-            $this->storieId, Auth::user()->id, 1
+        $authorName = User::where('id', $this->authorId)->first(['name']);
+        DB::insert('insert into storie_user (storie_id, user_id, liked, author_id, author_name) values (?, ?, ?, ?, ?)', [
+            $this->storieId, Auth::user()->id, 1, $this->authorId, $authorName['name']
         ]);
 
         StorieLike::dispatch(Auth::user(), Storie::find($this->storieId), User::find($this->authorId));

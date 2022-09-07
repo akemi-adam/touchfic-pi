@@ -8,7 +8,7 @@
         <img src="{{ asset('storage/images/storie/cover/' . $storie->cover) }}" class="cover-index">
         <strong>Faixa etária: {{ $storie->agegroup->agegroup }}</strong><br>
         <strong>Número de palavras: {{ $storie->numberofwords }}</strong><br>
-        <a href="{{ route('user.show', $storie->user_id) }}">{{$storie->name}}</a>
+        <a href="{{ route('user.show', $storie->author_id) }}">{{$storie->author_name}}</a>
         {{-- <strong>Número de likes: </strong> --}}
         <p>
             {{ $storie->synopsis }}
