@@ -5,7 +5,7 @@
 @section('content')
     <div class="container-title">
         <h1 class="title">
-        <mark>Sobre o Touchfic</mark>
+        Sobre o Touchfic
         </h1>
     </div>
     <div class="container-faq">

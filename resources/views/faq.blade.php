@@ -5,7 +5,7 @@
 @section('content')
     <div class="container-title">
         <h1 class="title">
-            <mark>FAQ - Perguntas frequentes</mark>
+            FAQ - Perguntas frequentes
         </h1>
     </div>
     <div class="container-faq">

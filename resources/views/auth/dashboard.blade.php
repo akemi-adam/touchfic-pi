@@ -5,10 +5,10 @@
 @section('content')
     <div class="container-title">
         <h1 class="title">
-            <mark>Olá, seja bem-vindo</mark>
+            Olá, boas-vindas!
         </h1>
         <h2 class="subtitle">
-            Boas-vindas! Selecione a opção de sua preferência
+            Selecione a opção de sua preferência
         </h2>
     </div>
     <div class="container-faq">

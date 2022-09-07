@@ -205,26 +205,20 @@ footer p {
 .container-title {
     display: flex;
     flex-direction: column;
-
 }
 
 .title {
     margin-top: 3%;
     margin-left: 5%;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: #3f1651;
-
-}
-
-.title mark {
-    background-color: #f89f5b;
-    color: #3f1651;
+    font-family: 'Yu Gothic';
+    color: #ff4044;
+    font-weight: bold;
 }
 
 .subtitle {
     margin-top: 0;
     margin-left: 5%;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Yu Gothic';
     color: #3f1651;
     font-size: 15pt;
 }
@@ -394,7 +388,8 @@ footer p {
     background-color: rgb(89, 22, 22);
 }
 
-.div-error {
+
+/*.div-error {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -405,11 +400,45 @@ footer p {
 
 .div-error img {
     width: 30%;
+}*/
+
+.storie-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
 }
 
-.div-error h1, h2 {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: #3f0e35;
+.storie-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.storie-title-container {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+}
+
+.storie-title {
+    color: #262626;
+    font-family: 'Yu Gothic';
+    font-size: 24pt;
+    font-weight: 600;
+    padding: 5px;
+}
+
+.storie-data-1 {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Yu Gothic';
+    font-weight: 500;
+    font-size: 15pt;
 }
 
 .container-stories {
@@ -420,6 +449,22 @@ footer p {
     height: 100%;
     margin-bottom: 10%;
     width: 90%;
+}
+
+.like-button {
+    background-color: #262626;
+    color: #ffffff;
+    border: none;
+    padding: 6px;
+    border-radius: 8px;
+    font-size: 13pt;
+    font-family: 'Yu Gothic';
+    font-weight: 600;
+}
+
+.like-button:hover {
+    background-color: #4c4c4c;
+    transition: background 0.3s;
 }
 
 .div-stories {

@@ -1,34 +1,45 @@
 @extends('layouts.main')
 
-@section('title', 'História show')
+@section('title', $storie->title)
 
 @section('scripts')
     <script src="/js/amountlikes.js" defer></script>
 @endsection
 
 @section('content')
-    <h2>
-        {{ $storie->title }}
-    </h2>
-    <img src="{{ asset('storage/images/storie/cover/' . $storie->cover) }}" class="cover-show"><br>
-    <a href="{{ route('user.show', $storie->user_id) }}">{{ $storie->name }}</a><br>
-    <span>Faixa etária: {{ $storie->agegroup->agegroup }}</span><br>
-    <span>Número de palavras: {{ $storie->numberofwords }}</span><br>
-    <span>Data: </span>
-    <small>
+<section class="storie-info-container">
+    <section class="storie-info">
+    <div class="storie-title-container">
+        <h2 class="storie-title">
+            {{ $storie->title }}
+        </h2>
+    </div>
+    <img src="{{ asset('storage/images/storie/cover/' . $storie->cover) }}" class="cover-show">
+    
+    <div class="storie-data-1">
+    <p>Escrita por: <a href="{{ route('user.show', $storie->user_id) }}">{{ $storie->name }}</a></p>
+    <span>Faixa etária: <span style="font-weight: bold;">{{ $storie->agegroup->agegroup }}</span></span>
+    <span>Número de palavras: <span style="font-weight: bold;">{{ $storie->numberofwords }}</span></span>
+    <span>Data de publicação: <span style="font-weight: bold;">
+
         @if ($storie->created_at === $storie->updated_at)
             {{ $storie->created_at }}
         @else
             {{ $storie->updated_at }}
         @endif
-    </small><br>
-    <strong><a href="{{route('likes.of.storie', $storie->storie_id)}}" id="likes" value="{{ $amount }}">Curtidas: {{ $amount }}</a></strong><br>
+    </span>
+    </span>
+
+    <div class="likes-container">
+        <strong><a href="{{route('likes.of.storie', $storie->storie_id)}}" id="likes" value="{{ $amount }}">Curtidas: {{ $amount }}</a></strong>
+    
 
     @can('authenticated')
         @livewire('like', ['storieId' => $storie->storie_id])
     @endcan
+    </div>
     
-    <span>Gêneros:</span>
+    <p>Gêneros:</p>
     <ul>
         @foreach ($genres as $genre)
             <li style="color:rgb(87, 87, 87)">{{$genre->genre}}</li> 
@@ -53,6 +64,7 @@
             <form action="{{ route('chapter.create', $storie->storie_id) }}" method="get">
                 <button>Adicionar um capítulo</button>
             </form>
+    </div>
         @endif
     @endcan
     <hr>
@@ -85,4 +97,6 @@
     @empty
         <h2>A história não possui nenhum capítulo</h2>
     @endforelse
+    </section>
+</section>
 @endsection
