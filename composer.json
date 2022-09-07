@@ -11,7 +11,8 @@
         "laravel/sanctum": "^3.0",
         "laravel/socialite": "^5.5",
         "laravel/tinker": "^2.7",
-        "livewire/livewire": "^2.10"
+        "livewire/livewire": "^2.10",
+        "ivmelo/suap-api-php": "1.0.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
