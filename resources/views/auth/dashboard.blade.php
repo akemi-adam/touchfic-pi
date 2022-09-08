@@ -45,12 +45,4 @@
             <a href="{{route('user.show', Auth::user()->id)}}">Visualizar perfil<i class="fa-solid fa-arrow-right"></i></a>
         </div>
     </div>
-    <div class="container-logout">
-        <form action="{{route('logout')}}" method="post">
-            @csrf
-            <button>
-                Sair
-            </button>
-        </form>
-    </div>
 @endsection
