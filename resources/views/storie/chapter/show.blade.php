@@ -28,40 +28,11 @@
         </div>
     </div>
     <hr>
-    <form action="{{ route('chapter.comment.store', ['chapter'=>$chapter]) }}" method="post">
-        @csrf
-        <textarea name="content" id="comment" cols="30" rows="10" placeholder="O que você pensa sobre isso?"></textarea>
-        <button>
-            Enviar
-        </button>
-        <br>
-    </form>
-    <hr>
-    @forelse ($chapter->comments as $comment)
-        <div style="border: solid black 1px">
-            <img src="{{asset('storage/images/user/avatar/' . $comment->user->avatar)}}" class="avatar">
-            <small><strong>{{ $comment->user->name }} respondeu: </strong></small>
-            <p>
-                {{ nl2br($comment->content) }}
-            </p>
-            @can('authenticated')
-                @if ($comment->user_id === Auth::user()->id)
-                    <form action="{{ route('chapter.comment.edit', $comment->id) }}" method="get">
-                        <button>
-                            Editar
-                        </button>
-                    </form>
-                    <form action="{{ route('chapter.comment.destroy', $comment->id) }}" method="post">
-                        @csrf
-                        @method('delete')
-                        <button>
-                            Deletar
-                        </button>
-                    </form>
-                @endif
-            @endcan
-        </div>
-    @empty
-        <h2>Ninguém comentou nessa história ainda. Seja o pioneiro!</h2>
-    @endforelse
+    @livewire('comment', [
+        'model' => 'App\Models\Commentchapter',
+        'foreignCollumn' => 'chapter_id',
+        'foreignId' => $chapter->id,
+        'comments' => $chapter->comments,
+        'editRoute' => 'chapter.comment.edit'
+    ])
 @endsection

@@ -21,8 +21,6 @@ class CommentpostController extends Controller
             'user_id' => Auth::user()->id,
         ]);
 
-        $comments = $post->comments;
-
         return redirect("/post/$post->id")->with('success_msg', 'Comentário adicionado com sucesso!');
     }
 

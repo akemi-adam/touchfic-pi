@@ -35,13 +35,8 @@ Route::name('chapter.')->group(function ()
 
     Route::prefix('storie/chapter/comment')->name('comment.')->group(function ()
     {
-        Route::post('/store/{chapter}/', [CommentchapterController::class, 'store'])->name('store');
-
         Route::get('/{comment}/edit', [CommentchapterController::class, 'edit'])->name('edit');
-
         Route::put('/{comment}', [CommentchapterController::class, 'update'])->name('update');
-
-        Route::delete('/post/{comment}', [CommentchapterController::class, 'destroy'])->name('destroy');
     });
 
 });
