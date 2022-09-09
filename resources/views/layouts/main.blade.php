@@ -55,7 +55,15 @@
                 <li>
                 <a href="{{route('user.show', Auth::user()->id)}}" class="nav-link">{{Auth::user()->name}}</a>
                     <ul class="submenu">
-                        <li class="nav-link"><a href="{{route('user.notifications')}}">Notificaçãoes</a></li>
+                        <li class="nav-link">
+                            <a href="{{route('user.notifications')}}">
+                                Notificaçãoes
+                                @if (!empty(Auth::user()->unreadNotifications[0]))
+                                    <i class="fa-solid fa-circle"></i>
+                                @endif
+                            </a>
+                            
+                        </li>
                         <form action="{{route('logout')}}" method="post">
                             @csrf
                             <li class="nav-link"><a onclick="event.preventDefault(); this.closest('form').submit();">Sair</a></li>
