@@ -33,6 +33,7 @@
         'foreignCollumn' => 'chapter_id',
         'foreignId' => $chapter->id,
         'comments' => $chapter->comments,
-        'editRoute' => 'chapter.comment.edit'
+        'editRoute' => 'chapter.comment.edit',
+        'publication' => $chapter
     ])
 @endsection

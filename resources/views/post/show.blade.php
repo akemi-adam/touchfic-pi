@@ -41,7 +41,7 @@
         'foreignCollumn' => 'post_id',
         'foreignId' => $post->id,
         'comments' => $post->comments,
-        'editRoute' => 'post.comment.edit'
-
+        'editRoute' => 'post.comment.edit',
+        'publication' => $post
     ])
 @endsection
