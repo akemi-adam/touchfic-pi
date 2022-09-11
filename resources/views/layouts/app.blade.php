@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {{-- Ícones --}}
-    <link rel="shortcut icon" href="{{ asset('storage/images/icon/touchfic-logo.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <script src="https://kit.fontawesome.com/f17bb9c677.js" crossorigin="anonymous"></script>
     
     {{-- CSS da Aplicação --}}
@@ -36,9 +36,9 @@
     <header>
         <div>
             @if (!Auth::check())
-                <a href="{{route('root.home')}}" class="logo"><img src="{{ asset('storage/images/icon/touchfic-logo.png') }}" alt="touchfic">Touchfic</a>
+                <a href="{{route('root.home')}}" class="logo"><img src="{{ asset('storage/images/icon/touchfic-logo.svg') }}" alt="touchfic">Touchfic</a>
             @else
-                <a href="{{route('dashboard')}}" class="logo"><img src="{{ asset('storage/images/icon/touchfic-logo.png') }}" alt="touchfic">Touchfic</a>
+                <a href="{{route('dashboard')}}" class="logo"><img src="{{ asset('storage/images/icon/touchfic-logo.svg') }}" alt="touchfic">Touchfic</a>
             @endif
         </div>
         @if (Auth::check())
