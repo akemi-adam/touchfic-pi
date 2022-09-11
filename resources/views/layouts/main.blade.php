@@ -57,7 +57,7 @@
                     <ul class="submenu">
                         <li class="nav-link">
                             <a href="{{route('user.notifications')}}">
-                                Notificaçãoes
+                                Notificações
                                 @if (!empty(Auth::user()->unreadNotifications[0]))
                                     <i class="fa-solid fa-circle"></i>
                                 @endif
