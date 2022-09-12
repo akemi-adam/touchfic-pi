@@ -1,7 +1,6 @@
 /* IMPORT GOOGLE FONTS */
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300&family=Poppins:ital,wght@0,300;0,400;1,300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 body {
     background-color: var(--main-color-white);
@@ -21,7 +20,7 @@ body {
     /* FONTS */
     --font-1: 'Work Sans', Helvetica, sans-serif;
     --font-2: 'Yu Gothic', sans-serif;
-    --font-text: 'EB Garamond', Helvetica;
+    --font-text: 'Lato', sans-serif;
 }
 
  /* HEADER */
@@ -449,7 +448,7 @@ footer span {
 
 .div-stories {
     text-align: justify;
-    font-family: 'EB Garamond', sans-serif;
+    font-family: var(--font-text);
 }
 
 .div-stories h3 {
@@ -461,7 +460,7 @@ footer span {
 
 .div-stories p {
     font-size: 13pt;
-    font-family: 'EB Garamond', sans-serif;
+    font-family: var(--font-text);
 }
 
 .create-button {
@@ -710,7 +709,7 @@ textarea {
 }
 
 .chapter-text-indent {
-    font-size: 18pt;
+    font-size: 15pt;
 }
 
 .container-chapter {
@@ -728,12 +727,12 @@ textarea {
 }
 
 .div-chapter {
-    font-family: 'EB Garamond';
+    font-family: var(--font-text);
     color: var(--color-text);
 }
 
 .author-notes {
-    font-size: 15pt;
+    font-size: 13pt;
 }
 
 .chapter-text {
