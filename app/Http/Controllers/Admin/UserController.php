@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\User\UserProfileRequest;
+use App\Events\UpdateNotification;
 use App\Models\User;
 use Auth;
 
@@ -52,6 +53,8 @@ class UserController extends Controller
         }
 
         $user->save();
+
+        UpdateNotification::dispatch($user);
 
         return redirect("/user/$user->id")->with('success_msg', 'Perfil atualizado com sucesso!');
     }

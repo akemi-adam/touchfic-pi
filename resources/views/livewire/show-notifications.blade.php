@@ -28,7 +28,6 @@
             
                 {{-- Posts --}}
                 @if (Arr::exists($notification->data, 'post'))
-                    <h2>TESTE</h2>
                     <img src="{{ asset('storage/images/user/avatar/' . $notification->data['author']['avatar']) }}" class="avatar">
                     <a href="{{ route('user.show', $notification->data['author']['id']) }}">{{ $notification->data['author']['name'] }}</a> comentou na sua <a href="{{ route('post.show', $notification->data['post']['id'])}}">postagem</a>
                     <form wire:submit.prevent="readNotification('{{ $notification->id }}')">
