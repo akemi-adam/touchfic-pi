@@ -10,7 +10,7 @@ use App\Events\{
     StorieLike, CommentEvent, UpdateNotification
 };
 use App\Listeners\{
-    SendStorieLikeNotification, SendCommentNotification, UpdateLikeNotification
+    SendStorieLikeNotification, SendCommentNotification, UpdateLikeNotification, UpdateCommentNotification
 };
 
 class EventServiceProvider extends ServiceProvider
@@ -32,6 +32,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         UpdateNotification::class => [
             UpdateLikeNotification::class,
+            UpdateCommentNotification::class,
         ]
     ];
 
