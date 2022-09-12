@@ -39,31 +39,7 @@ class UpdateCommentNotification
                         'id' => $user->id
                     ]
                 ]);
-
-                /* if (Arr::exists($notification, 'post')) {
-
-                    $this->updateData($notification->data, $user)
-
-                }
-
-                if (Arr::exists($notification, 'chapter')) {
-
-                    $this->updateData($notification->data, $user)
-
-                } */
-
             }
-            
-            /* count(DB::table('notifications')->whereJsonContains('data', [
-                [
-                    'post'
-                ]
-            ])
-
-            if () {
-                
-            }
- */
         }
     }
 }
