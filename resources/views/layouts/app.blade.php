@@ -29,9 +29,9 @@
     <header>
         <div>
             @if (!Auth::check())
-                <a href="{{route('root.home')}}" class="logo"><img src="{{ asset('storage/images/icon/touchfic-logo.svg') }}" alt="touchfic">Touchfic</a>
+                <a href="{{route('root.home')}}" class="logo"><img src="/images/icons/touchfic-logo.svg" alt="touchfic">Touchfic</a>
             @else
-                <a href="{{route('dashboard')}}" class="logo"><img src="{{ asset('storage/images/icon/touchfic-logo.svg') }}" alt="touchfic">Touchfic</a>
+                <a href="{{route('dashboard')}}" class="logo"><img src="/images/icons/touchfic-logo.svg" alt="touchfic">Touchfic</a>
             @endif
         </div>
         @if (Auth::check())
