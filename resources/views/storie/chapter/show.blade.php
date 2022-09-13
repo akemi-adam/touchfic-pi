@@ -27,6 +27,20 @@
             </p>
         </div>
     </div>
+    @if (!is_null($previous))
+        <form action="{{ route('chapter.show', $previous) }}" method="get">
+            <button>
+                Anterior
+            </button>
+        </form>
+    @endif
+    @if (!is_null($next))
+        <form action="{{ route('chapter.show', $next) }}" method="get">
+            <button>
+                Próximo
+            </button>
+        </form>
+    @endif
     <hr>
     @livewire('comment', [
         'model' => 'App\Models\Commentchapter',

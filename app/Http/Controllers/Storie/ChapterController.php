@@ -49,8 +49,13 @@ class ChapterController extends Controller
     {
         $chapter = Chapter::findOrFail($id);
 
+        $previous = Chapter::where('storie_id', $chapter->storie_id)->where('id', '<', $chapter->id)->max('id');
+        $next = Chapter::where('storie_id', $chapter->storie_id)->where('id', '>', $chapter->id)->min('id');
+
         return view('storie.chapter.show', [
             'chapter' => $chapter,
+            'previous' => $previous,
+            'next' => $next,
         ]);
     }
 
@@ -76,7 +81,7 @@ class ChapterController extends Controller
         }
 
         if ($chapter->authornotes !== $request->authornotes) {
-            $chapter->authornotes = $request->authonotes;
+            $chapter->authornotes = $request->authornotes;
         }
 
         if ($chapter->content !== $request->content) {
