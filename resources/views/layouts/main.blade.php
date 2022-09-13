@@ -37,7 +37,11 @@
         @if (Auth::check())
             <div class="search-bar">
                 <form action="{{ route('search') }}" method="get">
-                    <input type="text" name="argument" placeholder="Pesquisar...">
+                    @if (isset($argument))
+                        <input type="text" name="argument" placeholder="Pesquisar..." value="{{ $argument }}">
+                    @else
+                        <input type="text" name="argument" placeholder="Pesquisar...">
+                    @endif
                     <button><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>

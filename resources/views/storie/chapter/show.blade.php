@@ -30,7 +30,6 @@
                 </p>
             </div>
         </div>
-<<<<<<< HEAD
     </div>
     @if (!is_null($previous))
         <form action="{{ route('chapter.show', $previous) }}" method="get">
@@ -46,9 +45,6 @@
             </button>
         </form>
     @endif
-=======
-    </main>
->>>>>>> 0bf61932730132cc82bbac050c33f151980e9dda
     <hr>
     @livewire('comment', [
         'model' => 'App\Models\Commentchapter',

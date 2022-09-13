@@ -17,6 +17,7 @@ class SearchController extends Controller
         return view('auth.search', [
             'stories' => $stories,
             'users' => $users,
+            'argument' => $request->argument,
         ]);
     }
 
