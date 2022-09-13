@@ -6,6 +6,7 @@ body {
     background-color: var(--main-color-white);
     margin: 0;
     box-sizing: border-box;
+    font-family: var(--font-text);
 }
 
 :root {
@@ -45,12 +46,12 @@ body {
 }
  
 ::-webkit-scrollbar-thumb {
-  background: #5b5b5b;
+  background: #8d8d8d;
 
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #989898; 
+  background: #b7b7b7; 
 }
 
  /* HEADER */
@@ -740,13 +741,7 @@ textarea {
 
 .chapter-text-indent {
     font-size: 13pt;
-
-    /* Disable selection in different browsers */
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
+    margin-top: 5%;
 }
 
 .container-chapter {
@@ -757,7 +752,7 @@ textarea {
     margin: auto;
     margin-bottom: 5%;
     margin-top: 5%;
-    width: 80%;
+    width: 70%;
 }
 
 .chapter-info {
@@ -770,10 +765,23 @@ textarea {
     color: var(--color-text);
 }
 
+.div-chapter h4 a {
+    color: var(--main-color);
+}
+
+.div-chapter h4 a:hover {
+    color: var(--main-color-hover);
+}
+
+.div-chapter h4 a:active {
+    color: var(--main-color-active);
+}
+
 .author-notes {
     display: flex;
     flex-direction: column;
     padding: 5px;
+    margin-top: 5%;
     text-align: justify;
 }
 

@@ -15,7 +15,7 @@
             <small class="chapter-info"> | Número de palavras: {{$chapter->numberofwords}}</small>
             
             @if (isset($chapter->authornotes))
-                <div class="author-notes">
+                <div class="author-notes" oncopy="return false" onpaste="return false" oncontextmenu="return false" ondragstart="return false" ondrop="return false">
                     <h2>Notas do autor</h2>
                     <span>
                         {!!nl2br(e($chapter->authornotes))!!}
@@ -25,8 +25,8 @@
             @endif
 
             <div class="chapter">
-                <p class="chapter-text-indent" style="text-align: justify">
-                    {!!nl2br(e($chapter->content))!!}
+                <p class="chapter-text-indent" style="text-align: justify" oncopy="return false" onpaste="return false" oncontextmenu="return false" ondragstart="return false" ondrop="return false">
+                {!!nl2br(e($chapter->content))!!}
                 </p>
             </div>
         </div>
