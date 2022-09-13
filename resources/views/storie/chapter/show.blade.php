@@ -3,7 +3,7 @@
 @section('title', $chapter->storie->title . ": $chapter->title")
 
 @section('content')
-    <div class="container-chapter">
+    <main class="container-chapter">
         <div class="div-chapter">
             <h1>{{$chapter->title}}</h1>
             <h4><a href="{{ route('storie.show', $chapter->storie->id) }}" style="text-decoration: none">{{$chapter->storie->title}}</a></h4>
@@ -12,21 +12,25 @@
             @else
                 <small class="chapter-info">Data: {{$chapter->updated_at}}</small>            
             @endif
-            <span class="chapter-info">Número de palavras: {{$chapter->numberofwords}}</span>
+            <small class="chapter-info"> | Número de palavras: {{$chapter->numberofwords}}</small>
+            
             @if (isset($chapter->authornotes))
-                <hr>
-                <h2>Notas do autor</h2>
-                <p class="author-notes">
-                    {!!nl2br(e($chapter->authornotes))!!}
-                </p>
-            @endif
+                <div class="author-notes">
+                    <h2>Notas do autor</h2>
+                    <span>
+                        {!!nl2br(e($chapter->authornotes))!!}
+                    </span>
+                </div>
             <hr>
-            <h2>Capítulo</h2>
-            <p class="chapter-text-indent" style="text-align: justify">
-                {!!nl2br(e($chapter->content))!!}
-            </p>
+            @endif
+
+            <div class="chapter">
+                <p class="chapter-text-indent" style="text-align: justify">
+                    {!!nl2br(e($chapter->content))!!}
+                </p>
+            </div>
         </div>
-    </div>
+    </main>
     <hr>
     @livewire('comment', [
         'model' => 'App\Models\Commentchapter',

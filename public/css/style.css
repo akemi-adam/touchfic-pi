@@ -23,6 +23,36 @@ body {
     --font-text: 'Lato', sans-serif;
 }
 
+/* SELECTED TEXTS COLORS */
+::selection {
+    color: #262626;
+    background: #ec269028;
+}
+
+/* Mozilla Firefox */ 
+::-moz-selection {
+    color: #262626;
+    background: #ec269028;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #5b5b5b;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #989898; 
+}
+
  /* HEADER */
 header {
     display: flex;
@@ -50,7 +80,7 @@ header li {
     text-decoration: none;
     display: block;
     color: var(--color-text);
-    font-family: var(--font-2);
+    font-family: var(--font-text);
     font-weight: bold;
     font-size: 13pt;
     padding: 2px;
@@ -330,7 +360,7 @@ footer span {
 
 .div-faq {
     text-align: justify;
-    font-family: var(--font-1);
+    font-family: var(--font-text);
 }
 
 .div-faq span {
@@ -499,7 +529,7 @@ footer span {
 
 .div-posts {
     text-align: justify;
-    font-family: var(--font-1);
+    font-family: var(--font-text);
 }
 
 .div-posts p {
@@ -709,20 +739,29 @@ textarea {
 }
 
 .chapter-text-indent {
-    font-size: 15pt;
+    font-size: 13pt;
+
+    /* Disable selection in different browsers */
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 
 .container-chapter {
     display: flex;
     flex-direction: column;
-    margin-left: 5%;
+    text-align: center;
     height: 100%;
-    margin-bottom: 10%;
-    width: 90%;
+    margin: auto;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    width: 80%;
 }
 
 .chapter-info {
-    font-family: var(--font-2);
+    font-family: var(--font-text);
     font-weight: 600;
 }
 
@@ -732,7 +771,14 @@ textarea {
 }
 
 .author-notes {
-    font-size: 13pt;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    text-align: justify;
+}
+
+.author-notes h2 {
+    font-size: 15pt;
 }
 
 .chapter-text {
