@@ -61,6 +61,7 @@ class CommentNotification extends Notification
                 ],
                 'storie' => [
                     'title' => $this->publication->storie->title,
+                    'id' => $this->publication->storie->id
                 ],
             ];
 

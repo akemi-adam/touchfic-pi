@@ -20,7 +20,7 @@ class StorieController extends Controller
     public function __construct(Type $var = null) {
         $this->middleware('exists:' . Storie::class, [
             'only' => [
-                'show', 'edit', 'update', 'destroy', 'myStories', 'likes', 'likesOfStorie'
+                'show',
             ]
         ]);
     }

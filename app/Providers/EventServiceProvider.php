@@ -37,6 +37,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         DeleteStorie::class => [
             RemoveStorieLikeNotification::class,
+            RemoveCommentChapterNotification::class,
         ],
     ];
 

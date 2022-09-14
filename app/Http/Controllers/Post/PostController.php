@@ -14,7 +14,7 @@ class PostController extends Controller
     public function __construct() {
         $this->middleware('exists:' . Post::class, [
             'only' => [
-                'show', 'edit', 'update', 'destroy'
+                'show',
             ]
         ]);
     }

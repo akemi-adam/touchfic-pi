@@ -13,7 +13,7 @@ class ChapterController extends Controller
     public function __construct() {
         $this->middleware('exists:' . Chapter::class, [
             'only' => [
-                'create', 'store', 'show', 'edit', 'update', 'destroy'
+                'show',
             ]
         ]);
     }
