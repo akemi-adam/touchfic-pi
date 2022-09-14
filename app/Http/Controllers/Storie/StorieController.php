@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Storie;
 
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\{
+    Storage, DB
+};
+use App\Models\{
+    Agegroup, Chapter, Storie, Genre, User
+};
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Storie\StorieRequest;
-use Illuminate\Support\Facades\DB;
+use App\Events\DeleteStorie;
 use Illuminate\Http\Request;
-use App\Models\Agegroup;
-use App\Models\Chapter;
-use App\Models\Storie;
-use App\Models\Genre;
-use App\Models\User;
 use Auth;
 
 class StorieController extends Controller
@@ -159,6 +159,10 @@ class StorieController extends Controller
         $storie->users()->detach();
         $storie->genres()->detach();
 
+        DeleteStorie::dispatch($storie);
+
+        DB::table('storie_user')->where('storie_id', $id)->where('liked', 1)->delete();
+        
         $storie->delete();
 
         return redirect()->to(route('storie.mystories', Auth::user()->id))->with('success_msg', 'História deletada com sucesso!');
