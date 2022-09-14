@@ -6,6 +6,7 @@ use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use App\Events\CommentEvent;
 use Illuminate\Http\Request;
+use App\Events\DeleteComment;
 use App\Models\{
     User, Storie
 };
@@ -61,7 +62,11 @@ class Comment extends Component
 
     public function delete($id)
     {
-        $this->model::where('id', $id)->delete();
+        $comment = $this->model::findOrFail($id);
+
+        DeleteComment::dispatch($comment);
+
+        $comment->delete();
 
         $this->index();
     }
