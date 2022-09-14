@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
+use App\Events\DeletePublication;
 use Illuminate\Http\Request;
 use App\Models\Commentpost;
 use App\Models\Post;
@@ -94,6 +95,8 @@ class PostController extends Controller
         if (isset($post->comments)) {
             Commentpost::where('post_id', $post->id)->delete();
         }
+
+        DeletePublication::dispatch($post);
 
         $post->delete();
 

@@ -7,11 +7,11 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 use App\Events\{
-    StorieLike, CommentEvent, UpdateNotification, DeleteStorie
+    StorieLike, CommentEvent, UpdateNotification, DeleteStorie, DeletePublication
 };
 use App\Listeners\{
     SendStorieLikeNotification, SendCommentNotification, UpdateLikeNotification, UpdateCommentNotification,
-    RemoveStorieLikeNotification, RemoveCommentChapterNotification
+    RemoveStorieLikeNotification, RemoveCommentChapterNotification, DeleteCommentPublicationNotification
 };
 
 class EventServiceProvider extends ServiceProvider
@@ -39,6 +39,9 @@ class EventServiceProvider extends ServiceProvider
             RemoveStorieLikeNotification::class,
             RemoveCommentChapterNotification::class,
         ],
+        DeletePublication::class => [
+            DeleteCommentPublicationNotification::class,
+        ]
     ];
 
     /**

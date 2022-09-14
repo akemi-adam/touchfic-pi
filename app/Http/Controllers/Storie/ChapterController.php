@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Storie;
 
 use App\Http\Controllers\Controller;
+use App\Events\DeletePublication;
 use Illuminate\Http\Request;
 use App\Models\Chapter;
 use App\Models\Storie;
@@ -119,6 +120,8 @@ class ChapterController extends Controller
         $storie = Storie::findOrFail($chapter->storie->id);
         $storie->numberofwords -= $chapter->numberofwords;
         $storie->save();
+
+        DeletePublication::dispatch($chapter);
 
         $chapter->delete();
 

@@ -9,22 +9,15 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use App\Models\User;
 
-class CommentEvent
+class DeletePublication
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $owner;
-
-    public $author;
-
     public $publication;
-
-    public function __construct(User $owner, User $author, $publication)
+    
+    public function __construct($publication)
     {
-        $this->owner = $owner;
-        $this->author = $author;
         $this->publication = $publication;
     }
 
