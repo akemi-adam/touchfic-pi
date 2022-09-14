@@ -9,6 +9,15 @@ use App\Models\Storie;
 
 class ChapterController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('exists:' . Chapter::class, [
+            'only' => [
+                'create', 'store', 'show', 'edit', 'update', 'destroy'
+            ]
+        ]);
+    }
+
     public function create($id)
     {
         $storie = Storie::findOrFail($id);

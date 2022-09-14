@@ -14,29 +14,29 @@ Route::get('/likes-of-storie/{id}', [StorieController::class, 'likesOfStorie'])-
 
 Route::middleware(['auth'])->group(function ()
 {
-    Route::get('/storie/{user}/mystories', [StorieController::class, 'myStories'])->name('storie.mystories');
+    Route::get('/storie/{id}/mystories', [StorieController::class, 'myStories'])->name('storie.mystories');
 
-    Route::get('/likes-stories/{user}', [StorieController::class, 'likes'])->name('storie.likes');
+    Route::get('/likes-stories/{id}', [StorieController::class, 'likes'])->name('storie.likes');
 });
 
 Route::name('chapter.')->group(function ()
 {
-    Route::get('/storie/{storie}/create', [ChapterController::class, 'create'])->name('create');
+    Route::get('/storie/{id}/create', [ChapterController::class, 'create'])->name('create');
 
-    Route::post('/storie/{storie}/chapter', [ChapterController::class, 'store'])->name('store');
+    Route::post('/storie/{id}/chapter', [ChapterController::class, 'store'])->name('store');
 
-    Route::get('/storie/chapter/{chapter}', [ChapterController::class, 'show'])->name('show');
+    Route::get('/storie/chapter/{id}', [ChapterController::class, 'show'])->name('show');
 
-    Route::get('/storie/edit/{chapter}', [ChapterController::class, 'edit'])->name('edit');
+    Route::get('/storie/edit/{id}', [ChapterController::class, 'edit'])->name('edit');
 
-    Route::put('/storie/chapter/{chapter}', [ChapterController::class, 'update'])->name('update');
+    Route::put('/storie/chapter/{id}', [ChapterController::class, 'update'])->name('update');
 
-    Route::delete('/storie/chapter/{chapter}', [ChapterController::class, 'destroy'])->name('destroy');
+    Route::delete('/storie/chapter/{id}', [ChapterController::class, 'destroy'])->name('destroy');
 
     Route::prefix('storie/chapter/comment')->name('comment.')->group(function ()
     {
-        Route::get('/{comment}/edit', [CommentchapterController::class, 'edit'])->name('edit');
-        Route::put('/{comment}', [CommentchapterController::class, 'update'])->name('update');
+        Route::get('/{id}/edit', [CommentchapterController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [CommentchapterController::class, 'update'])->name('update');
     });
 
 });

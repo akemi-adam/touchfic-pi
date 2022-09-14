@@ -12,6 +12,15 @@ use Auth;
 
 class UserController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('exists:' . User::class, [
+            'only' => [
+                'show', 'edit', 'update',
+            ]
+        ]);
+    }
+
     public function show($id)
     {
         $user = User::findOrFail($id);

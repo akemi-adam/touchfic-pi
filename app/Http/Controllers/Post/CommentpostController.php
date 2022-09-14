@@ -9,6 +9,15 @@ use Auth;
 
 class CommentpostController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('exists:' . Commentpost::class, [
+            'only' => [
+                'edit', 'update'
+            ]
+        ]);
+    }
+
     public function edit($id)
     {
         $this->authorize('authenticated');

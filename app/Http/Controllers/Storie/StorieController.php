@@ -17,6 +17,14 @@ use Auth;
 class StorieController extends Controller
 {
 
+    public function __construct(Type $var = null) {
+        $this->middleware('exists:' . Storie::class, [
+            'only' => [
+                'show', 'edit', 'update', 'destroy', 'myStories', 'likes', 'likesOfStorie'
+            ]
+        ]);
+    }
+
     public function index()
     {
         $stories = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('storie_user.liked', 0)->whereNotNull('storie_user.user_id')->orderBy('stories.id', 'DESC')->get();
@@ -162,7 +170,7 @@ class StorieController extends Controller
         DeleteStorie::dispatch($storie);
 
         DB::table('storie_user')->where('storie_id', $id)->where('liked', 1)->delete();
-        
+
         $storie->delete();
 
         return redirect()->to(route('storie.mystories', Auth::user()->id))->with('success_msg', 'História deletada com sucesso!');

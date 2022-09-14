@@ -10,6 +10,15 @@ use Auth;
 
 class CommentchapterController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('exists:' . Commentchapter::class, [
+            'only' => [
+                'edit', 'update'
+            ]
+        ]);
+    }
+
     public function edit($id)
     {
         $this->authorize('authenticated');

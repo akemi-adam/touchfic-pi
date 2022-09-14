@@ -11,6 +11,6 @@ Route::delete('/post/{id}/moderator', [ModeratorController::class, 'deletePost']
 
 Route::prefix('post/comment')->name('post.comment.')->group(function ()
 {
-    Route::get('/{comment}/edit', [CommentpostController::class, 'edit'])->name('edit');
-    Route::put('/{comment}', [CommentpostController::class, 'update'])->name('update');
+    Route::get('/{id}/edit', [CommentpostController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [CommentpostController::class, 'update'])->name('update');
 });
