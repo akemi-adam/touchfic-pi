@@ -3,7 +3,9 @@
 namespace App\Http\Livewire;
 
 use Illuminate\Support\Facades\DB;
-use App\Events\StorieLike;
+use App\Events\{
+    StorieLike, Unlike
+};
 use Livewire\Component;
 use App\Models\Storie;
 use App\Models\User;
@@ -41,6 +43,8 @@ class Like extends Component
         DB::delete('delete from storie_user where liked = 1 and storie_id = ? and user_id = ?', [
             $this->storieId, Auth::user()->id
         ]);
+
+        Unlike::dispatch(Storie::findOrFail($this->storieId));
 
         $this->status = false;
     }

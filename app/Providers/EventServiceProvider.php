@@ -8,12 +8,12 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Event;
 use App\Events\{
     StorieLike, CommentEvent, UpdateNotification, DeleteStorie, DeletePublication, DeleteComment,
-    UpdateStorie
+    UpdateStorie, Unlike
 };
 use App\Listeners\{
     SendStorieLikeNotification, SendCommentNotification, UpdateLikeNotification, UpdateCommentNotification,
     RemoveStorieLikeNotification, RemoveCommentChapterNotification, DeleteCommentPublicationNotification,
-    DeleteCommentNotification, UpdateStorieNotification
+    DeleteCommentNotification, UpdateStorieNotification, RemoveLikeNotification
 };
 
 class EventServiceProvider extends ServiceProvider
@@ -49,6 +49,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         UpdateStorie::class => [
             UpdateStorieNotification::class,
+        ],
+        Unlike::class => [
+            RemoveLikeNotification::class,
         ]
     ];
 
