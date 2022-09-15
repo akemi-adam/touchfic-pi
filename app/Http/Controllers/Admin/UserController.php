@@ -49,6 +49,10 @@ class UserController extends Controller
             $user->email = $request->email;
         }
 
+        if (isset($request->biography)) {
+            $user->biography = $request->biography;
+        }
+
         if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
             
             if ($user->avatar !== "default-user-avatar.png") {

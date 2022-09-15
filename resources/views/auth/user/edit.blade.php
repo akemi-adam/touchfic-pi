@@ -15,6 +15,10 @@
         <label for="email">Email: </label>
         <input type="email" name="email">
         <br>
+        <label for="biography">
+            Biografia
+        </label>
+        <textarea name="biography" cols="30" rows="10"></textarea>
         <label for="avatar">
             Avatar:
         </label>

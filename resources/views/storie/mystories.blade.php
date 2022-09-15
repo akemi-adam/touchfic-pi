@@ -13,18 +13,20 @@
         <p>
             {{ $storie->synopsis }}
         </p>
-        <form action="{{ route('storie.edit', $storie->storie_id) }}" method="get">
-            <button>
-                Editar
-            </button>
-        </form>
-        <form action="{{ route('storie.destroy', $storie->storie_id) }}" method="post">
-            @csrf
-            @method('delete')
-            <button>
-                Deletar
-            </button>
-        </form>
+        @if (Auth::user()->id === $storie->user_id)
+            <form action="{{ route('storie.edit', $storie->storie_id) }}" method="get">
+                <button>
+                    Editar
+                </button>
+            </form>
+            <form action="{{ route('storie.destroy', $storie->storie_id) }}" method="post">
+                @csrf
+                @method('delete')
+                <button>
+                    Deletar
+                </button>
+            </form>
+        @endif
         <hr>
     @empty
         <h2>Não há nenhuma história por aqui</h2>
