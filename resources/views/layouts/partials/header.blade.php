@@ -1,9 +1,9 @@
 <header>
     <div>
         @if (!Auth::check())
-            <a href="{{route('root.home')}}" class="logo"><img src="/images/icons/touchfic-logo.svg" alt="touchfic">Touchfic</a>
+            <a href="{{route('root.home')}}" class="logo"><img src="/images/icons/touchfic-logo.svg" alt="Touchfic" ondragstart="return false">Touchfic</a>
         @else
-            <a href="{{route('dashboard')}}" class="logo"><img src="/images/icons/touchfic-logo.svg" alt="touchfic">Touchfic</a>
+            <a href="{{route('dashboard')}}" class="logo"><img src="/images/icons/touchfic-logo.svg" alt="Touchfic" ondragstart="return false">Touchfic</a>
         @endif
     </div>
     @if (Auth::check())
@@ -11,10 +11,11 @@
             <form action="{{ route('search') }}" method="get">
                 @if (isset($argument))
                     <input type="text" name="argument" placeholder="Pesquisar..." value="{{ $argument }}">
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
                 @else
                     <input type="text" name="argument" placeholder="Pesquisar...">
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
                 @endif
-                <button><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
         </div>
     @endif
