@@ -127,16 +127,18 @@ nav ul li:hover .submenu li:hover {
 }
 
 .search-bar input {
+    outline: 0;
     background-color: #f3f3f3;
     border-radius: 10px;
     border: 0;
     padding: 8px;
-    font-family: var(--font-2);
+    font-family: var(--font-text);
     font-size: 12pt;
 }
 
 .search-bar input:focus {
-    outline-color: rgb(120, 191, 243);
+    box-shadow:0 0 0 1px #e7f3ff;
+    border: 1px solid #1877f2;
 }
 
 .search-bar button {
@@ -145,6 +147,7 @@ nav ul li:hover .submenu li:hover {
     border: 0;
     padding: 5px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .logo {
