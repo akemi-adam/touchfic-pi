@@ -10,14 +10,17 @@ use App\Models\{
 };
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Storie\StorieRequest;
-use App\Events\DeleteStorie;
+use App\Events\{
+    DeleteStorie, UpdateStorie
+};
 use Illuminate\Http\Request;
 use Auth;
 
 class StorieController extends Controller
 {
 
-    public function __construct(Type $var = null) {
+    public function __construct(Type $var = null)
+    {
         $this->middleware('exists:' . Storie::class, [
             'only' => [
                 'show',
@@ -147,6 +150,8 @@ class StorieController extends Controller
         $this->coverVerify($request, 'cover', $storie);
 
         $storie->save();
+
+        UpdateStorie::dispatch($storie);
 
         $storie->genres()->detach();
 
