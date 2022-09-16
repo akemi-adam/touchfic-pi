@@ -24,6 +24,11 @@
             <hr>
             @endif
 
+            @if (!is_null($chapter->spotify_track))
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/{{$chapter->spotify_track}}?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <hr>
+            @endif
+            
             <div class="chapter">
                 <p class="chapter-text-indent" style="text-align: justify" oncopy="return false" onpaste="return false" oncontextmenu="return false" ondragstart="return false" ondrop="return false">
                 {!!nl2br(e($chapter->content))!!}

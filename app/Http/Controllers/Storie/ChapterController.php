@@ -11,7 +11,8 @@ use App\Models\Storie;
 class ChapterController extends Controller
 {
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('exists:' . Chapter::class, [
             'only' => [
                 'show',
@@ -104,6 +105,10 @@ class ChapterController extends Controller
 
             $storie->numberofwords = (($storie->numberofwords - $oldWordsNumber) + $chapter->numberofwords) - 1;
             $storie->save();
+        }
+
+        if (is_null($chapter->spotify_track) || $chapter->spotify_track !== $request->track) {
+            $chapter->spotify_track = $request->track;
         }
 
         $chapter->save();
