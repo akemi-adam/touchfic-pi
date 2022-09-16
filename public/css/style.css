@@ -173,8 +173,7 @@ nav ul li:hover .submenu li:hover {
 
 .sidebar {
 	padding:0 5px 0 0;
-    background-color: #E4E4E1;
-    background-image: linear-gradient(120deg, #fed3e8 0%, #fdafcf 100%);
+    background-image: linear-gradient(135deg, #fdfcfb 0%, #e9d4c4 100%);
 	height: 100%;
 	width: 330px; 
 	position: fixed;
@@ -213,7 +212,7 @@ nav ul li:hover .submenu li:hover {
 }
 
 .sb-options hr {
-    width: 100%;
+    width: 99%;
     border: 1px solid #382f3311;
 }
 
@@ -225,8 +224,12 @@ nav ul li:hover .submenu li:hover {
 	padding: 0.8em 0 0.8em 1em;
 }
 
+.sb-options i {
+    margin-right: 0.5em;
+}
+
 .sb-options a:hover {
-	background-color:#ffecf766;
+	background-color:#ffffff92;
 	-moz-transition: all .5s;
 	-webkit-transition: all .5s;
 	-o-transition: all .5s;
