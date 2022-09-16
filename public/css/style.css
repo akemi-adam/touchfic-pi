@@ -26,13 +26,11 @@ body {
 
 /* SELECTED TEXTS COLORS */
 ::selection {
-    color: #262626;
     background: #ec269028;
 }
 
 /* Mozilla Firefox */ 
 ::-moz-selection {
-    color: #262626;
     background: #ec269028;
 }
 
@@ -158,6 +156,12 @@ nav ul li:hover .submenu li:hover {
     font-weight: 600;
     font-size: 20pt;
     text-decoration: none;
+
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 
 /*RESPONSIVE HEADER*/
@@ -165,6 +169,69 @@ nav ul li:hover .submenu li:hover {
     header {
         flex-direction: column;
     }
+}
+
+.sidebar {
+	padding:0 5px 0 0;
+    background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
+    background-blend-mode: screen;
+	height: 100%;
+	width: 330px; 
+	position: fixed;
+	top: 0;
+	left:-325px;
+    overflow: auto;
+    -moz-transition: all .5s;
+	-webkit-transition: all .5s;
+	-o-transition: all .5s;
+	transition: all .5s;
+}
+
+.sidebar:hover {
+	transform: translateX(320px);
+	padding-right: 0;
+}
+
+.sidebar ul {
+	list-style: none;
+}
+
+.sidebar h3 {
+	display: inline-block;
+	font-size: 20pt;
+    font-weight: 600;
+    font-family: var(--font-1);
+	margin: 1em 0 1em 2em;
+	color: var(--main-color);
+    cursor: default;
+}
+
+.sb-options {
+    margin: 1em 0 1em -2em;
+	position: relative;
+	font-size: 12pt;
+}
+
+.sb-options hr {
+    width: 80%;
+    border: 1px solid #26262630;
+}
+
+.sb-options a {
+    display: block;
+	font-size: 14pt;
+	color: var(--color-text);
+	text-decoration: none;
+	padding: 0.8em 0 0.8em 1em;
+}
+
+.sb-options a:hover {
+	color:#ffffff;
+	background-color:#ec268f;
+	-moz-transition: all .5s;
+	-webkit-transition: all .5s;
+	-o-transition: all .5s;
+	transition: all .5s;
 }
 
 /* INDEX PAGE: BANNER */
@@ -392,20 +459,6 @@ footer span {
     margin-bottom: 5%;
     margin-left: 5%;
 }
-
-
-/*.div-error {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5%;
-    margin-bottom: 10%;
-}
-
-.div-error img {
-    width: 30%;
-}*/
 
 .storie-info-container {
     display: flex;

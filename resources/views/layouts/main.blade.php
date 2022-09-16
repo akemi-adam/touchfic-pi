@@ -30,6 +30,9 @@
 
     {{-- Flash Message --}}
     @include('layouts.partials.messages')
+
+    {{-- Side Bar --}}
+    @include('layouts.partials.sidebar')
     
     {{-- Seção do Conteúdo --}}
     @yield('content')

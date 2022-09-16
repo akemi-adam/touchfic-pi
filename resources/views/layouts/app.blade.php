@@ -27,6 +27,9 @@
 
     {{-- Header --}}
     @include('layouts.partials.header')
+
+    {{-- Side Bar --}}
+    @include('layouts.partials.sidebar')
     
     {{-- Seção do Conteúdo --}}
     {{ $slot }}
