@@ -21,6 +21,9 @@ DB_DATABASE=<nome do banco>
 DB_USERNAME=<usuário>
 DB_PASSWORD=<senha>
 ```
+
+## Mail Service
+
 Além de configurar a conexão com o banco de dados, é preciso configurar o serviço de email:
 ```
 MAIL_HOST=<host>
@@ -32,13 +35,21 @@ MAIL_FROM_ADDRESS=<remetente>
 ```
 Para fins de desenvolvimento, a aplicação está utilizando o <a href="https://mailtrap.io/">mailtrap</a>.
 
+## Spotify
+
+Uma vez que a aplicação consta com uma integração com o Spotify, é preciso configurar as chaves da sua aplicação do Spotify no .env
+```
+SPOTIFY_CLIENT_ID=<id do cliente>
+SPOTIFY_CLIENT_SECRET=<chave secreta>
+```
+
 ## Google
 
 A aplicação contempla o recurso de autenticação pelo google utilizando o Socialite. Para isso, é preciso preencher os seguintes campos no arquivo .env:
 
 ```
-GOOGLE_CLIENT_ID=<client id do google de sua aplicação>
-GOOGLE_CLIENT_SECRET=<chave secreta do cliente de sua aplicação>
+GOOGLE_CLIENT_ID=<id do client>
+GOOGLE_CLIENT_SECRET=<chave secreta>
 ```
 
 Após ter feito a configuração necessária, rode as migrações com `php artisan migrate`
