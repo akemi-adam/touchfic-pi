@@ -8,6 +8,18 @@
             Novo capítulo
         </h1>
         <div>
+
+            {{-- Error messages --}}
+            @if ($errors->any())
+                <div>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <form action="{{ route('chapter.store', $storie->id) }}" method="post">
                 @csrf
                 <label for="title" class="label-tag">Título</label>

@@ -14,11 +14,5 @@
             </option>
         @endforeach
     </select>
-        {{-- @php
-            $teste = $tracks['tracks']['items'];
-        @endphp --}}
     @endif
-    {{-- @foreach ($tracks as $track)
-        
-    @endforeach --}}
 </div>

@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Storie;
 
 use App\Http\Controllers\Controller;
 use App\Events\DeletePublication;
+use App\Http\Requests\Storie\Chapter\{
+    StoreChapterRequest, UpdateChapterRequest
+};
 use Illuminate\Http\Request;
 use App\Models\Chapter;
 use App\Models\Storie;
@@ -31,7 +34,7 @@ class ChapterController extends Controller
         ]);
     }
 
-    public function store(Request $request, $id)
+    public function store(StoreChapterRequest $request, $id)
     {
         $storie = Storie::findOrFail($id);
         $this->authorize('create', $storie);
@@ -42,7 +45,7 @@ class ChapterController extends Controller
 
         $chapter->content = $request->content;
 
-        $chapter->numberofwords = count(preg_split('~[^\p{L}\p{N}\']+~u', $request->content)) - 1;
+        $chapter->numberofwords = count(preg_split('~[^\p{L}\p{N}\']+~u', $request->content)) /* - 1 */;
 
         $chapter->authornotes = $request->authornotes;
 
@@ -83,7 +86,7 @@ class ChapterController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateChapterRequest $request, $id)
     {
         $chapter = Chapter::findOrFail($id);
 
@@ -98,14 +101,17 @@ class ChapterController extends Controller
         }
 
         if ($chapter->content !== $request->content) {
+
             $chapter->content = $request->content;
 
             $storie = Storie::findOrFail($chapter->storie_id);
             
             $oldWordsNumber = $chapter->numberofwords;
+
             $chapter->numberofwords = count(preg_split('~[^\p{L}\p{N}\']+~u', $request->content));
 
-            $storie->numberofwords = (($storie->numberofwords - $oldWordsNumber) + $chapter->numberofwords) - 1;
+            $storie->numberofwords = (($storie->numberofwords - $oldWordsNumber) + $chapter->numberofwords);
+
             $storie->save();
         }
 
