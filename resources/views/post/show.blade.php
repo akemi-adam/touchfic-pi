@@ -3,6 +3,7 @@
 @section('title', $post->content)
     
 @section('content')
+<article class="site-content">
 <br>
     <img src="{{asset('storage/images/user/avatar/' . $post->user->avatar)}}" class="avatar">
     <h2 style="display: inline">
@@ -44,4 +45,5 @@
         'editRoute' => 'post.comment.edit',
         'publication' => $post
     ])
+<article>
 @endsection

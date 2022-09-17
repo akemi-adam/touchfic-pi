@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Touchfic: Página Inicial')
+@section('title', 'Página Inicial - Touchfic')
 
 @section('content')
     <div class="container-title">

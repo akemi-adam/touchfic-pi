@@ -1,5 +1,5 @@
 @section('title', 'Notificações')
-
+<article class="site-content">
 <div>
     @if (!Auth::user()->notifications())
         <h2>
@@ -99,3 +99,4 @@
         @endforelse
     @endif
 </div>
+</article>

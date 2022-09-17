@@ -3,6 +3,7 @@
 @section('title', 'Postagens')
     
 @section('content')
+<article class="site-content">
     <div class="container-posts">
         <div class="div-posts">
             <h3>
@@ -44,4 +45,5 @@
             </a>
         </div>
     </div>
+</article>
 @endsection

@@ -7,6 +7,8 @@
 @endsection
 
 @section('content')
+<article class="site-content">
+
 <section class="storie-info-container">
     <section class="storie-info">
     <div class="storie-title-container">
@@ -99,4 +101,6 @@
     @endforelse
     </section>
 </section>
+
+</article>
 @endsection
