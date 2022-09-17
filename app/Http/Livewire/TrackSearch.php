@@ -19,7 +19,7 @@ class TrackSearch extends Component
     {
         $this->listed = true;
 
-        $this->tracks = Spotify::searchTracks($this->search)->limit(10)->get();
+        $this->tracks = Spotify::searchTracks($this->search)->limit(30)->get();
     }
 
     public function render()

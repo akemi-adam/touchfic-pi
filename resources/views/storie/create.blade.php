@@ -24,6 +24,7 @@
             <label for="{{$genre->genre}}">{{$genre->genre}}</label>
             <input type="checkbox" name="genres[]" value="{{$genre->id}}" id="{{$genre->genre}}">
         @endforeach
+
         <div class="container-submit">
             <div class="submit-story-button">
                 <button>

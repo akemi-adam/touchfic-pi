@@ -4,7 +4,7 @@
         Procurar
     </button>
     @if ($listed)
-    <select name="track">
+    <select name="track" size="10">
         @foreach ($tracks['tracks']['items'] as $track)
             @php
                 $trackId = explode(':', $track['uri'])[2];

@@ -16,6 +16,9 @@
                 <textarea name="authornotes" cols="90" rows="15" class="desc-textearea" placeholder="Algo a dizer sobre o capítulo? Escreva aqui!"></textarea>
                 <label for="content">Capítulo</label><br>
                 <textarea name="content" cols="90" rows="15" class="desc-textearea" placeholder="Ponha a sua imaginação aqui..."></textarea>
+
+                @livewire('track-search')
+                
                 <div class="container-submit">
                     <div class="submit-story-button">
                         <button>

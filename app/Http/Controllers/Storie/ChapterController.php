@@ -48,12 +48,14 @@ class ChapterController extends Controller
 
         $chapter->storie_id = $id;
 
+        $chapter->spotify_track = $request->track;
+
         $chapter->save();
 
         $storie->numberofwords += $chapter->numberofwords;
         $storie->save();
 
-        return redirect()->to(route('chapter.show', $chapter->id))->with('success_msg', 'História registrada com sucesso');
+        return redirect()->to(route('chapter.show', $chapter->id))->with('success_msg', 'Capítulo registrado com sucesso!');
     }
 
     public function show($id)
