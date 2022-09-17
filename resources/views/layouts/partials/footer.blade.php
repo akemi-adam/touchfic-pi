@@ -9,4 +9,5 @@
             <li><a href="{{route('root.faq')}}">FAQ</a></li>
         </ul>
     </div>
+    
 </footer>
