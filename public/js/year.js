@@ -1,9 +1,7 @@
-function calcYear() {
+window.addEventListener('load', () => {
+    const date = new Date()
+    const year = date.getFullYear()
+    const y = document.getElementById('year')
 
-    var date = new Date()
-    var year = date.getFullYear()
-
-    var y = document.getElementById('year')
-
-    y.innerHTML = `${year}`
-}
+    y.innerHTML += ` ${year}`
+})
