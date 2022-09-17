@@ -6,6 +6,18 @@
     <h2>
         Criar uma história
     </h2>
+
+    {{-- Error messages --}}
+    @if ($errors->any())
+        <div>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action="{{ route('storie.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <label for="title" class="label-tag">Título</label>

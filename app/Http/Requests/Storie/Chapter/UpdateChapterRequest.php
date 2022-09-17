@@ -21,9 +21,9 @@ class UpdateChapterRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'string|required|max:100|min:3',
+            'title' => 'string|nullable|max:100|min:3',
             'authornotes' => 'string|nullable',
-            'content' => 'string|required|min:10',
+            'content' => 'string|nullable|min:10',
             'track' => 'string|nullable',
         ];
     }

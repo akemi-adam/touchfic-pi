@@ -9,7 +9,9 @@ use App\Models\{
     Agegroup, Chapter, Storie, Genre, User
 };
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Storie\StorieRequest;
+use App\Http\Requests\Storie\{
+    StoreStorieRequest, UpdateStorieRequest
+};
 use App\Events\{
     DeleteStorie, UpdateStorie
 };
@@ -78,7 +80,7 @@ class StorieController extends Controller
         ]);
     }
 
-    public function store(StorieRequest $request)
+    public function store(StoreStorieRequest $request)
     {
         $this->authorize('create', Storie::class);
 
@@ -137,26 +139,32 @@ class StorieController extends Controller
         ]);
     }
 
-    public function update(StorieRequest $request, $id)
+    public function update(UpdateStorieRequest $request, $id)
     {
         $storie = Storie::findOrFail($id);
 
         $this->authorize('update', $storie);
 
-        $storie->title = $request->title;
-        $storie->synopsis = $request->synopsis;
-        $storie->agegroup_id = $request->agegroup;
+        $storie->title = is_null($request->title) ? $storie->title : $request->title;
+
+        $storie->synopsis = is_null($request->synopsis) ? $storie->synopsis : $request->synopsis;
+
+        $storie->agegroup_id = is_null($request->agegroup_id) ? $storie->agegroup_id : $request->agegroup_id;
 
         $this->coverVerify($request, 'cover', $storie);
 
         $storie->save();
 
-        UpdateStorie::dispatch($storie);
+        if (!is_null($request->genres)) {
 
-        $storie->genres()->detach();
+            UpdateStorie::dispatch($storie);
 
-        foreach ($request->genres as $genre) {
-            $storie->genres()->attach($genre);
+            $storie->genres()->detach();
+
+            foreach ($request->genres as $genre) {
+                $storie->genres()->attach($genre);
+            }
+
         }
 
         return redirect()->to(route('storie.show', $storie->id))->with('success_msg', 'História editada com sucesso');

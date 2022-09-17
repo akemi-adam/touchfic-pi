@@ -6,6 +6,18 @@
     <h2>
         {{ $storie->title }}
     </h2>
+
+    {{-- Error messages --}}
+    @if ($errors->any())
+        <div>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action="{{ route('storie.update', $storie->storie_id) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('put')
