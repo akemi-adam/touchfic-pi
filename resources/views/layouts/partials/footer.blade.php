@@ -1,6 +1,6 @@
 <footer>
-    <div class="footer-logo" id="year" onload="calcYear()">
-        <span> Touchfic</span>
+    <div class="footer-logo">
+        <span id="year">Touchfic</span>
     </div>
 
     <div class="footer-links">
