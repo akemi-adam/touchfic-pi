@@ -3,6 +3,7 @@
 @section('title', 'Opções de administrador')
 
 @section('content')
+<article class="site-content">
     <h1 class="title">
         Opções de administrador
     </h1>
@@ -24,4 +25,5 @@
             </ul>
         </div>
     </div>
+</article>
 @endsection

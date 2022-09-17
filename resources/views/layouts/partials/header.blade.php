@@ -52,8 +52,6 @@
                     @endcan
             </li>
             <li><a href="{{route('post.index')}}" class="nav-link">Linha do tempo</a></li>
-            <li><a href="{{route('root.about')}}" class="nav-link">Sobre</a></li>
-            <li><a href="{{route('root.faq')}}" class="nav-link">FAQ</a></li>
             @if (!Auth::check())
                 <li><a href="{{route('login')}}" class="nav-link">Login</a></li>
                 <li><a href="{{route('register')}}" class="nav-link">Cadastre-se</a></li>
