@@ -3,5 +3,5 @@ window.addEventListener('load', () => {
     const year = date.getFullYear()
     const y = document.getElementById('year')
 
-    y.innerHTML += ` ${year}`
+    y.innerHTML += ` ${year} `
 })
