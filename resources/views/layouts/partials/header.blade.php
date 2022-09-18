@@ -6,19 +6,19 @@
             <a href="{{route('dashboard')}}" class="logo" ondragstart="return false"><img src="/images/icons/touchfic-logo.svg" alt="Touchfic" ondragstart="return false">Touchfic</a>
         @endif
     </div>
-    @if (Auth::check())
-        <div class="search-bar">
-            <form action="{{ route('search') }}" method="get">
+    
+        <div>
+            <form action="{{ route('search') }}" method="get" class="search-form" autocomplete="off">
                 @if (isset($argument))
-                    <input type="text" name="argument" placeholder="Pesquisar..." value="{{ $argument }}">
+                    <input type="text" name="argument" placeholder="Pesquisar" value="{{ $argument }}">
                     <button><i class="fa-solid fa-magnifying-glass"></i></button>
                 @else
-                    <input type="text" name="argument" placeholder="Pesquisar...">
+                    <input type="text" name="argument" placeholder="Pesquisar">
                     <button><i class="fa-solid fa-magnifying-glass"></i></button>
                 @endif
             </form>
         </div>
-    @endif
+
     <nav>
         <ul>
             @can('authenticated')
