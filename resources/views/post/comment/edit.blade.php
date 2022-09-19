@@ -3,6 +3,7 @@
 @section('title', 'Editar comentário')
 
 @section('content')
+<article class="site-content">
     <div class="container-textarea">
         <div class="div-textarea">
             <form action="{{ route('post.comment.update', $comment->id) }}" method="post">
@@ -17,4 +18,5 @@
             </form>
         </div>
     </div>
+</article>
 @endsection

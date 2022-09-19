@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', $chapter->storie->title . ": $chapter->title")
+@section('title', $chapter->storie->title . ": $chapter->title - Touchfic")
 
 @section('content')
 <article class="site-content">
