@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{
     PermissionController, GenreController, UserController
 };
+use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Livewire\ShowNotifications;
 
 
@@ -26,7 +27,7 @@ Route::name('root.')->group(function ()
 
 Route::middleware(['auth'])->group(function ()
 {
-    Route::view('/dashboard', 'auth.dashboard')->name('dashboard');
+    Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
     Route::prefix('user')->name('user.')->group(function ()
     {
