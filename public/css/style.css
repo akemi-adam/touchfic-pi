@@ -898,6 +898,15 @@ textarea {
     font-size: 15pt;
 }
 
+.spotify-track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+    margin-bottom: 3em;
+    width: 100%;
+}
+
 .chapter-buttons {
     display: flex;
     justify-content: space-around;
@@ -931,12 +940,22 @@ textarea {
 
 .chapter-buttons .next button:hover i {
     transform: translateX(12px);
-    transition: all .3s ease;
+    transition: all .4s ease;
 }
 
 .chapter-buttons .previous button:hover i {
     transform: translateX(-12px);
-    transition: all .3s ease;
+    transition: all .4s ease;
+}
+
+.comment-box {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.comment-box h4 {
+    padding: 15px;
 }
 
 .chapter-text {
