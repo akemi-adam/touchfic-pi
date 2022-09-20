@@ -3,6 +3,7 @@
 @section('title', "Curtidas da história")
 
 @section('content')
+<article class="site-content">
     @forelse ($datas as $item)
         <div>
             <img src="{{ asset('storage/images/user/avatar/' . $item->avatar) }}" alt="Foto de perfil de {{ $item->name }}" class="avatar">
@@ -14,4 +15,5 @@
             A história não possui nenhum like ainda
         </h2>
     @endforelse
+</article>
 @endsection

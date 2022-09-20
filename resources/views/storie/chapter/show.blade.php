@@ -37,20 +37,24 @@
             </div>
         </div>
     </div>
-    @if (!is_null($previous))
-        <form action="{{ route('chapter.show', $previous) }}" method="get">
-            <button>
-                Anterior
-            </button>
-        </form>
-    @endif
-    @if (!is_null($next))
-        <form action="{{ route('chapter.show', $next) }}" method="get">
-            <button>
-                Próximo
-            </button>
-        </form>
-    @endif
+
+    <div class="chapter-buttons">
+        @if (!is_null($previous))
+            <form action="{{ route('chapter.show', $previous) }}" method="get" class="previous">
+                <button>
+                <i class="fa-solid fa-chevron-left"></i> Voltar capítulo
+                </button>
+            </form>
+        @endif
+        @if (!is_null($next))
+            <form action="{{ route('chapter.show', $next) }}" method="get"  class="next">
+                <button>
+                    Próximo capítulo <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </form>
+        @endif
+    </div>
+
     <hr>
     @livewire('comment', [
         'model' => 'App\Models\Commentchapter',

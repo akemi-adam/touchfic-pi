@@ -139,6 +139,7 @@ nav ul li:hover .submenu li:hover {
 }
 
 .search-form input {
+    background-color: var(--main-color-white);
     padding: 10px;
     width: 250px;
     outline: 0;
@@ -155,6 +156,8 @@ nav ul li:hover .submenu li:hover {
     border-radius: 20px;
     border: none;
     cursor: pointer;
+    background-color: var(--main-color-white);
+    color: var(--color-text);
 }
 
 .search-form input:focus {
@@ -202,6 +205,7 @@ nav ul li:hover .submenu li:hover {
 	position: fixed;
 	top: 0;
 	left:-325px;
+    box-shadow: 0 1px 4px 0 #909090cd;
     overflow: auto;
     -moz-transition: all .5s;
 	-webkit-transition: all .5s;
@@ -304,7 +308,7 @@ footer {
     justify-content: space-around;
     align-items: center;
     background-color: #262626;
-    padding: 5px;
+    padding: 10px;
 }
 
 footer ul li {
@@ -318,8 +322,7 @@ footer ul li:last-child {
 }
 
 footer span {
-    font-family: var(--font-1);
-    font-weight: 600;
+    font-weight: 500;
     color: #ffffff;
 }
 
@@ -853,6 +856,7 @@ textarea {
     margin-bottom: 5%;
     margin-top: 5%;
     width: 70%;
+    padding: 50px;
 }
 
 .chapter-info {
@@ -863,6 +867,11 @@ textarea {
 .div-chapter {
     font-family: var(--font-text);
     color: var(--color-text);
+    width: 100%;
+}
+
+.div-chapter h1 {
+    font-size: 24pt;
 }
 
 .div-chapter h4 a {
@@ -887,6 +896,47 @@ textarea {
 
 .author-notes h2 {
     font-size: 15pt;
+}
+
+.chapter-buttons {
+    display: flex;
+    justify-content: space-around;
+    padding: 0.5em;
+    margin-top: 3em;
+}
+
+.chapter-buttons button {
+    padding: 0.8em;
+    padding-right: 2em;
+    padding-left: 2em;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--main-color);
+    color: #ffffff;
+    font-family: var(--font-1);
+    font-size: 12pt;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.next i {
+    padding: 2px;
+    transform: translateX(3px);
+}
+
+.previous i {
+    padding: 2px;
+    transform: translateX(-3px);
+}
+
+.chapter-buttons .next button:hover i {
+    transform: translateX(12px);
+    transition: all .3s ease;
+}
+
+.chapter-buttons .previous button:hover i {
+    transform: translateX(-12px);
+    transition: all .3s ease;
 }
 
 .chapter-text {
