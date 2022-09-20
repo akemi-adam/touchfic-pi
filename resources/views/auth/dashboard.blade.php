@@ -10,16 +10,19 @@
             </h1>
         </div>
         @forelse ($recommendations as $recommendation)
+            <h2>
+                Você também pode se interessar:
+            </h2>
             <div class="carousel">
-                <h2>
-                    {{ $recommendation->title }}
-                </h2>
-                <img src="{{ asset('storage/images/storie/cover/' . $recommendation->cover) }}" alt="{{ $recommendation->title }}" style="width: 500px">
+                <h3>
+                    <a href="{{ route('storie.show', $recommendation->id) }}">{{ $recommendation->title }}</a>
+                </h3>
+                <a href="{{ route('storie.show', $recommendation->id) }}">
+                    <img src="{{ asset('storage/images/storie/cover/' . $recommendation->cover) }}" alt="{{ $recommendation->title }}" style="width: 500px">
+                </a>
             </div>
         @empty
-            <h2>
-                O usuário não não curtiu nenhuma história
-            </h2>
+            @livewire('recent-stories')
         @endforelse
     </article>
 @endsection
