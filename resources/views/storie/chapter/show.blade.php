@@ -26,8 +26,7 @@
             @endif
 
             @if (!is_null($chapter->spotify_track))
-                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/{{$chapter->spotify_track}}?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                <hr>
+                <iframe class="spotify-track" src="https://open.spotify.com/embed/track/{{$chapter->spotify_track}}?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             @endif
             
             <div class="chapter">
@@ -42,14 +41,14 @@
         @if (!is_null($previous))
             <form action="{{ route('chapter.show', $previous) }}" method="get" class="previous">
                 <button>
-                <i class="fa-solid fa-chevron-left"></i> Voltar capítulo
+                <i class="fa-solid fa-chevron-left"></i> Anterior
                 </button>
             </form>
         @endif
         @if (!is_null($next))
             <form action="{{ route('chapter.show', $next) }}" method="get"  class="next">
                 <button>
-                    Próximo capítulo <i class="fa-solid fa-chevron-right"></i>
+                    Próximo <i class="fa-solid fa-chevron-right"></i>
                 </button>
             </form>
         @endif
