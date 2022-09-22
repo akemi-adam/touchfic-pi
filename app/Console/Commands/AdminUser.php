@@ -9,10 +9,17 @@ use Illuminate\Support\Str;
 
 class AdminUser extends Command
 {
+    /** @var string $signature command signature */
     protected $signature = 'make:admin';
     
+    /** @var string $description command description */
     protected $description = 'Create a admin in system';
 
+    /**
+     * It retrieves the data for the registration of a user. In case of confirmation, it creates a new user and displays a success message. Otherwise, it does not create the user and displays an operation canceled message.
+     *
+     * @return int
+     **/
     public function handle()
     {
         $name = $this->ask('Qual o seu nome?');
