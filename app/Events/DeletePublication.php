@@ -14,8 +14,14 @@ class DeletePublication
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    /** @var App\Models\Chapter|App\Models\Post $publication publication */
     public $publication;
     
+    /**
+     * Set the publication
+     *
+     * @param App\Models\Chapter|App\Models\Post $publication 
+     **/
     public function __construct($publication)
     {
         $this->publication = $publication;

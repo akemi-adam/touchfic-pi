@@ -17,8 +17,14 @@ class DeleteStorie
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    /** @var Storie $storie a story */
     public $storie;
 
+    /**
+     * Set the story
+     *
+     * @param Storie $storie 
+     **/
     public function __construct(Storie $storie)
     {
         $this->storie = $storie;

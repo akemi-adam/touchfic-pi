@@ -15,8 +15,14 @@ class UpdateStorie
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    /** @var Storie $storie */
     public $storie;
 
+    /**
+     * Set the story 
+     *
+     * @param Storie $storie the story itself
+     **/
     public function __construct(Storie $storie)
     {
         $this->storie = $storie;

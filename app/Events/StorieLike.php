@@ -16,12 +16,22 @@ class StorieLike
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    /** @var User $reader story reader */
     public $reader;
 
+    /** @var Storie $storie the story itself */
     public $storie;
 
+    /** @var User $author author of the story */
     public $author;
 
+    /**
+     * Sets attribute values
+     *
+     * @param User $reader story reader
+     * @param Storie $storie the story itself
+     * @param User $author author of the story
+     **/
     public function __construct(User $reader, Storie $storie, User $author)
     {
         $this->reader = $reader;

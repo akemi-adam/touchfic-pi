@@ -15,8 +15,14 @@ class UpdateNotification
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    /** @var User $user */
     public $user;
 
+    /**
+     * Set the user
+     *
+     * @param User $user
+     **/
     public function __construct(User $user)
     {
         $this->user = $user;

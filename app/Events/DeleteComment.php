@@ -14,7 +14,14 @@ class DeleteComment
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    /** @var App\Models\Commentchapter|App\Models\Commentpost $comment publication comment */
+    public $comment;
     
+    /**
+     * Set the comment
+     *
+     * @param App\Models\Commentchapter|App\Models\Commentpost $comment publication comment
+     **/
     public function __construct($comment)
     {
         $this->comment = $comment;
