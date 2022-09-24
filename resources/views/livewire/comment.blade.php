@@ -1,15 +1,21 @@
 <div>
+    <div class="comment-container">
     <div class="comment-box">
-        <h4>
-            Deixe um comentário abaixo!
-        </h4>
-        <img src="" class="avatar" alt="Foto do usuário">
-        <form wire:submit.prevent="store">
-            <textarea wire:model="content" name="content" id="comment" cols="30" rows="10" placeholder="O que você pensa sobre isso?"></textarea>
-            <button wire:click="$emit('listComments')">
-                Enviar
-            </button>
-        </form>
+
+        <div class="comment-area">
+            @if (Auth::check())
+            <img src="{{ asset('storage/images/user/avatar/' . Auth::user()->avatar)}}" class="avatar" alt="Avatar do usuário">
+            @endif
+            <form wire:submit.prevent="store">
+                <textarea wire:model="content" name="content" id="comment" cols="60" rows="8" placeholder="O que você pensa sobre isso?"></textarea>
+        </div>
+            <div class="comment-btn">
+                <button wire:click="$emit('listComments')">
+                    Comentar
+                </button>
+            </form>
+            </div>
+    </div>
     </div>
     @forelse ($comments as $comment)
         <img src="{{asset('storage/images/user/avatar/' . $comment->user->avatar)}}" class="avatar">

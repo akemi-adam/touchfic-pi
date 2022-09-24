@@ -190,10 +190,16 @@ nav ul li:hover .submenu li:hover {
     user-select: none;
 }
 
-/* Responsive Header */
+/* Responsive */
 @media (max-width: 500px){
     header {
         flex-direction: column;
+    }
+    .comment-area {
+        flex-wrap: wrap;
+    }
+    .comment-area img {
+        margin-bottom: 15px;
     }
 }
 
@@ -948,14 +954,83 @@ textarea {
     transition: all .4s ease;
 }
 
-.comment-box {
+.comment-container {
     display: flex;
-    flex-direction: column;
-    text-align: left;
+    justify-content: center;
 }
 
-.comment-box h4 {
-    padding: 15px;
+.comment-btn {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.comment-box {
+    margin-top: 3em;
+    margin-bottom: 5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--main-color-white);
+    /* box-shadow:0 0 5px 2px #9090903d; */
+    border-top: 1px solid #909090;
+    padding: 2.5em;
+    width: 70%;
+    height: 100%;
+}
+
+.comment-box button {
+    background-color: var(--main-color);
+    padding: 0.6em 1em 0.6em 1em;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-size: 12pt;
+    font-family: var(--font-1);
+    font-weight: 600;
+    margin-top: 1em;
+}
+
+.comment-box button:hover {
+    background-color: var(--main-color-hover);
+}
+
+.comment-box button:active {
+    background-color: var(--main-color-active);
+}
+
+.comment-area {
+    background-color: var(--main-color-white);
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    padding-top: 0.5em;
+}
+
+.comment-area img {
+    max-width: 60px;
+    max-height: 60px;
+    border-radius: 40px;
+    margin-right: 1em;
+}
+
+.comment-area textarea {
+    resize: vertical;
+    border-radius: 5px;
+    font-family: var(--font-text);
+    font-size: 12pt;
+    outline: 0;
+    border-color: #90909055;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.comment-area textarea:focus {
+    box-shadow:0 0 5px 2px #e7f3ff;
+	border-color: #1877f2;
+    transition: all .1s;
 }
 
 .chapter-text {
