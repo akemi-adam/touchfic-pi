@@ -30,6 +30,7 @@ class ChapterController extends Controller
      * Creates a chapter for the story specified by the id
      * 
      * @param int $id
+     * 
      * @return \Illuminate\View\View
      */
     public function create($id)
@@ -48,6 +49,7 @@ class ChapterController extends Controller
      * 
      * @param App\Http\Requests\Storie\Chapter\StoreChapterRequest $request
      * @param int $id
+     * 
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreChapterRequest $request, $id)
@@ -81,6 +83,7 @@ class ChapterController extends Controller
      * Displays the chapter specified by the id, along with prev and next buttons
      * 
      * @param int $id
+     * 
      * @return \Illuminate\View\View
      */
     public function show($id)
@@ -101,6 +104,7 @@ class ChapterController extends Controller
      * Shows the edit form for the chapter specified by id
      * 
      * @param int $id
+     * 
      * @return \Illuminate\View\View
      */
     public function edit($id)
@@ -119,6 +123,7 @@ class ChapterController extends Controller
      * 
      * @param App\Http\Requests\Storie\Chapter\UpdateChapterRequest $request
      * @param int $id
+     * 
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateChapterRequest $request, $id)

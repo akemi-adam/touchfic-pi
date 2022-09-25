@@ -40,6 +40,7 @@ class GenreController extends Controller
      * Checks if the user is an administrator and if so, creates a gender object, saves its name and returns a redirect with a success message
      * 
      * @param \Illuminate\Http\Request $request
+     * 
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -58,6 +59,7 @@ class GenreController extends Controller
      * From the id, retrieves the specific genre and returns a page with information about it
      * 
      * @param int $id
+     * 
      * @return \Illuminate\View\View
      */
     public function show($id)
@@ -75,6 +77,7 @@ class GenreController extends Controller
      * By id, show the edit form
      * 
      * @param int $id
+     * 
      * @return \Illuminate\View\View
      */
     public function edit($id)
@@ -93,6 +96,7 @@ class GenreController extends Controller
      * 
      * @param \Illuminate\Http\Request $request
      * @param int $id
+     * 
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
@@ -110,6 +114,7 @@ class GenreController extends Controller
      * Checks the user's permission level and if he is an admin, allows the gender to be deleted
      * 
      * @param int $id
+     * 
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)

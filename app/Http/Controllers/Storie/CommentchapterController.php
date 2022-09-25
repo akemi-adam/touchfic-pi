@@ -11,6 +11,9 @@ use Auth;
 class CommentchapterController extends Controller
 {
 
+    /**
+     * Apply middleware exists edit and update actions
+     */
     public function __construct() {
         $this->middleware('exists:' . Commentchapter::class, [
             'only' => [
@@ -19,6 +22,12 @@ class CommentchapterController extends Controller
         ]);
     }
 
+    /**
+     * Returns the comment edit form
+     * 
+     * @param int $id
+     * @return \Illuminate\View\View
+     */
     public function edit($id)
     {
         $this->authorize('authenticated');
@@ -28,6 +37,14 @@ class CommentchapterController extends Controller
         ]);
     }
 
+    /**
+     * Retrieves the comment by id, updates its content and redirects the user to the chapter to which the comment belongs
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     * 
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request, $id)
     {
         $this->authorize('authenticated');

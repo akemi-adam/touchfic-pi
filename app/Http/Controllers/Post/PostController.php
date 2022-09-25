@@ -53,6 +53,7 @@ class PostController extends Controller
      * Saves the post to the database
      * 
      * @param \Illuminate\Http\Request $request
+     * 
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -71,6 +72,7 @@ class PostController extends Controller
      * Display the specified resource.
      *
      * @param int $id
+     * 
      * @return \Illuminate\View\View
      */
     public function show($id)
@@ -86,6 +88,7 @@ class PostController extends Controller
      * Shows the post edition form
      * 
      * @param int id
+     * 
      * @return \Illuminate\View\View
      */
     public function edit($id)
@@ -104,6 +107,7 @@ class PostController extends Controller
      * 
      * @param \Illuminate\Http\Request $request
      * @param int $id
+     * 
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
@@ -122,6 +126,7 @@ class PostController extends Controller
      * It finds the post in the bank and, if it passes authorization and if it has comments, deletes them along with it. Dispatch a DeletePublication event
      * 
      * @param int $id
+     * 
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)

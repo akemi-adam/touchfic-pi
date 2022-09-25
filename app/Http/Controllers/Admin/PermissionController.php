@@ -49,6 +49,7 @@ class PermissionController extends Controller
      * Retrieves the user to be promoted, checks the job level assigned to him and then updates his permission level
      * 
      * @param \Illuminate\Http\Request $request
+     * 
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request)
@@ -71,6 +72,7 @@ class PermissionController extends Controller
      * Takes the permissions that are different from the user's permission passed by parameter and sends this object along with the user himself to a view
      * 
      * @param User $user
+     * 
      * @return \Illuminate\View\View
      */
     public function change(User $user)
@@ -90,6 +92,7 @@ class PermissionController extends Controller
      * 
      * @param \Illuminate\Http\Request $request
      * @param int $id
+     * 
      * @return \Illuminate\Http\RedirectResponse
      */
     public function transference(Request $request, $id)

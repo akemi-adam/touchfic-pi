@@ -21,6 +21,9 @@ use Auth;
 class StorieController extends Controller
 {
 
+    /**
+     * Apply middleware exists show actions
+     */
     public function __construct(Type $var = null)
     {
         $this->middleware('exists:' . Storie::class, [
@@ -30,6 +33,11 @@ class StorieController extends Controller
         ]);
     }
 
+    /**
+     * From a join in the database tables, retrieves the list of authors and their stories
+     * 
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
         $stories = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('storie_user.liked', 0)->whereNotNull('storie_user.user_id')->orderBy('stories.id', 'DESC')->get();
@@ -39,6 +47,13 @@ class StorieController extends Controller
         ]);
     }
 
+    /**
+     * From a join in the database tables, retrieves the histories of the current user
+     * 
+     * @param int $id
+     * 
+     * @return \Illuminate\View\View
+     */
     public function myStories($id)
     {
         $stories = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('storie_user.user_id', $id)->where('storie_user.liked', 0)->orderBy('stories.id', 'DESC')->get();
@@ -48,6 +63,13 @@ class StorieController extends Controller
         ]);
     }
 
+    /**
+     * From a join in the database tables, retrieves the stories that the user has liked
+     * 
+     * @param int $id
+     * 
+     * @return \Illuminate\View\View
+     */
     public function likes($id)
     {
         $stories = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('storie_user.user_id', $id)->where('storie_user.liked', 1)->orderBy('stories.title', 'ASC')->get();
@@ -57,6 +79,13 @@ class StorieController extends Controller
         ]);
     }
 
+    /**
+     * From a join in the database tables, the users who have liked the respective story by its id
+     * 
+     * @param int $id
+     * 
+     * @return \Illuminate\View\View
+     */
     public function likesOfStorie($id)
     {
 
@@ -67,19 +96,32 @@ class StorieController extends Controller
         ]);
     }
 
-
+    /**
+     * Shows the story creation form
+     * 
+     * @return \Illuminate\View\View
+     */
     public function create()
     {
         $this->authorize('create', Storie::class);
 
         $agegroups = Agegroup::all();
+
         $genres = Genre::all();
+
         return view('storie.create', [
             'agegroups' => $agegroups,
             'genres' => $genres,
         ]);
     }
 
+    /**
+     * Authorizes the action, creates a story object, defines its properties, checks the cover, saves it to the database, and then makes the relationships with the columns that have many to many relationships
+     * 
+     * @param App\Http\Requests\Storie\StoreStorieRequest $request
+     * 
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(StoreStorieRequest $request)
     {
         $this->authorize('create', Storie::class);
@@ -102,6 +144,13 @@ class StorieController extends Controller
         return redirect('/storie')->with('success_msg', 'História cadastrada com sucesso');
     }
 
+    /**
+     * Retrieves the story, its genres and, together with its chapters and the total number of likes, displays it
+     * 
+     * @param int $id
+     * 
+     * @return \Illuminate\View\View
+     */
     public function show($id)
     {
         $storie = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('stories.id', $id)->first();
@@ -120,7 +169,13 @@ class StorieController extends Controller
         ]);
     }
 
-
+    /**
+     * Shows the story editing form
+     * 
+     * @param int $id
+     * 
+     * @return \Illuminate\View\View
+     */
     public function edit($id)
     {
         $storie = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('stories.id', $id)->first();
@@ -139,6 +194,14 @@ class StorieController extends Controller
         ]);
     }
 
+    /**
+     * Retrieves the story, checks the authorization, checks which fields have changed, checks the cover, and saves the story. It also checks the genres and does all the necessary procedures against the database tables if any genre has been changed, and can dispatch an UpdateStorie event.
+     * 
+     * @param App\Http\Requests\Storie\UpdateStorieRequest $request
+     * @param int $id
+     * 
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(UpdateStorieRequest $request, $id)
     {
         $storie = Storie::findOrFail($id);
@@ -171,6 +234,13 @@ class StorieController extends Controller
     }
 
 
+    /**
+     * Retrieves the story, deletes the relationships it had with other tables, dispatches an event and deletes the story
+     * 
+     * @param int $id
+     * 
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         $storie = Storie::findOrFail($id);
@@ -189,6 +259,15 @@ class StorieController extends Controller
         return redirect()->to(route('storie.mystories', Auth::user()->id))->with('success_msg', 'História deletada com sucesso!');
     }
 
+    /**
+     * Check the file, then check if the cover is different from the default cover; if it is, delete the previous cover. After that, it hashes the file name and saves it to the database
+     * 
+     * @param App\Http\Requests\Storie\UpdateStorieRequest $request
+     * @param string $name
+     * @param App\Models\Storie $model
+     * 
+     * @return void
+     */
     private function coverVerify($request, $name, $model)
     {
         if ($request->hasFile($name) && $request->file($name)->isValid()) {

@@ -9,6 +9,13 @@ use App\Models\User;
 
 class SearchController extends Controller
 {
+    /**
+     * Retrieves the stories and users that match what was searched for and returns to a view
+     * 
+     * @param \Illuminate\Http\Request $request
+     * 
+     * @return \Illuminate\View\View
+     */
     public function search(Request $request)
     {
         $stories = $this->analyzeArgument($request->argument, Storie::class, 'title', true);

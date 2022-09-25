@@ -28,6 +28,7 @@ class UserController extends Controller
      * Show user profile by their id
      * 
      * @param int $id
+     * 
      * @return \Illuminate\View\View
      */
     public function show($id)
@@ -43,6 +44,7 @@ class UserController extends Controller
      * Show user edit form
      * 
      * @param int $id
+     * 
      * @return \Illuminate\View\View
      */
     public function edit($id)
@@ -59,6 +61,7 @@ class UserController extends Controller
      * 
      * @param \Illuminate\Http\UserProfileRequest $request
      * @param int $id
+     * 
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UserProfileRequest $request, $id)
