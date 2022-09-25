@@ -10,10 +10,10 @@ use Auth;
 class GenreController extends Controller
 {
     /**
+     * Show all genres
      * 
-     * Resgata os dados do banco e devolve pra página /admin/genre/index
+     * @return \Illuminate\View\View
      */
-
     public function index()
     {
         $this->authorize('admin_operations');
@@ -25,9 +25,10 @@ class GenreController extends Controller
     }
 
     /**
-     * Retorna um formulário para criação de gêneros
+     * Show the creation form
+     * 
+     * @return \Illuminate\View\View
      */
-
     public function create()
     {
         $this->authorize('admin_operations');
@@ -36,9 +37,11 @@ class GenreController extends Controller
     }
 
     /**
-     * Action que vai operar no banco salvando as informações e redirecionar a página para mostrar os dados salvos
+     * Checks if the user is an administrator and if so, creates a gender object, saves its name and returns a redirect with a success message
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-
     public function store(Request $request)
     {
         $this->authorize('admin_operations');
@@ -52,9 +55,11 @@ class GenreController extends Controller
     }
 
     /**
-     * Procura o gênero pelo seu id específico e retorna um objeto dele para a página show
+     * From the id, retrieves the specific genre and returns a page with information about it
+     * 
+     * @param int $id
+     * @return \Illuminate\View\View
      */
-
     public function show($id)
     {
         $this->authorize('admin_operations');
@@ -66,6 +71,12 @@ class GenreController extends Controller
         ]);
     }
 
+    /**
+     * By id, show the edit form
+     * 
+     * @param int $id
+     * @return \Illuminate\View\View
+     */
     public function edit($id)
     {
         $this->authorize('admin_operations');
@@ -77,6 +88,13 @@ class GenreController extends Controller
         ]);
     }
 
+    /**
+     * Checks the user's permission level and if the user is an admin, updates the specified gender, returning to a view with a success message
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request, $id)
     {
         $this->authorize('admin_operations');
@@ -88,6 +106,12 @@ class GenreController extends Controller
         return redirect('/admin/genre')->with('success_msg', "Gênero $genre->genre editado");
     }
 
+    /**
+     * Checks the user's permission level and if he is an admin, allows the gender to be deleted
+     * 
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         $this->authorize('admin_operations');

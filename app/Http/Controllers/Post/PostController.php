@@ -12,6 +12,9 @@ use Auth;
 class PostController extends Controller
 {
 
+    /**
+     * Apply middleware exists show actions
+     */
     public function __construct() {
         $this->middleware('exists:' . Post::class, [
             'only' => [
@@ -20,6 +23,11 @@ class PostController extends Controller
         ]);
     }
 
+    /**
+     * Retrieves the most recent posts and returns a view
+     * 
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
         $posts = Post::orderBy('updated_at', 'DESC')->get();
@@ -29,6 +37,11 @@ class PostController extends Controller
         ]);
     }
 
+    /**
+     * Returns the post creation form
+     * 
+     * @return \Illuminate\View\View
+     */
     public function create()
     {
         $this->authorize('create', Post::class);
@@ -36,6 +49,12 @@ class PostController extends Controller
         return view('post.create');
     }
 
+    /**
+     * Saves the post to the database
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $this->authorize('create', Post::class);
@@ -51,8 +70,8 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Illuminate\View\View
      */
     public function show($id)
     {
@@ -63,6 +82,12 @@ class PostController extends Controller
         ]);
     }
 
+    /**
+     * Shows the post edition form
+     * 
+     * @param int id
+     * @return \Illuminate\View\View
+     */
     public function edit($id)
     {
         $post = Post::findOrFail($id);
@@ -74,6 +99,13 @@ class PostController extends Controller
         ]);
     }
 
+    /**
+     * Retrieves the post, checks the authorization and updates the post in the database
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request, $id)
     {
         $post = Post::findOrFail($id);
@@ -86,6 +118,12 @@ class PostController extends Controller
         return redirect("/post/$id")->with('success_msg', 'Postagem editada com sucesso!');
     }
 
+    /**
+     * It finds the post in the bank and, if it passes authorization and if it has comments, deletes them along with it. Dispatch a DeletePublication event
+     * 
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         $post = Post::findOrFail($id);

@@ -14,6 +14,9 @@ use App\Models\Storie;
 class ChapterController extends Controller
 {
 
+    /**
+     * Apply middleware exists show actions
+     */
     public function __construct()
     {
         $this->middleware('exists:' . Chapter::class, [
@@ -23,6 +26,12 @@ class ChapterController extends Controller
         ]);
     }
 
+    /**
+     * Creates a chapter for the story specified by the id
+     * 
+     * @param int $id
+     * @return \Illuminate\View\View
+     */
     public function create($id)
     {
         $storie = Storie::findOrFail($id);
@@ -34,6 +43,13 @@ class ChapterController extends Controller
         ]);
     }
 
+    /**
+     * Retrieves the story, checks the authorization, creates a chapter object, defines its properties (uses a regex to find the number of words) and saves the chapter. Then it updates the word count of the respective story and redirects the page
+     * 
+     * @param App\Http\Requests\Storie\Chapter\StoreChapterRequest $request
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(StoreChapterRequest $request, $id)
     {
         $storie = Storie::findOrFail($id);
@@ -45,7 +61,7 @@ class ChapterController extends Controller
 
         $chapter->content = $request->content;
 
-        $chapter->numberofwords = count(preg_split('~[^\p{L}\p{N}\']+~u', $request->content)) /* - 1 */;
+        $chapter->numberofwords = count(preg_split('~[^\p{L}\p{N}\']+~u', $request->content));
 
         $chapter->authornotes = $request->authornotes;
 
@@ -61,6 +77,12 @@ class ChapterController extends Controller
         return redirect()->to(route('chapter.show', $chapter->id))->with('success_msg', 'Capítulo registrado com sucesso!');
     }
 
+    /**
+     * Displays the chapter specified by the id, along with prev and next buttons
+     * 
+     * @param int $id
+     * @return \Illuminate\View\View
+     */
     public function show($id)
     {
         $chapter = Chapter::findOrFail($id);
@@ -75,6 +97,12 @@ class ChapterController extends Controller
         ]);
     }
 
+    /**
+     * Shows the edit form for the chapter specified by id
+     * 
+     * @param int $id
+     * @return \Illuminate\View\View
+     */
     public function edit($id)
     {
         $chapter = Chapter::findOrFail($id);
@@ -86,6 +114,13 @@ class ChapterController extends Controller
         ]);
     }
 
+    /**
+     * It retrieves the chapter, checks which fields have changed, and if the content has changed, the word count of the entire story is adapted and reformulated. Finally it saves the chapter in the database and redirects the page
+     * 
+     * @param App\Http\Requests\Storie\Chapter\UpdateChapterRequest $request
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(UpdateChapterRequest $request, $id)
     {
         $chapter = Chapter::findOrFail($id);
@@ -124,6 +159,12 @@ class ChapterController extends Controller
         return redirect()->to(route('chapter.show', $id))->with('success_msg', 'Capítulo editado com sucesso!');
     }
 
+    /**
+     * Retrieves the specific chapter, takes its story, decrements the total number of words, fires a DeletePublication event, and deletes the chapter
+     * 
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         $chapter = Chapter::findOrFail($id);

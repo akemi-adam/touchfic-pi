@@ -12,11 +12,21 @@ use Auth;
 
 class SocialAuthController extends Controller
 {
+    /**
+     * Redirects to google application callback url
+     * 
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function redirectToProvider()
     {
         return Socialite::driver('google')->redirect();
     }
 
+    /**
+     * Get the google user and check if it exists in the bank. If yes, login the user. Otherwise, create the user and then log him in.
+     * 
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function handleCallback()
     {
         try {
@@ -34,12 +44,15 @@ class SocialAuthController extends Controller
             $newUser = new User;
 
             $newUser->name = $user->name;
+
             $newUser->email = $user->email;
 
             $newUser->google_id = $user->id;
+
             $newUser->permission_id = 1;
 
             $newUser->password = Hash::make(Str::random(10));
+            
             $newUser->save();
 
             Auth::login($newUser, true);

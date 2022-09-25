@@ -9,6 +9,12 @@ use App\Models\Post;
 
 class ModeratorController extends Controller
 {
+    /**
+     * Delete the post comments and delete the post
+     * 
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deletePost($id)
     {
         Commentpost::where('post_id', $id)->delete();

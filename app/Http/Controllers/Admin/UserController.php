@@ -13,6 +13,9 @@ use Auth;
 class UserController extends Controller
 {
 
+    /**
+     * Apply middleware exists show, edit and update actions
+     */
     public function __construct() {
         $this->middleware('exists:' . User::class, [
             'only' => [
@@ -21,22 +24,43 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * Show user profile by their id
+     * 
+     * @param int $id
+     * @return \Illuminate\View\View
+     */
     public function show($id)
     {
         $user = User::findOrFail($id);
+
         return view('auth.user.show', [
             'user' => $user,
         ]);
     }
 
+    /**
+     * Show user edit form
+     * 
+     * @param int $id
+     * @return \Illuminate\View\View
+     */
     public function edit($id)
     {
         $user = User::findOrFail($id);
+
         return view('auth.user.edit', [
             'user' => $user,
         ]);
     }
 
+    /**
+     * It retrieves the user, checks the filled in fields and makes a more detailed check on the image request, where the previous avatar is deleted from the system if it has already changed its photo once. Then an event is dispatched
+     * 
+     * @param \Illuminate\Http\UserProfileRequest $request
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(UserProfileRequest $request, $id)
     {
         $user = User::findOrFail($id);
@@ -60,7 +84,9 @@ class UserController extends Controller
             }
 
             $newName = $request->file('avatar')->hashName();
+
             $request->file('avatar')->storeAs('public/images/user/avatar', $newName);
+            
             $user->avatar = $newName;
         
         }
