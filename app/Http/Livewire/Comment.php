@@ -25,11 +25,21 @@ class Comment extends Component
         'listComments' => 'index',
     ];
 
+    /**
+     * List the comments
+     * 
+     * @return void
+     */
     public function index()
     {
         $this->comments = $this->model::where($this->foreignCollumn, $this->foreignId)->get();
     }
 
+    /**
+     * Checks if the user is logged in, validates the form and associates it with either a post or a chapter
+     * 
+     * @return void
+     */
     public function store()
     {
         if (Auth::check()) {
@@ -60,6 +70,13 @@ class Comment extends Component
         }
     }
 
+    /**
+     * Retrieves the comment, undoes its relationships in the database, deletes it, and re-renders the comments
+     * 
+     * @param int $id
+     * 
+     * @return void
+     */
     public function delete($id)
     {
         $comment = $this->model::findOrFail($id);

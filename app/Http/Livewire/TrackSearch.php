@@ -19,6 +19,11 @@ class TrackSearch extends Component
         'listTracks' => 'index',
     ];
 
+    /**
+     * Validates the data based on the rules defined in the class, sets listed to true and defines which tracks will receive the tracks filtered by search, with a limit value of 30 tracks
+     * 
+     * @return void
+     */
     public function index()
     {
         $this->validate();
