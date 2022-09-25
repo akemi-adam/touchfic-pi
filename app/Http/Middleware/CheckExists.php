@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 class CheckExists
 {
     /**
-     * Handle an incoming request.
+     * Checks if the requests exists and if so, if the corresponding model exists to let the request go through
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * 
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next, $model)
