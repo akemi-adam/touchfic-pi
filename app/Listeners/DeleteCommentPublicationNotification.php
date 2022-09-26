@@ -11,17 +11,7 @@ use Arr;
 class DeleteCommentPublicationNotification
 {
     /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
-     * Handle the event.
+     * Deletes the notifications referring to the specific publication
      *
      * @param  \App\Events\DeletePublication  $event
      * @return void

@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\DB;
 
 class UpdateLikeNotification
 {
-    
-    public function __construct()
-    {
-        //
-    }
-
+    /**
+     * Updates the liking notification data when the user changes some personal data, such as name
+     *
+     * @param  \App\Events\UpdateNotification  $event
+     * @return void
+     */
     public function handle(UpdateNotification $event)
     {
         $notificationsNumber = count(DB::table('notifications')->where('type', 'App\Notifications\StorieLikeNotification')->get());

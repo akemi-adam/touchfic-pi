@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class RemoveLikeNotification
 {
+    /**
+     * Deletes the notification when un-linking
+     *
+     * @param  \App\Events\Unlike  $event
+     * @return void
+     */
     public function handle(Unlike $event)
     {
         $publication = $event->publication;

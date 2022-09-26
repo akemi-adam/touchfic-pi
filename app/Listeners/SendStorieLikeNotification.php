@@ -10,11 +10,12 @@ use App\Models\User;
 
 class SendStorieLikeNotification
 {
-    public function __construct()
-    {
-        //
-    }
-
+    /**
+     * Sends out a story's like notification
+     *
+     * @param  \App\Events\StorieLike  $event
+     * @return void
+     */
     public function handle(StorieLike $event)
     {
         $storie = $event->storie;

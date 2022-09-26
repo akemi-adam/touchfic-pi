@@ -10,17 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 class SendCommentNotification
 {
     /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
-     * Handle the event.
+     * Sends the notification of a chapter comment to the owner of the story
      *
      * @param  \App\Events\CommentEvent  $event
      * @return void

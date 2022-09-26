@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class DeleteCommentNotification
 {
-    
-    public function __construct()
-    {
-        //
-    }
-
+    /**
+     * Checks what type the comment is and deletes the notifications pertaining to it
+     *
+     * @param  \App\Events\DeleteComment  $event
+     * @return void
+     */
     public function handle(DeleteComment $event)
     {
         $comment = $event->comment;

@@ -10,17 +10,7 @@ use Illuminate\Support\Facades\DB;
 class RemoveStorieLikeNotification
 {
     /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
-     * Handle the event.
+     * Removes the like notification when the story is deleted
      *
      * @param  \App\Events\DeleteStorie  $event
      * @return void

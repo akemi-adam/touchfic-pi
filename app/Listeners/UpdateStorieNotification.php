@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class UpdateStorieNotification
 {
+    /**
+     * Updates all notifications for a particular story when it is updated
+     *
+     * @param  \App\Events\UpdateStorie  $event
+     * @return void
+     */
     public function handle(UpdateStorie $event)
     {
         $storie = $event->storie;

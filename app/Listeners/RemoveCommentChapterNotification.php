@@ -10,17 +10,7 @@ use Illuminate\Support\Facades\DB;
 class RemoveCommentChapterNotification
 {
     /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
-     * Handle the event.
+     * Deletes all notifications from the chapters of the specific story
      *
      * @param  \App\Events\DeleteStorie  $event
      * @return void

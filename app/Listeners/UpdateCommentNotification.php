@@ -10,13 +10,12 @@ use Arr;
 
 class UpdateCommentNotification
 {
-
-    public function __construct()
-    {
-        
-    }
-
-
+    /**
+     * Updates the comment notification data when the user changes some personal data, such as name
+     *
+     * @param  \App\Events\UpdateNotification  $event
+     * @return void
+     */
     public function handle(UpdateNotification $event)
     {
 
