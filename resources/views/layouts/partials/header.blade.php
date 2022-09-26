@@ -10,37 +10,17 @@
         <div>
             <form action="{{ route('search') }}" method="get" class="search-form" autocomplete="off">
                 @if (isset($argument))
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
                     <input type="text" name="argument" placeholder="Pesquisar" value="{{ $argument }}">
-                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
                 @else
-                    <input type="text" name="argument" placeholder="Pesquisar">
                     <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input type="text" name="argument" placeholder="Pesquisar">
                 @endif
             </form>
         </div>
 
     <nav>
         <ul>
-            @can('authenticated')
-            <li>
-            <a href="{{route('user.show', Auth::user()->id)}}" class="nav-link">{{Auth::user()->name}}</a>
-                <ul class="submenu">
-                    <li class="nav-link">
-                        <a href="{{route('user.notifications')}}">
-                            Notificações
-                            @if (!empty(Auth::user()->unreadNotifications[0]))
-                                <i class="fa-solid fa-circle"></i>
-                            @endif
-                        </a>
-                        
-                    </li>
-                    <form action="{{route('logout')}}" method="post">
-                        @csrf
-                        <li class="nav-link"><a onclick="event.preventDefault(); this.closest('form').submit();">Sair</a></li>
-                    </form>
-                </ul>
-            </li>
-            @endcan
             <li>
             <a href="{{route('storie.index')}}" class="nav-link">Histórias</a>
                     @can('authenticated')
@@ -52,6 +32,28 @@
                     @endcan
             </li>
             <li><a href="{{route('post.index')}}" class="nav-link">Linha do tempo</a></li>
+
+            @can('authenticated')
+            <li>
+            <a href="{{route('user.show', Auth::user()->id)}}" class="nav-link">{{Auth::user()->name}}</a>
+                <ul class="submenu">
+                    <li class="nav-link">
+                        <a href="{{route('user.notifications')}}">
+                            Notificações
+                            @if (!empty(Auth::user()->unreadNotifications[0]))
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                            @endif
+                        </a>
+                        
+                    </li>
+                    <form action="{{route('logout')}}" method="post">
+                        @csrf
+                        <li class="nav-link"><a onclick="event.preventDefault(); this.closest('form').submit();">Sair</a></li>
+                    </form>
+                </ul>
+            </li>
+            @endcan
+
             @if (!Auth::check())
                 <li><a href="{{route('login')}}" class="nav-link">Login</a></li>
                 <li><a href="{{route('register')}}" class="nav-link">Cadastre-se</a></li>

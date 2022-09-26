@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Bem-vindo!')
+@section('title', 'Resultados da busca: ' . $argument . ' - Touchfic')
 
 @section('content')
 <article class="site-content">

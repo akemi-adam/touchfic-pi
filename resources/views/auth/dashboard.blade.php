@@ -3,10 +3,14 @@
 @section('title', 'Página Inicial - Touchfic')
 
 @section('content')
-    <article class="site-content">
+<article class="site-content">
+    <section class="dashboard-container">
+
+        <div class="dashboard-content">
+
         <div class="container-title">
             <h1 class="title">
-                Olá, boas-vindas!
+                Olá, {{Auth::user()->name}}!
             </h1>
         </div>
         @php
@@ -32,5 +36,7 @@
         @empty
             @livewire('recent-stories')
         @endforelse
-    </article>
+        </div>
+    </section>
+</article>
 @endsection
