@@ -18,6 +18,7 @@ class DashboardController extends Controller
      */
     public function __invoke()
     {
+
         $unlikedStories = array();
 
         $recommendations = array();
@@ -41,7 +42,6 @@ class DashboardController extends Controller
         foreach ($unlikedStoriesIds as $item) {
             $unlikedStories[] = Storie::findOrFail($item->storie_id);
         }
-
 
         $limit = 0;
 

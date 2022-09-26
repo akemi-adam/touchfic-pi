@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Storie;
 
-use App\Http\Controllers\Controller;
-use App\Events\DeletePublication;
 use App\Http\Requests\Storie\Chapter\{
     StoreChapterRequest, UpdateChapterRequest
 };
+use App\Http\Controllers\Controller;
+use App\Events\DeletePublication;
 use Illuminate\Http\Request;
 use App\Models\Chapter;
 use App\Models\Storie;
+use RequestSupport;
 
 class ChapterController extends Controller
 {
@@ -91,6 +92,7 @@ class ChapterController extends Controller
         $chapter = Chapter::findOrFail($id);
 
         $previous = Chapter::where('storie_id', $chapter->storie_id)->where('id', '<', $chapter->id)->max('id');
+        
         $next = Chapter::where('storie_id', $chapter->storie_id)->where('id', '>', $chapter->id)->min('id');
 
         return view('storie.chapter.show', [
@@ -132,13 +134,15 @@ class ChapterController extends Controller
 
         $this->authorize('update', $chapter);
 
-        if ($chapter->title !== $request->title) {
+        /* if ($chapter->title !== $request->title) {
             $chapter->title = $request->title;
         }
 
         if ($chapter->authornotes !== $request->authornotes) {
             $chapter->authornotes = $request->authornotes;
-        }
+        } */
+
+        RequestSupport::setEditValues($request, $chapter, ['title', 'authornotes']);
 
         if ($chapter->content !== $request->content) {
 

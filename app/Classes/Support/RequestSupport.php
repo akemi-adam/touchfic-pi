@@ -20,9 +20,9 @@ class RequestSupport
 
             $field = $fields[$i];
 
-            $model->$field = is_null($request->$field) ? $model->$field : $request->$field;
+            $model->$field = is_null($request->$field) || $request->$field === $model->$field ?
+                $model->$field : $request->$field;
 
         }
     }
-
 }

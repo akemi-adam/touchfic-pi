@@ -18,8 +18,14 @@ class SearchController extends Controller
      */
     public function search(Request $request)
     {
-        $stories = $this->analyzeArgument($request->argument, Storie::class, 'title', true);
-        $users = $this->analyzeArgument($request->argument, User::class, 'name');
+
+        $stories = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')
+                    ->rightJoin('users', 'users.id', '=', 'storie_user.user_id')
+                    ->where('storie_user.liked', 0)
+                    ->where('title', 'like', "%$request->argument%")
+                    ->get() ?: null;
+
+        $users =  User::where('name', 'like', "%$request->argument%")->get() ?: null;
 
         return view('auth.search', [
             'stories' => $stories,
@@ -28,11 +34,4 @@ class SearchController extends Controller
         ]);
     }
 
-    private function analyzeArgument($argument, $model, $collumn, $join = false)
-    {
-        if ($join) {
-            return $model::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('storie_user.liked', 0)->where($collumn, 'like', "%$argument%")->get() ?: null;
-        }
-        return $model::where($collumn, 'like', "%$argument%")->get() ?: null;
-    }
 }
