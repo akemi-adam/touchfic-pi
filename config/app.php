@@ -196,6 +196,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         App\Providers\FileSupportProvider::class,
+        App\Providers\RequestSupportProvider::class,
 
     ],
 
@@ -213,6 +214,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'FileSupport' => App\Classes\Support\FileSupportFacade::class,
+        'RequestSupport' => App\Classes\Support\RequestSupportFacade::class,
     ])->toArray(),
 
 ];

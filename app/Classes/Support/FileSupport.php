@@ -15,6 +15,8 @@ class FileSupport
      * 
      * @param Illuminate\Http\Request $request
      * @param App\Models\Storie
+     * 
+     * @return void
      */
     public function cover($request, Storie $model)
     {
@@ -26,6 +28,8 @@ class FileSupport
      * 
      * @param Illuminate\Http\Request $request
      * @param App\Models\User $model
+     * 
+     * @return void
      */
     public function avatar($request, User $model)
     {
@@ -36,14 +40,20 @@ class FileSupport
      * Check the image, then see if it already exists so you can delete the previous avatar and finally encode the image
      * 
      * @param Illuminate\Http\Request $request
-     * @param App\Models\Storie | App\Models\User $model
+     * @param App\Models\Storie|App\Models\User $model
      * @param string $collumn
      * @param string $defaultArchive
      * @param string $path
+     * 
+     * @return bool|void
      */
     public function imageVerify($request, $model, $collumn, $defaultArchive, $path)
     {
-        if (!$request->hasFile($collumn) && !$request->file($collumn)->isValid()) {
+        if (!$request->hasFile($collumn)) {
+            return false;
+        }
+
+        if (!$request->file($collumn)->isValid()) {
             return false;
         }
 

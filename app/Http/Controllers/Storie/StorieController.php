@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Storie;
 
-use Auth, Storage, DB, FileSupport;
+use Auth, Storage, DB, FileSupport, RequestSupport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Storie\{
@@ -20,8 +20,10 @@ class StorieController extends Controller
 
     /**
      * Apply middleware exists show actions
+     * 
+     * @return void
      */
-    public function __construct(Type $var = null)
+    public function __construct()
     {
         $this->middleware('exists:' . Storie::class, [
             'only' => [
@@ -37,7 +39,12 @@ class StorieController extends Controller
      */
     public function index()
     {
-        $stories = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('storie_user.liked', 0)->whereNotNull('storie_user.user_id')->orderBy('stories.id', 'DESC')->get();
+        $stories = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')
+            ->rightJoin('users', 'users.id', '=', 'storie_user.user_id')
+            ->where('storie_user.liked', 0)
+            ->whereNotNull('storie_user.user_id')
+            ->orderBy('stories.id', 'DESC')
+            ->get();
 
         return view('storie.index', [
             'stories' => $stories,
@@ -53,7 +60,12 @@ class StorieController extends Controller
      */
     public function myStories($id)
     {
-        $stories = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('storie_user.user_id', $id)->where('storie_user.liked', 0)->orderBy('stories.id', 'DESC')->get();
+        $stories = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')
+            ->rightJoin('users', 'users.id', '=', 'storie_user.user_id')
+            ->where('storie_user.user_id', $id)
+            ->where('storie_user.liked', 0)
+            ->orderBy('stories.id', 'DESC')
+            ->get();
 
         return view('storie.mystories', [
             'stories' => $stories,
@@ -69,7 +81,12 @@ class StorieController extends Controller
      */
     public function likes($id)
     {
-        $stories = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('storie_user.user_id', $id)->where('storie_user.liked', 1)->orderBy('stories.title', 'ASC')->get();
+        $stories = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')
+            ->rightJoin('users', 'users.id', '=', 'storie_user.user_id')
+            ->where('storie_user.user_id', $id)
+            ->where('storie_user.liked', 1)
+            ->orderBy('stories.title', 'ASC')
+            ->get();
 
         return view('storie.mystories', [
             'stories' => $stories,
@@ -86,7 +103,11 @@ class StorieController extends Controller
     public function likesOfStorie($id)
     {
 
-        $datas = DB::table('storie_user')->join('users', 'users.id', '=', 'storie_user.user_id')->where('storie_user.storie_id', $id)->where('storie_user.liked', 1)->get();
+        $datas = DB::table('storie_user')
+            ->join('users', 'users.id', '=', 'storie_user.user_id')
+            ->where('storie_user.storie_id', $id)
+            ->where('storie_user.liked', 1)
+            ->get();
 
         return view('storie.likesofstorie', [
             'datas' => $datas,
@@ -150,9 +171,17 @@ class StorieController extends Controller
      */
     public function show($id)
     {
-        $storie = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('stories.id', $id)->first();
+        $storie = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')
+            ->rightJoin('users', 'users.id', '=', 'storie_user.user_id')
+            ->where('stories.id', $id)
+            ->first();
 
-        $genres = DB::table('genre_storie')->join('genres', 'genre_storie.genre_id', '=', 'genres.id')->where('genre_storie.storie_id', $storie->storie_id)->select('genres.genre')->orderBy('genres.genre', 'ASC')->get();
+        $genres = DB::table('genre_storie')
+            ->join('genres', 'genre_storie.genre_id', '=', 'genres.id')
+            ->where('genre_storie.storie_id', $storie->storie_id)
+            ->select('genres.genre')
+            ->orderBy('genres.genre', 'ASC')
+            ->get();
 
         $chapters = Chapter::where('storie_id', $storie->storie_id)->get();
 
@@ -175,11 +204,16 @@ class StorieController extends Controller
      */
     public function edit($id)
     {
-        $storie = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')->rightJoin('users', 'users.id', '=', 'storie_user.user_id')->where('stories.id', $id)->first();
+        $storie = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')
+            ->rightJoin('users', 'users.id', '=', 'storie_user.user_id')
+            ->where('stories.id', $id)
+            ->first();
 
         $genres = Genre::all();
 
-        $selectsGenres = Genre::join('genre_storie', 'genres.id', '=', 'genre_storie.genre_id')->where('genre_storie.storie_id', $id)->get();
+        $selectsGenres = Genre::join('genre_storie', 'genres.id', '=', 'genre_storie.genre_id')
+            ->where('genre_storie.storie_id', $id)
+            ->get();
 
         $agegroups = Agegroup::all();
 
@@ -205,11 +239,13 @@ class StorieController extends Controller
 
         $this->authorize('update', $storie);
 
-        $storie->title = is_null($request->title) ? $storie->title : $request->title;
+        RequestSupport::setEditValues($request, $storie, ['title', 'synopsis', 'agegroup_id']);
+
+        /* $storie->title = is_null($request->title) ? $storie->title : $request->title;
 
         $storie->synopsis = is_null($request->synopsis) ? $storie->synopsis : $request->synopsis;
 
-        $storie->agegroup_id = is_null($request->agegroup_id) ? $storie->agegroup_id : $request->agegroup_id;
+        $storie->agegroup_id = is_null($request->agegroup_id) ? $storie->agegroup_id : $request->agegroup_id; */
 
         FileSupport::cover($request, $storie);
 
@@ -255,5 +291,5 @@ class StorieController extends Controller
 
         return redirect()->to(route('storie.mystories', Auth::user()->id))->with('success_msg', 'História deletada com sucesso!');
     }
-    
+
 }
