@@ -9,10 +9,18 @@
                 Olá, boas-vindas!
             </h1>
         </div>
+        @php
+            $displayInfo = false;
+        @endphp
         @forelse ($recommendations as $recommendation)
-            <h2>
-                Você também pode se interessar:
-            </h2>
+            @if (!$displayInfo)
+                <h2>
+                    Você também pode se interessar:
+                </h2>
+                @php
+                    $displayInfo = true;
+                @endphp
+            @endif
             <div class="carousel">
                 <h3>
                     <a href="{{ route('storie.show', $recommendation->id) }}">{{ $recommendation->title }}</a>
