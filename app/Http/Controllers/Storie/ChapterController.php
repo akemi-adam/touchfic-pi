@@ -56,25 +56,20 @@ class ChapterController extends Controller
     public function store(StoreChapterRequest $request, $id)
     {
         $storie = Storie::findOrFail($id);
+
         $this->authorize('create', $storie);
         
-        $chapter = new Chapter;
-
-        $chapter->title = $request->title;
-
-        $chapter->content = $request->content;
-
-        $chapter->numberofwords = count(preg_split('~[^\p{L}\p{N}\']+~u', $request->content));
-
-        $chapter->authornotes = $request->authornotes;
-
-        $chapter->storie_id = $id;
-
-        $chapter->spotify_track = $request->track;
-
-        $chapter->save();
+        $chapter = Chapter::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'numberofwords' => count(preg_split('~[^\p{L}\p{N}\']+~u', $request->content)),
+            'authornotes' => $request->authornotes,
+            'storie_id' => $id,
+            'spotify_track' => $request->track,
+        ]);
 
         $storie->numberofwords += $chapter->numberofwords;
+
         $storie->save();
 
         return redirect()->to(route('chapter.show', $chapter->id))->with('success_msg', 'Capítulo registrado com sucesso!');
@@ -133,14 +128,6 @@ class ChapterController extends Controller
         $chapter = Chapter::findOrFail($id);
 
         $this->authorize('update', $chapter);
-
-        /* if ($chapter->title !== $request->title) {
-            $chapter->title = $request->title;
-        }
-
-        if ($chapter->authornotes !== $request->authornotes) {
-            $chapter->authornotes = $request->authornotes;
-        } */
 
         RequestSupport::setEditValues($request, $chapter, ['title', 'authornotes']);
 

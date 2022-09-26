@@ -19,6 +19,7 @@ class ModeratorController extends Controller
     public function deletePost($id)
     {
         Commentpost::where('post_id', $id)->delete();
+        
         Post::findOrFail($id)->delete();
 
         return redirect()->to(route('post.index'));

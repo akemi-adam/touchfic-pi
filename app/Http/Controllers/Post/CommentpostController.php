@@ -49,7 +49,9 @@ class CommentpostController extends Controller
         $this->authorize('authenticated');
 
         $comment = Commentpost::findOrFail($id);
+
         $comment->content = $request->content;
+        
         $comment->save();
 
         return redirect("/post/$comment->post_id")->with('success_msg', 'Comentário editado com sucesso!');
