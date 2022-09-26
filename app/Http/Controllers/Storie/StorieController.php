@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers\Storie;
 
-use Illuminate\Support\Facades\{
-    Storage, DB
+use Auth, Storage, DB, FileSupport;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Http\Requests\Storie\{
+    StoreStorieRequest, UpdateStorieRequest
 };
 use App\Models\{
     Agegroup, Chapter, Storie, Genre, User
 };
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Storie\{
-    StoreStorieRequest, UpdateStorieRequest
-};
 use App\Events\{
     DeleteStorie, UpdateStorie
 };
-use Illuminate\Http\Request;
-use Auth;
 
 class StorieController extends Controller
 {
@@ -131,7 +128,7 @@ class StorieController extends Controller
         $storie->synopsis = $request->synopsis;
         $storie->agegroup_id = $request->agegroup;
 
-        $this->coverVerify($request, 'cover', $storie);
+        FileSupport::cover($request, $storie);
 
         $storie->save();
 
@@ -214,7 +211,7 @@ class StorieController extends Controller
 
         $storie->agegroup_id = is_null($request->agegroup_id) ? $storie->agegroup_id : $request->agegroup_id;
 
-        $this->coverVerify($request, 'cover', $storie);
+        FileSupport::cover($request, $storie);
 
         $storie->save();
 
@@ -258,29 +255,5 @@ class StorieController extends Controller
 
         return redirect()->to(route('storie.mystories', Auth::user()->id))->with('success_msg', 'História deletada com sucesso!');
     }
-
-    /**
-     * Check the file, then check if the cover is different from the default cover; if it is, delete the previous cover. After that, it hashes the file name and saves it to the database
-     * 
-     * @param App\Http\Requests\Storie\UpdateStorieRequest $request
-     * @param string $name
-     * @param App\Models\Storie $model
-     * 
-     * @return void
-     */
-    private function coverVerify($request, $name, $model)
-    {
-        if ($request->hasFile($name) && $request->file($name)->isValid()) {
-            
-            if ($model->cover !== "default-storie-cover.png") {
-                Storage::disk('public')->delete("images/storie/cover/$model->cover");
-            }
-
-            $newName = $request->file($name)->hashName();
-            $request->file($name)->storeAs('public/images/storie/cover', $newName);
-            $model->cover = $newName;
-
-        }
-    }
-
+    
 }

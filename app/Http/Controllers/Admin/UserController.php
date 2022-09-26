@@ -8,13 +8,15 @@ use Illuminate\Http\Request;
 use App\Http\Requests\User\UserProfileRequest;
 use App\Events\UpdateNotification;
 use App\Models\User;
-use Auth;
+use Auth, FileSupport;
 
 class UserController extends Controller
 {
 
     /**
      * Apply middleware exists show, edit and update actions
+     * 
+     * @return void
      */
     public function __construct() {
         $this->middleware('exists:' . User::class, [
@@ -80,19 +82,7 @@ class UserController extends Controller
             $user->biography = $request->biography;
         }
 
-        if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
-            
-            if ($user->avatar !== "default-user-avatar.png") {
-                Storage::disk('public')->delete("images/user/avatar/$user->avatar");
-            }
-
-            $newName = $request->file('avatar')->hashName();
-
-            $request->file('avatar')->storeAs('public/images/user/avatar', $newName);
-            
-            $user->avatar = $newName;
-        
-        }
+        FileSupport::avatar($request, $user);
 
         $user->save();
 

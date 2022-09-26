@@ -19,6 +19,7 @@ class GenreController extends Controller
         $this->authorize('admin_operations');
 
         $genres = Genre::all();
+        
         return view('admin.genre.index',[
             'genres' => $genres
         ]);
