@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\User\UserProfileRequest;
 use App\Events\UpdateNotification;
 use App\Models\User;
-use Auth, FileSupport;
+use Auth, FileSupport, RequestSupport;
 
 class UserController extends Controller
 {
@@ -70,17 +70,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        if (isset($request->name)) {
-            $user->name = $request->name;
-        }
-
-        if (isset($request->email)) {
-            $user->email = $request->email;
-        }
-
-        if (isset($request->biography)) {
-            $user->biography = $request->biography;
-        }
+        RequestSupport::setEditValues($request, $user, ['name', 'email', 'biography']);
 
         FileSupport::avatar($request, $user);
 
