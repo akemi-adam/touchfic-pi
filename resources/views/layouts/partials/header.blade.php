@@ -10,10 +10,10 @@
         <div>
             <form action="{{ route('search') }}" method="get" class="search-form" autocomplete="off">
                 @if (isset($argument))
-                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
                     <input type="text" name="argument" placeholder="Pesquisar" value="{{ $argument }}">
                 @else
-                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
                     <input type="text" name="argument" placeholder="Pesquisar">
                 @endif
             </form>
