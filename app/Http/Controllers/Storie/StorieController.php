@@ -45,7 +45,7 @@ class StorieController extends Controller
     }
 
     /**
-     * From a join in the database tables, retrieves the histories of the current user
+     * Sends all related stories to the current user
      * 
      * @param int $id
      * 
@@ -59,7 +59,7 @@ class StorieController extends Controller
     }
 
     /**
-     * From a join in the database tables, retrieves the stories that the user has liked
+     * Adds the stories liked by the user to an array and sends it to the view
      * 
      * @param int $id
      * 
@@ -81,7 +81,7 @@ class StorieController extends Controller
     }
 
     /**
-     * From a join in the database tables, the users who have liked the respective story by its id
+     * Takes the users who liked the story and sends them to the view
      * 
      * @param int $id
      * 
@@ -155,7 +155,7 @@ class StorieController extends Controller
     }
 
     /**
-     * Retrieves the story, its genres and, together with its chapters and the total number of likes, displays it
+     * Retrieves the story and the amount of likes it has
      * 
      * @param int $id
      * 
@@ -182,21 +182,15 @@ class StorieController extends Controller
      */
     public function edit($id)
     {
-        $storie = Storie::findOrFail($id);
-
-        $genres = Genre::all();
-
-        $agegroups = Agegroup::all();
-
         return view('storie.edit', [
-            'storie' => $storie,
-            'genres' => $genres,
-            'agegroups' => $agegroups,
+            'storie' => Storie::findOrFail($id),
+            'genres' => Genre::all(),
+            'agegroups' => Agegroup::all(),
         ]);
     }
 
     /**
-     * Retrieves the story, checks the authorization, checks which fields have changed, checks the cover, and saves the story. It also checks the genres and does all the necessary procedures against the database tables if any genre has been changed, and can dispatch an UpdateStorie event.
+     * Finds the story, authorizes the action, sets the properties that have changed on the form, checks the cover, saves the story, and dispatches an UpdateStorie event
      * 
      * @param App\Http\Requests\Storie\UpdateStorieRequest $request
      * @param int $id
@@ -217,14 +211,8 @@ class StorieController extends Controller
 
         if (!is_null($request->genres)) {
 
-            UpdateStorie::dispatch($storie);
-
-            $storie->genres()->detach();
-
-            foreach ($request->genres as $genre) {
-                $storie->genres()->attach($genre);
-            }
-
+            UpdateStorie::dispatch($storie, $request);
+            
         }
 
         return redirect()->to(route('storie.show', $storie->id))->with('success_msg', 'História editada com sucesso');
@@ -244,12 +232,7 @@ class StorieController extends Controller
 
         $this->authorize('delete', $storie);
 
-        $storie->users()->detach();
-        $storie->genres()->detach();
-
         DeleteStorie::dispatch($storie);
-
-        DB::table('storie_user')->where('storie_id', $id)->where('liked', 1)->delete();
 
         $storie->delete();
 

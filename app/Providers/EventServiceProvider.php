@@ -13,7 +13,7 @@ use App\Events\{
 use App\Listeners\{
     SendStorieLikeNotification, SendCommentNotification, UpdateLikeNotification, UpdateCommentNotification,
     RemoveStorieLikeNotification, RemoveCommentChapterNotification, DeleteCommentPublicationNotification,
-    DeleteCommentNotification, UpdateStorieNotification, RemoveLikeNotification
+    DeleteCommentNotification, UpdateStorieNotification, RemoveLikeNotification, UnwrapStorie, RenewingLinksStorie
 };
 
 class EventServiceProvider extends ServiceProvider
@@ -27,29 +27,39 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
         StorieLike::class => [
             SendStorieLikeNotification::class,
         ],
+
         CommentEvent::class => [
             SendCommentNotification::class,
         ],
+
         UpdateNotification::class => [
             UpdateLikeNotification::class,
             UpdateCommentNotification::class,
         ],
+
         DeleteStorie::class => [
             RemoveStorieLikeNotification::class,
             RemoveCommentChapterNotification::class,
+            UnwrapStorie::class,
         ],
+
         DeletePublication::class => [
             DeleteCommentPublicationNotification::class,
         ],
+
         DeleteComment::class => [
             DeleteCommentNotification::class,
         ],
+
         UpdateStorie::class => [
             UpdateStorieNotification::class,
+            RenewingLinksStorie::class,
         ],
+
         Unlike::class => [
             RemoveLikeNotification::class,
         ]

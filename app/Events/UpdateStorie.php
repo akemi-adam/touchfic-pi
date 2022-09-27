@@ -18,13 +18,20 @@ class UpdateStorie
     /** @var Storie $storie */
     public $storie;
 
+    /** @var $request */
+    public $request;
+
     /**
      * Set the story 
      *
      * @param Storie $storie the story itself
      **/
-    public function __construct(Storie $storie)
+    public function __construct(Storie $storie, $request = null)
     {
+        if (!is_null($request)) {
+            $this->request = $request;
+        }
+
         $this->storie = $storie;
     }
 
