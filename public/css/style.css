@@ -103,9 +103,7 @@ header li {
 
 .submenu {
     display: none;
-    font-family: var(--font-2);
     position: fixed;
-    padding: 5px;
     background-color: var(--main-color-white);
 }
 
@@ -113,15 +111,15 @@ header li {
     text-decoration: none;
     color: var(--color-text);
     display: block;
-    padding: 4px;
+    padding: 6px 0 6px 0;
 }
 
 nav ul li:hover .submenu {
     display: block;
     color: var(--color-text);
-    background-color: #f3f3f3;
-    border-radius: 10px;
-    box-shadow: 1px 1px 3px var(--color-2);
+    background-color: var(--main-color-white);
+    border-radius: 5px;
+    box-shadow: 0px 1px 6px var(--color-2);
 }
 
 nav ul li:hover .submenu ul {
@@ -131,9 +129,8 @@ nav ul li:hover .submenu ul {
 }
 
 nav ul li:hover .submenu li:hover {
-    background-color: #e5e0e0;
-    transition: all 0.2s;
-    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .search-form {
@@ -152,37 +149,21 @@ nav ul li:hover .submenu li:hover {
     width: 210px;
     outline: 0;
     border: none;
-    /* border-bottom: 1px solid var(--color-text); */
     padding-left: 1px;
-    /* padding-bottom: 3px; */
     margin-right: 2px;
-    font-size: 11pt;
+    font-size: 12pt;
     font-family: var(--font-text);  
     border-radius: 5px;
 }
 
-.search-form button {
+.search-form span {
     padding: 7px;
     font-size: 12pt;
     border-radius: 20px;
     border: none;
-    cursor: pointer;
     background-color: #efefef;
     color: var(--color-2);
 }
-
-.search-form input:focus {
-
-}
-
-/*.search-form button:hover {
-    background-color: #e1e1e1;
-    transition: all .2s;
-}
-
-.search-form button:active {
-    background-color: #d8d8d8;
-}*/
 
 .logo {
     display: flex;
@@ -210,6 +191,9 @@ nav ul li:hover .submenu li:hover {
     }
     .comment-area img {
         margin-bottom: 15px;
+    }
+    .search-form {
+        margin-top: 10px;
     }
 }
 

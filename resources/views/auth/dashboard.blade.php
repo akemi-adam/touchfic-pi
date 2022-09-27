@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Página Inicial - Touchfic')
+@section('title', 'Início - Touchfic')
 
 @section('content')
 <article class="site-content">
