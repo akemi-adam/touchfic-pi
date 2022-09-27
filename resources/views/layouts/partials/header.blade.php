@@ -26,8 +26,8 @@
                     @can('authenticated')
                     <ul class="submenu">
                         <li class="nav-link"><a href="{{ route('storie.create') }}"><i class="fa-solid fa-plus"></i> Criar história</a></li>
-                        <li class="nav-link"><a href="{{ route('storie.mystories', Auth::user()->id) }}">Minhas histórias</a></li>
-                        <li class="nav-link"><a href="{{ route('storie.likes', Auth::user()->id) }}">Histórias favoritas</a></li>
+                        <li class="nav-link"><a href="{{ route('storie.mystories', Auth::id()) }}">Minhas histórias</a></li>
+                        <li class="nav-link"><a href="{{ route('storie.likes', Auth::id()) }}">Histórias favoritas</a></li>
                     </ul>
                     @endcan
             </li>
@@ -35,7 +35,7 @@
 
             @can('authenticated')
             <li>
-            <a href="{{route('user.show', Auth::user()->id)}}" class="nav-link">{{Auth::user()->name}}</a>
+            <a href="{{route('user.show', Auth::id())}}" class="nav-link">{{Auth::user()->name}}</a>
                 <ul class="submenu">
                     <li class="nav-link">
                         <a href="{{route('user.notifications')}}">

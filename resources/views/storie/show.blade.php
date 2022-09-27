@@ -19,7 +19,7 @@
     <img src="{{ asset('storage/images/storie/cover/' . $storie->cover) }}" class="cover-show">
     
     <div class="storie-data-1">
-    <p>Escrita por: <a href="{{ route('user.show', $storie->user_id) }}">{{ $storie->name }}</a></p>
+    <p>Escrita por: <a href="{{ route('user.show', $storie->users[0]->id) }}">{{ $storie->users[0]->name }}</a></p>
     <span>Faixa etária: <span style="font-weight: bold;">{{ $storie->agegroup->agegroup }}</span></span>
     <span>Número de palavras: <span style="font-weight: bold;">{{ $storie->numberofwords }}</span></span>
     <span>Data de publicação: <span style="font-weight: bold;">
@@ -33,37 +33,37 @@
     </span>
 
     <div class="likes-container">
-        <strong><a href="{{route('likes.of.storie', $storie->storie_id)}}" id="likes" value="{{ $amount }}">Curtidas: {{ $amount }}</a></strong>
+        <strong><a href="{{route('likes.of.storie', $storie->id)}}" id="likes" value="{{ $amount }}">Curtidas: {{ $amount }}</a></strong>
     
 
     @can('authenticated')
-        @livewire('like', ['storieId' => $storie->storie_id, 'authorId' => $storie->user_id])
+        @livewire('like', ['storieId' => $storie->id, 'authorId' => $storie->users[0]->id])
     @endcan
     </div>
 
     <span>Gêneros:</span>
     <ul>
-        @foreach ($genres as $genre)
+        @foreach ($storie->genres as $genre)
             <li style="color: #262626">{{$genre->genre}}</li> 
         @endforeach
     </ul>
 <h4>Sinopse:</h4>
     <p>{!!nl2br(e($storie->synopsis))!!}</p>
     @can('authenticated')
-        @if (Auth::user()->id === $storie->user_id)
-            <form action="{{ route('storie.edit', $storie->storie_id) }}" method="get">
+        @if (Auth::id() === $storie->users[0]->id)
+            <form action="{{ route('storie.edit', $storie->id) }}" method="get">
                 <button>
                     Editar
                 </button>
             </form>
-            <form action="{{ route('storie.destroy', $storie->storie_id) }}" method="post">
+            <form action="{{ route('storie.destroy', $storie->id) }}" method="post">
                 @csrf
                 @method('delete')
                 <button>
                     Deletar
                 </button>
             </form>
-            <form action="{{ route('chapter.create', $storie->storie_id) }}" method="get">
+            <form action="{{ route('chapter.create', $storie->id) }}" method="get">
                 <button>Adicionar um capítulo</button>
             </form>
     </div>
@@ -76,11 +76,11 @@
     @php
         $index = 0;
     @endphp
-    @forelse ($chapters as $chapter)
+    @forelse ($storie->chapters as $chapter)
         <div>
             <h3>{{$index += 1}} | <a style="text-decoration: none" href="{{route('chapter.show', $chapter->id)}}">{{$chapter->title}}</a> </h3>
             @can('authenticated')
-                @if (Auth::user()->id === $storie->user_id)
+                @if (Auth::id() === $storie->users[0]->id)
                     <form action="{{ route('chapter.edit', $chapter->id) }}" method="get">
                         <button style="background-color: rgb(112, 144, 250); border:1px solid black">
                             Editar

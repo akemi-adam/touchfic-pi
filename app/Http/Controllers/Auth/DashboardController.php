@@ -19,6 +19,8 @@ class DashboardController extends Controller
     public function __invoke()
     {
 
+        return view('auth.dashboard');
+
         $unlikedStories = array();
 
         $recommendations = array();

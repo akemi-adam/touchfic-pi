@@ -25,10 +25,17 @@ class Like extends Component
      */
     public function status()
     {
-        if (count(DB::table('storie_user')->where('user_id', Auth::user()->id)->where('storie_id', $this->storieId)->where('liked', 1)->get()) !== 0) {
-            return true;
+
+        $enjoyed = count(
+            DB::table('likes')->where('user_id', Auth::id())->where('storie_id', $this->storieId)->get()
+        );
+
+        if ($enjoyed === 0) {
+            return false;
         }
-        return false;
+
+        return true;
+
     }
 
     /**
@@ -38,15 +45,15 @@ class Like extends Component
      */
     public function enjoy()
     {
-        $authorName = User::where('id', $this->authorId)->first(['name']);
 
-        DB::insert('insert into storie_user (storie_id, user_id, liked, author_id, author_name) values (?, ?, ?, ?, ?)', [
-            $this->storieId, Auth::user()->id, 1, $this->authorId, $authorName['name']
+        DB::table('likes')->insert([
+            'storie_id' => $this->storieId, 'user_id' => Auth::id()
         ]);
 
         StorieLike::dispatch(Auth::user(), Storie::find($this->storieId), User::find($this->authorId));
 
         $this->status = true;
+
     }
 
     /**
@@ -56,13 +63,13 @@ class Like extends Component
      */
     public function unlike()
     {
-        DB::delete('delete from storie_user where liked = 1 and storie_id = ? and user_id = ?', [
-            $this->storieId, Auth::user()->id
-        ]);
+
+        DB::table('likes')->where('storie_id', $this->storieId)->where('user_id', Auth::id())->delete();
 
         Unlike::dispatch(Storie::findOrFail($this->storieId));
 
         $this->status = false;
+
     }
 
     public function render()

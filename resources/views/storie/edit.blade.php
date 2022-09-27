@@ -18,7 +18,7 @@
         </div>
     @endif
 
-    <form action="{{ route('storie.update', $storie->storie_id) }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('storie.update', $storie->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('put')
         <label for="title" class="label-tag">Titulo</label>
@@ -33,37 +33,30 @@
         <input type="file" name="cover"><br>
         <h4>Sinopse:</h4>
         <textarea name="synopsis" cols="90" rows="15" class="desc-textarea" placeholder="Sinopse...">{{ $storie->synopsis }}</textarea>
-        @for ($i = 0; $i < count($genres); $i++)
+
+        @foreach ($genres as $genre)
+
             @php
                 $listed = false;
             @endphp
-            @for ($j = 0; $j < count($selectsGenres); $j++)
-                @if ($genres[$i]->id === $selectsGenres[$j]->genre_id)
-                    <label for="{{$genres[$i]->genre}}">{{$genres[$i]->genre}}</label>
-                    <input type="checkbox" name="genres[]" value="{{$genres[$i]->id}}" id="{{$genres[$i]->genre}}" checked>
+            
+            @foreach ($storie->genres as $selectGenre)
+                @if ($selectGenre->genre === $genre->genre)
+                    <label for="{{$genre->genre}}">{{$genre->genre}}</label>
+                    <input type="checkbox" name="genres[]" value="{{$genre->id}}" id="{{$genre->genre}}" checked>
                     @php
                         $listed = true;
                     @endphp
                 @endif
-            @endfor
+            @endforeach
+
             @if (!$listed)
-                <label for="{{$genres[$i]->genre}}">{{$genres[$i]->genre}}</label>
-                <input type="checkbox" name="genres[]" value="{{$genres[$i]->id}}" id="{{$genres[$i]->genre}}">
-            @endif
-        @endfor
-        {{-- @foreach ($genres as $genre)
-            <label for="{{$genre->genre}}">{{$genre->genre}}</label>
-            <input type="checkbox" name="genres[]" value="{{$genre->id}}" id="{{$genre->genre}}">
-            {{$i = 0}}
-            @if ($noSelectedGenres[$i]->id === $genre->id)
                 <label for="{{$genre->genre}}">{{$genre->genre}}</label>
-                <input type="checkbox" name="genres[]" value="{{$genre->id}}" id="{{$genre->genre}}"> 
-            @else
-                <label for="{{$genre->genre}}">{{$genre->genre}}</label>
-                <input type="checkbox" name="genres[]" value="{{$genre->id}}" id="{{$genre->genre}}" checked> 
+                <input type="checkbox" name="genres[]" value="{{$genre->id}}" id="{{$genre->genre}}">
             @endif
-            {{$i++}}
-        @endforeach --}}
+
+        @endforeach
+
         <div class="container-submit">
             <div class="submit-story-button">
                 <button>

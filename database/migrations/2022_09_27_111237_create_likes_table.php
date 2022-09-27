@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('storie_user', function (Blueprint $table) {
-            $table->integer('author_id');
-            $table->string('author_name');
+        Schema::create('likes', function (Blueprint $table) {
+            $table->foreignId('storie_id')->constrained();
+            $table->foreignId('user_id')->constrained();
+            $table->timestamps();
         });
     }
 
@@ -26,9 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('storie_user', function (Blueprint $table) {
-            $table->dropCollumn('author_id');
-            $table->dropCollumn('author_name');
-        });
+        Schema::dropIfExists('likes');
     }
 };

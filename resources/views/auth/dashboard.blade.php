@@ -8,12 +8,12 @@
 
         <div class="dashboard-content">
 
-        <div class="container-title">
-            <h1 class="title">
-                Olá, {{Auth::user()->name}}!
-            </h1>
-        </div>
-        @php
+            <div class="container-title">
+                <h1 class="title">
+                    Olá, {{Auth::user()->name}}!
+                </h1>
+            </div>
+        {{-- @php
             $displayInfo = false;
         @endphp
         @forelse ($recommendations as $recommendation)
@@ -35,7 +35,7 @@
             </div>
         @empty
             @livewire('recent-stories')
-        @endforelse
+        @endforelse --}}
         </div>
     </section>
 </article>
