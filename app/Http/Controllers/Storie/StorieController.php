@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Storie;
 
-use Auth, Storage, DB, FileSupport, RequestSupport;
+use Auth, Storage, DB, FileSupport, RequestSupport, StorieSupport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Storie\{
@@ -59,7 +59,7 @@ class StorieController extends Controller
     }
 
     /**
-     * Adds the stories liked by the user to an array and sends it to the view
+     * Gets the stories liked through the likeInfo function
      * 
      * @param int $id
      * 
@@ -67,13 +67,7 @@ class StorieController extends Controller
      */
     public function likes($id)
     {
-        $likesData = DB::table('likes')->where('user_id', $id)->get();
-
-        $stories = array();
-
-        foreach ($likesData as $data) {
-            $stories[] = Storie::findOrFail($data->storie_id);
-        }
+        $stories = StorieSupport::likeInfo($id, 'user_id', Storie::class, 'storie_id');
 
         return view('storie.index', [
             'stories' => $stories,
@@ -81,7 +75,7 @@ class StorieController extends Controller
     }
 
     /**
-     * Takes the users who liked the story and sends them to the view
+     * Gets the users who liked the story through the likeInfo function
      * 
      * @param int $id
      * 
@@ -89,14 +83,7 @@ class StorieController extends Controller
      */
     public function likesOfStorie($id)
     {
-
-        $likesData = DB::table('likes')->where('storie_id', $id)->get();
-
-        $users = array();
-
-        foreach ($likesData as $data) {
-            $users[] = User::findOrFail($data->user_id);
-        }
+        $users = StorieSupport::likeInfo($id, 'storie_id', User::class, 'user_id');
 
         return view('storie.likesofstorie', [
             'users' => $users,

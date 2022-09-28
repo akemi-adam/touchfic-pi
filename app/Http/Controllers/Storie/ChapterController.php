@@ -168,9 +168,11 @@ class ChapterController extends Controller
         $this->authorize('delete', $chapter);
 
         $storie = Storie::findOrFail($chapter->storie->id);
-        $storie->numberofwords -= $chapter->numberofwords;
-        $storie->save();
 
+        $storie->numberofwords -= $chapter->numberofwords;
+        
+        $storie->save();
+ 
         DeletePublication::dispatch($chapter);
 
         $chapter->delete();

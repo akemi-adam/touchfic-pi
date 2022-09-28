@@ -13,7 +13,7 @@
                     Olá, {{Auth::user()->name}}!
                 </h1>
             </div>
-        {{-- @php
+        @php
             $displayInfo = false;
         @endphp
         @forelse ($recommendations as $recommendation)
@@ -35,7 +35,7 @@
             </div>
         @empty
             @livewire('recent-stories')
-        @endforelse --}}
+        @endforelse
         </div>
     </section>
 </article>
