@@ -3,7 +3,6 @@
 @section('title', 'Início - Touchfic')
 
 @section('content')
-<article class="site-content">
     <section class="dashboard-container">
 
         <div class="dashboard-content">
@@ -38,5 +37,4 @@
         @endforelse
         </div>
     </section>
-</article>
 @endsection

@@ -36,7 +36,10 @@
     @include('layouts.partials.sidebar')
     
     {{-- Seção do Conteúdo --}}
-    @yield('content')
+    <article class="site-content">
+        @yield('content')
+    </article>
+    
 
     {{-- Footer --}}
     @include('layouts.partials.footer')

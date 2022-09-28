@@ -3,7 +3,6 @@
 @section('title', 'Resultados da busca: ' . $argument . ' - Touchfic')
 
 @section('content')
-<article class="site-content">
     @forelse ($stories as $storie)
         <h3><a href="{{  route('storie.show', $storie->storie_id) }}">{{ $storie->title }}</a></h3>
         <img src="{{ asset('storage/images/storie/cover/' . $storie->cover) }}" class="cover-index"><br>
@@ -28,5 +27,4 @@
             Nenhum usuário foi encontrado
         </h2>
     @endforelse
-</article>
 @endsection

@@ -3,7 +3,6 @@
 @section('title', $chapter->storie->title . ": $chapter->title - Touchfic")
 
 @section('content')
-<article class="site-content">
     <main class="container-chapter">
         <div class="div-chapter">
             <h1>{{$chapter->title}}</h1>
@@ -55,6 +54,7 @@
     </div>
 
     <hr>
+    
     @livewire('comment', [
         'model' => 'App\Models\Commentchapter',
         'foreignCollumn' => 'chapter_id',
@@ -63,5 +63,4 @@
         'editRoute' => 'chapter.comment.edit',
         'publication' => $chapter
     ])
-</article>
 @endsection

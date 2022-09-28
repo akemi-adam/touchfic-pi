@@ -3,8 +3,6 @@
 @section('title', $post->content)
     
 @section('content')
-<article class="site-content">
-<br>
     <img src="{{asset('storage/images/user/avatar/' . $post->user->avatar)}}" class="avatar">
     <h2 style="display: inline">
         {{ $post->user->name }} disse:
@@ -37,6 +35,7 @@
         @endif
     @endcan
     <hr>
+     
     @livewire('comment', [
         'model' => 'App\Models\Commentpost',
         'foreignCollumn' => 'post_id',
@@ -45,5 +44,5 @@
         'editRoute' => 'post.comment.edit',
         'publication' => $post
     ])
-<article>
+    
 @endsection

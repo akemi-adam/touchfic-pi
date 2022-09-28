@@ -33,7 +33,10 @@
     @include('layouts.partials.sidebar')
     
     {{-- Seção do Conteúdo --}}
-    {{ $slot }}
+    <article class="site-content">
+        {{ $slot }}
+    </article>
+    
 
     {{-- Footer --}}
     @include('layouts.partials.footer')

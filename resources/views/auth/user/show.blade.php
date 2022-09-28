@@ -3,7 +3,6 @@
 @section('title', 'Perfil')
 
 @section('content')
-<article class="site-content">
     <img src="{{ asset('storage/images/user/avatar/' . $user->avatar)}}" class="avatar">
     <h2>
         {{$user->name}}
@@ -30,5 +29,4 @@
             Histórias do usuário
         </a>
     </h3>
-</article>
 @endsection

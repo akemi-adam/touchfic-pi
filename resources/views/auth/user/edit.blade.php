@@ -3,7 +3,6 @@
 @section('title', 'Editar perfil')
 
 @section('content')
-<article class="site-content">
     <h2>
         Editar perfil
     </h2>
@@ -29,5 +28,4 @@
             Enviar
         </button>
     </form>
-</article>
 @endsection

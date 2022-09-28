@@ -3,7 +3,6 @@
 @section('title', 'Postagem')
 
 @section('content')
-<article class="site-content">
     <div class="container-textarea">
         <div class="div-textarea">
             <form action="{{ route('post.update', $post->id) }}" method="post">
@@ -18,5 +17,4 @@
             </form>
         </div>
     </div>
-</article>
 @endsection

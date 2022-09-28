@@ -3,7 +3,6 @@
 @section('title', 'Crie uma postagem!')
 
 @section('content')
-<article class="site-content">
     <h1 class="title">
         Publique uma postagem!
     </h1>
@@ -21,5 +20,4 @@
             </form>
         </div>
     </div>
-</article>
 @endsection
