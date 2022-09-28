@@ -35,7 +35,7 @@ class StorieSupport
      * 
      * @param $likedStories
      * 
-     * @return App\Models\Storie $untaggedStories;
+     * @return App\Models\Storie;
      */
     public function untaggedStories($likedStories)
     {
