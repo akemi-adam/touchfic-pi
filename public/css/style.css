@@ -541,7 +541,7 @@ footer ul li a:hover {
 
 .storie-title {
     color: var(--color-text);
-    font-family: var(--font-2);
+    font-family: var(--font-1);
     font-size: 24pt;
     font-weight: 600;
     padding: 5px;
@@ -550,7 +550,7 @@ footer ul li a:hover {
 .storie-data-1 {
     display: flex;
     flex-direction: column;
-    font-family: var(--font-2);
+    font-family: var(--font-text);
     font-weight: 500;
     font-size: 15pt;
 }
@@ -1091,9 +1091,14 @@ textarea {
 }
 
 .msg-danger {
-    background-color: #f5a031;
-    color: #a87204;
-    border: 1px solid #efd68e;
+    background-color: #fceebf;
+    color: #78682d;
+    border: 1px solid #cdc692;
+}
+
+.msg-danger a {
+    font-weight: bold;
+    color: var(--main-color-hover);
 }
 
 /* Images */

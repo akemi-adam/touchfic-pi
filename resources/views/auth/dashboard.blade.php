@@ -18,7 +18,7 @@
         @forelse ($recommendations as $recommendation)
             @if (!$displayInfo)
                 <h2>
-                    Você também pode se interessar:
+                    Você também pode se interessar
                 </h2>
                 @php
                     $displayInfo = true;

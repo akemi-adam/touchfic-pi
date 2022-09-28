@@ -48,7 +48,7 @@
                     </li>
                     <form action="{{route('logout')}}" method="post">
                         @csrf
-                        <li class="nav-link"><a onclick="event.preventDefault(); this.closest('form').submit();">Sair</a></li>
+                        <li class="nav-link"><a onclick="event.preventDefault(); this.closest('form').submit();"><i class="fa-solid fa-right-from-bracket"></i> Sair</a></li>
                     </form>
                 </ul>
             </li>
