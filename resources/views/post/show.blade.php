@@ -3,7 +3,7 @@
 @section('title', $post->content)
     
 @section('content')
-    <img src="{{asset('storage/images/user/avatar/' . $post->user->avatar)}}" class="avatar">
+    <img src="{{ FileSupport::getAvatar($post->user->avatar) }}" class="avatar">
     <h2 style="display: inline">
         {{ $post->user->name }} disse:
     </h2>

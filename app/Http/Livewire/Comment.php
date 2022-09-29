@@ -60,7 +60,7 @@ class Comment extends Component
 
             } else if ($this->foreignCollumn === 'chapter_id') {
 
-                $storieData = DB::table('storie_user')->where('storie_id', $this->publication->storie->id)->where('liked', 0)->get();
+                $storieData = DB::table('storie_user')->where('storie_id', $this->publication->storie->id)->get();
 
                 $owner = User::find($storieData[0]->user_id);
 

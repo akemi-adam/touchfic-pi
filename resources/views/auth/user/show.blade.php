@@ -3,7 +3,7 @@
 @section('title', 'Perfil')
 
 @section('content')
-    <img src="{{ asset('storage/images/user/avatar/' . $user->avatar)}}" class="avatar">
+    <img src="{{ FileSupport::getAvatar($user->avatar) }}" class="avatar">
     <h2>
         {{$user->name}}
     </h2>

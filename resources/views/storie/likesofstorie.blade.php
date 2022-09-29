@@ -5,7 +5,7 @@
 @section('content')
     @forelse ($users as $user)
         <div>
-            <img src="{{ asset('storage/images/user/avatar/' . $user->avatar) }}" alt="Foto de perfil de {{ $user->name }}" class="avatar">
+            <img src="{{ FileSupport::getAvatar($user->avatar) }}" alt="Foto de perfil de {{ $user->name }}" class="avatar">
             <a href="{{ route('user.show', $user->id) }}">{{ $user->name }}</a>
         </div>
         <hr>

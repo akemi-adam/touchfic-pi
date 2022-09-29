@@ -16,7 +16,7 @@
             {{ $storie->title }}
         </h2>
     </div>
-    <img src="{{ asset('storage/images/storie/cover/' . $storie->cover) }}" class="cover-show">
+    <img src="{{ FileSupport::getCover($storie->cover) }}" class="cover-show">
     
     <div class="storie-data-1">
     <p>Escrita por: <a href="{{ route('user.show', $storie->users[0]->id) }}">{{ $storie->users[0]->name }}</a></p>

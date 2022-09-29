@@ -95,4 +95,46 @@ class FileSupport
         $model->$collumn = $newName;
     }
 
+    /**
+     * Returns the path of the user avatar
+     * 
+     * @param string $image
+     * 
+     * @return string
+     */
+    public function getAvatar(string $image)
+    {
+        return $this->getImage($image, 'default-user-avatar.png', 'user/avatar');
+    }
+
+    /**
+     * Returns the path from the cover of the story
+     * 
+     * @param string $image
+     * 
+     * @return string
+     */
+    public function getCover(string $image)
+    {
+        return $this->getImage($image, 'default-storie-cover.png', 'storie/cover');
+    }
+
+    /**
+     * Checks if the image has been changed from the default image. If not, it returns the static default image. If it was, returns the path of the new image
+     * 
+     * @param string $image
+     * @param string $default
+     * @param string $type
+     * 
+     * @return string
+     */
+    protected function getImage(string $image, string $default, string $type)
+    {
+        if ($image === $default) {
+            return '/images/default/' . $default;
+        }
+
+        return asset('storage/images/' . $type . '/' . $image);
+    }
+
 }

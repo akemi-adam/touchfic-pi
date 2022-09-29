@@ -9,7 +9,7 @@
                 Postagens
             </h3>
             @forelse ($posts as $post)
-                <img src="{{asset('storage/images/user/avatar/' . $post->user->avatar)}}" alt="" class="avatar">
+                <img src="{{ FileSupport::getAvatar($post->user->avatar) }}" alt="" class="avatar">
                 <p>
                     <strong>
                         {{ $post->user->name }} disse:

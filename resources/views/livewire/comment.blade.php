@@ -4,7 +4,7 @@
 
         <div class="comment-area">
             @if (Auth::check())
-            <img src="{{ asset('storage/images/user/avatar/' . Auth::user()->avatar)}}" class="avatar" alt="Avatar do usuário">
+            <img src="{{ FileSupport::getAvatar(Auth::user()->avatar) }}" class="avatar" alt="Avatar do usuário">
             @endif
             <form wire:submit.prevent="store">
                 <textarea wire:model="content" name="content" id="comment" cols="60" rows="8" placeholder="O que você pensa sobre isso?"></textarea>
@@ -18,7 +18,7 @@
     </div>
     </div>
     @forelse ($comments as $comment)
-        <img src="{{asset('storage/images/user/avatar/' . $comment->user->avatar)}}" class="avatar">
+        <img src="{{ FileSupport::getAvatar($comment->user->avatar) }}" class="avatar">
         <small><strong> <a href="{{ route('user.show', $comment->user_id) }}">{{ $comment->user->name }}</a> respondeu: </strong></small>
         <p>
             {{ nl2br($comment->content) }}
