@@ -29,7 +29,7 @@
         <input type="file" name="cover">
         <div class="advice-msg">
                 <p>
-                    Adicionar uma capa à sua história tende a chamar a atenção dos leitores no site.<br>
+                    Adicionar uma capa é opcional, mas histórias com capa tendem a chamar mais a atenção dos leitores.<br>
                     O conteúdo da capa <span>obrigatoriamente</span> precisa ser <span>livre para todos os públicos</span>.
                 </p>
             </div>
