@@ -516,12 +516,19 @@ footer ul li a:hover {
     margin-left: 5%;
 }
 
+.storie-form-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .storie-form {
     display: flex;
     flex-direction: column;
     text-align: center;
     align-items: center;
     margin-top: 4em;
+    padding: 5px;
 }
 
 .storie-form h2 {
@@ -534,6 +541,87 @@ footer ul li a:hover {
 .storie-form label {
     font-size: 13pt;
     font-weight: bold;
+    margin-bottom: 0.5em;
+    margin-top: 1em;
+}
+
+.storie-form input[type=text] {
+    border: 1px solid #909090;
+    padding: 5px;
+}
+
+.storie-form textarea {
+    resize: vertical;
+    padding: 5px;
+}
+
+.storie-form input[type=file] {
+    margin-bottom: 2em;
+    color: var(--color-text);
+    font-family: var(--font-text);
+    font-weight: bold;
+}
+
+.storie-form .advice-msg {
+    background-color: #fceebf;
+    color: #78682d;
+    border: 1px solid #cdc692;
+    border-radius: 3px;
+}
+
+.storie-form .advice-msg p {
+    font-size: 12pt;
+}
+
+.storie-form .advice-msg span {
+    font-weight: bold;
+}
+
+.storie-form select {
+    font-family: inherit;
+    font-size: 12pt;
+    width: 40%;
+    background-color: var(--main-color-white);
+    cursor: pointer;
+}
+
+.storie-form select option:hover {
+    background-color: var(--main-color);
+}
+
+.storie-form input[type=text], textarea {
+    width: 100%;
+    border-radius: 5px;
+    font-family: var(--font-text);
+    font-size: 12pt;
+    outline: 0;
+    border-color: var(--color-2-1);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.storie-form input[type=text]:focus, textarea:focus {
+    box-shadow:0 0 5px 2px #e7f3ff;
+	border-color: #1877f2;
+    transition: all .1s;
+}
+
+.genres p {
+    text-align: left;
+    margin-top: 2em;
+    font-weight: bold;
+    font-size: 13pt;
+}
+
+.genres label {
+    font-size: 11pt;
+    cursor: pointer;
+}
+
+.genres input {
+    margin-top: 5px;
+    cursor: pointer;
 }
 
 .storie-info-container {
@@ -778,51 +866,6 @@ footer ul li a:hover {
 .div-create textarea {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15pt;
-}
-
-textarea {
-    resize: none;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.input-title {
-    width: 99%;
-    font-size: 13pt;
-    outline-color: #941037;
-    outline-style: solid;
-    outline-width: 2px;
-    border: none;
-    border-radius: 5px;
-}
-
-.input-title:focus {
-    box-shadow:0 0 0 2px #9c3587;
-	border-color: #f89f5b;
-    background-color: #fbe6d6;
-}
-
-.desc-textarea {
-    font-size: 13pt;
-    outline-color: #941037;
-    outline-style: solid;
-    outline-width: 2px;
-    border: none;
-    border-radius: 5px;
-}
-
-.desc-textarea:focus {
-    box-shadow:0 0 0 2px #9c3587;
-	border-color: #f89f5b;
-    background-color: #fbe6d6;
-}
-
-.label-tag {
-    margin-bottom: 1%;
-    margin-top: 1%;
-}
-
-.label-tag:first-child {
-    margin-top: 0;
 }
 
 .submit-story-button button{
