@@ -1,8 +1,9 @@
 @extends('layouts.main')
 
-@section('title', 'Crie um mundo!')
+@section('title', 'Criar uma história - Touchfic')
 
 @section('content')
+<section class="storie-form">
     <h2>
         Criar uma história
     </h2>
@@ -45,4 +46,5 @@
             </div>
         </div>
     </form>
+</section>
 @endsection

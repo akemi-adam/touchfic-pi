@@ -1,6 +1,6 @@
 <div>
     <h2>
-        Histórias recentes:
+        Histórias recentes
     </h2>
     @forelse ($this->index() as $storie)
             <div class="carousel">
