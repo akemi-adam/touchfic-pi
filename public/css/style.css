@@ -516,6 +516,26 @@ footer ul li a:hover {
     margin-left: 5%;
 }
 
+.storie-form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-top: 4em;
+}
+
+.storie-form h2 {
+    font-size: 24pt;
+    color: var(--main-color);
+    font-family: var(--font-1);
+    font-weight: 600;
+}
+
+.storie-form label {
+    font-size: 13pt;
+    font-weight: bold;
+}
+
 .storie-info-container {
     display: flex;
     flex-direction: column;
