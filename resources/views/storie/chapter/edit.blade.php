@@ -3,10 +3,11 @@
 @section('title', 'Editar capítulo: ' . $chapter->title)
 
 @section('content')
-    <div class="container-create">
-        <h1>
+<main class="storie-form-container">
+    <section class="storie-form">
+        <h2>
             {{ $chapter->title }}
-        </h1>
+        </h2>
         <div>
             
             {{-- Error messages --}}
@@ -39,5 +40,6 @@
                 </div>
             </form>
         </div>
-    </div>
+    </section>
+</main>
 @endsection
