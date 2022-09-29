@@ -64,8 +64,6 @@ Depois disso, é preciso usar o comando `php artisan storage:link` para linkar a
   - user
      - avatar
 
-Será necessário também que dentro de cover e de avatar existam arquivos default com os seguintes nomes, respectivamente: `default-storie-cover.png` e `default-user-avatar.png`
-
 ## Comandos
 
 Em seguida, para popular o banco com algumas informações básicas e essências, rode o comando `php artisan serve:seed`. O comando serve:seed irá popular o banco com essas informações necessárias e criar um usuário administrador caso necessário.
