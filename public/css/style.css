@@ -868,27 +868,29 @@ footer ul li a:hover {
     font-size: 15pt;
 }
 
-.submit-story-button button{
-    background-color: #9c3587;
+.submit-story-button button {
+    background-color: var(--main-color);
     color: white;
     padding: 20%;
     border: none;
-    border-radius: 7px;
+    border-radius: 5px;
     font-size: 13pt;
-    font-family: var(--font-2);
+    font-weight: bold;
+    font-family: inherit;
     padding: 10px;
     padding-left: 15px;
     padding-right: 15px;
+    margin-top: 2em;
+    margin-bottom: 5em;
 }
 
 .submit-story-button button:hover {
-    background-color: #3f1651;
-    transition: 0.2s;
+    background-color: var(--main-color-hover);
+    transition: all 0.2s;
 }
 
 .submit-story-button button:active {
-    background-color: #3f0e35;
-    transition: 0.2s;
+    background-color: var(--main-color-active);
 }
 
 .container-story {
