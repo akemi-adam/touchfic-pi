@@ -668,11 +668,16 @@ footer ul li a:hover {
     justify-content: center;
     align-items: center;
     background-color: var(--main-color-white);
+    margin-top: 4em;
 }
 
 .storie-info {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 1000px;
+    background-color: #ffffff;
 }
 
 .storie-title-container {

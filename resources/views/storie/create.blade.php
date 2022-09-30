@@ -42,7 +42,7 @@
         </select>
 
         <label for="synopsis">Sinopse</label>
-        <textarea name="synopsis" cols="90" rows="10" placeholder="Escreva uma sinopse para sua história..."></textarea>
+        <textarea name="synopsis" cols="90" rows="10" placeholder="Escreva uma sinopse para sua história"></textarea>
 
         <div class="genres">
         <p>Selecione os gêneros que combinam com sua história</p>

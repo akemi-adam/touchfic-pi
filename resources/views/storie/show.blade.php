@@ -7,7 +7,6 @@
 @endsection
 
 @section('content')
-<article class="site-content">
 
 <section class="storie-info-container">
     <section class="storie-info">
@@ -44,7 +43,7 @@
     <span>Gêneros:</span>
     <ul>
         @foreach ($storie->genres as $genre)
-            <li style="color: #262626">{{$genre->genre}}</li> 
+            <li>{{$genre->genre}}</li> 
         @endforeach
     </ul>
 <h4>Sinopse:</h4>
@@ -78,18 +77,18 @@
     @endphp
     @forelse ($storie->chapters as $chapter)
         <div>
-            <h3>{{$index += 1}} | <a style="text-decoration: none" href="{{route('chapter.show', $chapter->id)}}">{{$chapter->title}}</a> </h3>
+            <h3>{{$index += 1}} | <a href="{{route('chapter.show', $chapter->id)}}">{{$chapter->title}}</a> </h3>
             @can('authenticated')
                 @if (Auth::id() === $storie->users[0]->id)
                     <form action="{{ route('chapter.edit', $chapter->id) }}" method="get">
-                        <button style="background-color: rgb(112, 144, 250); border:1px solid black">
+                        <button>
                             Editar
                         </button>
                     </form>
                     <form action="{{ route('chapter.destroy', $chapter->id) }}" method="post">
                         @csrf
                         @method('delete')
-                        <button style="background-color:rgb(255, 98, 98); border:1px solid black">
+                        <button>
                             Deletar
                         </button>
                     </form>
@@ -101,6 +100,4 @@
     @endforelse
     </section>
 </section>
-
-</article>
 @endsection

@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', "$storie->title: Novo capítulo")
+@section('title', "$storie->title: Novo capítulo - Touchfic")
 
 @section('content')
 <main class="storie-form-container">
@@ -24,7 +24,7 @@
             <form action="{{ route('chapter.store', $storie->id) }}" method="post">
                 @csrf
                 <label for="title" class="label-tag">Título</label>
-                <input type="text" name="title" class="input-title" placeholder="Título do capítulo">
+                <input type="text" name="title" class="input-title" placeholder="Título do capítulo" autofocus>
 
                 <label for="authornotes" class="label-tag">Notas do autor (opcional)</label>
                 <textarea name="authornotes" cols="90" rows="10" class="desc-textearea" placeholder="Tem algo a dizer sobre o capítulo? Escreva aqui!"></textarea>

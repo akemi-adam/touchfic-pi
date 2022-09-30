@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Editar capítulo: ' . $chapter->title)
+@section('title', 'Editar capítulo: ' . $chapter->title . ' - Touchfic')
 
 @section('content')
 <main class="storie-form-container">
