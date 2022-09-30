@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Storie;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\SearchRequest;
 use Illuminate\Http\Request;
 use App\Models\Storie;
 use App\Models\User;
@@ -12,25 +13,20 @@ class SearchController extends Controller
     /**
      * Retrieves the stories and users that match what was searched for and returns to a view
      * 
-     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\SearchRequest $request
      * 
      * @return \Illuminate\View\View
      */
-    public function search(Request $request)
+    public function search(SearchRequest $request)
     {
+        $stories = Storie::where('title', 'like', "%$request->search%")->get() ?: null;
 
-        $stories = Storie::rightJoin('storie_user', 'stories.id', '=', 'storie_user.storie_id')
-                    ->rightJoin('users', 'users.id', '=', 'storie_user.user_id')
-                    ->where('storie_user.liked', 0)
-                    ->where('title', 'like', "%$request->argument%")
-                    ->get() ?: null;
-
-        $users =  User::where('name', 'like', "%$request->argument%")->get() ?: null;
+        $users =  User::where('name', 'like', "%$request->search%")->get() ?: null;
 
         return view('auth.search', [
             'stories' => $stories,
             'users' => $users,
-            'argument' => $request->argument,
+            'search' => $request->search,
         ]);
     }
 

@@ -29,7 +29,7 @@
                     <a href="{{ route('storie.show', $recommendation->id) }}">{{ $recommendation->title }}</a>
                 </h3>
                 <a href="{{ route('storie.show', $recommendation->id) }}">
-                    <img src="{{ asset('storage/images/storie/cover/' . $recommendation->cover) }}" alt="{{ $recommendation->title }}" style="width: 500px">
+                    <img src="{{ FileSupport::getCover($recommendation->cover) }}" alt="{{ $recommendation->title }}" style="width: 500px">
                 </a>
             </div>
         @empty
