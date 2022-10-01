@@ -674,8 +674,6 @@ footer ul li a:hover {
 .storie-info {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 1000px;
     background-color: #ffffff;
 }
@@ -687,11 +685,10 @@ footer ul li a:hover {
     padding: 5px;
     margin-bottom: 5px;
     margin-top: 5px;
-
 }
 
 .storie-title {
-    color: var(--color-text);
+    color: var(--main-color);
     font-family: var(--font-1);
     font-size: 24pt;
     font-weight: 600;
@@ -704,6 +701,12 @@ footer ul li a:hover {
     font-family: var(--font-text);
     font-weight: 500;
     font-size: 15pt;
+}
+
+.chapter-list {
+    display: flex;
+    justify-items: left;
+    flex-direction: column;
 }
 
 .container-stories {
@@ -1213,8 +1216,14 @@ footer ul li a:hover {
     width: 100px;
 }
 
-.cover-show {
-    width: 1000px;
+.cover-show img {
+    max-width: 100%;
+    height: auto;
+}
+
+.cover-container {
+    width: 800px;
+    min-height: 400px;
 }
 
 .cover-index {

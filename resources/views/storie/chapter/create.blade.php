@@ -23,14 +23,14 @@
 
             <form action="{{ route('chapter.store', $storie->id) }}" method="post">
                 @csrf
-                <label for="title" class="label-tag">Título</label>
-                <input type="text" name="title" class="input-title" placeholder="Título do capítulo" autofocus>
+                <label for="title">Título</label>
+                <input type="text" name="title" placeholder="Título do capítulo" autofocus>
 
-                <label for="authornotes" class="label-tag">Notas do autor (opcional)</label>
-                <textarea name="authornotes" cols="90" rows="10" class="desc-textearea" placeholder="Tem algo a dizer sobre o capítulo? Escreva aqui!"></textarea>
+                <label for="authornotes">Notas do autor (opcional)</label>
+                <textarea name="authornotes" cols="90" rows="10" placeholder="Tem algo a dizer sobre o capítulo? Escreva aqui!"></textarea>
 
                 <label for="content">Capítulo</label>
-                <textarea name="content" cols="90" rows="15" class="desc-textearea" placeholder="Ponha a sua imaginação aqui..."></textarea>
+                <textarea name="content" cols="90" rows="15" placeholder="Ponha a sua imaginação aqui..."></textarea>
 
                 @livewire('track-search')
                 

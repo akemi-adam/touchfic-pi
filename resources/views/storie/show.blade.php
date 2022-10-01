@@ -9,13 +9,17 @@
 @section('content')
 
 <section class="storie-info-container">
+    
     <section class="storie-info">
+
     <div class="storie-title-container">
         <h2 class="storie-title">
             {{ $storie->title }}
         </h2>
     </div>
-    <img src="{{ FileSupport::getCover($storie->cover) }}" class="cover-show">
+    <div class="cover-container">
+        <img src="{{ FileSupport::getCover($storie->cover) }}" class="cover-show">
+    </div>
     
     <div class="storie-data-1">
     <p>Escrita por: <a href="{{ route('user.show', $storie->users[0]->id) }}">{{ $storie->users[0]->name }}</a></p>
@@ -68,7 +72,8 @@
     </div>
         @endif
     @endcan
-    <hr>
+
+    <div class="chapter-list">
     <h3>
         Capítulos
     </h3>
@@ -76,7 +81,7 @@
         $index = 0;
     @endphp
     @forelse ($storie->chapters as $chapter)
-        <div>
+        
             <h3>{{$index += 1}} | <a href="{{route('chapter.show', $chapter->id)}}">{{$chapter->title}}</a> </h3>
             @can('authenticated')
                 @if (Auth::id() === $storie->users[0]->id)
