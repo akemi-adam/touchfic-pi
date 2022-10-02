@@ -23,6 +23,10 @@ class ChapterPolicy
             return false;
         }
 
+        if (is_null($user->email_verified_at)) {
+            return false;
+        }
+
         return true;
     }
 
