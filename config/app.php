@@ -198,6 +198,7 @@ return [
         App\Providers\FileSupportProvider::class,
         App\Providers\RequestSupportProvider::class,
         App\Providers\StorieSupportProvider::class,
+        App\Providers\UserDataProvider::class,
 
     ],
 
@@ -217,6 +218,7 @@ return [
         'FileSupport' => App\Classes\Support\FileSupportFacade::class,
         'RequestSupport' => App\Classes\Support\RequestSupportFacade::class,
         'StorieSupport' => App\Classes\Support\StorieSupportFacade::class,
+        'UserData' => App\Classes\Data\UserDataFacade::class,
     ])->toArray(),
 
 ];

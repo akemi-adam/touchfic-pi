@@ -4,11 +4,9 @@ use App\Models\User;
 
 it('has the user profile page', function () {
 
-    $user = User::factory()->create();
+    $user = UserData::authUser();
 
-    Auth::login($user);
-
-    $response = $this->get('/user/' . $user->id);
+    $response = $this->get(route('user.show', $user->id));
 
     $response->assertStatus(200);
 
@@ -16,11 +14,9 @@ it('has the user profile page', function () {
 
 it('has the profile edit form page', function () {
     
-    $user = User::factory()->create();
+    $user = UserData::authUser();
 
-    Auth::login($user);
-
-    $response = $this->get('/user/' . $user->id . '/edit');
+    $response = $this->get(route('user.edit', $user->id));
 
     $response->assertStatus(200);
 
@@ -28,21 +24,20 @@ it('has the profile edit form page', function () {
 
 it('can update a profile', function () {
 
-    $user = User::factory()->create();
+    $user = UserData::authUser();
 
-    Auth::login($user);
+    $newName = fake()->name();
+    $newEmail = fake()->safeEmail();
 
-    $user->name = 'New Name';
-
-    $this->actingAs($user)->put('/user/' . $user->id, [
-        'name' => 'New Name',
-        'email' => 'email@example.com',
+    $this->actingAs($user)->put(route('user.update', $user->id), [
+        'name' => $newName,
+        'email' => $newEmail,
     ]);
 
     $this->assertDatabaseHas('users', [
         'id' => $user->id,
-        'name' => 'New Name',
-        'email' => 'email@example.com',
+        'name' => $newName,
+        'email' => $newEmail,
     ]);
 
 });
