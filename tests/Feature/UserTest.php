@@ -24,7 +24,7 @@ it('has the profile edit form page', function () {
 
 it('can update a profile', function () {
 
-    $user = UserData::authUser();
+    $user = User::factory()->create();
 
     $newName = fake()->name();
     $newEmail = fake()->safeEmail();

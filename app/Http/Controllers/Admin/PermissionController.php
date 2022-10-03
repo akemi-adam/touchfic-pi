@@ -56,9 +56,9 @@ class PermissionController extends Controller
     {
         $this->authorize('admin_operations');
 
-        $user = User::findOrFail($request->promoted_user);
+        $user = User::findOrFail($request->id);
 
-        $permission = $request->promotion == 3 ?: 2;
+        $permission = $request->permission_id === 3 ? 3 : 2;
 
         $user->permission_id = $permission;
 

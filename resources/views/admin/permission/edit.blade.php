@@ -9,7 +9,7 @@
     <form action="{{ route('admin.permission.update') }}" method="post">
         @csrf
         @method('put')
-        <select name="promoted_user">
+        <select name="id">
             @foreach ($users as $user)
                 <option value="{{ $user->id }}">{{ $user->name }}</option>
             @endforeach
@@ -18,7 +18,7 @@
             <label for="admin">
                 Administrador:
             </label>
-            <input type="radio" name="promotion" style="display: inline" value="3" id="admin">
+            <input type="radio" name="permission_id" style="display: inline" value="3" id="admin">
             <label for="moderator">
                 Moderador
             </label>
