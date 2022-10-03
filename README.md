@@ -66,13 +66,13 @@ Depois disso, é preciso usar o comando `php artisan storage:link` para linkar a
 
 ## Comandos
 
-Em seguida, para popular o banco com algumas informações básicas e essências, rode o comando `php artisan serve:seed`. O comando serve:seed irá popular o banco com essas informações necessárias e criar um usuário administrador caso necessário.
+Em seguida, para popular o banco com algumas informações básicas e essências, rode o comando `php artisan db:seed`. Após isso, crie um usuário administrador pelo CLI com o comando `php artisan make:seed`. Por fim, inicie o servidor com `php artisan serve`.
 
-Ou os seguintes comandos:
+Ordem dos comandos:
 
 ```
-php artisan make:admin
 php artisan db:seed
+php artisan make:admin
 php artisan serve
 ```
 
