@@ -43,3 +43,13 @@ it('cannot access google login page', function () {
     $this->get('/login-google')->assertStatus(302);
 
 });
+
+it('can log out of the system', function () {
+
+    UserData::authUser();
+
+    $this->post('/logout')->assertStatus(302);
+
+});
+
+it('cannot log out of the system')->post('/logout')->assertStatus(302);
