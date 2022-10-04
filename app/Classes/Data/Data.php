@@ -14,7 +14,7 @@ class Data
      * 
      * @return void
      */
-    public function startDatas(string $model, array $datas, string $collumn)
+    public function startDatas(string $model, array $datas, string $collumn) : void
     {
         if (count($model::all()) === 0) {
         
@@ -27,6 +27,23 @@ class Data
             }
         
         }
+    }
+
+    /**
+     * Searches for and returns an id that does not exist in the model table
+     * 
+     * @param int $id
+     * @param string $model
+     * 
+     * @return int
+     */
+    public function noIdExists(int $id, string $model) : int
+    {
+        if ($model::find($id)) {
+            return $this->noIdExists(rand(), $model);
+        }
+
+        return $id;
     }
 
 }
