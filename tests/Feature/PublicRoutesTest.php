@@ -1,5 +1,7 @@
 <?php
 
+uses()->group('public');
+
 it('has homepage page')->get('/')->assertStatus(200);
 
 it('has about page')->get('/about')->assertStatus(200);

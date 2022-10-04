@@ -2,6 +2,8 @@
 
 use App\Models\User;
 
+uses()->group('user');
+
 it('has the user profile page', function () {
 
     $user = UserData::authUser();

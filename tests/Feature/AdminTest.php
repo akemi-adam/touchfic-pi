@@ -3,6 +3,8 @@
 use App\Models\User;
 use App\Enums\UserRole;
 
+uses()->group('admin');
+
 /**
  * Dashboard Tests
  */

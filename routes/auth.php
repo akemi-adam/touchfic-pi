@@ -1,13 +1,12 @@
 <?php
 
+use App\Http\Controllers\API\SocialAuthController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\{
     AuthenticatedSessionController, ConfirmablePasswordController, EmailVerificationNotificationController,
     EmailVerificationPromptController, NewPasswordController, PasswordResetLinkController,
     RegisteredUserController, VerifyEmailController
 };
-
-use App\Http\Controllers\API\SocialAuthController;
-use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
