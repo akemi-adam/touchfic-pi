@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Permission;
 use App\Models\User;
+use App\Enums\UserRole;
 
 class PermissionController extends Controller
 {
@@ -19,9 +20,9 @@ class PermissionController extends Controller
     {
         $this->authorize('admin_operations');
 
-        $admins = User::where('permission_id', 3)->get();
+        $admins = User::where('permission_id', UserRole::ADMIN)->get();
 
-        $moderators = User::where('permission_id', 2)->get();
+        $moderators = User::where('permission_id', UserRole::MODERATOR)->get();
 
         return view('admin.permission.index', [
             'admins' => $admins,
@@ -38,7 +39,7 @@ class PermissionController extends Controller
     {
         $this->authorize('admin_operations');
 
-        $users = User::where('permission_id', '1')->get();
+        $users = User::where('permission_id', UserRole::COMMON_USER)->get();
 
         return view('admin.permission.edit', [
             'users' => $users,
@@ -58,7 +59,7 @@ class PermissionController extends Controller
 
         $user = User::findOrFail($request->id);
 
-        $permission = $request->permission_id === 3 ? 3 : 2;
+        $permission = $request->permission_id === UserRole::ADMIN ? UserRole::ADMIN : UserRole::MODERATOR;
 
         $user->permission_id = $permission;
 
@@ -100,7 +101,7 @@ class PermissionController extends Controller
         $this->authorize('admin_operations');
         
         $user = User::findOrFail($id);
-        $user->permission_id = $request->new_position;
+        $user->permission_id = $request->permission_id;
         $user->save();
 
         return redirect('/admin/permission/index')->with('success_msg', "$user->name mudou de posição!");

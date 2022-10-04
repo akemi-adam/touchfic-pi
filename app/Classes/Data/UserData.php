@@ -3,6 +3,7 @@
 namespace App\Classes\Data;
 
 use App\Models\User;
+use App\Enums\UserRole;
 use Auth;
 
 class UserData
@@ -12,7 +13,7 @@ class UserData
         if ($admin) {
 
             $user = User::factory()->create([
-                'permission_id' => 3
+                'permission_id' => UserRole::ADMIN,
             ]);
 
             Auth::login($user);

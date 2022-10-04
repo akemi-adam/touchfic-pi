@@ -9,7 +9,7 @@
     <form action="{{ route('admin.permission.transference', $user->id) }}" method="post">
         @csrf
         @method('put')
-        <select name="new_position">
+        <select name="permission_id">
             @foreach ($permissions as $permission)
                 <option value="{{$permission->id}}">{{$permission->permission}}</option>
             @endforeach

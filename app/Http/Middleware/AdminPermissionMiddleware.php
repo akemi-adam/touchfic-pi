@@ -2,9 +2,9 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
 use Illuminate\Http\Request;
-use Auth;
+use App\Enums\UserRole;
+use Auth, Closure;
 
 class AdminPermissionMiddleware
 {
@@ -18,7 +18,7 @@ class AdminPermissionMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->permission_id === 3) {
+        if (Auth::user()->permission_id === UserRole::ADMIN) {
             return $next($request);
         }
         abort(403);
