@@ -34,7 +34,7 @@ it('can update a profile', function () {
     $this->actingAs($user)->put(route('user.update', $user->id), [
         'name' => $newName,
         'email' => $newEmail,
-    ]);
+    ])->assertStatus(302);
 
     $this->assertDatabaseHas('users', [
         'id' => $user->id,
