@@ -11,6 +11,8 @@ class CommentpostController extends Controller
 {
     /**
      * Apply middleware exists edit and update actions
+     * 
+     * @return void
      */
     public function __construct() {
         $this->middleware('exists:' . Commentpost::class, [

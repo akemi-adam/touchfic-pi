@@ -120,19 +120,23 @@ class StorieController extends Controller
     {
         $this->authorize('create', Storie::class);
 
-        $storie = new Storie;
+        $storie = Storie::create([
+            'title' => $request->title,
+            'synopsis' => $request->synopsis,
+            'agegroup_id' => $request->agegroup,
+        ]);
 
-        $storie->title = $request->title;
+        /* $storie->title = $request->title;
 
         $storie->synopsis = $request->synopsis;
 
-        $storie->agegroup_id = $request->agegroup;
+        $storie->agegroup = $request->agegroup; */
 
         FileSupport::cover($request, $storie);
 
         $storie->save();
 
-        $storie->users()->attach(Auth::user()->id);
+        $storie->users()->attach(Auth::id());
 
         foreach ($request->genres as $genre) {
             $storie->genres()->attach($genre);

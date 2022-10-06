@@ -9,6 +9,12 @@ class Storie extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'synopsis',
+        'agegroup_id',
+    ];
+
     public function agegroup()
     {
         return $this->belongsTo(Agegroup::class);
