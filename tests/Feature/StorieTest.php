@@ -6,6 +6,8 @@ use App\Models\{
 
 uses()->group('storie');
 
+it('has a page of stories')->get('/storie')->assertStatus(200);
+
 it('has story creation form', function () {
 
     UserData::authUser();
