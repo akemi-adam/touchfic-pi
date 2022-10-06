@@ -18,7 +18,7 @@ class FileSupport
      * 
      * @return void
      */
-    public function cover($request, Storie $model)
+    public function cover($request, Storie $model) : void
     {
         $this->imageVerify($request, $model, 'cover', 'default-storie-cover.png', 'storie/cover/');
     }
@@ -31,7 +31,7 @@ class FileSupport
      * 
      * @return void
      */
-    public function avatar($request, User $model)
+    public function avatar($request, User $model) : void
     {
         $this->imageVerify($request, $model, 'avatar', 'default-user-avatar.png', 'user/avatar/');
     }
@@ -72,7 +72,7 @@ class FileSupport
      * 
      * @return void
      */
-    protected function deleteOldImage($path, $name)
+    protected function deleteOldImage($path, $name) : void
     {
         Storage::disk('public')->delete('images/' . $path . $name);
     }
@@ -86,7 +86,7 @@ class FileSupport
      * 
      * @return void
      */
-    protected function hashImage($request, $model, $collumn, $path)
+    protected function hashImage($request, $model, $collumn, $path) : void
     {
         $newName = $request->file($collumn)->hashName();
 
@@ -102,7 +102,7 @@ class FileSupport
      * 
      * @return string
      */
-    public function getAvatar(string $image)
+    public function getAvatar(string $image) : string
     {
         return $this->getImage($image, 'default-user-avatar.png', 'user/avatar');
     }
@@ -114,7 +114,7 @@ class FileSupport
      * 
      * @return string
      */
-    public function getCover(string $image)
+    public function getCover(string $image) : string
     {
         return $this->getImage($image, 'default-storie-cover.png', 'storie/cover');
     }
@@ -128,7 +128,7 @@ class FileSupport
      * 
      * @return string
      */
-    protected function getImage(string $image, string $default, string $type)
+    protected function getImage(string $image, string $default, string $type) : string
     {
         if ($image === $default) {
             return '/images/default/' . $default;

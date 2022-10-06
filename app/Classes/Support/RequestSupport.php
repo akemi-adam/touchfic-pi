@@ -14,7 +14,7 @@ class RequestSupport
      * 
      * @return void
      */
-    public function setEditValues($request, $model, array $fields)
+    public function setEditValues($request, $model, array $fields) : void
     {
         for ($i = 0; $i < count($fields); $i++) {
 

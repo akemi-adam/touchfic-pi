@@ -17,7 +17,7 @@ class StorieSupport
      * 
      * @return array
      */
-    public function likeInfo(int $id, string $collumn, $model, string $property)
+    public function likeInfo(int $id, string $collumn, $model, string $property) : array
     {
         $likesData = DB::table('likes')->where($collumn, $id)->get();
 
@@ -37,7 +37,7 @@ class StorieSupport
      * 
      * @return App\Models\Storie;
      */
-    public function untaggedStories($likedStories)
+    public function untaggedStories($likedStories) : Storie
     {
         $ids = array();
 

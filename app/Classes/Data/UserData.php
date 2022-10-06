@@ -8,7 +8,7 @@ use Auth;
 
 class UserData
 {
-    public function authUser($admin = false)
+    public function authUser($admin = false) : User
     {
         if ($admin) {
 
