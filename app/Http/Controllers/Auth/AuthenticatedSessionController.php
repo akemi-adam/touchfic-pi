@@ -7,7 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Log;
+use Logger;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -33,7 +33,9 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        Log::channel('auth')->info('[id: ' . Auth::id() . '] ' . Auth::user()->name . ' is logged in');
+        /* Log::channel('auth')->info('[id: ' . Auth::id() . '] ' . Auth::user()->name . ' is logged in'); */
+
+        Logger::log('auth', 'info',  Auth::user()->name . ' is logged in');
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
@@ -47,7 +49,8 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request)
     {
 
-        Log::channel('auth')->info('[id: ' . Auth::id() . '] ' . Auth::user()->name . ' logged out');
+        Logger::log('auth', 'info',  Auth::user()->name . ' logged out');
+        /* Log::channel('auth')->info('[id: ' . Auth::id() . '] ' . Auth::user()->name . ' logged out'); */
 
         Auth::guard('web')->logout();
 

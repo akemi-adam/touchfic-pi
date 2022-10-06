@@ -67,6 +67,12 @@ return [
             'driver' => 'single',
             'path' => storage_path('logs/auth.log'),
             'level' => 'debug',
+        ],
+
+        'user' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/user.log'),
+            'level' => 'info',
         ]
         
     ],

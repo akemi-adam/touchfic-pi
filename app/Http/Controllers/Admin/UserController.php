@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\User\UserProfileRequest;
 use App\Events\UpdateNotification;
 use App\Models\User;
-use Auth, FileSupport, RequestSupport;
+use Auth, FileSupport, RequestSupport, Logger;
 
 class UserController extends Controller
 {
@@ -37,6 +37,8 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
+        Logger::log('user', 'info', $user->name . "'s profile was acessed");
+
         return view('auth.user.show', [
             'user' => $user,
         ]);
@@ -52,6 +54,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
+
+        Logger::log('user', 'info', $user->name . ' has acessed the profile editing form');
 
         return view('auth.user.edit', [
             'user' => $user,
@@ -77,6 +81,8 @@ class UserController extends Controller
         $user->save();
 
         UpdateNotification::dispatch($user);
+
+        Logger::log('user', 'info', $user->name . ' updated her profile');
 
         return redirect("/user/$user->id")->with('success_msg', 'Perfil atualizado com sucesso!');
     }

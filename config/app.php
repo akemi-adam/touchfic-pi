@@ -200,6 +200,7 @@ return [
         App\Providers\StorieSupportProvider::class,
         App\Providers\UserDataProvider::class,
         App\Providers\DataProvider::class,
+        App\Providers\LoggerProvider::class,
 
     ],
 
@@ -221,6 +222,7 @@ return [
         'StorieSupport' => App\Classes\Support\StorieSupportFacade::class,
         'UserData' => App\Classes\Data\UserDataFacade::class,
         'Data' => App\Classes\Data\DataFacade::class,
+        'Logger' => App\Classes\Messages\LoggerFacade::class,
     ])->toArray(),
 
 ];
