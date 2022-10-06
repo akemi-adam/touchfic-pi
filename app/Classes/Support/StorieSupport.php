@@ -37,7 +37,7 @@ class StorieSupport
      * 
      * @return App\Models\Storie;
      */
-    public function untaggedStories($likedStories) : Storie
+    public function untaggedStories($likedStories)
     {
         $ids = array();
 
