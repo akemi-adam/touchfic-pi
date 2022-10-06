@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Genre;
-use Auth;
+use Auth, Logger;
 
 class GenreController extends Controller
 {
@@ -17,6 +17,8 @@ class GenreController extends Controller
     public function index()
     {
         $this->authorize('admin_operations');
+
+        Logger::log('genre', 'info', Auth::user()->name . ' has accessed the page that lists all the genres');
 
         $genres = Genre::all();
         
@@ -33,6 +35,8 @@ class GenreController extends Controller
     public function create()
     {
         $this->authorize('admin_operations');
+
+        Logger::log('genre', 'info', Auth::user()->name . ' has accessed the genre registration form');
 
         return view('admin.genre.create');
     }
@@ -53,6 +57,8 @@ class GenreController extends Controller
 
         $genre->save();
 
+        Logger::log('genre', 'info', Auth::user()->name . ' registered a new genre: [New genre: ' . $genre->id . '] ' . $genre->genre);
+
         return redirect('/admin/genre')->with('success_msg', 'O gênero foi cadastrado com sucesso!');
     }
 
@@ -68,6 +74,8 @@ class GenreController extends Controller
         $this->authorize('admin_operations');
 
         $genre = Genre::findOrFail($id);
+
+        Logger::log('genre', 'info', Auth::user()->name . ' visualized a specific genre: [Genre: ' . $genre->id . '] ' . $genre->genre);
         
         return view('admin.genre.show', [
             'genre' => $genre
@@ -87,6 +95,8 @@ class GenreController extends Controller
 
         $genre = Genre::findOrFail($id);
 
+        Logger::log('genre', 'info', Auth::user()->name . ' has accessed the edit form: [Genre: ' . $genre->id . '] ' . $genre->genre);
+
         return view('admin.genre.edit', [
             'genre' => $genre,
         ]);
@@ -105,8 +115,10 @@ class GenreController extends Controller
         $this->authorize('admin_operations');
 
         $genre = Genre::findOrFail($id);
-        $genre->genre = $request->genre;
-        $genre->save();
+
+        $genre->update([ 'genre' => $request->genre ]);
+
+        Logger::log('genre', 'info', Auth::user()->name . ' updated a genre: [Genre: ' . $genre->id . '] ' . $genre->genre);
 
         return redirect('/admin/genre')->with('success_msg', "Gênero $genre->genre editado");
     }
@@ -122,7 +134,13 @@ class GenreController extends Controller
     {
         $this->authorize('admin_operations');
 
-        Genre::findOrFail($id)->delete();
+        $genre = Genre::findOrFail($id);
+
+        $genre->stories()->detach();
+
+        $genre->delete();
+
+        Logger::log('genre', 'info', Auth::user()->name . ' deleted a genre: [Genre: ' . $id . '] ' . $genre->genre);
 
         return redirect('/admin/genre')->with('success_msg', "Gênero removido com sucesso");
     }

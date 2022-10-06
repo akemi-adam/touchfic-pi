@@ -73,7 +73,13 @@ return [
             'driver' => 'single',
             'path' => storage_path('logs/user.log'),
             'level' => 'info',
-        ]
+        ],
+
+        'genre' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/genre.log'),
+            'level' => 'info',
+        ],
         
     ],
 
