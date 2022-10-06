@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
+* {
+    text-decoration: none;
+}
+
 body {
     background-color: var(--main-color-white);
     margin: 0;
@@ -675,7 +679,7 @@ footer ul li a:hover {
     display: flex;
     flex-direction: column;
     width: 1000px;
-    background-color: #ffffff;
+    background-color: var(--main-color-white);
 }
 
 .storie-title-container {
@@ -703,10 +707,27 @@ footer ul li a:hover {
     font-size: 15pt;
 }
 
+.cover-show img {
+    max-width: 800px;
+    height: auto;
+}
+
+.cover-container {
+    display: flex;
+    justify-content: center;
+    width: 1000px;
+    min-height: 400px;
+}
+
 .chapter-list {
     display: flex;
     justify-items: left;
     flex-direction: column;
+}
+
+.chapter-list button {
+    margin-left: 3em;
+    display: inline-block;
 }
 
 .container-stories {
@@ -1214,16 +1235,6 @@ footer ul li a:hover {
 
 .avatar {
     width: 100px;
-}
-
-.cover-show img {
-    max-width: 100%;
-    height: auto;
-}
-
-.cover-container {
-    width: 800px;
-    min-height: 400px;
 }
 
 .cover-index {

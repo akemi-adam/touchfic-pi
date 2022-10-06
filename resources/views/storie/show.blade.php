@@ -17,6 +17,7 @@
             {{ $storie->title }}
         </h2>
     </div>
+    
     <div class="cover-container">
         <img src="{{ FileSupport::getCover($storie->cover) }}" class="cover-show">
     </div>
@@ -50,7 +51,8 @@
             <li>{{$genre->genre}}</li> 
         @endforeach
     </ul>
-<h4>Sinopse:</h4>
+
+    <span>Sinopse:</span>
     <p>{!!nl2br(e($storie->synopsis))!!}</p>
     @can('authenticated')
         @if (Auth::id() === $storie->users[0]->id)
@@ -73,16 +75,16 @@
         @endif
     @endcan
 
-    <div class="chapter-list">
-    <h3>
-        Capítulos
-    </h3>
-    @php
+        <h3 style="font-size: 18pt">
+            Capítulos
+        </h3>
+        @php
         $index = 0;
-    @endphp
-    @forelse ($storie->chapters as $chapter)
-        
-            <h3>{{$index += 1}} | <a href="{{route('chapter.show', $chapter->id)}}">{{$chapter->title}}</a> </h3>
+        @endphp
+        @forelse ($storie->chapters as $chapter)
+
+        <div class="chapter-list">
+            <h3 style="font-size: 16pt; margin-left: 3em;">{{$index += 1}} | <a href="{{route('chapter.show', $chapter->id)}}" style="color: var(--main-color)">{{$chapter->title}}</a></h3>
             @can('authenticated')
                 @if (Auth::id() === $storie->users[0]->id)
                     <form action="{{ route('chapter.edit', $chapter->id) }}" method="get">
