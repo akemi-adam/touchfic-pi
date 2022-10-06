@@ -126,12 +126,6 @@ class StorieController extends Controller
             'agegroup_id' => $request->agegroup,
         ]);
 
-        /* $storie->title = $request->title;
-
-        $storie->synopsis = $request->synopsis;
-
-        $storie->agegroup = $request->agegroup; */
-
         FileSupport::cover($request, $storie);
 
         $storie->save();
