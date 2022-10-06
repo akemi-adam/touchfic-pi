@@ -3,6 +3,7 @@
 namespace App\Classes\Support;
 
 use App\Models\Storie;
+use Illuminate\Support\Collection;
 use DB;
 
 class StorieSupport  
@@ -35,9 +36,9 @@ class StorieSupport
      * 
      * @param $likedStories
      * 
-     * @return App\Models\Storie;
+     * @return Illuminate\Support\Collection;
      */
-    public function untaggedStories($likedStories)
+    public function untaggedStories($likedStories) : Collection
     {
         $ids = array();
 
