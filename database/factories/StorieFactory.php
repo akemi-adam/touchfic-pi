@@ -17,7 +17,7 @@ class StorieFactory extends Factory
     public function definition()
     {
         return [
-            'title' => fake()->sentence(5),
+            'title' => fake()->words(5, true),
             'synopsis' => fake()->paragraphs(3, true),
             'agegroup_id' => random_int(1, 6),
         ];

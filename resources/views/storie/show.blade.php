@@ -46,11 +46,17 @@
     </div>
 
     <span>Gêneros:</span>
-    <ul>
-        @foreach ($storie->genres as $genre)
-            <li>{{$genre->genre}}</li> 
-        @endforeach
-    </ul>
+    <p>
+        @for ($i = 0; $i < count($storie->genres); $i++)
+        
+            @if ($i !== (count($storie->genres) - 1))
+                {{ $storie->genres[$i]->genre }}, 
+            @else
+                {{ $storie->genres[$i]->genre }}.
+            @endif
+
+        @endfor
+    </p>
 
     <span>Sinopse:</span>
     <p>{!!nl2br(e($storie->synopsis))!!}</p>
