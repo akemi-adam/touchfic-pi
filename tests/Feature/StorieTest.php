@@ -14,8 +14,7 @@ it('has a page of stories')->get('/storie')->assertStatus(200);
 
 it('view a story', function () {
 
-    $storie = Storie::factory()->hasAttached(User::factory()->count(1))
-        ->hasAttached(Genre::factory()->count(4))->create();
+    $storie = StorieData::createRandom();
 
     $this->get(route('storie.show', $storie->id))->assertStatus(200);
 
@@ -64,8 +63,45 @@ it('saves a story', function () {
  * Update a story
  */
 
+it('has story edit form', function () {
 
+    UserData::authUser();
+
+    $storie = StorieData::createOwn();
+
+    $this->get(route('storie.edit', $storie->id))->assertStatus(200);
+
+});
+
+it('can update a story', function () {
+
+    UserData::authUser();
+
+    $storie = StorieData::createOwn();
+
+    $storie->update([
+        'title' => fake()->sentence(5),
+        'synopsis' => fake()->paragraphs(random_int(2, 6), true),
+    ]);
+
+    $this->put(route('storie.update', $storie->id))->assertStatus(302);
+    
+    $this->assertModelExists($storie);
+
+});
  
 /**
  * Delete a story
  */
+
+ it('can delete a story', function () {
+
+    UserData::authUser();
+
+    $storie = StorieData::createOwn();
+
+    $this->delete(route('storie.destroy', $storie->id))->assertStatus(302);
+
+    $this->assertModelMissing($storie);
+
+ });
