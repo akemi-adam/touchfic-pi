@@ -18,15 +18,16 @@ class AdminPermissionMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Gate::allows('admin_operations')) {
+        if (Gate::denies('admin_operations')) {
 
-            Logger::log('admin', 'info', Auth::user()->name . ' has accessed the route: ' . URL::current());
+            Logger::log('admin', 'warning', ' there was an attempt to access the route: ' . URL::current());
 
-            return $next($request);
+            abort(403);
+            
         }
 
-        Logger::log('admin', 'warning', ' there was an attempt to access the route: ' . URL::current());
+        Logger::log('admin', 'info', Auth::user()->name . ' has accessed the route: ' . URL::current());
 
-        abort(403);
+        return $next($request);
     }
 }
