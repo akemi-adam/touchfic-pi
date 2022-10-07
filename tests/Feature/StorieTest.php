@@ -1,12 +1,29 @@
 <?php
 
 use App\Models\{
-    Storie, Genre
+    Storie, Genre, User
 };
 
 uses()->group('storie');
 
+/**
+ * View stories
+ */
+
 it('has a page of stories')->get('/storie')->assertStatus(200);
+
+it('view a story', function () {
+
+    $storie = Storie::factory()->hasAttached(User::factory()->count(1))
+        ->hasAttached(Genre::factory()->count(4))->create();
+
+    $this->get(route('storie.show', $storie->id))->assertStatus(200);
+
+});
+
+/**
+ * Create a new story
+ */
 
 it('has story creation form', function () {
 
@@ -25,7 +42,7 @@ it('saves a story', function () {
         'synopsis' => fake()->paragraphs(4, true),
         'agegroup' => random_int(1, 6),
         'genres' => [
-            1, 2, 4, 5
+            2, 4, 5
         ]
     ];
 
@@ -42,3 +59,13 @@ it('saves a story', function () {
     $this->assertDatabaseHas('stories', $attributes);    
 
 });
+
+/**
+ * Update a story
+ */
+
+
+ 
+/**
+ * Delete a story
+ */
