@@ -15,7 +15,7 @@ class StorieData
      * @param int $userNumber
      * @param int $genreNumber
      * 
-     * @return Collection
+     * @return Storie
      */
     protected function create($owners, int $genreNumber = 4) : Storie
     {
@@ -25,12 +25,27 @@ class StorieData
         return $storie;
     }
 
-    public function createRandom(int $userNumber = 1, int $genreNumber = 4)
+    /**
+     * Create a story with random authors
+     * 
+     * @param int $userNumber
+     * @param int $genreNumber
+     * 
+     * @return Storie
+     */
+    public function createRandom(int $userNumber = 1, int $genreNumber = 4) : Storie
     {
         return $this->create(User::factory()->count($userNumber), $genreNumber);
     }
 
-    public function createOwn(int $genreNumber = 4)
+    /**
+     * Creates a story that belongs to the current user
+     * 
+     * @param int $genreNumber
+     * 
+     * @return Storie
+     */
+    public function createOwn(int $genreNumber = 4) : Storie
     {
         return $this->create(Auth::user(), $genreNumber);
     }
