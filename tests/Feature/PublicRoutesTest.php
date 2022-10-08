@@ -20,7 +20,7 @@ it('has privacy policy page')->get('/privacy-policy')->assertStatus(200);
  * Search a story or user
  */
 
-it('can search a story', function () {
+it('can search a story or user', function () {
 
     $this->get(route('search', [
         'search' => 'teste',
@@ -28,7 +28,7 @@ it('can search a story', function () {
 
 });
 
-it('cannot search a story without a search term', function () {
+it('cannot search a story or user without a search term', function () {
 
     $this->get(route('search', [
         'search' => '',
