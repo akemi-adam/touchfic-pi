@@ -8,7 +8,7 @@ use App\Http\Controllers\Storie\{
 
 Route::resource('/storie', StorieController::class);
 
-Route::get('/search', [SearchController::class, 'search'])->name('search');
+Route::get('/search', SearchController::class)->name('search');
 
 Route::get('/likes-of-storie/{id}', [StorieController::class, 'likesOfStorie'])->name('likes.of.storie');
 

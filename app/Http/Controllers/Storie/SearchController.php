@@ -17,7 +17,7 @@ class SearchController extends Controller
      * 
      * @return \Illuminate\View\View
      */
-    public function search(SearchRequest $request)
+    public function __invoke(SearchRequest $request)
     {
         $stories = Storie::where('title', 'like', "%$request->search%")->get() ?: null;
 
