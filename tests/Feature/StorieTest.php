@@ -79,12 +79,13 @@ it('can update a story', function () {
 
     $storie = StorieData::createOwn();
 
-    $storie->update([
+    $data = [
         'title' => fake()->sentence(5),
         'synopsis' => fake()->paragraphs(random_int(2, 6), true),
-    ]);
+        'agegroup_id' => random_int(1, 6),
+    ];
 
-    $this->put(route('storie.update', $storie->id))->assertStatus(302);
+    $this->put(route('storie.update', $storie->id), $data)->assertStatus(302);
     
     $this->assertModelExists($storie);
 

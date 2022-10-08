@@ -59,7 +59,7 @@ class PermissionController extends Controller
 
         $user = User::findOrFail($request->id);
 
-        $permission = $request->permission_id === UserRole::ADMIN ? UserRole::ADMIN : UserRole::MODERATOR;
+        $permission = $request->permission_id == UserRole::ADMIN ? UserRole::ADMIN : UserRole::MODERATOR;
 
         $user->permission_id = $permission;
 
@@ -101,7 +101,9 @@ class PermissionController extends Controller
         $this->authorize('admin_operations');
         
         $user = User::findOrFail($id);
+
         $user->permission_id = $request->permission_id;
+        
         $user->save();
 
         return redirect('/admin/permission/index')->with('success_msg', "$user->name mudou de posição!");
