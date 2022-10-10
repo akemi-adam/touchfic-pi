@@ -65,6 +65,14 @@ body {
   background: #b7b7b7; 
 }
 
+button {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
  /* Header */
 header {
     display: flex;
@@ -686,9 +694,7 @@ footer ul li a:hover {
     display: flex;
     text-align: center;
     justify-content: center;
-    padding: 5px;
     margin-bottom: 5px;
-    margin-top: 5px;
 }
 
 .storie-title {
@@ -702,9 +708,23 @@ footer ul li a:hover {
 .storie-data-1 {
     display: flex;
     flex-direction: column;
-    font-family: var(--font-text);
+    font-family: 'Yu Gothic UI';
+    font-weight: 400;
+    font-size: 13pt;
+}
+
+.storie-data-1 img {
+    width: 25px;
+    border-radius: 40px;
+}
+
+.storie-data-1 a {
+    color: var(--main-color);
     font-weight: 500;
-    font-size: 15pt;
+}
+
+.storie-data-1 a:hover {
+    text-decoration: underline;
 }
 
 .cover-show img {
@@ -717,6 +737,11 @@ footer ul li a:hover {
     justify-content: center;
     width: 1000px;
     min-height: 400px;
+}
+
+.storie-features {
+    margin-bottom: 1em;
+    padding: 2px;
 }
 
 .chapter-list {
@@ -741,27 +766,32 @@ footer ul li a:hover {
 }
 
 .likes-container {
-    margin-bottom: 18px;
+    margin-bottom: 4px;
+}
+
+.likes-container a {
+    color: black;
 }
 
 .like-button {
-    background-color: #262626;
-    color: #ffffff;
-    border: none;
-    padding: 6px;
-    border-radius: 8px;
-    font-size: 13pt;
-    font-family: var(--font-2);
+    margin-top: 15px;
+    background-color: var(--main-color-white);
+    color: var(--color-text);
+    border: 1px solid var(--color-2);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 12pt;
+    font-family: var(--font-1);
     font-weight: 600;
 }
 
-.like-button:hover {
-    background-color: #4c4c4c;
-    transition: background 0.3s;
+.like-button i {
+    margin-right: 4px;
 }
 
-.like-button:active {
-    background-color: #262626;
+.like-button:hover {
+    background-color: var(--color-2-1);
+    transition: all 0.2s;
 }
 
 .div-stories {
