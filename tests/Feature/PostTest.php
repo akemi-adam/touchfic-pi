@@ -161,6 +161,6 @@ it('cannot delete an existing post if you are not the owner', function () {
 
     $post = Post::inRandomOrder()->first();
 
-    $this->put(route('post.update', $post->id))->assertStatus(403);
+    $this->delete(route('post.destroy', $post->id))->assertStatus(403);
 
 });

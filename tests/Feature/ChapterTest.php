@@ -1,7 +1,5 @@
 <?php
 
-use function Pest\Livewire\livewire;
-
 uses()->group('chapter');
 
 it('has chapter create page', function () {
@@ -97,4 +95,4 @@ it('can delete a chapter', function () {
 
     $this->assertModelMissing($chapter);
 
-})->only();
+});
