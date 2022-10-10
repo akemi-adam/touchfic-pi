@@ -13,7 +13,7 @@ class StorieSupport
      * 
      * @param int $id
      * @param string $collumn
-     * @param App\Models\User|App\Models\Storie $model
+     * @param User|Storie $model
      * @param string $property
      * 
      * @return array
@@ -36,7 +36,7 @@ class StorieSupport
      * 
      * @param $likedStories
      * 
-     * @return Illuminate\Support\Collection;
+     * @return Collection
      */
     public function untaggedStories($likedStories) : Collection
     {
