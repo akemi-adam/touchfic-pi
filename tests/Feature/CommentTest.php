@@ -2,6 +2,6 @@
 
 use function Pest\Livewire\livewire;
 
-it('has comment page', function () {
+it('can comment on a post', function () {
     
 });

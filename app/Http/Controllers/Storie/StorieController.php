@@ -47,14 +47,14 @@ class StorieController extends Controller
     /**
      * Sends all related stories to the current user
      * 
-     * @param int $id
+     * @param User $user
      * 
      * @return \Illuminate\View\View
      */
-    public function myStories($id)
+    public function myStories(User $user)
     {
         return view('storie.index', [
-            'stories' => Auth::user()->stories,
+            'stories' => $user->stories,
         ]);
     }
 

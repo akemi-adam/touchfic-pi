@@ -25,7 +25,7 @@
     @endif
     <hr>
     <h3>
-        <a href="{{ route('storie.mystories', $user->id) }}">
+        <a href="{{ route('storie.mystories', $user) }}">
             Histórias do usuário
         </a>
     </h3>

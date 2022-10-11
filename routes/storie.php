@@ -14,7 +14,7 @@ Route::get('/likes-of-storie/{id}', [StorieController::class, 'likesOfStorie'])-
 
 Route::middleware(['auth'])->group(function ()
 {
-    Route::get('/storie/{id}/mystories', [StorieController::class, 'myStories'])->name('storie.mystories');
+    Route::get('/storie/{user}/mystories', [StorieController::class, 'myStories'])->name('storie.mystories');
 
     Route::get('/likes-stories/{id}', [StorieController::class, 'likes'])->name('storie.likes');
 });
