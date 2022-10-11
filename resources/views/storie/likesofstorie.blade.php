@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', "Curtidas da história")
+@section('title', 'Curtidas da história - Touchfic')
 
 @section('content')
     @forelse ($users as $user)
@@ -11,7 +11,7 @@
         <hr>
     @empty
         <h2>
-            A história não possui nenhum like ainda
+            A história ainda não possui nenhuma curtida
         </h2>
     @endforelse
 @endsection

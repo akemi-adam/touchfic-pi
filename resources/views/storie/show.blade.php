@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', $storie->title)
+@section('title', $storie->title . ' - Touchfic')
 
 @section('scripts')
     <script src="/js/amountlikes.js" defer></script>
@@ -23,7 +23,7 @@
     </div>
     
     <div class="storie-data-1">
-    <p>Escrita por: <a href="{{ route('user.show', $storie->users[0]->id) }}">{{ $storie->users[0]->name }}</a></p>
+    <p>Escrita por: <a href="{{ route('user.show', $storie->users[0]->id) }}"><img src="{{ FileSupport::getAvatar($storie->users[0]->avatar)}}" alt=""> {{ $storie->users[0]->name }}</a></p>
     <span>Faixa etária: <span style="font-weight: bold;">{{ $storie->agegroup->agegroup }}</span></span>
     <span>Número de palavras: <span style="font-weight: bold;">{{ $storie->numberofwords }}</span></span>
     <span>Data de publicação: <span style="font-weight: bold;">
@@ -37,29 +37,33 @@
     </span>
 
     <div class="likes-container">
-        <strong><a href="{{route('likes.of.storie', $storie->id)}}" id="likes" value="{{ $amount }}">Curtidas: {{ $amount }}</a></strong>
+        <a href="{{route('likes.of.storie', $storie->id)}}" id="likes" value="{{ $amount }}">Curtidas: {{ $amount }}</a>
     
-
-    @can('authenticated')
-        @livewire('like', ['storieId' => $storie->id, 'authorId' => $storie->users[0]->id])
-    @endcan
+        @can('authenticated')
+            @livewire('like', ['storieId' => $storie->id, 'authorId' => $storie->users[0]->id])
+        @endcan
     </div>
 
-    <span>Gêneros:</span>
-    <p>
+    <div class="storie-features">
+        <p>Sinopse:</p>
+        <span>{!!nl2br(e($storie->synopsis))!!}</span>
+    </div>
+
+    <div class="storie-features">
+        <span>Gêneros:</span>
+        <span style="font-weight: bold">
         @for ($i = 0; $i < count($storie->genres); $i++)
         
             @if ($i !== (count($storie->genres) - 1))
-                {{ $storie->genres[$i]->genre }}, 
+                {{ $storie->genres[$i]->genre }}<span style="font-weight: normal">,</span> 
             @else
-                {{ $storie->genres[$i]->genre }}.
+                {{ $storie->genres[$i]->genre }}<span style="font-weight: normal">.</span>
             @endif
 
         @endfor
-    </p>
+        </span>
+    </div>
 
-    <span>Sinopse:</span>
-    <p>{!!nl2br(e($storie->synopsis))!!}</p>
     @can('authenticated')
         @if (Auth::id() === $storie->users[0]->id)
             <form action="{{ route('storie.edit', $storie->id) }}" method="get">
