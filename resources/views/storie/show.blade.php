@@ -45,12 +45,7 @@
     </div>
 
     <div class="storie-features">
-        <p>Sinopse:</p>
-        <span>{!!nl2br(e($storie->synopsis))!!}</span>
-    </div>
-
-    <div class="storie-features">
-        <span>Gêneros:</span>
+        <span style="font-size: 14pt;">Gêneros:</span>
         <span style="font-weight: bold">
         @for ($i = 0; $i < count($storie->genres); $i++)
         
@@ -64,23 +59,34 @@
         </span>
     </div>
 
+    <div class="storie-features">
+        <p style="margin-top: 0;">Sinopse:</p>
+        <span>{!!nl2br(e($storie->synopsis))!!}</span>
+    </div>
+
+        <div class="storie-crud">
     @can('authenticated')
         @if (Auth::id() === $storie->users[0]->id)
-            <form action="{{ route('storie.edit', $storie->id) }}" method="get">
-                <button>
-                    Editar
+            <form action="{{ route('chapter.create', $storie->id) }}" method="get">
+                <button class="add-chapter">
+                    <i class="fa-solid fa-plus"></i> Adicionar um capítulo
                 </button>
             </form>
+
+            <form action="{{ route('storie.edit', $storie->id) }}" method="get">
+                <button class="edit-storie">
+                    Editar história
+                </button>
+            </form>
+
             <form action="{{ route('storie.destroy', $storie->id) }}" method="post">
                 @csrf
                 @method('delete')
-                <button>
-                    Deletar
+                <button class="delete-storie">
+                    Excluir história
                 </button>
             </form>
-            <form action="{{ route('chapter.create', $storie->id) }}" method="get">
-                <button>Adicionar um capítulo</button>
-            </form>
+        </div>
     </div>
         @endif
     @endcan
@@ -94,9 +100,11 @@
         @forelse ($storie->chapters as $chapter)
 
         <div class="chapter-list">
-            <h3 style="font-size: 16pt; margin-left: 3em;">{{$index += 1}} | <a href="{{route('chapter.show', $chapter->id)}}" style="color: var(--main-color)">{{$chapter->title}}</a></h3>
-            @can('authenticated')
+            <div class="chapter-selection">
+                <h3 style="font-size: 16pt; margin-left: 3em;">{{$index += 1}} | <a href="{{route('chapter.show', $chapter->id)}}" style="color: var(--main-color);">{{$chapter->title}}</a></h3>
+                @can('authenticated')
                 @if (Auth::id() === $storie->users[0]->id)
+                <div class="chapter-crud">
                     <form action="{{ route('chapter.edit', $chapter->id) }}" method="get">
                         <button>
                             Editar
@@ -105,15 +113,17 @@
                     <form action="{{ route('chapter.destroy', $chapter->id) }}" method="post">
                         @csrf
                         @method('delete')
-                        <button>
-                            Deletar
+                        <button style="background-color: #c03131;">
+                            Excluir
                         </button>
                     </form>
+                </div>
                 @endif
             @endcan
+            </div>
         </div>
     @empty
-        <h2>A história não possui nenhum capítulo</h2>
+        <h3>A história ainda não possui nenhum capítulo. Volte mais tarde!</h3>
     @endforelse
     </section>
 </section>

@@ -5,7 +5,7 @@
         </form>
     @else
         <form wire:submit.prevent="unlike()">
-            <button id="unlike" class="like-button" onclick="decrementDisplay()"><i class="fa-solid fa-heart"></i> Descurtir</button>
+            <button id="unlike" class="like-button" onclick="decrementDisplay()" style="color: white; background-color: #262626;"><i class="fa-solid fa-heart"></i> Descurtir</button>
         </form>
     @endif
 </div>

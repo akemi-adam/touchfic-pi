@@ -34,7 +34,7 @@
                 <div class="container-submit">
                     <div class="submit-story-button">
                         <button>
-                            Enviar
+                            Enviar alterações
                         </button>
                     </div>
                 </div>

@@ -740,8 +740,54 @@ footer ul li a:hover {
 }
 
 .storie-features {
-    margin-bottom: 1em;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
     padding: 2px;
+}
+
+.storie-features p {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.storie-crud {
+    display: flex;
+    justify-content: right;
+    margin-top: 1em;
+}
+
+.storie-crud i {
+    margin-right: 3px;
+}
+
+.storie-crud button {
+    margin-left: 2em;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    font-family: var(--font-text);
+    color: white;
+    border-radius: 2px;
+    font-size: 11pt;
+    font-weight: 600;
+}
+
+.storie-crud button:hover {
+    box-shadow:0 0 5px 2px var(--color-2-1);
+    transition: all .1s;
+}
+
+.add-chapter {
+    background-color: var(--main-color);
+}
+
+.edit-storie {
+    background-color: #4d81eb;
+}
+
+.delete-storie {
+    background-color: #c03131;
 }
 
 .chapter-list {
@@ -751,8 +797,45 @@ footer ul li a:hover {
 }
 
 .chapter-list button {
-    margin-left: 3em;
+    margin-left: 2em;
     display: inline-block;
+}
+
+.chapter-selection {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    background-color: #f7f7f7;
+    border-radius: 3px;
+    margin-bottom: 1em;
+}
+
+.chapter-selection a:hover {
+    font-size: 17pt;
+    transition: all .4s ease-out;
+}
+
+.chapter-crud {
+    display: flex;
+    justify-content: right;
+}
+
+.chapter-crud button {
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    font-family: var(--font-text);
+    color: white;
+    border-radius: 2px;
+}
+
+.chapter-crud button:first-child {
+    background-color: #4d81eb;
+}
+
+.chapter-crud button:hover {
+    box-shadow:0 0 5px 2px var(--color-2-1);
+    transition: all .1s;
 }
 
 .container-stories {
