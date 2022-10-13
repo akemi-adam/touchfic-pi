@@ -810,6 +810,13 @@ footer ul li a:hover {
     margin-bottom: 1em;
 }
 
+.chapter-selection a {
+    padding-right: 200px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+
 .chapter-selection a:hover {
     font-size: 17pt;
     transition: all .4s ease-out;
@@ -875,6 +882,30 @@ footer ul li a:hover {
 .like-button:hover {
     background-color: var(--color-2-1);
     transition: all 0.2s;
+}
+
+.stories-card {
+    /* background-color: #d7e6fb; */
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-left: 3em;
+}
+
+.storie-card {
+    padding: 10px;
+    /* border: 1px solid var(--color-2); */
+    box-shadow: 0 1px 4px 0 var(--color-2-2);
+}
+
+.cover-index {
+    width: 200px;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
 }
 
 .div-stories {
@@ -1347,9 +1378,5 @@ footer ul li a:hover {
 /* Images */
 
 .avatar {
-    width: 100px;
-}
-
-.cover-index {
     width: 100px;
 }

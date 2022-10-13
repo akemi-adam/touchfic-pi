@@ -1,18 +1,25 @@
 @extends('layouts.main')
 
-@section('title', 'Histórias')
+@section('title', 'Histórias - Touchfic')
 
 @section('content')
+
+<div class="stories-card">
     @forelse ($stories as $storie)
-        <h3><a href="{{  route('storie.show', $storie->id) }}">{{ $storie->title }}</a></h3>
-        <img src="{{ FileSupport::getCover($storie->cover) }}" class="cover-index">
-        <strong>Faixa etária: {{ $storie->agegroup->agegroup }}</strong><br>
-        <strong>Número de palavras: {{ $storie->numberofwords }}</strong><br>
-        @php
-            $amount = DB::table('likes')->where('storie_id', $storie->id)->count();
-        @endphp
-        <strong>Número de likes: {{ $amount }}</strong>
-        <a href="{{ route('user.show', $storie->users[0]->id) }}">{{$storie->users[0]->name}}</a>
+    <div class="storie-card">
+        <h3><a href="{{  route('storie.show', $storie->id) }}">{{ $storie->title }}</h3>
+        <img src="{{ FileSupport::getCover($storie->cover) }}" class="cover-index"></a>
+
+        <div class="card-info">
+            <strong>Faixa etária: {{ $storie->agegroup->agegroup }}</strong>
+            <strong>Número de palavras: {{ $storie->numberofwords }}</strong>
+            @php
+                $amount = DB::table('likes')->where('storie_id', $storie->id)->count();
+            @endphp
+            <strong>Número de likes: {{ $amount }}</strong>
+            <a href="{{ route('user.show', $storie->users[0]->id) }}">{{$storie->users[0]->name}}</a>
+        </div>
+
         <p>
             {{ $storie->synopsis }}
         </p>
@@ -30,10 +37,12 @@
                 </button>
             </form>
         @endif
+</div>
         <hr>
     @empty
         <h2>Nenhuma história foi publicada ainda</h2>
     @endforelse
+</div>
     <form action="{{ route('storie.create') }}" method="get">
         <button>
             Criar uma história
