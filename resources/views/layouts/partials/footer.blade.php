@@ -1,6 +1,6 @@
 <footer>
     <div>
-        <span id="year"></span><span>Touchfic</span>
+        <span id="year">&copy;</span><span>Touchfic</span>
     </div>
 
     <div>

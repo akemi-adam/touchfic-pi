@@ -26,7 +26,7 @@
     <hr>
     <h3>
         <a href="{{ route('storie.mystories', $user) }}">
-            Histórias do usuário
+            Histórias de {{$user->name}}
         </a>
     </h3>
 @endsection

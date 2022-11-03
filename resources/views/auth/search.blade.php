@@ -3,17 +3,21 @@
 @section('title', 'Resultados da busca: ' . $search . ' - Touchfic')
 
 @section('content')
-    <h2>
-        Resultados da pesquisa: "{{ $search }}"
+    <h2 class="title">
+        Resultados da busca: "{{ $search }}"
     </h2>
+
+    <div class="stories-card">
     <h3>
         Histórias
     </h3>
     @forelse ($stories as $storie)
-        <h3><a href="{{  route('storie.show', $storie->id) }}">{{ $storie->title }}</a></h3>
-        <img src="{{ FileSupport::getCover($storie->cover) }}" class="cover-index"><br>
-        <strong>Faixa etária: {{ $storie->agegroup->agegroup }}</strong><br>
-        <strong>Número de palavras: {{ $storie->numberofwords }}</strong><br>
+    <div class="storie-card">
+        <div class="card-info">
+        <h3><a href="{{  route('storie.show', $storie->id) }}">{{ $storie->title }}</h3>
+        <img src="{{ FileSupport::getCover($storie->cover) }}" class="cover-index"></a>
+        <strong>Faixa etária: {{ $storie->agegroup->agegroup }}</strong>
+        <strong>Número de palavras: {{ $storie->numberofwords }}</strong>
         <a href="{{ route('user.show', $storie->users[0]->name) }}">{{$storie->name}}</a>
         @php
             $amount = DB::table('likes')->where('storie_id', $storie->id)->count();
@@ -22,10 +26,12 @@
         <p>
             {{ $storie->synopsis }}
         </p>
-        <hr>
+        </div>
+    </div>
+    <hr>
     @empty
         <h2>
-            Nenhuma história foi encontrada
+            Nenhuma história encontrada
         </h2>
     @endforelse
     <h3>
@@ -36,7 +42,8 @@
         <h3><a href="{{ route('user.show', $user->id) }}">{{$user->name}}</a></h3>
     @empty
         <h2>
-            Nenhum usuário foi encontrado
+            Nenhum usuário encontrado
         </h2>
     @endforelse
+</div>
 @endsection
