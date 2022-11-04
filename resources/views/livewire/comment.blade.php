@@ -18,23 +18,30 @@
     </div>
     </div>
     @forelse ($comments as $comment)
-        <img src="{{ FileSupport::getAvatar($comment->user->avatar) }}" class="avatar">
+    <section class="comments">
+        <div class="comment-card">
+        <a href="{{ route('user.show', $comment->user_id) }}"><img src="{{ FileSupport::getAvatar($comment->user->avatar) }}" class="avatar"></a>
         <small><strong> <a href="{{ route('user.show', $comment->user_id) }}">{{ $comment->user->name }}</a> respondeu: </strong></small>
         <p>
             {{ nl2br($comment->content) }}
         </p>
         @can('authenticated')
         @if ($comment->user_id === Auth::user()->id)
+        <div class="storie-crud">
             <form action="{{ route($editRoute, $comment->id) }}">
-                <button>
+                <button class="edit-storie">
                     Editar
                 </button>
             </form>
             <form wire:submit.prevent="delete({{$comment->id}})">
-                <button>Remover comentário</button>
+                <button class="delete-storie">Remover</button>
             </form>
+        </div>
+        </div>
+    </section>
         @endif
         @endcan
+
     @empty
         <h2>Ninguém comentou nessa história ainda. Seja o pioneiro!</h2>
     @endforelse

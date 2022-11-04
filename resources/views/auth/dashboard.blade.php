@@ -10,21 +10,21 @@
                 Olá, {{Auth::user()->name}}!
             </h1>
     </div>
-        <div class="dashboard-content">
 
-            <button><i class="fa-solid fa-chevron-left"></i></button>
+        
         @php
             $displayInfo = false;
         @endphp
         @forelse ($recommendations as $recommendation)
             @if (!$displayInfo)
-                <h2>
+                <h2 style="padding-left: 3em">
                     Você também pode se interessar
                 </h2>
                 @php
                     $displayInfo = true;
                 @endphp
             @endif
+            <div class="dashboard-content">
             <div class="carousel">
                 <div class="carousel-slider">
                     <div class="storie-card">
@@ -40,7 +40,7 @@
         @empty
             @livewire('recent-stories')
         @endforelse
-        <button><i class="fa-solid fa-chevron-right"></i></button>
+        
         </div>
     </section>
 @endsection

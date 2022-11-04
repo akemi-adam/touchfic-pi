@@ -38,8 +38,15 @@
         Usuários
     </h3>
     @forelse ($users as $user)
+    <div class="search-user">
+        <a href="{{ route('user.show', $user->id) }}">
         <img src="{{ asset('storage/images/user/avatar/' . $user->avatar) }}" alt="Avatar do usuário" class="avatar">
-        <h3><a href="{{ route('user.show', $user->id) }}">{{$user->name}}</a></h3>
+        </a>
+
+        <div class="search-username">
+            <a href="{{ route('user.show', $user->id) }}">{{$user->name}}</a>
+        </div>
+    </div>
     @empty
         <h2>
             Nenhum usuário encontrado

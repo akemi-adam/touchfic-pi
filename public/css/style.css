@@ -177,6 +177,27 @@ nav ul li:hover .submenu li:hover {
     color: var(--color-2);
 }
 
+.search-user {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-user a {
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.search-user:hover a {
+    color: var(--main-color-hover);
+}
+
+.search-username {
+    display: flex;
+    justify-content: center;
+    width: 90px;
+    padding-top: 5px;
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -352,15 +373,21 @@ footer ul li a:hover {
 .dashboard-container {
     display: flex;
     flex-direction: column;
+    margin-bottom: 5em;
 }
 
 .dashboard-content {
     text-align: center;
 }
 
+.dashboard-content a {
+    color: var(--color-text);
+}
+
 .carousel {
     display: flex;
     justify-content: center;
+    margin-bottom: 3em;
 }
 
 .carousel-slider {
@@ -689,6 +716,7 @@ footer ul li a:hover {
     align-items: center;
     background-color: var(--main-color-white);
     margin-top: 4em;
+    margin-bottom: 5em;
 }
 
 .storie-info {
@@ -893,17 +921,36 @@ footer ul li a:hover {
 }
 
 .stories-card {
-    /* background-color: #d7e6fb; */
     margin-top: 2em;
     display: flex;
     flex-direction: column;
     width: 70%;
     margin-left: 3em;
+    margin-bottom: 5em;
+}
+
+.stories-card a {
+    color: var(--main-color);
+}
+
+.stories-card button {
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    font-family: var(--font-text);
+    color: white;
+    border-radius: 2px;
+    font-size: 11pt;
+    font-weight: 600;
+}
+
+.stories-card button:hover {
+    box-shadow:0 0 5px 2px var(--color-2-1);
+    transition: all .1s;
 }
 
 .storie-card {
     padding: 10px;
-    /* border: 1px solid var(--color-2); */
     box-shadow: 0 1px 4px 0 var(--color-2-2);
 }
 
@@ -949,12 +996,12 @@ footer ul li a:hover {
 }
 
 .create-button:hover {
-    background-color: #bb1647;
+    background-color: var(--main-color);
     transition: 0.2s;
 }
 
 .create-button:active {
-    background-color: #941037;
+    background-color: var(--main-color-hover);
     transition: 0.2s;
 }
 
@@ -978,7 +1025,7 @@ footer ul li a:hover {
 
 .div-posts a {
     text-decoration: none;
-    color: #dd2059;
+    color: var(--main-color);
 }
 
 .div-posts a:last-child {
@@ -997,12 +1044,12 @@ footer ul li a:hover {
 }
 
 .post-button:hover {
-    background-color: #bb1647;
+    background-color: var(--main-color-hover);
     transition: 0.2s;
 }
 
 .post-button:active {
-    background-color: #941037;
+    background-color: var(--main-color-active);
     transition: 0.2s;
 }
 
@@ -1012,7 +1059,7 @@ footer ul li a:hover {
     margin-bottom: 10%;
     align-items: center;
     flex-direction: column;
-    margin-top: 5%;
+    margin-top: 1em;
     padding: 5%;
     border-radius: 30%;
     
@@ -1023,19 +1070,17 @@ footer ul li a:hover {
 }
 
 .div-textarea textarea {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-text);
     font-size: 15pt;
-    outline-color: #941037;
-    outline-style: solid;
-    outline-width: 3px;
-    border: none;
     border-radius: 5px;
+    border: 1px solid #909090;
+    padding: 5px;
 }
 
-.div-textarea textarea:focus {
-    box-shadow:0 0 0 3px #9c3587;
-	border-color: #f89f5b;
-    background-color: #fbe6d6;
+.div-textarea input[type=text]:focus, textarea:focus {
+    box-shadow:0 0 5px 2px #e7f3ff;
+	border-color: #1877f2;
+    transition: all .1s;
 }
 
 .container-submit {
@@ -1045,25 +1090,26 @@ footer ul li a:hover {
 
 .submit-button {
     margin-top: 3%;
-    background-color: #9c3587;
+    background-color: var(--main-color);
     color: white;
     padding: 10px;
     padding-left: 15px;
     padding-right: 15px;
-    font-family: var(--font-2);
+    font-family: var(--font-text);
+    font-weight: bold;
     font-size: 13pt;
     border-radius: 7px;
     border: none;
 }
 
 .submit-button:hover {
-    background-color: #3f1651;
-    transition: 0.2s;
+    background-color: var(--main-color-hover);
+    transition: 0.4s;
 }
 
 .submit-button:active {
-    background-color: #3f0e35;
-    transition: 0.2s;
+    background-color: var(--main-color-active);
+    transition: 0.4s;
 }
 
 .container-create {
@@ -1318,6 +1364,28 @@ footer ul li a:hover {
     transition: all .1s;
 }
 
+.comments {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.comments small {
+    margin-left: 1em;
+    margin-top: 10px;
+}
+
+.comment-card {
+    padding: 10px;
+    box-shadow: 0 1px 4px 0 var(--color-2-2);
+    margin-bottom: 1em;
+    margin-left: 0.5em;
+}
+
+.comments a {
+    color: var(--main-color);
+}
+
 .chapter-text {
     font-size: 16pt;
 }
@@ -1386,5 +1454,76 @@ footer ul li a:hover {
 /* Images */
 
 .avatar {
-    width: 100px;
+    width: 90px;
+    border-radius: 60px;
+}
+
+/* Profile */
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-user {
+    padding-top: 3em;
+    padding-bottom: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-2-1);
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-2-1);
+}
+
+.profile-user img {
+    box-shadow: 0 1px 4px 0 var(--color-2-2);
+}
+
+.profile-biography {
+    display: flex;
+    flex-direction: column;
+    padding-left: 4em;
+    padding-top: 2em;
+}
+
+.profile-biography button {
+    background-color: var(--main-color-white);
+    color: var(--color-text);
+    padding: 5px;
+    border: 1px solid var(--color-text);
+    border-radius: 6px;
+    font-family: var(--font-text);
+    font-size: 11pt;
+    font-weight: 500;
+}
+
+.profile-biography button:hover {
+    background-color: var(--color-2-1);
+    transition: all 0.2s;
+}
+
+.profile-biography i {
+    margin-right: 4px;
+}
+
+.profile-biography p {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+.profile-stories {
+    display: flex;
+    flex-direction: column;
+    padding-left: 4em;
+    padding-top: 2em;
+    margin-bottom: 5em;
+}
+
+.profile-stories a {
+    color: var(--main-color);
+}
+
+.profile-stories a:hover {
+    text-decoration: underline;
 }
