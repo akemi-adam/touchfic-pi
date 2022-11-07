@@ -27,7 +27,7 @@
                     <ul class="submenu">
                         <li class="nav-link"><a href="{{ route('storie.create') }}"><i class="fa-solid fa-plus"></i> Criar história</a></li>
                         <li class="nav-link"><a href="{{ route('storie.mystories', Auth::user()) }}">Minhas histórias</a></li>
-                        <li class="nav-link"><a href="{{ route('storie.likes', Auth::id()) }}">Histórias favoritas</a></li>
+                        <li class="nav-link"><a href="{{ route('storie.likes', Auth::id()) }}">Histórias curtidas</a></li>
                     </ul>
                     @endcan
             </li>

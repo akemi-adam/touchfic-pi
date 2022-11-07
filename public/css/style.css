@@ -30,7 +30,7 @@ body {
     --color-2: #909090;
     --color-2-1: #90909055;
     --color-2-2: #909090cd;
-    --light-menu: linear-gradient(135deg, #fdfcfb 0%, #e9d4c4 100%);
+    --light-menu: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);;
 
     /* Fonts */
     --font-1: 'Work Sans', Helvetica, sans-serif;
@@ -289,10 +289,7 @@ nav ul li:hover .submenu li:hover {
 
 .sb-options a:hover {
 	background-color:#ffffff92;
-	-moz-transition: all .5s;
-	-webkit-transition: all .5s;
-	-o-transition: all .5s;
-	transition: all .5s;
+
 }
 
 /* INDEX PAGE: BANNER */
@@ -341,6 +338,7 @@ footer {
     align-items: center;
     background-color: #262626;
     padding: 10px;
+    margin-top: 2em;
 }
 
 footer ul li {
@@ -848,6 +846,15 @@ footer ul li a:hover {
 .chapter-list button {
     margin-left: 2em;
     display: inline-block;
+}
+
+.title-chapters {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 100%;
+    justify-content: left;
+    margin-top: 1em;
 }
 
 .chapter-selection {

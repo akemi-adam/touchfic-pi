@@ -91,14 +91,18 @@
         @endif
     @endcan
 
-        <h3 style="font-size: 18pt">
-            Capítulos
-        </h3>
         @php
         $index = 0;
         @endphp
-        @forelse ($storie->chapters as $chapter)
 
+        <div class="title-chapters">
+            <div class="chapters-title">
+            <h3 style="font-size: 18pt">
+                Capítulos
+            </h3>
+        
+
+        @forelse ($storie->chapters as $chapter)
         <div class="chapter-list">
             <div class="chapter-selection">
                 <h3 style="font-size: 16pt; margin-left: 3em;">{{$index += 1}} | <a href="{{route('chapter.show', $chapter->id)}}" style="color: var(--main-color);">{{$chapter->title}}</a></h3>
@@ -123,7 +127,10 @@
             </div>
         </div>
     @empty
+    <div>
         <h3>A história ainda não possui nenhum capítulo. Volte mais tarde!</h3>
+    </div>
+    </div>
     @endforelse
     </section>
 </section>

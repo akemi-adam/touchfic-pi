@@ -16,7 +16,7 @@
             @php
                 $amount = DB::table('likes')->where('storie_id', $storie->id)->count();
             @endphp
-            <strong>Número de likes: {{ $amount }}</strong>
+            <strong>Curtidas: {{ $amount }}</strong>
             Escrita por: <a href="{{ route('user.show', $storie->users[0]->id) }}">{{$storie->users[0]->name}}</a>
         </div>
 

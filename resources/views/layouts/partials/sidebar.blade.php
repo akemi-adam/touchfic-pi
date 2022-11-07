@@ -13,7 +13,7 @@
         <ul>
             <li><a href="{{route('storie.create')}}"><i class="fa-solid fa-circle-plus"></i> Criar uma história</a></li>
             <li><a href="{{route('storie.mystories', Auth::user()->id)}}"><i class="fa-solid fa-book-open-reader"></i> Minhas histórias</a></li>
-            <li><a href="{{route('storie.likes', Auth::user()->id)}}"><i class="fa-solid fa-heart"></i> Histórias favoritas</a></li>
+            <li><a href="{{route('storie.likes', Auth::user()->id)}}"><i class="fa-solid fa-heart"></i> Histórias curtidas</a></li>
         </ul>
 
     <hr>
