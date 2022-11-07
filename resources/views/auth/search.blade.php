@@ -38,6 +38,7 @@
         Usuários
     </h3>
     @forelse ($users as $user)
+    
     <div class="search-user">
         <a href="{{ route('user.show', $user->id) }}">
         <img src="{{ asset('storage/images/user/avatar/' . $user->avatar) }}" alt="Avatar do usuário" class="avatar">

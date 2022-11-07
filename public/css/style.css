@@ -193,8 +193,7 @@ nav ul li:hover .submenu li:hover {
 
 .search-username {
     display: flex;
-    justify-content: center;
-    width: 90px;
+    padding-left: 5px;
     padding-top: 5px;
 }
 
@@ -412,7 +411,21 @@ footer ul li a:hover {
     margin-top: 0;
     margin-left: 5%;
     color: var(--color-text);
-    font-size: 15pt;
+    font-size: 18pt;
+    font-weight: 400;
+}
+
+.central-msg-container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.central-msg {
+    font-size: 20pt;
+    color: var(--color-text);
+    font-weight: 500;
 }
 
 /* Auth Pages */
@@ -920,6 +933,24 @@ footer ul li a:hover {
     transition: all 0.2s;
 }
 
+.list-likes-container {
+    display: inline-block;
+    max-width: 500px;
+    margin-left: 5%;
+    box-shadow: 0 1px 2px 0 var(--color-2-1);
+    padding: 10px;
+}
+
+.list-likes-container:hover {
+    box-shadow: 0 0px 3px 0 var(--color-2-2);
+}
+
+.list-likes-container a {
+    color: var(--main-color);
+    font-size: 13pt;
+    font-weight: 500;
+}
+
 .stories-card {
     margin-top: 2em;
     display: flex;
@@ -952,6 +983,10 @@ footer ul li a:hover {
 .storie-card {
     padding: 10px;
     box-shadow: 0 1px 4px 0 var(--color-2-2);
+}
+
+.storie-card a:hover {
+    color: var(--main-color);
 }
 
 .cover-index {
@@ -1437,7 +1472,6 @@ footer ul li a:hover {
     background-color: #D4EDDA;
     color: #155724;
     border: 1px solid #C3E6CB;
-    
 }
 
 .msg-danger {
@@ -1451,10 +1485,10 @@ footer ul li a:hover {
     color: var(--main-color-hover);
 }
 
-/* Images */
+/* Avatar */
 
 .avatar {
-    width: 90px;
+    width: 60px;
     border-radius: 60px;
 }
 
@@ -1471,13 +1505,14 @@ footer ul li a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--color-2-1);
+    background-color: #e8e8e8;
     color: var(--color-text);
     border-bottom: 1px solid var(--color-2-1);
 }
 
 .profile-user img {
     box-shadow: 0 1px 4px 0 var(--color-2-2);
+    width: 90px;
 }
 
 .profile-biography {

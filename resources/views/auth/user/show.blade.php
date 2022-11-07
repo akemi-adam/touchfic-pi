@@ -22,10 +22,10 @@
     </div>
 
     <div class="profile-biography">
+        @if (!is_null($user->biography))
         <h3>
             Biografia
         </h3>
-        @if (!is_null($user->biography))
             <p>
                 {{ $user->biography }}
             </p>

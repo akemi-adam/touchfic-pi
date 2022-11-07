@@ -7,7 +7,7 @@
             
     <div class="container-title">
             <h1 class="title">
-                Olá, {{Auth::user()->name}}!
+                Boas-vindas, {{Auth::user()->name}}!
             </h1>
     </div>
 
@@ -17,7 +17,7 @@
         @endphp
         @forelse ($recommendations as $recommendation)
             @if (!$displayInfo)
-                <h2 style="padding-left: 3em">
+                <h2 class="subtitle">
                     Você também pode se interessar
                 </h2>
                 @php
@@ -27,14 +27,16 @@
             <div class="dashboard-content">
             <div class="carousel">
                 <div class="carousel-slider">
-                    <div class="storie-card">
-                        <a href="{{ route('storie.show', $recommendation->id) }}">
+
+                    <a href="{{ route('storie.show', $recommendation->id) }}">
+                    <div class="storie-card">  
                             <img src="{{ FileSupport::getCover($recommendation->cover) }}" alt="{{ $recommendation->title }}" style="max-width: 300px">
-                        </a>
                         <h3>
-                            <a href="{{ route('storie.show', $recommendation->id) }}">{{ $recommendation->title }}</a>
+                            {{ $recommendation->title }}
                         </h3>
+                        </a>
                     </div>
+                    
                 </div>
             </div>
         @empty
