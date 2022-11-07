@@ -12,6 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
             sidebar.style.transform = "translateX(-330px)";
         })
 
+        document.onkeydown = function(e) {
+            if(e.key === 'Escape') {
+                sidebar.style.transform = "translateX(-330px)";
+            }
+        }
+
     })
 
 })
