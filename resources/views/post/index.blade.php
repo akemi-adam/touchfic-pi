@@ -5,9 +5,9 @@
 @section('content')
     <div class="container-posts">
         <div class="div-posts">
-            <h3>
+            <h2>
                 Postagens
-            </h3>
+            </h2>
             @forelse ($posts as $post)
                 <img src="{{ FileSupport::getAvatar($post->user->avatar) }}" alt="" class="avatar">
                 <p>

@@ -1,5 +1,5 @@
 @if (Auth::check())
-<div class="sidebar">
+<div class="sidebar" id="sidebar">
     <div class="sb-options">
   			
     <h3>Touchfic</h3>

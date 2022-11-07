@@ -25,7 +25,7 @@
         <input type="file" name="avatar">
         <br>
         <button>
-            Enviar
+            Salvar alterações
         </button>
     </form>
 @endsection

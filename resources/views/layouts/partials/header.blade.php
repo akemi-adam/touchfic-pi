@@ -1,10 +1,19 @@
 <header>
-    <div>
+
+    <div class="header-logo">
+
+        @if (Auth::check())
+        <div>
+            <span><ion-icon id="smenu" name="menu-outline"></ion-icon></span>
+        </div>
+        @endif
+
         @if (!Auth::check())
             <a href="{{route('root.home')}}" class="logo" ondragstart="return false"><img src="/images/icons/touchfic-logo.svg" alt="Touchfic" ondragstart="return false">Touchfic</a>
         @else
             <a href="{{route('dashboard')}}" class="logo" ondragstart="return false"><img src="/images/icons/touchfic-logo.svg" alt="Touchfic" ondragstart="return false">Touchfic</a>
         @endif
+        
     </div>
     
         <div>
