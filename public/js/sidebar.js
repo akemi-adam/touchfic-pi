@@ -1,13 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const sidebar = document.getElementById('smenu')
+    const smenu = document.getElementById('smenu')
 
-    sidebar.addEventListener('click', () => {
-        document.getElementById('sidebar').style.transform = "translateX(330px)"
-    })
+    smenu.addEventListener('click', () => {
 
-    sidebar.addEventListener('mouseleave', () => {
-        document.getElementById('sidebar').style.transform = "translateX(-330px)"
+        const sidebar = document.getElementById('sidebar')
+
+        sidebar.style.transform = "translateX(330px)"
+
+        sidebar.addEventListener('mouseleave', () => {
+            sidebar.style.transform = "translateX(-330px)";
+        })
+
     })
 
 })
