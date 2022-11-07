@@ -18,7 +18,6 @@
 
     <hr>
         <ul>					
-            <li><a href="#"><i class="fa-solid fa-circle-half-stroke"></i> Tema</a></li>
             @if (Auth::check())
             @if (Auth::user()->permission_id === 3)
             <li><a href="{{route('admin.dashboard')}}"><i class="fa-solid fa-gear"></i> Opções de administrador</a></li>

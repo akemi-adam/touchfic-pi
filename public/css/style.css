@@ -227,6 +227,9 @@ nav ul li:hover .submenu li:hover {
     .search-form {
         margin-top: 10px;
     }
+    .welcome-container {
+        flex-direction: column;
+    }
 }
 
 .sidebar {
@@ -292,42 +295,73 @@ nav ul li:hover .submenu li:hover {
 
 }
 
-/* INDEX PAGE: BANNER */
-.banner {
-    background-image: url(https://cdn.discordapp.com/attachments/936460785780142170/999861258599805018/banner-index.jpg);
-    height: auto;
-    padding: 20% 10%;
+/* Welcome */
+
+.welcome-content {
+    display: flex;
+    margin-top: 5em;
+    justify-content: center;
+    margin-bottom: 5em;
 }
 
-.banner h1 {
-    font-family: var(--font-1);
-    font-weight: 500;
-    text-align: center;
-    color: white;
-}
-
-.banner h2 {
-    font-family: var(--font-1);
-    font-weight: 500;
-    text-align: center;
-    margin-top: 5%;
-}
-
-.banner a {
-    text-decoration: none;
-    color: white;
-    margin: 0px auto;
+.welcome-container {
+    display: flex;
+    max-width: 800px;
     padding: 20px;
-    border: none;
-    border-radius: 10px;
-    background: var(--main-color);
 }
 
-.banner a:hover {
+.welcome-image img {
+    width: 350px;
+    margin-right: 5em;
+}
+
+.welcome-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Yu Gothic UI';
+}
+
+.welcome-info p {
+    margin-top: 0;
+    text-align: justify;
+}
+
+.welcome-info h1 {
+    margin-bottom: 0.5em;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 40pt;
+    color: var(--main-color);
+}
+
+.welcome-info p {
+    font-size: 14pt;
+}
+
+.auth-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.auth-buttons a {
+    background-color: var(--main-color);
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    border-radius: 30px;
+    font-size: 13pt;
+    font-weight: 400;
+    justify-content: space-between;
+}
+
+.auth-buttons a:hover {
     background-color: var(--main-color-hover);
 }
 
-.banner a:active {
+.auth-buttons a:active {
     background-color: var(--main-color-active);
 }
 
@@ -336,7 +370,7 @@ footer {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #262626;
+    background-color: var(--main-color-white);
     padding: 10px;
     margin-top: 2em;
 }
@@ -353,14 +387,14 @@ footer ul li:last-child {
 
 footer span {
     font-weight: 500;
-    color: #ffffff;
+    color: var(--color-text);
 }
 
 footer ul li a {
     text-decoration: none;
     font-size: 12pt;
     font-weight: 500;
-    color: #ffffff;
+    color: var(--color-text);
 }
 
 footer ul li a:hover {

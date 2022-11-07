@@ -43,6 +43,6 @@
         @endcan
 
     @empty
-        <h2>Ninguém comentou nessa história ainda. Seja o pioneiro!</h2>
+        <h2>Ninguém comentou aqui ainda. Seja o pioneiro!</h2>
     @endforelse
 </div>
