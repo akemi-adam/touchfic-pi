@@ -1,11 +1,9 @@
+document.addEventListener('DOMContentLoaded', () => {
 
-function openMenu() {
-    document.getElementById('sidebar').style.transform = "translateX(350px)"
-}
+    const sidebar = document.getElementById('smenu')
 
-document.getElementById('smenu').addEventListener('click', openMenu)
+    sidebar.addEventListener('click', () => {
+        document.getElementById('sidebar').style.transform = "translateX(350px)"
+    })
 
-
-// var x = document.getElementById('sidebar')
-
-// console.log(x)
+})

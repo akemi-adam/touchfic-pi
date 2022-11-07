@@ -25,7 +25,6 @@ it('view a story', function () {
 /**
  * Create a new story
  */
-
 it('has story creation form', function () {
 
     UserData::authUser();

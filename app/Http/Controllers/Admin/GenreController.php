@@ -44,7 +44,7 @@ class GenreController extends Controller
     /**
      * Checks if the user is an administrator and if so, creates a gender object, saves its name and returns a redirect with a success message
      * 
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * 
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -105,7 +105,7 @@ class GenreController extends Controller
     /**
      * Checks the user's permission level and if the user is an admin, updates the specified gender, returning to a view with a success message
      * 
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param int $id
      * 
      * @return \Illuminate\Http\RedirectResponse

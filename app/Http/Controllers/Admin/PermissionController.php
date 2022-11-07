@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Permission;
-use App\Models\User;
 use App\Enums\UserRole;
+use App\Models\{
+    User, Permission
+};
 
 class PermissionController extends Controller
 {
@@ -49,7 +50,7 @@ class PermissionController extends Controller
     /**
      * Retrieves the user to be promoted, checks the job level assigned to him and then updates his permission level
      * 
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * 
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -91,7 +92,7 @@ class PermissionController extends Controller
     /**
      * Retrieves the user by id, saves its new position and redirects to a view
      * 
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param int $id
      * 
      * @return \Illuminate\Http\RedirectResponse

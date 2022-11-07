@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\User\UserProfileRequest;
@@ -65,7 +64,7 @@ class UserController extends Controller
     /**
      * It retrieves the user, checks the filled in fields and makes a more detailed check on the image request, where the previous avatar is deleted from the system if it has already changed its photo once. Then an event is dispatched
      * 
-     * @param \Illuminate\Http\UserProfileRequest $request
+     * @param UserProfileRequest $request
      * @param int $id
      * 
      * @return \Illuminate\Http\RedirectResponse
