@@ -1107,12 +1107,57 @@ footer ul li a:hover {
     height: 100%;
     margin-bottom: 5%;
     width: 90%;
-    /* background-color: #1ed760; */
 }
 
 .div-posts {
+    padding: 10px;
+    margin-bottom: 1em;
+    max-width: 900px;
+    box-shadow: 0 1px 4px 0 var(--color-2-2);
     text-align: justify;
     font-family: var(--font-text);
+}
+
+.username {
+    display: flex;
+    font-size: 15pt;
+    margin-bottom: 1em;
+}
+
+.post-content {
+    font-family: 'Yu Gothic UI';
+    font-size: 13pt;
+    margin-bottom: 1em;
+}
+
+.posts-buttons {
+    display: flex;
+    justify-content: right;
+}
+
+.posts-buttons button {
+    margin-right: 1em;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    font-family: var(--font-text);
+    border-radius: 2px;
+    font-size: 10pt;
+    font-weight: 600;
+}
+
+.posts-buttons button:hover {
+    box-shadow:0 0 5px 2px var(--color-2-1);
+    transition: all .1s;
+}
+
+.div-posts img {
+    margin-right: 1em;
+}
+
+.div-posts span {
+    color: var(--main-color);
 }
 
 .div-posts p {
@@ -1158,7 +1203,6 @@ footer ul li a:hover {
 
 .post-button:active {
     background-color: var(--main-color-active);
-    transition: 0.2s;
 }
 
 .container-textarea {
@@ -1170,7 +1214,6 @@ footer ul li a:hover {
     margin-top: 1em;
     padding: 5%;
     border-radius: 30%;
-    
 }
 
 .div-textarea textarea, button {
@@ -1212,12 +1255,10 @@ footer ul li a:hover {
 
 .submit-button:hover {
     background-color: var(--main-color-hover);
-    transition: 0.4s;
 }
 
 .submit-button:active {
     background-color: var(--main-color-active);
-    transition: 0.4s;
 }
 
 .container-create {
