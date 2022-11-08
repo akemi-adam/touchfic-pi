@@ -118,7 +118,7 @@ header ion-icon {
 }
 
 .header-logo ion-icon:hover {
-    background-color: var(--color-2-1);
+    background-color: #efefefcd;
     cursor: pointer;
 }
 
@@ -1107,6 +1107,7 @@ footer ul li a:hover {
     height: 100%;
     margin-bottom: 5%;
     width: 90%;
+    /* background-color: #1ed760; */
 }
 
 .div-posts {
@@ -1131,11 +1132,23 @@ footer ul li a:hover {
     background-color: var(--main-color);
     color: white;
     border: none;
-    padding: 8px;
-    border-radius: 7px;
+    width: 65px;
+    height: 65px;
+    right: 25px;
+    bottom: 40px;
+    border-radius: 50%;
     font-weight: bold;
-    font-size: 13pt;
-    font-family: var(--font-2);
+    font-size: 17pt;
+    font-family: var(--font-text);
+    position: fixed;
+    box-shadow: 0 0 10px var(--color-2-2);
+}
+
+.post-button i {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
 }
 
 .post-button:hover {

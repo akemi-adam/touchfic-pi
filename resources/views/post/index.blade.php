@@ -3,11 +3,18 @@
 @section('title', 'Postagens')
     
 @section('content')
-    <div class="container-posts">
+@can('authenticated')
+    <a href="{{ route('post.create') }}" class="post-button">
+       <i class="fa-solid fa-plus"></i>
+    </a>
+@endcan
+    <h2 class="title">
+        Postagens
+    </h2>
+    
+        <div class="container-posts">
+
         <div class="div-posts">
-            <h2>
-                Postagens
-            </h2>
             @forelse ($posts as $post)
                 <img src="{{ FileSupport::getAvatar($post->user->avatar) }}" alt="" class="avatar">
                 <p>
@@ -39,9 +46,6 @@
             @empty
                 <h2>Ninguém publicou nada ainda. Seja o primeiro!</h2>
             @endforelse
-            <a href="{{ route('post.create') }}" class="post-button">
-                <i class="fa-solid fa-circle-plus"></i> Crie uma postagem
-            </a>
         </div>
     </div>
 @endsection
