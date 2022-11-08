@@ -1173,6 +1173,40 @@ footer ul li a:hover {
     color: white;
 }
 
+.post-container {
+    background-color: #1ed760;
+    max-width: 900px;
+}
+
+.featured-post {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 3em;
+    justify-content: center;
+    align-items: center;
+}
+
+.featured-posts {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.featured-post img {
+    margin-right: 1em;
+}
+
+.featured-post span {
+    color: var(--main-color);
+}
+
+.featured-post-user {
+    display: flex;
+    align-items: center;
+    font-size: 13pt;
+}
+
 .post-button {
     background-color: var(--main-color);
     color: white;

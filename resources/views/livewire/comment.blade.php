@@ -45,6 +45,6 @@
         @endcan
 
     @empty
-        <h2>Ninguém comentou aqui ainda. Seja o pioneiro!</h2>
+        <h2 style="display: flex; justify-content: center">Ninguém comentou aqui ainda. Seja o pioneiro!</h2>
     @endforelse
 </div>
