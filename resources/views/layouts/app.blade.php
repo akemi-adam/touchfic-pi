@@ -23,6 +23,7 @@
     {{-- Seção para JavaScript --}}
         @yield('scripts')
     <script src="/js/year.js"></script>
+    <script src="{{ asset('/js/sidebar.js') }}"></script>
 
     {{-- Livewire --}}
     @livewireStyles

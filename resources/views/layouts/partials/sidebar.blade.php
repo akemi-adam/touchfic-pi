@@ -4,8 +4,9 @@
   			
     <h3>Touchfic</h3>
         <ul>					
-            <li><a href="{{route('root.home')}}"><i class="fa-solid fa-hashtag"></i> Página inicial</a></li>
+            <li><a href="{{route('root.home')}}"><i class="fa-solid fa-house"></i></i> Página inicial</a></li>
             <li><a href="{{route('user.show', Auth::user()->id)}}"><i class="fa-solid fa-circle-user"></i> Meu perfil</a></li>
+            <li><a href="{{route('storie.index')}}"><i class="fa-solid fa-hashtag"></i> Explorar</a></li>
             <li><a href="{{route('post.index')}}"><i class="fa-solid fa-bars-staggered"></i> Linha do tempo</a></li>
         </ul>
 

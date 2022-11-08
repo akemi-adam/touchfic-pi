@@ -20,23 +20,25 @@
     @forelse ($comments as $comment)
     <section class="comments">
         <div class="comment-card">
-        <a href="{{ route('user.show', $comment->user_id) }}"><img src="{{ FileSupport::getAvatar($comment->user->avatar) }}" class="avatar"></a>
-        <small><strong> <a href="{{ route('user.show', $comment->user_id) }}">{{ $comment->user->name }}</a> respondeu: </strong></small>
-        <p>
-            {{ nl2br($comment->content) }}
-        </p>
-        @can('authenticated')
-        @if ($comment->user_id === Auth::user()->id)
-        <div class="storie-crud">
-            <form action="{{ route($editRoute, $comment->id) }}">
-                <button class="edit-storie">
-                    Editar
-                </button>
-            </form>
-            <form wire:submit.prevent="delete({{$comment->id}})">
-                <button class="delete-storie">Remover</button>
-            </form>
-        </div>
+            
+            <a href="{{ route('user.show', $comment->user_id) }}"><img src="{{ FileSupport::getAvatar($comment->user->avatar) }}" class="avatar"></a>
+            <small><strong> <a href="{{ route('user.show', $comment->user_id) }}">{{ $comment->user->name }}</a> respondeu: </strong></small>
+            <p>
+                {{ nl2br($comment->content) }}
+            </p>
+
+            @can('authenticated')
+            @if ($comment->user_id === Auth::user()->id)
+            <div class="storie-crud">
+                <form action="{{ route($editRoute, $comment->id) }}">
+                    <button class="edit-storie">
+                        Editar
+                    </button>
+                </form>
+                <form wire:submit.prevent="delete({{$comment->id}})">
+                    <button class="delete-storie">Remover</button>
+                </form>
+            </div>
         </div>
     </section>
         @endif

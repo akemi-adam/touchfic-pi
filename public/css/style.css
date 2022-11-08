@@ -1490,6 +1490,61 @@ footer ul li a:hover {
     color: var(--main-color);
 }
 
+.notifications-container {
+    display: block;
+    max-width: 700px;
+    background-color: #e3e3e3cd;
+    border-radius: 5px;
+    margin-left: 5%;
+}
+
+.notifications-box {
+    margin-bottom: 1em;
+}
+
+.notifications-box a {
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+.notifications-box img {
+    width: 50px;
+    padding: 5px;
+}
+
+.notifications-box:hover {
+    background-color: #d3d3d3cd;
+    border-radius: 5px;
+}
+
+.nots-buttons {
+    display: flex;
+    justify-content: right;
+}
+
+.nots-buttons button {
+    margin-top: 10px;
+    margin-left: 2em;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    font-family: var(--font-text);
+    color: white;
+    border-radius: 2px;
+    font-size: 11pt;
+    font-weight: 600;
+}
+
+.nots-buttons button:hover {
+    box-shadow:0 0 5px 2px var(--color-2-1);
+    transition: all .1s;
+}
+
+.nots-buttons i {
+    margin-right: 3px;
+    margin-top: 3px;
+}
+
 .chapter-text {
     font-size: 16pt;
 }
