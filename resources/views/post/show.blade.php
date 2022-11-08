@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', $post->content)
+@section('title', $post->user->name  . ' disse: "' . $post->content . '" - Touchfic')
     
 @section('content')
     <img src="{{ FileSupport::getAvatar($post->user->avatar) }}" class="avatar">

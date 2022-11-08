@@ -263,7 +263,7 @@ nav ul li:hover .submenu li:hover {
 	width: 330px; 
 	position: fixed;
 	top: 0;
-	left:-330px;
+	left:-340px;
     box-shadow: 0 1px 4px 0 var(--color-2-2);
     overflow: auto;
     -moz-transition: all .5s;
