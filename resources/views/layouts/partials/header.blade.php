@@ -31,7 +31,11 @@
     <nav>
         <ul>
             <li>
+            @if (!Auth::check())
             <a href="{{route('storie.index')}}" class="nav-link">Histórias</a>
+            @else
+            <a href="" class="nav-link">Histórias</a>
+            @endif
                     @can('authenticated')
                     <ul class="submenu">
                         <li class="nav-link"><a href="{{ route('storie.create') }}"><i class="fa-solid fa-plus"></i> Criar história</a></li>
