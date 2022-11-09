@@ -620,13 +620,6 @@ footer ul li a:hover {
     margin-bottom: 2%;
 }
 
-.container-logout {
-    display: flex;
-    justify-content: left;
-    margin-bottom: 5%;
-    margin-left: 5%;
-}
-
 .storie-form-container {
     display: flex;
     justify-content: center;
@@ -1452,11 +1445,6 @@ footer ul li a:hover {
     background-color: var(--main-color-hover);
 }
 
-.chapter-buttons button:active {
-    background-color: var(--main-color-active);
-    transition: all 0.2s;
-}
-
 .next i {
     padding: 2px;
     transform: translateX(3px);
@@ -1773,4 +1761,52 @@ footer ul li a:hover {
 
 .profile-stories a:hover {
     text-decoration: underline;
+}
+
+.profile-form {
+    display: flex;
+    justify-content: left;
+    margin-left: 5%;
+}
+
+.profile-form label {
+    font-size: 13pt;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    margin-top: 1em;
+}
+
+.profile-form input[type=text], input[type=email] {
+    border: 1px solid #909090;
+    padding: 5px;
+}
+
+.profile-form textarea {
+    resize: vertical;
+    padding: 5px;
+}
+
+.profile-form input[type=file] {
+    margin-bottom: 2em;
+    color: var(--color-text);
+    font-family: var(--font-text);
+    font-weight: bold;
+}
+
+.profile-form input[type=text], input[type=email], textarea {
+    width: 100%;
+    border-radius: 5px;
+    font-family: var(--font-text);
+    font-size: 12pt;
+    outline: 0;
+    border-color: var(--color-2-1);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.profile-form input[type=text]:focus, input[type=email]:focus, textarea:focus {
+    box-shadow:0 0 5px 2px #e7f3ff;
+	border-color: #1877f2;
+    transition: all .1s;
 }

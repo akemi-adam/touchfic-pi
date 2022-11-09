@@ -45,7 +45,7 @@
             </form>
         @endif
         @if (!is_null($next))
-            <form action="{{ route('chapter.show', $next) }}" method="get"  class="next">
+            <form action="{{ route('chapter.show', $next) }}" method="get" class="next">
                 <button>
                     Próximo <i class="fa-solid fa-chevron-right"></i>
                 </button>
