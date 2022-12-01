@@ -99,13 +99,9 @@ class StorieController extends Controller
     {
         $this->authorize('create', Storie::class);
 
-        $agegroups = Agegroup::all();
-
-        $genres = Genre::all();
-
         return view('storie.create', [
-            'agegroups' => $agegroups,
-            'genres' => $genres,
+            'agegroups' => Agegroup::all(),
+            'genres' => Genre::all(),
         ]);
     }
 
@@ -136,7 +132,7 @@ class StorieController extends Controller
             $storie->genres()->attach($genre);
         }
 
-        return redirect('/storie')->with('success_msg', 'História cadastrada com sucesso');
+        return redirect()->to(route('storie.show', $storie->id))->with('success_msg', 'História cadastrada com sucesso');
     }
 
     /**
@@ -148,12 +144,10 @@ class StorieController extends Controller
      */
     public function show($id)
     {
-        $storie = Storie::findOrFail($id);
-
         $amount = DB::table('likes')->where('storie_id', $id)->count();
 
         return view('storie.show', [
-            'storie' => $storie,
+            'storie' => Storie::findOrFail($id),
             'amount' => $amount,
         ]);
     }

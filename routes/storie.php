@@ -19,21 +19,15 @@ Route::middleware(['auth'])->group(function ()
     Route::get('/likes-stories/{id}', [StorieController::class, 'likes'])->name('storie.likes');
 });
 
-Route::name('chapter.')->group(function ()
+Route::prefix('storie')->group(function ()
 {
-    Route::get('/storie/{id}/create', [ChapterController::class, 'create'])->name('create');
+    Route::resource('/chapter', ChapterController::class)->except([ 'create', 'store' ]);
 
-    Route::post('/storie/{id}/chapter', [ChapterController::class, 'store'])->name('store');
+    Route::get('/chapter/create/{id}', [ChapterController::class, 'create'])->name('chapter.create');
 
-    Route::get('/storie/chapter/{id}', [ChapterController::class, 'show'])->name('show');
+    Route::post('/chapter/{id}', [ChapterController::class, 'store'])->name('chapter.store');
 
-    Route::get('/storie/edit/{id}', [ChapterController::class, 'edit'])->name('edit');
-
-    Route::put('/storie/chapter/{id}', [ChapterController::class, 'update'])->name('update');
-
-    Route::delete('/storie/chapter/{id}', [ChapterController::class, 'destroy'])->name('destroy');
-
-    Route::prefix('storie/chapter/comment')->name('comment.')->group(function ()
+    Route::prefix('chapter/comment')->name('chapter.comment.')->group(function ()
     {
         Route::get('/{id}/edit', [CommentchapterController::class, 'edit'])->name('edit');
         Route::put('/{id}', [CommentchapterController::class, 'update'])->name('update');

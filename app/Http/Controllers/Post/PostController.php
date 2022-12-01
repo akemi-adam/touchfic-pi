@@ -77,10 +77,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::findOrFail($id);
-
         return view('post.show', [
-            'post' => $post,
+            'post' => Post::findOrFail($id),
         ]);
     }
 
@@ -119,7 +117,7 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->save();
 
-        return redirect("/post/$id")->with('success_msg', 'Postagem editada com sucesso!');
+        return redirect()->to(route('post.update', $post->id))->with('success_msg', 'Postagem editada com sucesso!');
     }
 
     /**
@@ -135,14 +133,14 @@ class PostController extends Controller
 
         $this->authorize('delete', $post);
 
-        if (isset($post->comments)) {
+        if (isset($post->comments)) 
             Commentpost::where('post_id', $post->id)->delete();
-        }
+        
 
         DeletePublication::dispatch($post);
 
         $post->delete();
 
-        return redirect('/post')->with('success_msg', 'Postagem deletada com sucesso!');
+        return redirect()->to(route('post.index'))->with('success_msg', 'Postagem deletada com sucesso!');
     }
 }
