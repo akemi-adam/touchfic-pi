@@ -54,6 +54,8 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
+        $this->authorize('update', $user);
+
         Logger::log('user', 'info', $user->name . ' has acessed the profile editing form');
 
         return view('auth.user.edit', [
@@ -72,6 +74,8 @@ class UserController extends Controller
     public function update(UserProfileRequest $request, $id)
     {
         $user = User::findOrFail($id);
+
+        $this->authorize('update', $user);
 
         RequestSupport::setEditValues($request, $user, ['name', 'email', 'biography']);
 

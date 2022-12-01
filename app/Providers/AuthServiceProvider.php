@@ -2,13 +2,15 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use App\Policies\StoriePolicy;
-use App\Models\Storie;
-use App\Models\User;
+use App\Policies\{
+    StoriePolicy, UserPolicy, PostPolicy, ChapterPolicy
+};
+use App\Models\{
+    Storie, User, Post, Chapter
+};
 use App\Enums\UserRole;
-use Auth;
+use Auth, Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,9 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Storie::class => StoriePolicy::class,
+        User::class => UserPolicy::class,
+        Post::class => PostPolicy::class,
+        Chapter::class => ChapterPolicy::class,
     ];
 
     /**

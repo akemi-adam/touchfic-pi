@@ -34,7 +34,7 @@
             @if (!Auth::check())
             <a href="{{route('storie.index')}}" class="nav-link">Histórias</a>
             @else
-            <a href="#" class="nav-link">Histórias</a>
+            <a href="{{ route('storie.index') }}" class="nav-link">Histórias</a>
             @endif
                     @can('authenticated')
                     <ul class="submenu">

@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-use Logger;
+use Illuminate\Http\Request;
+use App\Models\User;
+use Auth, Hash, Logger, Gate;
 
 class RegisteredUserController extends Controller
 {
@@ -21,6 +19,8 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
+        if (Gate::allows('authenticated')) abort(403);
+        
         return view('auth.register');
     }
 
@@ -34,6 +34,8 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        if (Gate::allows('authenticated')) abort(403);
+        
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
