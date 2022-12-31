@@ -8,8 +8,9 @@ use App\Http\Requests\Storie\Chapter\{
 use App\Http\Controllers\Controller;
 use App\Events\DeletePublication;
 use Illuminate\Http\Request;
-use App\Models\Chapter;
-use App\Models\Storie;
+use App\Models\{
+    Chapter, Storie
+};
 use RequestSupport;
 
 class ChapterController extends Controller
@@ -21,9 +22,7 @@ class ChapterController extends Controller
     public function __construct()
     {
         $this->middleware('exists:' . Chapter::class, [
-            'only' => [
-                'show',
-            ]
+            'only' => [ 'show' ]
         ]);
     }
 
@@ -146,9 +145,9 @@ class ChapterController extends Controller
             $storie->save();
         }
 
-        if (is_null($chapter->spotify_track) || $chapter->spotify_track !== $request->track) {
+        if (is_null($chapter->spotify_track) || $chapter->spotify_track !== $request->track)
             $chapter->spotify_track = $request->track;
-        }
+        
 
         $chapter->save();
 

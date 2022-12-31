@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
+use App\Events\DeletePublication;
 use Illuminate\Http\Request;
-use App\Models\Commentpost;
-use App\Models\Post;
+use App\Models\{
+    Commentpost, Post
+};
 
 class ModeratorController extends Controller
 {
@@ -20,7 +22,11 @@ class ModeratorController extends Controller
     {
         Commentpost::where('post_id', $id)->delete();
         
-        Post::findOrFail($id)->delete();
+        $post = Post::find($id);
+
+        DeletePublication::dispatch($post);
+
+        $post->delete();
 
         return redirect()->to(route('post.index'));
     }

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Classes\Data;
+namespace App\Traits;
 
-class Data
+trait Data
 {
 
     /**

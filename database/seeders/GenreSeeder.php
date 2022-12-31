@@ -5,10 +5,11 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Genre;
-use Data;
+use App\Traits\Data;
 
 class GenreSeeder extends Seeder
 {
+    use Data;
     /**
      * Run the database seeds.
      *
@@ -16,7 +17,7 @@ class GenreSeeder extends Seeder
      */
     public function run()
     {
-        Data::startDatas(
+        $this->startDatas(
             Genre::class, [
                 'Aventura', 'Românce', 'Terror', 'Horror', 'Sci-fi', 'Mistério', 'Investigação', 'Drama', 'Suspense', 'Fantasia', 'Distopia'
             ],

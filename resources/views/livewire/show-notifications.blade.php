@@ -31,6 +31,22 @@
                 @endif
             </div>
 
+            {{-- Deleted posts notifications --}}
+            <div class="notifications-box">
+                @if ($notification->type === 'App\Notifications\PostDeletedNotification')
+                    <span>A administração removeu a sua postagem criada em {{ $notification->data['created_at'] }}: {{ $notification->data['content'] }}</span>
+
+                    <div class="nots-buttons">
+                    <form wire:submit.prevent="readNotification('{{ $notification->id }}')">
+                        <button class="edit-storie"><i class="fa-solid fa-bookmark"></i>Marcar como lida</button>
+                    </form>
+                    <form wire:submit.prevent="removeNotification('{{ $notification->id }}')">
+                        <button class="delete-storie">Remover</button>
+                    </form>
+                    </div>
+                @endif
+            </div>
+
             {{-- Comments notificatiosn --}}
             @if ($notification->type === 'App\Notifications\CommentNotification')
             
@@ -101,6 +117,22 @@
                 @endif
             </div>
 
+            {{-- Deleted posts notifications --}}
+            <div class="notifications-box">
+                @if ($notification->type === 'App\Notifications\PostDeletedNotification')
+                    <span>A administração removeu a sua postagem criada em {{ $notification->data['created_at'] }}: {{ $notification->data['content'] }}</span>
+
+                    <div class="nots-buttons">
+                    <form wire:submit.prevent="readNotification('{{ $notification->id }}')">
+                        <button class="edit-storie"><i class="fa-solid fa-bookmark"></i>Marcar como lida</button>
+                    </form>
+                    <form wire:submit.prevent="removeNotification('{{ $notification->id }}')">
+                        <button class="delete-storie">Remover</button>
+                    </form>
+                    </div>
+                @endif
+            </div>
+
             {{-- Comments notifications --}}
             @if ($notification->type === 'App\Notifications\CommentNotification')
 
@@ -132,8 +164,8 @@
                     </div>
             
                 @endif
-                @endif
             </div>
+            @endif
         </div>
         @empty
         <div class="central-msg-container">

@@ -12,12 +12,12 @@ class StorieData
     /**
      * Create a story linked to user and genres
      * 
-     * @param int $userNumber
+     * @param mixed $owners
      * @param int $genreNumber
      * 
      * @return Storie
      */
-    protected function create($owners, int $genreNumber = 4) : Storie
+    protected function create(mixed $owners, int $genreNumber = 4) : Storie
     {
         $storie = Storie::factory()->hasAttached($owners)
             ->hasAttached(Genre::factory()->count($genreNumber))->create();

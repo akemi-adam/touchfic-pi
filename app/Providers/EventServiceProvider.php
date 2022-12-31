@@ -13,7 +13,8 @@ use App\Events\{
 use App\Listeners\{
     SendStorieLikeNotification, SendCommentNotification, UpdateLikeNotification, UpdateCommentNotification,
     RemoveStorieLikeNotification, RemoveCommentChapterNotification, DeleteCommentPublicationNotification,
-    DeleteCommentNotification, UpdateStorieNotification, RemoveLikeNotification, UnwrapStorie, RenewingLinksStorie
+    DeleteCommentNotification, UpdateStorieNotification, RemoveLikeNotification, UnwrapStorie, RenewingLinksStorie,
+    SendDeletedPostNotification, ShareCommentMail
 };
 
 class EventServiceProvider extends ServiceProvider
@@ -34,6 +35,7 @@ class EventServiceProvider extends ServiceProvider
 
         CommentEvent::class => [
             SendCommentNotification::class,
+            ShareCommentMail::class,
         ],
 
         UpdateNotification::class => [
@@ -49,6 +51,7 @@ class EventServiceProvider extends ServiceProvider
 
         DeletePublication::class => [
             DeleteCommentPublicationNotification::class,
+            SendDeletedPostNotification::class,
         ],
 
         DeleteComment::class => [

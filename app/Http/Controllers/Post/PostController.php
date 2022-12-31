@@ -135,7 +135,6 @@ class PostController extends Controller
 
         if (isset($post->comments)) 
             Commentpost::where('post_id', $post->id)->delete();
-        
 
         DeletePublication::dispatch($post);
 

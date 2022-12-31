@@ -19,6 +19,6 @@ class SendCommentNotification
     {
         $owner = $event->owner;
 
-        $owner->notifY(new CommentNotification($event->author, $event->publication));
+        $owner->notify(new CommentNotification($event->author, $event->publication));
     }
 }
